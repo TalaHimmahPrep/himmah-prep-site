@@ -66,8 +66,11 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/logo.webp",
-    apple: "/logo.webp",
+    icon: [
+      { url: "/icon.png", media: "(prefers-color-scheme: light)" },
+      { url: "/icon-dark.png", media: "(prefers-color-scheme: dark)" },
+    ],
+    apple: "/icon.png",
   },
 };
 
