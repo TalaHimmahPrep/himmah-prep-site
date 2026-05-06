@@ -1,7 +1,9 @@
+import Link from "next/link";
 import { TestimonialCarousel, type Testimonial } from "@/components/Carousel";
 import { LeadForm } from "@/components/LeadForm";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { GuideCover } from "@/components/GuideCover";
 
 const testimonials: Testimonial[] = [
   {
@@ -320,7 +322,7 @@ export default function HomePage() {
         <section id="guide" className="guide">
           <div className="guide-grid">
             <div>
-              <p className="eyebrow">A 200-page head start</p>
+              <p className="eyebrow">A 55-page head start</p>
               <h2 className="display-2">
                 The U.S. Application <em>Guide.</em>
               </h2>
@@ -330,12 +332,12 @@ export default function HomePage() {
                 decisions you make in 11th grade that define everything after.
               </p>
               <div className="guide-ctas">
-                <a href="#" className="btn btn-primary">
+                <Link href="/shop/p/guide" className="btn btn-primary">
                   Get the guide — <s>$49</s>&nbsp; $19
-                </a>
-                <a href="#" className="btn btn-ghost">
-                  Read a sample chapter <span aria-hidden="true">&rarr;</span>
-                </a>
+                </Link>
+                <Link href="/shop/p/guide" className="btn btn-ghost">
+                  See the table of contents <span aria-hidden="true">&rarr;</span>
+                </Link>
               </div>
               <ul className="bullets two-col">
                 <li>Essay frameworks &amp; archetypes</li>
@@ -347,18 +349,7 @@ export default function HomePage() {
               </ul>
             </div>
             <aside className="guide-cover" aria-hidden="true">
-              <div className="book">
-                <div className="book-spine" />
-                <div className="book-cover">
-                  <p className="book-eyebrow">Himmah Prep</p>
-                  <p className="book-title serif">
-                    The U.S.
-                    <br />
-                    Application <em>Guide.</em>
-                  </p>
-                  <p className="book-foot">2026 Edition</p>
-                </div>
-              </div>
+              <GuideCover />
             </aside>
           </div>
         </section>
