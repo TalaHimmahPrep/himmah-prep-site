@@ -3,6 +3,28 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { GuideCover } from "@/components/GuideCover";
+import { JsonLd } from "@/components/JsonLd";
+
+const PRODUCT_LD = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "The U.S. Application Guide",
+  description:
+    "A 55-page step-by-step roadmap to top US college admissions. Essay frameworks, school selection, extracurricular strategy, financial aid, test prep, and real essay examples from students admitted to Stanford, Harvard, and Princeton.",
+  brand: {
+    "@type": "Brand",
+    name: "Himmah Prep",
+  },
+  category: "Educational Materials",
+  url: "https://himmahprep.com/shop/p/guide",
+  offers: {
+    "@type": "Offer",
+    price: "19.00",
+    priceCurrency: "USD",
+    availability: "https://schema.org/InStock",
+    url: "https://himmahprep.com/shop/p/guide",
+  },
+};
 
 export const metadata: Metadata = {
   title: "The U.S. Application Guide — 55-page Admissions Roadmap — Himmah Prep",
@@ -92,6 +114,7 @@ const TOC: Part[] = [
 export default function GuidePage() {
   return (
     <>
+      <JsonLd data={PRODUCT_LD} />
       <Header />
       <main>
         <section className="product-hero">
