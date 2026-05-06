@@ -330,14 +330,14 @@ export default function HomePage() {
         <section id="guide" className="guide">
           <div className="guide-grid">
             <div>
-              <p className="eyebrow">A 55-page head start</p>
+              <p className="eyebrow">A 58-page head start</p>
               <h2 className="display-2">
                 The U.S. Application <em>Guide.</em>
               </h2>
               <p className="lead-2">
-                Everything our advisors wish every Gulf student knew before junior year: essay
-                frameworks, extracurricular strategy, school selection, financial aid, and the
-                decisions you make in 11th grade that define everything after.
+                Everything our advisors wish every Gulf student knew before junior year: SAT/ACT
+                strategy, school research, essay frameworks, the activities list — and four full
+                essays from students who got into Stanford, Harvard, Emory, and UIUC.
               </p>
               <div className="guide-ctas">
                 <Link href="/shop/p/guide" className="btn btn-primary">
@@ -348,12 +348,12 @@ export default function HomePage() {
                 </Link>
               </div>
               <ul className="bullets two-col">
-                <li>Essay frameworks &amp; archetypes</li>
-                <li>School selection by profile</li>
-                <li>Extracurricular strategy</li>
-                <li>Financial aid &amp; scholarships</li>
-                <li>Standardized test playbooks</li>
-                <li>Interview &amp; recommendation prep</li>
+                <li>SAT/ACT strategy &amp; scoring</li>
+                <li>School research &amp; list-building</li>
+                <li>Common App walkthrough</li>
+                <li>Activities list with real examples</li>
+                <li>Essay frameworks: Common App, supplementals, UC</li>
+                <li>4 accepted essays — Stanford, Harvard, Emory, UIUC</li>
               </ul>
             </div>
             <aside className="guide-cover" aria-hidden="true">
