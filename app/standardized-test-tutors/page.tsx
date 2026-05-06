@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Standardized Test Prep — SAT, ACT, IELTS, TOEFL — Himmah Prep",
   description:
-    "1-on-1 SAT, ACT, IELTS, and TOEFL preparation for Gulf students. Diagnostic + 12-week study plan, weekly proctored mocks, and a 90th-percentile score target.",
+    "1-on-1 SAT, ACT, IELTS, and TOEFL preparation for Gulf students. Diagnostic + 12-week study plan, weekly full-length mocks, and a 90th-percentile score target.",
   openGraph: {
     title: "Standardized Test Prep — Himmah Prep",
     description:
@@ -51,7 +51,7 @@ export default function TestPrepPage() {
               <span className="card-num">01</span>
               <h3>Full-length diagnostic</h3>
               <p>
-                Every student starts with a proctored, full-length SAT or ACT. We grade it
+                Every student starts with a full-length SAT or ACT diagnostic. We grade it
                 ourselves and report back not just the score, but the question types you
                 missed, where you ran out of time, and what's actually going to move the
                 needle.
@@ -78,7 +78,7 @@ export default function TestPrepPage() {
             </article>
             <article className="card">
               <span className="card-num">03</span>
-              <h3>Weekly proctored mocks</h3>
+              <h3>Weekly full-length mocks</h3>
               <p>
                 Test-day stamina is its own skill. Students sit a full mock most weeks of the
                 program — same conditions, same timing — and we debrief every one before the

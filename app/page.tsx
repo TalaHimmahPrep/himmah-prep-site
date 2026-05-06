@@ -237,7 +237,7 @@ export default function HomePage() {
               </p>
               <ul className="bullets">
                 <li>Diagnostic + study plan</li>
-                <li>Weekly proctored mocks</li>
+                <li>Weekly full-length mocks</li>
                 <li>9,000+ practice questions</li>
               </ul>
             </article>
