@@ -238,7 +238,7 @@ export default function HomePage() {
               <ul className="bullets">
                 <li>Diagnostic + study plan</li>
                 <li>Weekly proctored mocks</li>
-                <li>Score-jump guarantee</li>
+                <li>9,000+ practice questions</li>
               </ul>
             </article>
             <article className="card">
@@ -249,7 +249,7 @@ export default function HomePage() {
                 skills admissions officers see in your application — and you carry for life.
               </p>
               <ul className="bullets">
-                <li>Cohort + private formats</li>
+                <li>Group cohort format</li>
                 <li>Public speaking labs</li>
                 <li>Project incubator</li>
               </ul>
@@ -258,12 +258,12 @@ export default function HomePage() {
               <span className="card-num">04</span>
               <h3>Summer Activity Planning</h3>
               <p>
-                We help you find — and get into — the most competitive summer programs in the
-                world, the kind that turn an application from strong to undeniable.
+                We help you identify the most competitive summer programs in the world, the kind
+                that turn an application from strong to undeniable.
               </p>
               <ul className="bullets">
                 <li>RSI, YYGS, SSP &amp; more</li>
-                <li>Research placements</li>
+                <li>Research placement help</li>
                 <li>Internship strategy</li>
               </ul>
             </article>
