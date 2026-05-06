@@ -1,7 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
 import { TestimonialCarousel, type Testimonial } from "@/components/Carousel";
 import { LeadForm } from "@/components/LeadForm";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 
 const testimonials: Testimonial[] = [
   {
@@ -79,32 +79,7 @@ const testimonials: Testimonial[] = [
 export default function HomePage() {
   return (
     <>
-      <header className="nav">
-        <div className="nav-inner">
-          <Link href="/" className="brand" aria-label="Himmah Prep home">
-            <Image
-              src="/logo.webp"
-              alt="Himmah Prep"
-              width={208}
-              height={52}
-              priority
-              className="brand-logo"
-            />
-          </Link>
-          <nav className="nav-links" aria-label="Primary">
-            <a href="#services">Services</a>
-            <a href="#results">Results</a>
-            <a href="#approach">Approach</a>
-            <a href="#guide">Guide</a>
-            <a href="https://portal.himmahprep.com" className="nav-portal">
-              Student Portal &rarr;
-            </a>
-          </nav>
-          <a href="#consult" className="btn btn-primary nav-cta">
-            Free Consultation
-          </a>
-        </div>
-      </header>
+      <Header />
 
       <main>
         <section className="hero">
@@ -403,53 +378,7 @@ export default function HomePage() {
         </section>
       </main>
 
-      <footer className="footer">
-        <div className="footer-inner">
-          <div className="footer-brand">
-            <span className="brand">
-              <Image
-                src="/logo.webp"
-                alt="Himmah Prep"
-                width={216}
-                height={54}
-                className="brand-logo brand-logo-light"
-              />
-            </span>
-            <p className="muted-sm">
-              Premium college admissions consulting for Gulf students. Riyadh · Dubai · Online.
-            </p>
-          </div>
-          <div className="footer-cols">
-            <div>
-              <p className="footer-h">Services</p>
-              <a href="#services">College advising</a>
-              <a href="#services">Test prep</a>
-              <a href="#services">Leadership</a>
-              <a href="#services">Summer planning</a>
-            </div>
-            <div>
-              <p className="footer-h">Company</p>
-              <a href="#approach">Approach</a>
-              <a href="#results">Results</a>
-              <a href="#guide">Application Guide</a>
-              <a href="#consult">Contact</a>
-            </div>
-            <div>
-              <p className="footer-h">Account</p>
-              <a href="https://portal.himmahprep.com">Student Portal</a>
-              <a href="https://portal.himmahprep.com">Sign in</a>
-              <a href="#">Newsletter</a>
-              <a href="#">Instagram</a>
-            </div>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} Himmah Prep. All rights reserved.</span>
-          <span>
-            Built for students with <em className="serif">himmah.</em>
-          </span>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }
