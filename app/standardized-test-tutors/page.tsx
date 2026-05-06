@@ -6,11 +6,11 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Standardized Test Prep — SAT, ACT, IELTS, TOEFL — Himmah Prep",
   description:
-    "1-on-1 SAT, ACT, IELTS, and TOEFL preparation for Gulf students. Diagnostic + 12-week study plan, weekly full-length mocks, and a 90th-percentile score target.",
+    "1-on-1 SAT, ACT, IELTS, and TOEFL preparation for Gulf students. Diagnostic + 12-week study plan, 15+ full-length practice tests, and a 90th-percentile score target.",
   openGraph: {
     title: "Standardized Test Prep — Himmah Prep",
     description:
-      "1-on-1 SAT, ACT, IELTS, and TOEFL preparation. Diagnostic, study plan, weekly mocks, score-jump guarantee.",
+      "1-on-1 SAT, ACT, IELTS, and TOEFL preparation. Diagnostic, study plan, 15+ full-length practice tests, 90th-percentile target.",
     url: "https://himmahprep.com/standardized-test-tutors",
   },
 };
@@ -78,11 +78,11 @@ export default function TestPrepPage() {
             </article>
             <article className="card">
               <span className="card-num">03</span>
-              <h3>Weekly full-length mocks</h3>
+              <h3>15+ full-length practice tests</h3>
               <p>
-                Test-day stamina is its own skill. Students sit a full mock most weeks of the
-                program — same conditions, same timing — and we debrief every one before the
-                next session.
+                Test-day stamina is its own skill. Students get access to a library of 15+
+                full-length practice tests — same conditions, same timing — and we debrief each
+                one in session before moving on.
               </p>
               <ul className="bullets">
                 <li>Full-length, timed</li>
