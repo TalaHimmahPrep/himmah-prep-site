@@ -1064,23 +1064,27 @@ section { scroll-margin-top: 80px; }
 /* Logo bar (homepage) using images */
 .logo-list-images {
   align-items: center;
-  gap: 32px 40px;
+  gap: 32px 48px;
 }
 .logo-list-images li {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  height: 44px;
+  justify-content: center;
+  height: 48px;
+  width: 130px;
+  flex-shrink: 0;
 }
 .logo-bar-mark {
-  max-height: 36px;
-  max-width: 140px;
+  max-height: 40px;
+  max-width: 100%;
   width: auto;
   height: auto;
   object-fit: contain;
 }
 @media (max-width: 700px) {
-  .logo-list-images { gap: 20px 26px; }
-  .logo-bar-mark { max-height: 28px; max-width: 110px; }
+  .logo-list-images { gap: 22px 28px; }
+  .logo-list-images li { width: 100px; height: 40px; }
+  .logo-bar-mark { max-height: 32px; }
 }
 
 /* Testimonial card university logo — replaces wordmark text */
