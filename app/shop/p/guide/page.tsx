@@ -8,9 +8,9 @@ import { JsonLd } from "@/components/JsonLd";
 const PRODUCT_LD = {
   "@context": "https://schema.org",
   "@type": "Product",
-  name: "The U.S. Application Guide",
+  name: "The U.S. Application Guide — 2026 Edition",
   description:
-    "A 55-page step-by-step roadmap to top US college admissions. Essay frameworks, school selection, extracurricular strategy, financial aid, test prep, and real essay examples from students admitted to Stanford, Harvard, and Princeton.",
+    "A 58-page step-by-step roadmap to top US college admissions. SAT/ACT strategy, school research, Common App walkthrough, activities list (with examples), essay frameworks for Common App, supplementals, and UC, recommendation letters, and four full accepted essays from students admitted to Stanford, Harvard, Emory, and UIUC.",
   brand: {
     "@type": "Brand",
     name: "Himmah Prep",
@@ -27,13 +27,13 @@ const PRODUCT_LD = {
 };
 
 export const metadata: Metadata = {
-  title: "The U.S. Application Guide — 55-page Admissions Roadmap — Himmah Prep",
+  title: "The U.S. Application Guide — 58-page Admissions Roadmap — Himmah Prep",
   description:
-    "A 55-page step-by-step roadmap to top US college admissions. Essay frameworks, school selection, extracurricular strategy, financial aid, test prep, and real examples from Stanford and Harvard admits. $19.",
+    "A 58-page step-by-step roadmap to top US college admissions. SAT/ACT strategy, school research, Common App walkthrough, essay frameworks, recommendations, and four full accepted essays — Stanford, Harvard, Emory, UIUC. $19.",
   openGraph: {
     title: "The U.S. Application Guide — Himmah Prep",
     description:
-      "A 55-page step-by-step roadmap to top US college admissions. Written by Harvard and UPenn graduates.",
+      "A 58-page step-by-step roadmap to top US college admissions, with four full accepted essays. Written by Harvard and UPenn graduates.",
     url: "https://himmahprep.com/shop/p/guide",
     type: "website",
   },
@@ -47,66 +47,71 @@ type Part = { part: string; chapters: ChapterRef[] };
 
 const TOC: Part[] = [
   {
-    part: "Part I — The Foundation",
+    part: "Part I — Applying with Himmah Prep",
     chapters: [
-      { n: "01", title: "How US admissions actually work" },
-      { n: "02", title: "Building a coherent application profile" },
-      { n: "03", title: "The three pillars top universities look for" },
+      { n: "01", title: "An overview of US admissions" },
+      { n: "02", title: "What factors go into the admission process" },
+      { n: "03", title: "What Himmah Prep does" },
+      { n: "04", title: "How to use this guide" },
     ],
   },
   {
-    part: "Part II — Academics & Testing",
+    part: "Part II — Taking the SAT/ACT",
     chapters: [
-      { n: "04", title: "Course selection by intended major" },
-      { n: "05", title: "SAT / ACT strategy and timing" },
-      { n: "06", title: "Predicted grades & IB-specific advice" },
-      { n: "07", title: "TOEFL / IELTS — when you need it, when you don't" },
+      { n: "01", title: "How and when to sign up" },
+      { n: "02", title: "How the exams are scored — and how scores affect admissions" },
+      { n: "03", title: "Test-optional policies — when to submit, when not to" },
+      { n: "04", title: "SAT vs ACT — choosing the right one for you" },
+      { n: "05", title: "How many times to take the exams" },
+      { n: "06", title: "Registration walkthrough" },
     ],
   },
   {
-    part: "Part III — Beyond Grades",
+    part: "Part III — Researching Schools",
     chapters: [
-      { n: "08", title: "Extracurriculars that work (and the ones that don't)" },
-      { n: "09", title: "Summer programs worth your time" },
-      { n: "10", title: "The capstone project" },
+      { n: "01", title: "How to choose where to apply" },
+      { n: "02", title: "Looking beyond the rankings" },
+      { n: "03", title: "Academics, school background, campus experience" },
+      { n: "04", title: "Building a balanced college list" },
     ],
   },
   {
-    part: "Part IV — School List & Strategy",
+    part: "Part IV — Filling Out the Common App",
     chapters: [
-      { n: "11", title: "Building a real reach / match / safety list" },
-      { n: "12", title: "Early Decision vs. Early Action — the real math" },
-      { n: "13", title: "International quotas and the Gulf lens" },
+      { n: "01", title: "Key tips for filling in the Common App" },
     ],
   },
   {
-    part: "Part V — Essays",
+    part: "Part V — The Activities List",
     chapters: [
-      { n: "14", title: "Common App personal statement frameworks" },
-      { n: "15", title: "The “Why X” supplement, done well" },
-      { n: "16", title: "The activity essay" },
-      { n: "17", title: "Real examples — Stanford, Harvard, Princeton" },
+      { n: "01", title: "How to write your activities list — with real examples" },
     ],
   },
   {
-    part: "Part VI — Recommendations & Interviews",
+    part: "Part VI — Writing the Essays",
     chapters: [
-      { n: "18", title: "Choosing your recommenders" },
-      { n: "19", title: "The interview — prep, pitfalls, what they're really asking" },
+      { n: "01", title: "The Common App personal statement" },
+      { n: "02", title: "Supplemental essays" },
+      { n: "03", title: "University of California essays" },
     ],
   },
   {
-    part: "Part VII — Money",
+    part: "Part VII — Recommendation Letters",
     chapters: [
-      { n: "20", title: "Financial aid for international students" },
-      { n: "21", title: "Merit scholarships you should actually apply to" },
+      { n: "01", title: "Why recommendations matter" },
+      { n: "02", title: "Choosing your recommenders" },
+      { n: "03", title: "What makes a good letter" },
+      { n: "04", title: "How and when to ask" },
+      { n: "05", title: "An example recommendation letter" },
     ],
   },
   {
-    part: "Part VIII — Submission & Beyond",
+    part: "Part VIII — Our Successful Applications",
     chapters: [
-      { n: "22", title: "The final checklist" },
-      { n: "23", title: "After decisions drop — what to do next" },
+      { n: "01", title: "Accepted: Chemical Engineering at Stanford" },
+      { n: "02", title: "Accepted: Neuroscience at Emory" },
+      { n: "03", title: "Accepted: History at Harvard" },
+      { n: "04", title: "Accepted: Aerospace Engineering at UIUC" },
     ],
   },
 ];
@@ -120,14 +125,15 @@ export default function GuidePage() {
         <section className="product-hero">
           <div className="product-hero-grid">
             <div>
-              <p className="eyebrow">Digital · 55 pages · Instant download</p>
+              <p className="eyebrow">Digital · 58 pages · 2026 edition · Instant download</p>
               <h1 className="display">
                 The U.S. Application <em>Guide.</em>
               </h1>
               <p className="lead">
                 A complete roadmap to navigating the US college admissions process — without
                 confusion, guesswork, or overwhelm. Written by Harvard and UPenn graduates.
-                Real essay examples from students admitted to Stanford, Harvard, and Princeton.
+                Includes four full accepted essays from students admitted to Stanford, Harvard,
+                Emory, and UIUC.
               </p>
               <div className="product-buy">
                 <p className="product-price product-price-lg">
@@ -138,12 +144,12 @@ export default function GuidePage() {
                 </a>
               </div>
               <ul className="bullets two-col" style={{ marginTop: "32px" }}>
-                <li>Essay frameworks &amp; archetypes</li>
-                <li>School selection by profile</li>
-                <li>Extracurricular strategy</li>
-                <li>Financial aid &amp; scholarships</li>
-                <li>Standardized test playbooks</li>
-                <li>Interview &amp; recommendation prep</li>
+                <li>SAT/ACT strategy &amp; scoring</li>
+                <li>School research &amp; list-building</li>
+                <li>Common App walkthrough</li>
+                <li>Activities list with real examples</li>
+                <li>Essay frameworks: Common App, supplementals, UC</li>
+                <li>4 accepted essays — Stanford, Harvard, Emory, UIUC</li>
               </ul>
             </div>
             <aside className="product-cover-large" aria-hidden="true">
@@ -159,13 +165,14 @@ export default function GuidePage() {
             </h2>
             <p>
               The Guide is the same playbook our 1-on-1 advisors use with families paying
-              thousands a month — distilled into 55 pages you can read in an afternoon and
-              reference for two years. No filler, no recycled blog posts, no “top 10 essay
-              tips.” Just the strategic thinking, sequenced from 9th grade through submission.
+              thousands a month — distilled into 58 pages you can read in a weekend and
+              reference through the whole application year. No filler, no recycled blog posts,
+              no “top 10 essay tips.” Just the strategic thinking, the mechanics — and, most
+              usefully, four <em>full</em> essays from students who got in.
             </p>
             <p>
-              Written for students applying to top-20 US universities. Especially useful for IB
-              and American-curriculum students from the Gulf — but the strategy is universal.
+              Written for students applying to top US universities. Especially useful for IB and
+              American-curriculum students from the Gulf — but the strategy is universal.
             </p>
           </div>
         </section>
@@ -177,8 +184,8 @@ export default function GuidePage() {
               Table of <em>contents.</em>
             </h2>
             <p className="lead-2">
-              23 chapters across 55 pages, in 8 parts. Buy the Guide to read each chapter in
-              full.
+              Eight parts across 58 pages — including four full accepted essays. Buy the Guide
+              to read each section in full.
             </p>
           </div>
           <ol className="toc">

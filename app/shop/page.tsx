@@ -7,11 +7,11 @@ import { GuideCover } from "@/components/GuideCover";
 export const metadata: Metadata = {
   title: "Store — The U.S. Application Guide — Himmah Prep",
   description:
-    "The U.S. Application Guide — a 55-page step-by-step roadmap to top US college admissions, written by Harvard and UPenn graduates. $19 (regularly $49).",
+    "The U.S. Application Guide — a 58-page step-by-step roadmap to top US college admissions, with four full accepted essays. Written by Harvard and UPenn graduates. $19 (regularly $49).",
   openGraph: {
     title: "Store — The U.S. Application Guide — Himmah Prep",
     description:
-      "A 55-page step-by-step roadmap to top US college admissions. Written by Harvard and UPenn graduates.",
+      "A 58-page step-by-step roadmap to top US college admissions, with four full accepted essays. Written by Harvard and UPenn graduates.",
     url: "https://himmahprep.com/shop",
   },
 };
@@ -29,7 +29,7 @@ export default function ShopPage() {
             </h1>
             <p className="lead">
               Everything our advisors wish every Gulf student knew before junior year — written
-              down, in 55 pages.
+              down, in 58 pages.
             </p>
           </div>
         </section>
@@ -40,14 +40,14 @@ export default function ShopPage() {
               <GuideCover />
             </div>
             <div className="product-meta">
-              <p className="eyebrow">Digital · 55 pages · Instant download</p>
+              <p className="eyebrow">Digital · 58 pages · 2026 edition · Instant download</p>
               <h2 className="serif product-title">
                 The U.S. Application <em>Guide.</em>
               </h2>
               <p className="muted">
-                A step-by-step roadmap to the US college admissions process — without
-                confusion, guesswork, or overwhelm. Real examples from students admitted to
-                Harvard, Stanford, and Princeton.
+                A step-by-step roadmap to the US college admissions process — without confusion,
+                guesswork, or overwhelm. Includes four full accepted essays from students
+                admitted to Stanford, Harvard, Emory, and UIUC.
               </p>
               <div className="product-price-row">
                 <p className="product-price">
