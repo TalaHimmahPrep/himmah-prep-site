@@ -19,6 +19,7 @@ export function Header() {
           <Link href="/about">About</Link>
           <Link href="/results">Results</Link>
           <Link href="/standardized-test-tutors">Test Prep</Link>
+          <Link href="/blog">Blog</Link>
           <Link href="/shop">Store</Link>
           <a href="https://portal.himmahprep.com" className="nav-portal">
             Student Portal &rarr;

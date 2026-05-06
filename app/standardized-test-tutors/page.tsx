@@ -108,7 +108,7 @@ export default function TestPrepPage() {
               you'll know exactly where you stand after the first session, not after a month of
               guessing.
             </p>
-            <h3 className="display-2" style={{ fontSize: "32px" }}>
+            <h3 className="prose-h3-major">
               <em>TOEFL &amp; IELTS</em>
             </h3>
             <p>
