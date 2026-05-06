@@ -274,7 +274,7 @@ export default function HomePage() {
           <div className="approach-card">
             <p className="eyebrow">The portal advantage</p>
             <h2 className="display-2">
-              A workspace built for the <em>Gulf-to-Ivy</em> journey.
+              A workspace built for the <em>GCC-to-Ivy</em> journey.
             </h2>
             <p className="lead-2">
               Every Himmah student gets access to{" "}
