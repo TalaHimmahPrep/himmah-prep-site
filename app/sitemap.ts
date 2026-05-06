@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { POSTS } from "./blog/posts";
 
 const BASE = "https://himmahprep.com";
 
@@ -11,6 +12,7 @@ const STATIC_PATHS = [
   { path: "/advisor-career", priority: 0.5, changeFrequency: "monthly" as const },
   { path: "/shop", priority: 0.7, changeFrequency: "weekly" as const },
   { path: "/shop/p/guide", priority: 0.8, changeFrequency: "weekly" as const },
+  { path: "/blog", priority: 0.8, changeFrequency: "weekly" as const },
 ];
 
 const COUNTRY_SLUGS = ["saudi-arabia", "uae", "qatar", "kuwait", "bahrain", "oman"];
@@ -29,6 +31,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.7,
+    })),
+    ...POSTS.map((p) => ({
+      url: `${BASE}/blog/${p.slug}`,
+      lastModified: new Date(p.date),
+      changeFrequency: "yearly" as const,
+      priority: 0.6,
     })),
   ];
 }

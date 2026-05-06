@@ -25,6 +25,7 @@ export function Footer() {
             <Link href="/about">About</Link>
             <Link href="/results">Results</Link>
             <Link href="/standardized-test-tutors">Test Prep</Link>
+            <Link href="/blog">Blog</Link>
             <Link href="/apply">Apply</Link>
           </div>
           <div>
