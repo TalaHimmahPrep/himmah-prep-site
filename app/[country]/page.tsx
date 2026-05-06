@@ -227,7 +227,7 @@ export default async function CountryPage({
               <span className="card-num">04</span>
               <h3>Summer Activity Planning</h3>
               <p>
-                We help students find and get into competitive summer programs — RSI, YYGS, SSP,
+                We help students identify the most competitive summer programs — RSI, YYGS, SSP,
                 research placements — that turn a strong application into an undeniable one.
               </p>
             </article>
