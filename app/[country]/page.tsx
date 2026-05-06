@@ -253,7 +253,7 @@ export default async function CountryPage({
               Or a self-built project (a nonprofit, a publication, a startup) that
               demonstrably solved a problem and grew over time. Or a summer at a real lab.
             </p>
-            <h2 className="display-2" style={{ marginTop: "56px" }}>
+            <h2 className="display-2 prose-h2-next">
               The mistake most {cfg.adjective} families make.
             </h2>
             <p>
@@ -264,7 +264,7 @@ export default async function CountryPage({
               choice that's actually strategic — not the most prestigious name, the right
               prestigious name for this student.
             </p>
-            <h2 className="display-2" style={{ marginTop: "56px" }}>
+            <h2 className="display-2 prose-h2-next">
               Standardized testing for {cfg.adjective} students.
             </h2>
             <p>

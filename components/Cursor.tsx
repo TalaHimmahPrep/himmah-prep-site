@@ -44,8 +44,24 @@ export function Cursor() {
     };
 
     const hoverable = "a, button, input, select, textarea, label, [data-cursor='hover']";
+    // Text content where users select / read — show native I-beam, hide custom cursor
+    const textish = "p, h1, h2, h3, h4, h5, h6, blockquote, figcaption, li, dt, dd, span, strong, em, code, small, cite, input, textarea, .prose, .lead, .lead-2, .display, .display-2, .eyebrow, .muted, .toc-ch-title, .quote, .uni-grid li";
     const onOver = (e: MouseEvent) => {
-      if ((e.target as Element).closest(hoverable)) ring.classList.add("hover");
+      const t = e.target as Element;
+      const inHover = t.closest(hoverable);
+      if (inHover) {
+        ring.classList.add("hover");
+        dot.classList.remove("hidden");
+        ring.classList.remove("hidden");
+        return;
+      }
+      if (t.closest(textish)) {
+        dot.classList.add("hidden");
+        ring.classList.add("hidden");
+      } else {
+        dot.classList.remove("hidden");
+        ring.classList.remove("hidden");
+      }
     };
     const onOut = (e: MouseEvent) => {
       if ((e.target as Element).closest(hoverable)) ring.classList.remove("hover");
