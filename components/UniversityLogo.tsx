@@ -9,10 +9,12 @@ export type UniversitySlug =
   | "cornell"
   | "mit"
   | "stanford"
+  | "caltech"
   | "duke"
   | "johns-hopkins"
   | "northwestern"
   | "chicago"
+  | "nyu"
   | "vanderbilt"
   | "rice"
   | "notre-dame"
@@ -38,10 +40,12 @@ export const UNIVERSITIES: UniversityRef[] = [
   { slug: "cornell", label: "Cornell" },
   { slug: "mit", label: "MIT" },
   { slug: "stanford", label: "Stanford" },
+  { slug: "caltech", label: "Caltech" },
   { slug: "duke", label: "Duke" },
   { slug: "johns-hopkins", label: "Johns Hopkins" },
   { slug: "northwestern", label: "Northwestern" },
   { slug: "chicago", label: "U. Chicago" },
+  { slug: "nyu", label: "NYU" },
   { slug: "vanderbilt", label: "Vanderbilt" },
   { slug: "rice", label: "Rice" },
   { slug: "notre-dame", label: "Notre Dame" },
