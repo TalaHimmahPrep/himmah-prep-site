@@ -1034,6 +1034,78 @@ section { scroll-margin-top: 80px; }
 }
 .uni-grid li:hover { background: var(--color-surface-2); color: var(--color-primary); }
 
+/* === University logos — monochrome, single-color treatment === */
+.uni-mark {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+  filter: brightness(0) saturate(100%);
+  opacity: 0.78;
+  transition: opacity .2s, filter .2s;
+}
+.uni-grid-logos {
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+}
+.uni-grid-logos li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 110px;
+  padding: 24px 18px;
+}
+.uni-grid-logos li .uni-mark {
+  max-height: 56px;
+  max-width: 80%;
+  object-fit: contain;
+  width: auto;
+  height: auto;
+}
+.uni-grid-logos li:hover .uni-mark {
+  opacity: 1;
+  /* burgundy tint via hue-rotated sepia */
+  filter: brightness(0) saturate(100%) invert(15%) sepia(78%) saturate(2900%) hue-rotate(335deg) brightness(96%) contrast(94%);
+}
+
+/* Logo bar (homepage) using images */
+.logo-list-images {
+  align-items: center;
+  gap: 36px 44px;
+}
+.logo-list-images li {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  opacity: 1;
+}
+.logo-bar-mark {
+  max-height: 28px;
+  max-width: 130px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.62;
+}
+.logo-list-images li:hover .logo-bar-mark { opacity: 0.92; }
+@media (max-width: 700px) {
+  .logo-list-images { gap: 22px 28px; }
+  .logo-bar-mark { max-height: 24px; max-width: 100px; }
+}
+
+/* Testimonial card university logo — replaces wordmark text */
+.uni-logo { padding-bottom: 18px; }
+.uni-logo .uni-logo-img {
+  max-height: 32px;
+  max-width: 140px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%);
+  opacity: 0.82;
+  margin-left: auto;
+  display: block;
+}
+
 /* === CTA strip (used as page-end CTA across sub-pages) === */
 .cta-strip { padding: 90px 28px 110px; }
 .cta-strip-inner {

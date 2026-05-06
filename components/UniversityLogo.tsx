@@ -1,39 +1,74 @@
-import Image from "next/image";
-
 export type UniversitySlug =
   | "harvard"
-  | "stanford"
   | "yale"
   | "princeton"
-  | "berkeley"
+  | "columbia"
+  | "penn"
+  | "brown"
+  | "dartmouth"
   | "cornell"
+  | "mit"
+  | "stanford"
   | "duke"
-  | "ucla";
+  | "johns-hopkins"
+  | "northwestern"
+  | "chicago"
+  | "vanderbilt"
+  | "rice"
+  | "notre-dame"
+  | "georgetown"
+  | "berkeley"
+  | "ucla"
+  | "michigan"
+  | "carnegie-mellon";
 
-/**
- * Renders the school's official wordmark from /public/logos/universities/{slug}.svg.
- *
- * NOTE: Drop the licensed SVG / approved wordmark into that folder before
- * production launch. A neutral typographic fallback ships in this repo so
- * the carousel still looks polished in the meantime.
- */
+export type UniversityRef = {
+  slug: UniversitySlug;
+  label: string;
+};
+
+export const UNIVERSITIES: UniversityRef[] = [
+  { slug: "harvard", label: "Harvard" },
+  { slug: "yale", label: "Yale" },
+  { slug: "princeton", label: "Princeton" },
+  { slug: "columbia", label: "Columbia" },
+  { slug: "penn", label: "Penn" },
+  { slug: "brown", label: "Brown" },
+  { slug: "dartmouth", label: "Dartmouth" },
+  { slug: "cornell", label: "Cornell" },
+  { slug: "mit", label: "MIT" },
+  { slug: "stanford", label: "Stanford" },
+  { slug: "duke", label: "Duke" },
+  { slug: "johns-hopkins", label: "Johns Hopkins" },
+  { slug: "northwestern", label: "Northwestern" },
+  { slug: "chicago", label: "U. Chicago" },
+  { slug: "vanderbilt", label: "Vanderbilt" },
+  { slug: "rice", label: "Rice" },
+  { slug: "notre-dame", label: "Notre Dame" },
+  { slug: "georgetown", label: "Georgetown" },
+  { slug: "berkeley", label: "UC Berkeley" },
+  { slug: "ucla", label: "UCLA" },
+  { slug: "michigan", label: "U. Michigan" },
+  { slug: "carnegie-mellon", label: "Carnegie Mellon" },
+];
+
 export function UniversityLogo({
   slug,
   label,
-  height = 28,
+  className = "uni-mark",
 }: {
   slug: UniversitySlug;
   label: string;
-  height?: number;
+  className?: string;
 }) {
+  // eslint-disable-next-line @next/next/no-img-element
   return (
-    <Image
+    <img
       src={`/logos/universities/${slug}.svg`}
       alt={label}
-      width={height * 4}
-      height={height}
-      style={{ height, width: "auto" }}
-      priority={false}
+      className={className}
+      loading="lazy"
+      decoding="async"
     />
   );
 }

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { TestimonialCarousel, type Testimonial } from "@/components/Carousel";
+import { UniversityLogo, UNIVERSITIES } from "@/components/UniversityLogo";
 
 export const metadata: Metadata = {
   title: "Student Results & University Acceptances — Himmah Prep",
@@ -115,29 +116,12 @@ export default function ResultsPage() {
               Where our students <em>actually go.</em>
             </h2>
           </div>
-          <ul className="uni-grid">
-            <li>Harvard</li>
-            <li>Yale</li>
-            <li>Princeton</li>
-            <li>Columbia</li>
-            <li>Penn</li>
-            <li>Brown</li>
-            <li>Dartmouth</li>
-            <li>Cornell</li>
-            <li>MIT</li>
-            <li>Stanford</li>
-            <li>Duke</li>
-            <li>Johns Hopkins</li>
-            <li>Northwestern</li>
-            <li>U. Chicago</li>
-            <li>Vanderbilt</li>
-            <li>Rice</li>
-            <li>Notre Dame</li>
-            <li>Georgetown</li>
-            <li>UC Berkeley</li>
-            <li>UCLA</li>
-            <li>U. Michigan</li>
-            <li>Carnegie Mellon</li>
+          <ul className="uni-grid uni-grid-logos">
+            {UNIVERSITIES.map((u) => (
+              <li key={u.slug} title={u.label}>
+                <UniversityLogo slug={u.slug} label={u.label} />
+              </li>
+            ))}
           </ul>
         </section>
 

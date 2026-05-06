@@ -81,7 +81,11 @@ export function TestimonialCarousel({ items }: { items: Testimonial[] }) {
         {items.map((t, i) => (
           <figure key={i} className={`quote ${t.feature ? "quote-feature" : ""}`}>
             <span className="uni-logo">
-              <UniversityLogo slug={t.university} label={t.universityLabel} />
+              <UniversityLogo
+                slug={t.university}
+                label={t.universityLabel}
+                className="uni-logo-img"
+              />
             </span>
             <blockquote>{t.quote}</blockquote>
             <figcaption>
