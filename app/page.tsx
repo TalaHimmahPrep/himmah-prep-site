@@ -4,6 +4,7 @@ import { LeadForm } from "@/components/LeadForm";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { GuideCover } from "@/components/GuideCover";
+import { UniversityLogo } from "@/components/UniversityLogo";
 
 const testimonials: Testimonial[] = [
   {
@@ -180,17 +181,27 @@ export default function HomePage() {
 
         <section className="logo-bar" aria-label="Universities our students attend">
           <p className="logo-bar-label">Where our students go</p>
-          <ul className="logo-list">
-            <li>Harvard</li>
-            <li>Stanford</li>
-            <li>Yale</li>
-            <li>Princeton</li>
-            <li>UC&nbsp;Berkeley</li>
-            <li>Cornell</li>
-            <li>Duke</li>
-            <li>UCLA</li>
-            <li>Michigan</li>
-            <li>Columbia</li>
+          <ul className="logo-list logo-list-images">
+            {[
+              { slug: "harvard", label: "Harvard" },
+              { slug: "stanford", label: "Stanford" },
+              { slug: "yale", label: "Yale" },
+              { slug: "princeton", label: "Princeton" },
+              { slug: "berkeley", label: "UC Berkeley" },
+              { slug: "cornell", label: "Cornell" },
+              { slug: "duke", label: "Duke" },
+              { slug: "ucla", label: "UCLA" },
+              { slug: "michigan", label: "U. Michigan" },
+              { slug: "columbia", label: "Columbia" },
+            ].map((u) => (
+              <li key={u.slug} title={u.label}>
+                <UniversityLogo
+                  slug={u.slug as never}
+                  label={u.label}
+                  className="uni-mark logo-bar-mark"
+                />
+              </li>
+            ))}
           </ul>
         </section>
 
