@@ -190,9 +190,6 @@ export default function HomePage() {
               { slug: "berkeley", label: "UC Berkeley" },
               { slug: "cornell", label: "Cornell" },
               { slug: "duke", label: "Duke" },
-              { slug: "ucla", label: "UCLA" },
-              { slug: "michigan", label: "U. Michigan" },
-              { slug: "columbia", label: "Columbia" },
             ].map((u) => (
               <li key={u.slug} title={u.label}>
                 <UniversityLogo
