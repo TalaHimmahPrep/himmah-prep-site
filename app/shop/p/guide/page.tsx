@@ -40,10 +40,11 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://himmahprep.com/shop/p/guide" },
 };
 
-// Buy buttons point to the existing Squarespace product page so the new
-// site can drive sales without disrupting active Squarespace shoppers.
-// Will need updating if/when DNS cuts over to the new site.
-const BUY_URL = "https://www.himmahprep.com/shop/p/guide";
+// Buy buttons go straight to the Lemon Squeezy checkout (one click → card form
+// → pay → file delivered via email). Hosted on pay.himmahprep.com (custom
+// domain) so the URL stays on-brand throughout the flow.
+const BUY_URL =
+  "https://pay.himmahprep.com/checkout/buy/4aae2a60-e4f1-4eb0-a493-45cea9173a47";
 
 type ChapterRef = { n: string; title: string };
 type Part = { part: string; chapters: ChapterRef[] };
