@@ -297,6 +297,54 @@ export default async function CountryPage({
           </div>
         </section>
 
+        {/* PORTAL ADVANTAGE — same as home, ties the pillars together */}
+        <section id="approach" className="approach">
+          <div className="approach-card">
+            <p className="eyebrow">The portal advantage</p>
+            <h2 className="display-2">
+              A workspace built for the <em>GCC-to-Ivy</em> journey.
+            </h2>
+            <p className="lead-2">
+              Every Himmah student gets access to{" "}
+              <span className="hl">portal.himmahprep.com</span> — a private workspace with a
+              board for every school, essay drafts with advisor comments, a curated college
+              search, and the deadlines that matter, in one place.
+            </p>
+            <div className="approach-grid">
+              <div>
+                <p className="approach-num serif">
+                  <em>01</em>
+                </p>
+                <h4>Diagnose</h4>
+                <p className="muted">
+                  A one-hour conversation during your free consultation — academic profile,
+                  ambitions, constraints, and the school list nobody is talking about yet.
+                </p>
+              </div>
+              <div>
+                <p className="approach-num serif">
+                  <em>02</em>
+                </p>
+                <h4>Build</h4>
+                <p className="muted">
+                  A 12–24 month roadmap inside the portal. Tests, summer programs, leadership
+                  work, essays — sequenced so nothing collides.
+                </p>
+              </div>
+              <div>
+                <p className="approach-num serif">
+                  <em>03</em>
+                </p>
+                <h4>Submit</h4>
+                <p className="muted">
+                  Every essay, every form, every supplement reviewed before it ships. We
+                  don&apos;t ghost in November.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* COUNTRY DEEP DIVE — the page's actual reason to exist */}
         <section className="prose-section">
           <div className="prose">
