@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/"],
+        disallow: ["/api/", "/guides/", "/pay-link/"],
       },
     ],
     sitemap: "https://himmahprep.com/sitemap.xml",
