@@ -8,6 +8,10 @@ const nextConfig = {
         destination: "https://himmah-prep.squarespace.com/pay-link/:path*",
       },
       {
+        source: "/checkout",
+        destination: "https://himmah-prep.squarespace.com/checkout",
+      },
+      {
         source: "/checkout/:path*",
         destination: "https://himmah-prep.squarespace.com/checkout/:path*",
       },
