@@ -932,6 +932,15 @@ section { scroll-margin-top: 80px; }
   border-radius: 50%;
 }
 
+/* Tighten back-to-back vertical padding when sections are stacked
+   (country pages, etc) — prevents the 200px-of-empty-space gap. */
+.prose-section + .services,
+.approach + .prose-section,
+.prose-section + .page-section,
+.results + .cta-strip {
+  padding-top: 40px;
+}
+
 /* === Generic content section wrappers === */
 .page-section {
   max-width: var(--max-w);
