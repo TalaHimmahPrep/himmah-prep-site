@@ -165,7 +165,9 @@ export default async function CountryPage({
           <div className="hero-inner">
             <p className="eyebrow">For families in {cfg.country}</p>
             <h1 className="display">
-              For <em>{cfg.demonym} families:</em> more than a top school.
+              Guaranteed to help
+              <br />
+              students <em>stand&nbsp;out.</em>
             </h1>
             <p className="lead">
               Himmah Prep works with {cfg.adjective} students applying to the most selective US
