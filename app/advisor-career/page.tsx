@@ -3,13 +3,13 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Careers — Work with Himmah Prep",
+  title: "Careers | Join Our Team — Grow Your Career — Himmah Prep",
   description:
-    "Join an Ivy-credentialed team building the world's best college prep program for Gulf students. Open roles for college advisors, test tutors, and leadership coaches.",
+    "Career opportunities at Himmah Prep — join an Ivy-credentialed team building a leading college admissions prep program for Gulf students. Open roles for college advisors, test tutors, and leadership coaches.",
   openGraph: {
-    title: "Careers — Work with Himmah Prep",
+    title: "Careers | Join Our Team — Grow Your Career — Himmah Prep",
     description:
-      "Join an Ivy-credentialed team building the world's best college prep program for Gulf students.",
+      "Career opportunities at Himmah Prep — join an Ivy-credentialed team. Open roles for college advisors, test tutors, and leadership coaches.",
     url: "https://himmahprep.com/advisor-career",
   },
 };

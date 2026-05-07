@@ -4,13 +4,13 @@ import { Footer } from "@/components/Footer";
 import { LeadForm } from "@/components/LeadForm";
 
 export const metadata: Metadata = {
-  title: "Apply for a Free Consultation — Himmah Prep",
+  title: "Apply for a Free Consultation for College Counseling — Himmah Prep",
   description:
-    "A 30-minute strategy call with a Himmah Prep senior advisor. Founded by Harvard & UPenn graduates. 100% acceptance track record.",
+    "Book a free consultation with Ivy League college advisors. Limited spots available. Students admitted to Harvard, Stanford, MIT, and every top 20 US university. Founded by Harvard and UPenn graduates.",
   openGraph: {
-    title: "Apply for a Free Consultation — Himmah Prep",
+    title: "Apply for a Free Consultation for College Counseling — Himmah Prep",
     description:
-      "A 30-minute strategy call with a Himmah Prep senior advisor. Confidential. No obligation.",
+      "Book a free consultation with Ivy League college advisors. Students admitted to Harvard, Stanford, MIT, and every top 20 US university.",
     url: "https://himmahprep.com/apply",
   },
 };

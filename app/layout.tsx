@@ -24,28 +24,30 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: {
-    default: "Himmah Prep — Guaranteed to help students stand out",
+    default: "Himmah Prep — Ivy League College Counseling & Admissions Prep",
     template: "%s",
   },
   description:
-    "Premium college admissions, test prep, leadership coaching, and summer planning from advisors who actually went to the Ivy League. 100% college acceptance track record.",
+    "All-inclusive college prep with 100% Ivy League advisors. Expert SAT/ACT prep, application strategy, and leadership coaching for Gulf students. 100% college acceptance track record. Free consultation available.",
   metadataBase: new URL("https://himmahprep.com"),
   applicationName: "Himmah Prep",
   authors: [{ name: "Himmah Prep" }],
   keywords: [
+    "Ivy League college counseling",
     "college admissions consulting",
-    "Ivy League consulting",
+    "college admissions prep",
     "Gulf college admissions",
     "Saudi Arabia college counseling",
     "UAE college counseling",
     "SAT prep Gulf",
+    "ACT prep Gulf",
     "Harvard admissions",
     "international student college applications",
   ],
   openGraph: {
-    title: "Himmah Prep — Guaranteed to help students stand out",
+    title: "Himmah Prep — Ivy League College Counseling & Admissions Prep",
     description:
-      "Premium college admissions, test prep, and leadership coaching for Gulf students. Founded by Harvard and UPenn graduates.",
+      "All-inclusive college prep with 100% Ivy League advisors. SAT/ACT prep, application strategy, and leadership coaching for Gulf students. Free consultation available.",
     url: "https://himmahprep.com",
     siteName: "Himmah Prep",
     locale: "en_US",
@@ -53,9 +55,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Himmah Prep — Guaranteed to help students stand out",
+    title: "Himmah Prep — Ivy League College Counseling & Admissions Prep",
     description:
-      "Premium college admissions, test prep, and leadership coaching for Gulf students.",
+      "All-inclusive college prep with 100% Ivy League advisors. SAT/ACT prep, application strategy, and leadership coaching for Gulf students.",
   },
   robots: {
     index: true,

@@ -5,13 +5,13 @@ import { Footer } from "@/components/Footer";
 import { UniversityLogo, UNIVERSITIES } from "@/components/UniversityLogo";
 
 export const metadata: Metadata = {
-  title: "About Himmah Prep — Built on himmah",
+  title: "About Himmah Prep — Ivy League Founders, Top 20 University Results",
   description:
-    "Founded in 2020 by Harvard and UPenn graduates. Three pillars — academic excellence, character building, future readiness — built around the Arabic concept of himmah.",
+    "Founded by Harvard and UPenn graduates. Our students have been admitted to every top 20 US university — including Harvard, Stanford, MIT, Yale, and all Ivy League schools. Built around himmah, the Arabic concept of ambition and resolve.",
   openGraph: {
-    title: "About Himmah Prep — Built on himmah",
+    title: "About Himmah Prep — Ivy League Founders, Top 20 University Results",
     description:
-      "Founded in 2020 by Harvard and UPenn graduates. A college prep program built around the Arabic concept of himmah — ambition, resolve, determination.",
+      "Founded by Harvard and UPenn graduates. Students admitted to every top 20 US university including Harvard, Stanford, MIT, Yale, and all Ivy League schools.",
     url: "https://himmahprep.com/about",
   },
 };
