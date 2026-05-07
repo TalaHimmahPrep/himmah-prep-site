@@ -4,8 +4,9 @@ export const runtime = "nodejs";
 
 type LeadPayload = {
   studentName: string;
-  gradeLevel: string;
+  gradeLevel?: string;
   parentEmail: string;
+  source?: string;
   /** Hidden honeypot field — bots fill it, humans don't. */
   website?: string;
 };
@@ -30,8 +31,9 @@ export async function POST(req: Request) {
   const studentName = isString(body.studentName) ? body.studentName.trim() : "";
   const gradeLevel = isString(body.gradeLevel) ? body.gradeLevel.trim() : "";
   const parentEmail = isString(body.parentEmail) ? body.parentEmail.trim() : "";
+  const source = isString(body.source) ? body.source.trim() : "main-form";
 
-  if (!studentName || !gradeLevel || !parentEmail) {
+  if (!studentName || !parentEmail) {
     return NextResponse.json(
       { ok: false, error: "Missing required field" },
       { status: 400 }
@@ -54,13 +56,14 @@ export async function POST(req: Request) {
     );
   }
 
-  // Formspree accepts either JSON or form-encoded. Sending JSON keeps field
-  // names tidy in the resulting email/sheet row.
+  const gradeLabel = gradeLevel || "Not specified";
+
   const payload = {
     studentName,
-    gradeLevel,
+    gradeLevel: gradeLabel,
     parentEmail,
-    _subject: `Consultation request — ${studentName} (${gradeLevel})`,
+    source,
+    _subject: `Consultation request — ${studentName} (${gradeLabel}) [${source}]`,
     _replyto: parentEmail,
     userAgent: req.headers.get("user-agent") ?? "",
     referer: req.headers.get("referer") ?? "",
