@@ -40,11 +40,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://himmahprep.com/shop/p/guide" },
 };
 
-// Buy buttons go straight to the Lemon Squeezy checkout (one click → card form
-// → pay → file delivered via email). Hosted on pay.himmahprep.com (custom
-// domain) so the URL stays on-brand throughout the flow.
+// Buy buttons hit a Squarespace Pay Link, proxied through next.config.js
+// rewrite at /pay-link/* so the URL stays on himmahprep.com.
 const BUY_URL =
-  "https://pay.himmahprep.com/checkout/buy/4aae2a60-e4f1-4eb0-a493-45cea9173a47";
+  "/pay-link/fde0b153-c853-451f-bd65-e5cbb0fc4872";
 
 type ChapterRef = { n: string; title: string };
 type Part = { part: string; chapters: ChapterRef[] };
