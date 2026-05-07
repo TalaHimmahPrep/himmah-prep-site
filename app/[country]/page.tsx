@@ -160,9 +160,9 @@ export default async function CountryPage({
     <>
       <Header />
       <main>
-        {/* HERO — country-flavored title, otherwise mirrors home's hero rhythm */}
-        <section className="page-hero">
-          <div className="page-hero-inner">
+        {/* HERO — same 2-col layout as home, with the portal mockup */}
+        <section className="hero">
+          <div className="hero-inner">
             <p className="eyebrow">For families in {cfg.country}</p>
             <h1 className="display">
               For <em>{cfg.demonym}</em> families who want more than a top school — they want{" "}
@@ -181,11 +181,75 @@ export default async function CountryPage({
                 See where our students go <span aria-hidden="true">&rarr;</span>
               </Link>
             </div>
-            <ul className="trust-row">
-              <li>100% college acceptance track record</li>
-              <li>100% Ivy League advisors</li>
-              <li>Acceptances to every top-20 US university</li>
-            </ul>
+            <div className="hero-trust">
+              <div className="trust-stat">
+                <div className="trust-num">
+                  100<span>%</span>
+                </div>
+                <div className="trust-label">
+                  College acceptance
+                  <br />
+                  track record
+                </div>
+              </div>
+              <div className="trust-divider" aria-hidden="true" />
+              <div className="trust-stat">
+                <div className="trust-num">
+                  100<span>%</span>
+                </div>
+                <div className="trust-label">
+                  Ivy League
+                  <br />
+                  credentialed advisors
+                </div>
+              </div>
+              <div className="trust-divider" aria-hidden="true" />
+              <div className="trust-stat">
+                <div className="trust-num">
+                  90<span>th+</span>
+                </div>
+                <div className="trust-label">
+                  Median SAT/ACT
+                  <br />
+                  percentile attained
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="hero-card" aria-hidden="true">
+            <div className="hero-card-head">
+              <span className="dot dot-red" />
+              <span className="dot dot-amber" />
+              <span className="dot dot-green" />
+              <span className="hero-card-label">portal.himmahprep.com</span>
+            </div>
+            <div className="hero-card-body">
+              <p className="muted-sm">Your roadmap</p>
+              <h3 className="serif">
+                Welcome <em>back</em>, Layla
+              </h3>
+              <ul className="kanban">
+                <li>
+                  <span className="chip chip-amber">Essay</span> Common App — Why Stanford
+                </li>
+                <li>
+                  <span className="chip chip-red">Test Prep</span> SAT mock, Saturday 9am
+                </li>
+                <li>
+                  <span className="chip chip-green">Leadership</span> Public speaking workshop
+                </li>
+                <li>
+                  <span className="chip chip-line">Summer</span> RSI application — review draft
+                </li>
+              </ul>
+              <div className="kanban-foot">
+                <div className="progress">
+                  <span style={{ width: "72%" }} />
+                </div>
+                <span className="muted-sm">72% to submission</span>
+              </div>
+            </div>
           </div>
         </section>
 
