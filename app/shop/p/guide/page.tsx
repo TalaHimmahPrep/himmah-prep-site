@@ -40,7 +40,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://himmahprep.com/shop/p/guide" },
 };
 
-const BUY_URL = "#"; // TODO: replace with Stripe Payment Link or Lemon Squeezy URL
+// Buy buttons point to the existing Squarespace product page so the new
+// site can drive sales without disrupting active Squarespace shoppers.
+// Will need updating if/when DNS cuts over to the new site.
+const BUY_URL = "https://www.himmahprep.com/shop/p/guide";
 
 type ChapterRef = { n: string; title: string };
 type Part = { part: string; chapters: ChapterRef[] };
