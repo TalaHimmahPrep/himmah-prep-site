@@ -4,10 +4,12 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { TestimonialCarousel, type Testimonial } from "@/components/Carousel";
+import { UniversityLogo } from "@/components/UniversityLogo";
 
 type CountryConfig = {
   slug: string;
   country: string;
+  demonym: string;
   adjective: string;
   metaTitle: string;
   metaDescription: string;
@@ -17,14 +19,16 @@ const COUNTRIES: Record<string, CountryConfig> = {
   "saudi-arabia": {
     slug: "saudi-arabia",
     country: "Saudi Arabia",
+    demonym: "Saudi Arabian",
     adjective: "Saudi",
-    metaTitle: "College Counseling for Saudi Students — Himmah Prep",
+    metaTitle: "College Counseling for Saudi Arabian Students — Himmah Prep",
     metaDescription:
-      "Premium US college admissions consulting for Saudi students. Founded by Harvard & UPenn graduates. 100% acceptance to every Ivy League institution.",
+      "Premium US college admissions consulting for Saudi Arabian students. Founded by Harvard & UPenn graduates. 100% acceptance to every Ivy League institution.",
   },
   uae: {
     slug: "uae",
     country: "the UAE",
+    demonym: "UAE",
     adjective: "UAE",
     metaTitle: "College Counseling for UAE Students — Himmah Prep",
     metaDescription:
@@ -33,6 +37,7 @@ const COUNTRIES: Record<string, CountryConfig> = {
   qatar: {
     slug: "qatar",
     country: "Qatar",
+    demonym: "Qatari",
     adjective: "Qatari",
     metaTitle: "College Counseling for Qatari Students — Himmah Prep",
     metaDescription:
@@ -41,6 +46,7 @@ const COUNTRIES: Record<string, CountryConfig> = {
   kuwait: {
     slug: "kuwait",
     country: "Kuwait",
+    demonym: "Kuwaiti",
     adjective: "Kuwaiti",
     metaTitle: "College Counseling for Kuwaiti Students — Himmah Prep",
     metaDescription:
@@ -49,6 +55,7 @@ const COUNTRIES: Record<string, CountryConfig> = {
   bahrain: {
     slug: "bahrain",
     country: "Bahrain",
+    demonym: "Bahraini",
     adjective: "Bahraini",
     metaTitle: "College Counseling for Bahraini Students — Himmah Prep",
     metaDescription:
@@ -57,12 +64,23 @@ const COUNTRIES: Record<string, CountryConfig> = {
   oman: {
     slug: "oman",
     country: "Oman",
+    demonym: "Omani",
     adjective: "Omani",
     metaTitle: "College Counseling for Omani Students — Himmah Prep",
     metaDescription:
       "Premium US college admissions consulting for Omani students. Founded by Harvard & UPenn graduates. 100% acceptance to every Ivy League institution.",
   },
 };
+
+const HOME_LOGOS: { slug: string; label: string }[] = [
+  { slug: "harvard", label: "Harvard" },
+  { slug: "stanford", label: "Stanford" },
+  { slug: "yale", label: "Yale" },
+  { slug: "princeton", label: "Princeton" },
+  { slug: "berkeley", label: "UC Berkeley" },
+  { slug: "cornell", label: "Cornell" },
+  { slug: "duke", label: "Duke" },
+];
 
 const testimonials: Testimonial[] = [
   {
@@ -142,11 +160,13 @@ export default async function CountryPage({
     <>
       <Header />
       <main>
+        {/* HERO — country-flavored title, otherwise mirrors home's hero rhythm */}
         <section className="page-hero">
           <div className="page-hero-inner">
             <p className="eyebrow">For families in {cfg.country}</p>
             <h1 className="display">
-              More than a top school — <em>the&nbsp;right&nbsp;one.</em>
+              For <em>{cfg.demonym}</em> families who want more than a top school — they want{" "}
+              <em>the&nbsp;right&nbsp;one.</em>
             </h1>
             <p className="lead">
               Himmah Prep works with {cfg.adjective} students applying to the most selective US
@@ -169,6 +189,23 @@ export default async function CountryPage({
           </div>
         </section>
 
+        {/* LOGO BAR — same as home, anchors the trust before the country pivot */}
+        <section className="logo-bar" aria-label="Universities our students attend">
+          <p className="logo-bar-label">Where our students go</p>
+          <ul className="logo-list logo-list-images">
+            {HOME_LOGOS.map((u) => (
+              <li key={u.slug} title={u.label}>
+                <UniversityLogo
+                  slug={u.slug as never}
+                  label={u.label}
+                  className="uni-mark logo-bar-mark"
+                />
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* COUNTRY PIVOT — first prose block, the "we know your kid" moment */}
         <section className="prose-section">
           <div className="prose">
             <h2 className="display-2">
@@ -191,57 +228,84 @@ export default async function CountryPage({
           </div>
         </section>
 
+        {/* PILLARS — identical content + bullets to home, so the page reads as a sibling */}
         <section className="services">
           <div className="section-head">
             <p className="eyebrow">All-in-one college prep</p>
             <h2 className="display-2">
               Four pillars. <em>One outcome.</em>
             </h2>
+            <p className="lead-2">
+              Every Himmah Prep student gets a complete admissions strategy — not a patchwork of
+              tutors. We work end-to-end so nothing falls through the cracks.
+            </p>
           </div>
           <div className="grid-4">
             <article className="card">
               <span className="card-num">01</span>
               <h3>College Advising &amp; Strategy</h3>
               <p>
-                One-on-one guidance from advisors who actually went to the Ivy League. School
-                lists, essays, applications, interviews — sequenced over 12–24 months.
+                One-on-one guidance from advisors who actually went to the Ivy League — they know
+                what these schools want because they got in themselves. School lists, essays,
+                applications, interviews — all of it.
               </p>
+              <ul className="bullets">
+                <li>Personalized school list</li>
+                <li>Essay coaching, every draft</li>
+                <li>Interview preparation</li>
+              </ul>
             </article>
             <article className="card">
               <span className="card-num">02</span>
               <h3>Standardized Test Prep</h3>
               <p>
-                Diagnostic-driven SAT, ACT, IELTS, and TOEFL coaching. Most students arrive in
-                the 1200s and finish at 1500+. Three sittings, used strategically.
+                Customized SAT, ACT, IELTS, and TOEFL coaching designed to land scores in the 90th
+                percentile and above — on the first or second sitting.
               </p>
+              <ul className="bullets">
+                <li>Diagnostic + study plan</li>
+                <li>15+ full-length practice tests</li>
+                <li>9,000+ practice questions</li>
+              </ul>
             </article>
             <article className="card">
               <span className="card-num">03</span>
               <h3>Leadership Coaching</h3>
               <p>
-                Workshops on self-discovery, communication, decision-making, and public speaking.
-                The qualities admissions officers look for — built deliberately.
+                Workshops on self-discovery, communication, team building, and public speaking. The
+                skills admissions officers see in your application — and you carry for life.
               </p>
+              <ul className="bullets">
+                <li>Group cohort format</li>
+                <li>Public speaking labs</li>
+                <li>Project incubator</li>
+              </ul>
             </article>
             <article className="card">
               <span className="card-num">04</span>
               <h3>Summer Activity Planning</h3>
               <p>
-                We help students identify the most competitive summer programs — RSI, YYGS, SSP,
-                research placements — that turn a strong application into an undeniable one.
+                We help you identify the most competitive summer programs in the world, the kind
+                that turn an application from strong to undeniable.
               </p>
+              <ul className="bullets">
+                <li>RSI, YYGS, SSP &amp; more</li>
+                <li>Research placement help</li>
+                <li>Internship strategy</li>
+              </ul>
             </article>
           </div>
         </section>
 
+        {/* COUNTRY DEEP DIVE — the page's actual reason to exist */}
         <section className="prose-section">
           <div className="prose">
             <h2 className="display-2">
               What <em>actually</em> gets {cfg.adjective} students into top US universities.
             </h2>
             <p>
-              At Harvard's and Princeton's sub-4% acceptance rates, no single ingredient is
-              enough. Top universities want to see three things in combination:{" "}
+              At Harvard&apos;s and Princeton&apos;s sub-4% acceptance rates, no single ingredient
+              is enough. Top universities want to see three things in combination:{" "}
               <strong>academic depth, real initiative, and demonstrated impact</strong>. We help
               students plan and execute against all three — not as a checklist, but as a coherent
               story.
@@ -258,10 +322,10 @@ export default async function CountryPage({
             </h2>
             <p>
               The all-or-nothing list. Eight reaches and zero matches, because nobody wants to
-              admit they aren't a Harvard family — or eight safeties, because the family is
+              admit they aren&apos;t a Harvard family — or eight safeties, because the family is
               terrified of zero offers. Both fail. The right list has{" "}
               <strong>real reaches, real matches, real safeties</strong>, plus an Early Decision
-              choice that's actually strategic — not the most prestigious name, the right
+              choice that&apos;s actually strategic — not the most prestigious name, the right
               prestigious name for this student.
             </p>
             <h2 className="display-2 prose-h2-next">
@@ -278,11 +342,12 @@ export default async function CountryPage({
               Plan three SAT sittings across 10th and 11th grade. The first is a baseline. The
               second is post-prep. The third — usually the one schools see — is where most of
               our students land at <strong>1500+</strong>. For students at IB or American
-              schools, TOEFL/IELTS is often waived; we'll tell you when it isn't.
+              schools, TOEFL/IELTS is often waived; we&apos;ll tell you when it isn&apos;t.
             </p>
           </div>
         </section>
 
+        {/* COUNTRY FAQ */}
         <section className="page-section page-section-tinted">
           <div className="section-head">
             <p className="eyebrow">FAQ</p>
@@ -330,6 +395,7 @@ export default async function CountryPage({
           </div>
         </section>
 
+        {/* TESTIMONIALS — same as home */}
         <section className="results">
           <div className="section-head">
             <p className="eyebrow">In their words</p>
@@ -340,6 +406,7 @@ export default async function CountryPage({
           <TestimonialCarousel items={testimonials} />
         </section>
 
+        {/* CTA — country-flavored close */}
         <section className="cta-strip">
           <div className="cta-strip-inner">
             <h2 className="display-2">
