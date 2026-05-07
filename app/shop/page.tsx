@@ -5,13 +5,13 @@ import { Footer } from "@/components/Footer";
 import { GuideCover } from "@/components/GuideCover";
 
 export const metadata: Metadata = {
-  title: "Store — The U.S. Application Guide — Himmah Prep",
+  title: "U.S. College Application Guide — Step-by-Step Admissions Roadmap — Himmah Prep",
   description:
-    "The U.S. Application Guide — a 58-page step-by-step roadmap to top US college admissions, with four full accepted essays. Written by Harvard and UPenn graduates. $19 (regularly $49).",
+    "Your complete roadmap to the U.S. college admissions process — learn what top schools want, how to write standout essays, and how to build a winning application strategy. 58 pages, four full accepted essays from Stanford, Harvard, Emory, and UIUC. $19 (regularly $49).",
   openGraph: {
-    title: "Store — The U.S. Application Guide — Himmah Prep",
+    title: "U.S. College Application Guide — Step-by-Step Admissions Roadmap — Himmah Prep",
     description:
-      "A 58-page step-by-step roadmap to top US college admissions, with four full accepted essays. Written by Harvard and UPenn graduates.",
+      "Complete roadmap to the U.S. college admissions process. 58 pages, four full accepted essays. Written by Harvard and UPenn graduates. $19.",
     url: "https://himmahprep.com/shop",
   },
 };
