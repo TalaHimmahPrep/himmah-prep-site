@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Cursor } from "@/components/Cursor";
 import { ConsultPopup } from "@/components/ConsultPopup";
 import { JsonLd, ORG_LD } from "@/components/JsonLd";
+import { MetaPixel } from "@/components/MetaPixel";
 import "./globals.css";
 
 const instrumentSans = Instrument_Sans({
@@ -96,6 +97,7 @@ export default function RootLayout({
         <ConsultPopup />
         <Analytics />
         <SpeedInsights />
+        <MetaPixel />
       </body>
     </html>
   );
