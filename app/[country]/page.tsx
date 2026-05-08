@@ -5,12 +5,14 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { TestimonialCarousel, type Testimonial } from "@/components/Carousel";
 import { UniversityLogo } from "@/components/UniversityLogo";
+import { JsonLd } from "@/components/JsonLd";
 
 type CountryConfig = {
   slug: string;
   country: string;
   demonym: string;
   adjective: string;
+  cities: string[];
   metaTitle: string;
   metaDescription: string;
 };
@@ -21,56 +23,93 @@ const COUNTRIES: Record<string, CountryConfig> = {
     country: "Saudi Arabia",
     demonym: "Saudi Arabian",
     adjective: "Saudi",
-    metaTitle: "College Counseling for Saudi Arabian Students — Himmah Prep",
+    cities: ["Riyadh", "Jeddah", "Dammam"],
+    metaTitle:
+      "College Counseling in Saudi Arabia — Ivy League US Admissions",
     metaDescription:
-      "Premium US college admissions consulting for Saudi Arabian students. Founded by Harvard & UPenn graduates. 100% acceptance to every Ivy League institution.",
+      "Ivy League–credentialed US college admissions counseling for Saudi students in Riyadh, Jeddah, Dammam, and across the Kingdom. SAT/ACT prep, application strategy, 100% acceptance track record. Free consultation.",
   },
   uae: {
     slug: "uae",
     country: "the UAE",
     demonym: "UAE",
     adjective: "UAE",
-    metaTitle: "College Counseling for UAE Students — Himmah Prep",
+    cities: ["Dubai", "Abu Dhabi", "Sharjah"],
+    metaTitle:
+      "UAE College Counseling — Dubai & Abu Dhabi US Admissions",
     metaDescription:
-      "Premium US college admissions consulting for UAE students. Founded by Harvard & UPenn graduates. 100% acceptance to every Ivy League institution.",
+      "Ivy League US college admissions counseling for UAE students in Dubai, Abu Dhabi, Sharjah, and across the Emirates. SAT/ACT prep, application strategy, 100% acceptance track record. Free consultation.",
   },
   qatar: {
     slug: "qatar",
     country: "Qatar",
     demonym: "Qatari",
     adjective: "Qatari",
-    metaTitle: "College Counseling for Qatari Students — Himmah Prep",
+    cities: ["Doha", "Al Wakrah"],
+    metaTitle:
+      "Qatar College Counseling — Doha US University Admissions",
     metaDescription:
-      "Premium US college admissions consulting for Qatari students. Founded by Harvard & UPenn graduates. 100% acceptance to every Ivy League institution.",
+      "Ivy League US college admissions counseling for Qatari students in Doha and across Qatar. SAT/ACT prep, application strategy, 100% acceptance track record. Free consultation.",
   },
   kuwait: {
     slug: "kuwait",
     country: "Kuwait",
     demonym: "Kuwaiti",
     adjective: "Kuwaiti",
-    metaTitle: "College Counseling for Kuwaiti Students — Himmah Prep",
+    cities: ["Kuwait City", "Hawalli", "Salmiya"],
+    metaTitle:
+      "Kuwait College Counseling — Kuwait City US Admissions",
     metaDescription:
-      "Premium US college admissions consulting for Kuwaiti students. Founded by Harvard & UPenn graduates. 100% acceptance to every Ivy League institution.",
+      "Ivy League US college admissions counseling for Kuwaiti students in Kuwait City, Hawalli, Salmiya, and beyond. SAT/ACT prep, application strategy, 100% acceptance. Free consultation.",
   },
   bahrain: {
     slug: "bahrain",
     country: "Bahrain",
     demonym: "Bahraini",
     adjective: "Bahraini",
-    metaTitle: "College Counseling for Bahraini Students — Himmah Prep",
+    cities: ["Manama", "Riffa", "Muharraq"],
+    metaTitle:
+      "Bahrain College Counseling — Manama US University Admissions",
     metaDescription:
-      "Premium US college admissions consulting for Bahraini students. Founded by Harvard & UPenn graduates. 100% acceptance to every Ivy League institution.",
+      "Ivy League US college admissions counseling for Bahraini students in Manama, Riffa, Muharraq, and across Bahrain. SAT/ACT prep, application strategy, 100% acceptance. Free consultation.",
   },
   oman: {
     slug: "oman",
     country: "Oman",
     demonym: "Omani",
     adjective: "Omani",
-    metaTitle: "College Counseling for Omani Students — Himmah Prep",
+    cities: ["Muscat", "Salalah", "Sohar"],
+    metaTitle:
+      "Oman College Counseling — Muscat US University Admissions",
     metaDescription:
-      "Premium US college admissions consulting for Omani students. Founded by Harvard & UPenn graduates. 100% acceptance to every Ivy League institution.",
+      "Ivy League US college admissions counseling for Omani students in Muscat, Salalah, Sohar, and across the Sultanate. SAT/ACT prep, application strategy, 100% acceptance. Free consultation.",
   },
 };
+
+function citiesPhrase(cities: string[]): string {
+  if (cities.length === 1) return cities[0];
+  if (cities.length === 2) return `${cities[0]} and ${cities[1]}`;
+  return `${cities.slice(0, -1).join(", ")}, and ${cities[cities.length - 1]}`;
+}
+
+const FAQS = [
+  {
+    q: "Do you work with students applying to UK universities as well?",
+    a: "Yes. Our advisors prepare students for Oxford, Cambridge, Imperial, UCL, and the rest of the top UK schools alongside US applications. The strategies overlap more than people think — strong test scores, real intellectual depth, and a personal statement that says something.",
+  },
+  {
+    q: "When should we start?",
+    a: "10th grade is the ideal entry point. The student has enough academic history for a real diagnostic, but two full years to address gaps, build extracurriculars, prep for tests, and plan summers. 9th grade is fine for habit-building. 11th grade we can still do good work — but the timeline is tighter.",
+  },
+  {
+    q: "Are your advisors familiar with the IB and American curricula?",
+    a: "Yes — we work primarily with IB and American-curriculum students. We know which IB Higher Levels matter for which majors, where the curriculum gaps versus US expectations actually live, and how admissions officers read predicted grades.",
+  },
+  {
+    q: "How does this work given the distance?",
+    a: "Entirely online. The portal, the advising sessions, the workshops, the mocks — all built for remote families from day one. Students in the GCC have exactly the same experience as students in New York.",
+  },
+];
 
 const HOME_LOGOS: { slug: string; label: string }[] = [
   { slug: "harvard", label: "Harvard" },
@@ -135,15 +174,36 @@ export async function generateMetadata({
   const { country } = await params;
   const cfg = COUNTRIES[country];
   if (!cfg) return {};
+  const url = `https://himmahprep.com/${cfg.slug}`;
+  const keywords = [
+    `${cfg.country} college counseling`,
+    `${cfg.country} college admissions`,
+    `${cfg.demonym} students US universities`,
+    `Ivy League admissions ${cfg.country}`,
+    `SAT prep ${cfg.country}`,
+    `ACT prep ${cfg.country}`,
+    `Common App ${cfg.country}`,
+    ...cfg.cities.map((c) => `${c} college counselor`),
+    ...cfg.cities.map((c) => `${c} US college admissions`),
+  ];
   return {
     title: cfg.metaTitle,
     description: cfg.metaDescription,
+    keywords,
     openGraph: {
       title: cfg.metaTitle,
       description: cfg.metaDescription,
-      url: `https://himmahprep.com/${cfg.slug}`,
+      url,
+      type: "website",
+      siteName: "Himmah Prep",
+      locale: "en_US",
     },
-    alternates: { canonical: `https://himmahprep.com/${cfg.slug}` },
+    twitter: {
+      card: "summary_large_image",
+      title: cfg.metaTitle,
+      description: cfg.metaDescription,
+    },
+    alternates: { canonical: url },
   };
 }
 
@@ -156,8 +216,55 @@ export default async function CountryPage({
   const cfg = COUNTRIES[country];
   if (!cfg) notFound();
 
+  const url = `https://himmahprep.com/${cfg.slug}`;
+  const cities = citiesPhrase(cfg.cities);
+
+  const orgLd = {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    name: `Himmah Prep — College Counseling in ${cfg.country}`,
+    url,
+    description: cfg.metaDescription,
+    areaServed: {
+      "@type": "Country",
+      name: cfg.country.replace(/^the\s+/, ""),
+    },
+    serviceType: [
+      "College admissions counseling",
+      "SAT and ACT test preparation",
+      "Application strategy",
+      "Essay coaching",
+    ],
+    audience: {
+      "@type": "EducationalAudience",
+      educationalRole: "student",
+    },
+  };
+
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQS.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Himmah Prep", item: "https://himmahprep.com" },
+      { "@type": "ListItem", position: 2, name: cfg.country, item: url },
+    ],
+  };
+
   return (
     <>
+      <JsonLd data={orgLd} />
+      <JsonLd data={faqLd} />
+      <JsonLd data={breadcrumbLd} />
       <Header />
       <main>
         {/* HERO — same 2-col layout as home, with the portal mockup */}
@@ -165,14 +272,15 @@ export default async function CountryPage({
           <div className="hero-inner">
             <p className="eyebrow">For families in {cfg.country}</p>
             <h1 className="display">
-              Guaranteed to help
+              Ivy League college counseling
               <br />
-              students <em>stand&nbsp;out.</em>
+              in <em>{cfg.country}.</em>
             </h1>
             <p className="lead">
-              Himmah Prep works with {cfg.adjective} students applying to the most selective US
-              universities. Ivy-credentialed advisors, a 100% acceptance track record, and a
-              strategy built around what your school list <em>actually</em> rewards.
+              Himmah Prep works with {cfg.adjective} students in {cities} applying to the most
+              selective US universities. Ivy-credentialed advisors, a 100% acceptance track
+              record, and a strategy built around what your school list{" "}
+              <em>actually</em> rewards.
             </p>
             <div className="hero-ctas">
               <Link href="/apply" className="btn btn-primary">
@@ -277,8 +385,13 @@ export default async function CountryPage({
               We know the <em>{cfg.adjective} student profile.</em>
             </h2>
             <p>
-              Most {cfg.adjective} students we work with arrive in similar shape: strong GPA in
-              an IB or American-curriculum school, an SAT score in the 1200s, a thin set of
+              We work with families in {cities}, and across {cfg.country.replace(/^the\s+/, "")}
+              {" "}— most of them in IB and American-curriculum schools, applying to the most
+              selective universities in the United States.
+            </p>
+            <p>
+              Most {cfg.adjective} students we meet arrive in similar shape: strong GPA in an IB
+              or American-curriculum school, an SAT score in the 1200s, a thin set of
               extracurriculars, and a school list shaped by parents and family friends rather
               than admissions data. The story almost writes itself — and the outcome is
               predictably mid-tier.
@@ -469,42 +582,12 @@ export default async function CountryPage({
             </h2>
           </div>
           <div className="faq-grid">
-            <details className="faq-item">
-              <summary>Do you work with students applying to UK universities as well?</summary>
-              <p>
-                Yes. Our advisors prepare students for Oxford, Cambridge, Imperial, UCL, and the
-                rest of the top UK schools alongside US applications. The strategies overlap
-                more than people think — strong test scores, real intellectual depth, and a
-                personal statement that says something.
-              </p>
-            </details>
-            <details className="faq-item">
-              <summary>When should we start?</summary>
-              <p>
-                10th grade is the ideal entry point. The student has enough academic history for
-                a real diagnostic, but two full years to address gaps, build extracurriculars,
-                prep for tests, and plan summers. 9th grade is fine for habit-building. 11th
-                grade we can still do good work — but the timeline is tighter.
-              </p>
-            </details>
-            <details className="faq-item">
-              <summary>
-                Are your advisors familiar with the {cfg.adjective} curriculum?
-              </summary>
-              <p>
-                Yes — we work primarily with IB and American-curriculum students. We know which
-                IB Higher Levels matter for which majors, where the curriculum gaps versus US
-                expectations actually live, and how admissions officers read predicted grades.
-              </p>
-            </details>
-            <details className="faq-item">
-              <summary>How does this work given the distance?</summary>
-              <p>
-                Entirely online. The portal, the advising sessions, the workshops, the mocks —
-                all built for remote families from day one. Students in {cfg.country} have
-                exactly the same experience as students in New York.
-              </p>
-            </details>
+            {FAQS.map((f) => (
+              <details key={f.q} className="faq-item">
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))}
           </div>
         </section>
 
@@ -526,9 +609,9 @@ export default async function CountryPage({
               Ready to build a strategy that <em>actually works?</em>
             </h2>
             <p className="lead-2">
-              We work with a select number of students from {cfg.country} each year. If your
-              student is in 9th, 10th, or 11th grade and serious about a top US university, the
-              time to start is now.
+              We work with a select number of students from {cities}, and across {cfg.country.replace(/^the\s+/, "")}
+              {" "}each year. If your student is in 9th, 10th, or 11th grade and serious about a
+              top US university, the time to start is now.
             </p>
             <Link href="/apply" className="btn btn-primary">
               Apply for a free consultation
