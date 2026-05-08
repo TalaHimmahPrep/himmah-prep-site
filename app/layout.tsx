@@ -71,13 +71,6 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  icons: {
-    icon: [
-      { url: "/icon.png", media: "(prefers-color-scheme: light)" },
-      { url: "/icon-dark.png", media: "(prefers-color-scheme: dark)" },
-    ],
-    apple: "/icon.png",
-  },
 };
 
 export default function RootLayout({
