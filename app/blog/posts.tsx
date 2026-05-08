@@ -11,6 +11,11 @@ export type Post = {
   dateLabel: string;
   readMinutes: number;
   body: ReactNode;
+  // SEO overrides — used in <title>, meta description, and OpenGraph
+  // when set. Falls back to title/excerpt otherwise.
+  seoTitle?: string;
+  seoDescription?: string;
+  keywords?: string[];
 };
 
 export const POSTS: Post[] = [
@@ -23,6 +28,16 @@ export const POSTS: Post[] = [
     date: "2026-04-13",
     dateLabel: "April 13, 2026",
     readMinutes: 7,
+    seoTitle: "College Admissions Roadmap: Year-by-Year Guide (9th–12th)",
+    seoDescription:
+      "Year-by-year guide to top US college admissions from 9th through 12th grade — what to focus on each year, with no last-minute scrambling.",
+    keywords: [
+      "college admissions roadmap",
+      "9th to 12th grade college prep",
+      "high school college planning timeline",
+      "year by year college admissions",
+      "US college admissions timeline",
+    ],
     body: (
       <>
         <h2>9th Grade: laying the foundation</h2>
@@ -118,6 +133,16 @@ export const POSTS: Post[] = [
     date: "2026-04-13",
     dateLabel: "April 13, 2026",
     readMinutes: 6,
+    seoTitle: "How Admissions Officers Actually Read College Applications",
+    seoDescription:
+      "How top US college admissions officers actually evaluate applications — committees, regional readers, time spent per file, and what gets weighted.",
+    keywords: [
+      "how admissions officers read applications",
+      "college application review process",
+      "admissions officer evaluation",
+      "Common App reading process",
+      "Ivy League admissions committee",
+    ],
     body: (
       <>
         <h2>The first glance: academics and context</h2>
@@ -210,6 +235,17 @@ export const POSTS: Post[] = [
     date: "2026-04-13",
     dateLabel: "April 13, 2026",
     readMinutes: 5,
+    seoTitle: "Reach, Match, Safety: How to Build a Balanced College List",
+    seoDescription:
+      "What reach, match, and safety schools actually mean in 2026 — and how to build a balanced US college list that gives your student real options.",
+    keywords: [
+      "reach match safety schools",
+      "college list building",
+      "balanced college list",
+      "how to choose colleges",
+      "Ivy League reach school",
+      "safety school definition",
+    ],
     body: (
       <>
         <p>
@@ -282,6 +318,17 @@ export const POSTS: Post[] = [
     date: "2026-04-11",
     dateLabel: "April 11, 2026",
     readMinutes: 6,
+    seoTitle: "How Much Do Grades Matter for Top US College Admissions?",
+    seoDescription:
+      "What admissions officers really look at when they see your child's GPA — course rigor, school context, grade trajectory, and the line that decides reaches.",
+    keywords: [
+      "how much do grades matter for college",
+      "GPA top US universities",
+      "college admissions GPA",
+      "Ivy League grades requirement",
+      "course rigor admissions",
+      "GPA vs course rigor",
+    ],
     body: (
       <>
         <h2>How admissions officers actually view GPA</h2>
@@ -391,6 +438,19 @@ export const POSTS: Post[] = [
     date: "2024-09-01",
     dateLabel: "September 1, 2024",
     readMinutes: 9,
+    seoTitle: "How to Get Into a Top US University from Saudi Arabia",
+    seoDescription:
+      "The exact strategy Saudi students use to get into Harvard, Stanford, and MIT — from Riyadh, Jeddah, and Dammam. SAT prep, school list, essays, summers.",
+    keywords: [
+      "US university Saudi Arabia",
+      "Harvard from Saudi Arabia",
+      "Saudi student US college admissions",
+      "Riyadh college counselor",
+      "Jeddah college admissions",
+      "Saudi to Ivy League",
+      "Saudi Arabia SAT prep",
+      "MIT Saudi student",
+    ],
     body: (
       <>
         <h2>The Saudi student profile — what you&apos;re working with</h2>
@@ -580,6 +640,17 @@ export const POSTS: Post[] = [
     date: "2019-05-28",
     dateLabel: "May 28, 2019",
     readMinutes: 5,
+    seoTitle: "What Is a 'Spike' in College Admissions — And How to Build One",
+    seoDescription:
+      "Top US colleges don't want well-rounded students — they want a well-rounded class. Here's what an admissions 'spike' is and how to build one.",
+    keywords: [
+      "college admissions spike",
+      "spike vs well rounded",
+      "Ivy League admissions strategy",
+      "how to stand out in college applications",
+      "Harvard spike admissions",
+      "what colleges look for",
+    ],
     body: (
       <>
         <p>

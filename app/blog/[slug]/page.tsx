@@ -19,15 +19,25 @@ export async function generateMetadata({
   const post = POSTS_BY_SLUG[slug];
   if (!post) return {};
   const url = `https://himmahprep.com/blog/${post.slug}`;
+  const title = post.seoTitle ?? post.title;
+  const description = post.seoDescription ?? post.excerpt;
   return {
-    title: `${post.title} — Himmah Prep`,
-    description: post.excerpt,
+    title: `${title} — Himmah Prep`,
+    description,
+    keywords: post.keywords,
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
+      title,
+      description,
       url,
       type: "article",
       publishedTime: post.date,
+      siteName: "Himmah Prep",
+      locale: "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
     },
     alternates: { canonical: url },
   };
@@ -42,13 +52,19 @@ export default async function BlogPostPage({
   const post = POSTS_BY_SLUG[slug];
   if (!post) notFound();
 
+  const url = `https://himmahprep.com/blog/${post.slug}`;
   const articleLd = {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: post.title,
-    description: post.excerpt,
+    headline: post.seoTitle ?? post.title,
+    description: post.seoDescription ?? post.excerpt,
     datePublished: post.date,
-    author: { "@type": "Organization", name: "Himmah Prep" },
+    dateModified: post.date,
+    inLanguage: "en-US",
+    articleSection: post.category,
+    wordCount: post.readMinutes * 250,
+    keywords: post.keywords,
+    author: { "@type": "Organization", name: "Himmah Prep", url: "https://himmahprep.com" },
     publisher: {
       "@type": "Organization",
       name: "Himmah Prep",
@@ -57,7 +73,17 @@ export default async function BlogPostPage({
         url: "https://himmahprep.com/logo.webp",
       },
     },
-    mainEntityOfPage: `https://himmahprep.com/blog/${post.slug}`,
+    mainEntityOfPage: url,
+  };
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Himmah Prep", item: "https://himmahprep.com" },
+      { "@type": "ListItem", position: 2, name: "Resources", item: "https://himmahprep.com/blog" },
+      { "@type": "ListItem", position: 3, name: post.title, item: url },
+    ],
   };
 
   const related = POSTS.filter((p) => p.slug !== post.slug)
@@ -72,6 +98,7 @@ export default async function BlogPostPage({
   return (
     <>
       <JsonLd data={articleLd} />
+      <JsonLd data={breadcrumbLd} />
       <Header />
       <main>
         <article>
