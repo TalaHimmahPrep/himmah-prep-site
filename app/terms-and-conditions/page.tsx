@@ -378,8 +378,8 @@ export default function TermsPage() {
             <h3>9.1 Governing Law</h3>
             <p>
               These Terms, and any dispute arising out of or relating to them, the website, or the
-              Services, shall be governed by and construed in accordance with the laws of{" "}
-              <strong>[Insert State/Country]</strong>, without regard to conflict-of-laws
+              Services, shall be governed by and construed in accordance with the laws of the{" "}
+              <strong>Kingdom of Saudi Arabia</strong>, without regard to conflict-of-laws
               principles.
             </p>
 
@@ -387,9 +387,10 @@ export default function TermsPage() {
             <p>
               You agree that any dispute, claim, or controversy arising out of or relating to these
               Terms or the Services that cannot be resolved informally shall be brought exclusively
-              in the state or federal courts located in{" "}
-              <strong>[Insert City, State/Country]</strong>, and you hereby consent to the personal
-              jurisdiction of such courts and waive any objection based on forum non conveniens.
+              in the competent courts located in{" "}
+              <strong>Riyadh, Kingdom of Saudi Arabia</strong>, and you hereby consent to the
+              personal jurisdiction of such courts and waive any objection based on forum non
+              conveniens.
             </p>
 
             <h3>9.3 No Professional, Legal, or Financial Advice</h3>
