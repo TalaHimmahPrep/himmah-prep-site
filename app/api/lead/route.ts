@@ -93,5 +93,30 @@ export async function POST(req: Request) {
     );
   }
 
+  // Fire-and-await Zapier webhook so the auto-confirmation email goes out
+  // for every submission (main form + popup). Failures don't block the
+  // user-facing success — Formspree already has the lead.
+  const zapierUrl = process.env.ZAPIER_LEAD_WEBHOOK;
+  if (zapierUrl) {
+    try {
+      const zapRes = await fetch(zapierUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          studentName,
+          gradeLevel: gradeLabel,
+          parentEmail,
+          source,
+          submittedAt: new Date().toISOString(),
+        }),
+      });
+      if (!zapRes.ok) {
+        console.error("[lead] zapier webhook responded with", zapRes.status);
+      }
+    } catch (err) {
+      console.error("[lead] zapier webhook fetch failed", err);
+    }
+  }
+
   return NextResponse.json({ ok: true });
 }
