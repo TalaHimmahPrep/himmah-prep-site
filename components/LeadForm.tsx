@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
-type Status = "idle" | "submitting" | "ok" | "error";
+type Status = "idle" | "submitting" | "error";
 
 export function LeadForm() {
+  const router = useRouter();
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState<string | null>(null);
 
@@ -35,26 +37,12 @@ export function LeadForm() {
         setError(json.error ?? "Something went wrong. Please email us instead.");
         return;
       }
-      setStatus("ok");
       form.reset();
+      router.push("/apply/thank-you");
     } catch {
       setStatus("error");
       setError("Couldn't reach the server. Please try again.");
     }
-  }
-
-  if (status === "ok") {
-    return (
-      <div className="cta-success">
-        <p className="eyebrow">You&apos;re on the list</p>
-        <h3 className="serif">
-          We&apos;ll be in <em>touch.</em>
-        </h3>
-        <p className="muted">
-          A senior advisor will reach out within one business day to schedule your call.
-        </p>
-      </div>
-    );
   }
 
   return (
