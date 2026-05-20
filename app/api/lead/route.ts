@@ -6,6 +6,11 @@ type LeadPayload = {
   studentName: string;
   gradeLevel?: string;
   parentEmail: string;
+  studentEmail?: string;
+  studentPhone?: string;
+  school?: string;
+  currentSatScore?: string;
+  parentPhone?: string;
   source?: string;
   /** Hidden honeypot field — bots fill it, humans don't. */
   website?: string;
@@ -31,7 +36,13 @@ export async function POST(req: Request) {
   const studentName = isString(body.studentName) ? body.studentName.trim() : "";
   const gradeLevel = isString(body.gradeLevel) ? body.gradeLevel.trim() : "";
   const parentEmail = isString(body.parentEmail) ? body.parentEmail.trim() : "";
+  const studentEmail = isString(body.studentEmail) ? body.studentEmail.trim() : "";
+  const studentPhone = isString(body.studentPhone) ? body.studentPhone.trim() : "";
+  const school = isString(body.school) ? body.school.trim() : "";
+  const currentSatScore = isString(body.currentSatScore) ? body.currentSatScore.trim() : "";
+  const parentPhone = isString(body.parentPhone) ? body.parentPhone.trim() : "";
   const source = isString(body.source) ? body.source.trim() : "main-form";
+  const isBootcampEnrollment = source.startsWith("sat-bootcamp");
 
   if (!studentName || !parentEmail) {
     return NextResponse.json(
@@ -47,7 +58,9 @@ export async function POST(req: Request) {
     );
   }
 
-  const endpoint = process.env.FORMSPREE_ENDPOINT;
+  const endpoint = isBootcampEnrollment
+    ? process.env.FORMSPREE_BOOTCAMP_ENDPOINT || process.env.FORMSPREE_ENDPOINT
+    : process.env.FORMSPREE_ENDPOINT;
   if (!endpoint) {
     console.error("[lead] FORMSPREE_ENDPOINT not configured");
     return NextResponse.json(
@@ -58,12 +71,21 @@ export async function POST(req: Request) {
 
   const gradeLabel = gradeLevel || "Not specified";
 
+  const subject = isBootcampEnrollment
+    ? `SAT Bootcamp enrollment — ${studentName} (${gradeLabel})`
+    : `Consultation request — ${studentName} (${gradeLabel}) [${source}]`;
+
   const payload = {
     studentName,
     gradeLevel: gradeLabel,
     parentEmail,
+    ...(studentEmail && { studentEmail }),
+    ...(studentPhone && { studentPhone }),
+    ...(school && { school }),
+    ...(currentSatScore && { currentSatScore }),
+    ...(parentPhone && { parentPhone }),
     source,
-    _subject: `Consultation request — ${studentName} (${gradeLabel}) [${source}]`,
+    _subject: subject,
     _replyto: parentEmail,
     userAgent: req.headers.get("user-agent") ?? "",
     referer: req.headers.get("referer") ?? "",
@@ -106,6 +128,11 @@ export async function POST(req: Request) {
           studentName,
           gradeLevel: gradeLabel,
           parentEmail,
+          ...(studentEmail && { studentEmail }),
+          ...(studentPhone && { studentPhone }),
+          ...(school && { school }),
+          ...(currentSatScore && { currentSatScore }),
+          ...(parentPhone && { parentPhone }),
           source,
           submittedAt: new Date().toISOString(),
         }),
