@@ -115,10 +115,13 @@ export async function POST(req: Request) {
     );
   }
 
-  // Fire-and-await Zapier webhook so the auto-confirmation email goes out
-  // for every submission (main form + popup). Failures don't block the
-  // user-facing success — Formspree already has the lead.
-  const zapierUrl = process.env.ZAPIER_LEAD_WEBHOOK;
+  // Fire-and-await Zapier webhook for the auto-confirmation email. Bootcamp
+  // enrollments use a separate webhook (welcome pack) — the consultation
+  // confirmation must NOT go out to bootcamp enrollees. Failures don't block
+  // the user-facing success — Formspree already has the lead.
+  const zapierUrl = isBootcampEnrollment
+    ? process.env.ZAPIER_BOOTCAMP_WEBHOOK
+    : process.env.ZAPIER_LEAD_WEBHOOK;
   if (zapierUrl) {
     try {
       const zapRes = await fetch(zapierUrl, {
