@@ -125,9 +125,8 @@ export default function SatBootcampPage() {
             <p>
               Cohort begins <strong>Friday, June 26, 2026 at 6pm KSA</strong>. Sessions run
               live every <strong>Friday and Saturday at 6pm KSA</strong> from there, and the
-              final week shifts to <strong>Thursday and Friday</strong> so the cohort goes
-              into test day fresh. Every session is recorded and the recordings stay with the
-              group.
+              final week shifts to <strong>Thursday and Friday</strong>. Every session is
+              recorded and the recordings stay with the group.
             </p>
             <p>
               Lock-in closes on <strong>June 22, 2026</strong>. After that, we hold the
@@ -161,6 +160,68 @@ export default function SatBootcampPage() {
             <a href={CHECKOUT_URL} className="btn btn-primary lemonsqueezy-button">
               Reserve a seat
             </a>
+          </div>
+        </section>
+
+        <section className="services schedule-section">
+          <div className="section-head">
+            <p className="eyebrow">Schedule</p>
+            <h2 className="display-2">
+              Every <em>session.</em>
+            </h2>
+            <p className="schedule-sub">
+              All sessions live, <strong>6:00&ndash;7:30 pm KSA</strong>. Every one recorded.
+            </p>
+          </div>
+          <div className="schedule-grid">
+            <div className="schedule-card">
+              <p className="schedule-card-num">01</p>
+              <p className="schedule-card-week">Week 1</p>
+              <p className="schedule-card-date">Fri &middot; Jun 26</p>
+              <p className="schedule-card-date">Sat &middot; Jun 27</p>
+            </div>
+            <div className="schedule-card">
+              <p className="schedule-card-num">02</p>
+              <p className="schedule-card-week">Week 2</p>
+              <p className="schedule-card-date">Fri &middot; Jul 3</p>
+              <p className="schedule-card-date">Sat &middot; Jul 4</p>
+            </div>
+            <div className="schedule-card">
+              <p className="schedule-card-num">03</p>
+              <p className="schedule-card-week">Week 3</p>
+              <p className="schedule-card-date">Fri &middot; Jul 10</p>
+              <p className="schedule-card-date">Sat &middot; Jul 11</p>
+            </div>
+            <div className="schedule-card">
+              <p className="schedule-card-num">04</p>
+              <p className="schedule-card-week">Week 4</p>
+              <p className="schedule-card-date">Fri &middot; Jul 17</p>
+              <p className="schedule-card-date">Sat &middot; Jul 18</p>
+            </div>
+            <div className="schedule-card">
+              <p className="schedule-card-num">05</p>
+              <p className="schedule-card-week">Week 5</p>
+              <p className="schedule-card-date">Fri &middot; Jul 24</p>
+              <p className="schedule-card-date">Sat &middot; Jul 25</p>
+            </div>
+            <div className="schedule-card">
+              <p className="schedule-card-num">06</p>
+              <p className="schedule-card-week">Week 6</p>
+              <p className="schedule-card-date">Fri &middot; Jul 31</p>
+              <p className="schedule-card-date">Sat &middot; Aug 1</p>
+            </div>
+            <div className="schedule-card">
+              <p className="schedule-card-num">07</p>
+              <p className="schedule-card-week">Week 7</p>
+              <p className="schedule-card-date">Fri &middot; Aug 7</p>
+              <p className="schedule-card-date">Sat &middot; Aug 8</p>
+            </div>
+            <div className="schedule-card schedule-card-final">
+              <p className="schedule-card-num">08</p>
+              <p className="schedule-card-week">Week 8</p>
+              <p className="schedule-card-date">Thu &middot; Aug 13</p>
+              <p className="schedule-card-date">Fri &middot; Aug 14</p>
+            </div>
           </div>
         </section>
 

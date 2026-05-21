@@ -1366,6 +1366,67 @@ section { scroll-margin-top: 80px; }
   .pricing-amount { font-size: 92px; }
 }
 
+/* === Schedule grid (sat-bootcamp) === */
+.schedule-sub {
+  margin: 18px auto 0;
+  max-width: 520px;
+  font-size: 15px;
+  color: var(--color-muted);
+  line-height: 1.55;
+}
+.schedule-sub strong { color: var(--color-ink); }
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 36px;
+  max-width: var(--max-w);
+}
+.schedule-card {
+  position: relative;
+  padding: 20px 18px 18px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+.schedule-card-final {
+  background:
+    linear-gradient(180deg, rgba(200,165,90,0.08) 0%, transparent 60%),
+    var(--color-surface);
+  border-color: var(--color-accent);
+}
+.schedule-card-num {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--color-accent);
+  margin: 0 0 4px;
+  line-height: 1;
+}
+.schedule-card-week {
+  font-family: var(--font-serif);
+  font-size: 22px;
+  color: var(--color-primary);
+  font-style: italic;
+  margin: 0 0 12px;
+  line-height: 1.1;
+}
+.schedule-card-date {
+  font-size: 14px;
+  color: var(--color-ink);
+  margin: 0 0 4px;
+  line-height: 1.45;
+}
+.schedule-card-date:last-child { margin-bottom: 0; }
+@media (max-width: 900px) {
+  .schedule-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 460px) {
+  .schedule-card { padding: 18px 16px; }
+  .schedule-card-week { font-size: 20px; }
+}
+
 /* === Product detail (/shop/p/guide) === */
 .product-hero {
   max-width: var(--max-w);
