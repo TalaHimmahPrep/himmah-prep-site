@@ -284,6 +284,7 @@ a, a *, button, button *, summary, summary *, label, label *,
 .nav-cta { padding: 10px 18px; }
 @media (max-width: 900px) {
   .nav-links { display: none; }
+  .nav-cta { margin-left: auto; }
 }
 
 /* === Hero === */
