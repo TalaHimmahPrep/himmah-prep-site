@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Cursor } from "@/components/Cursor";
 import { ConsultPopup } from "@/components/ConsultPopup";
+import { SatBanner } from "@/components/SatBanner";
 import { JsonLd, ORG_LD } from "@/components/JsonLd";
 import { MetaPixel } from "@/components/MetaPixel";
 import "./globals.css";
@@ -84,6 +85,7 @@ export default function RootLayout({
       className={`${instrumentSans.variable} ${instrumentSerif.variable}`}
     >
       <body>
+        <SatBanner />
         <JsonLd data={ORG_LD} />
         <Cursor />
         {children}
