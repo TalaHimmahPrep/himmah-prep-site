@@ -10,7 +10,7 @@ const CHECKOUT_URL =
 export const metadata: Metadata = {
   title: "SAT Bootcamp — 8-Week Summer 2026 Cohort — Himmah Prep",
   description:
-    "An 8-week SAT bootcamp for Gulf students. Live group sessions Fri & Sat at 6pm KSA, capped at 15. Diagnostic, mocks, test-day prep, and recordings. Lock-in by June 22, 2026.",
+    "An 8-week SAT bootcamp for Gulf students. Live group sessions Fri & Sat at 6pm KSA, capped at 15. Diagnostic, mocks, test-day prep, and recordings. Starts June 26, 2026.",
   openGraph: {
     title: "SAT Bootcamp — 8-Week Summer 2026 Cohort — Himmah Prep",
     description:
@@ -34,7 +34,7 @@ export default function SatBootcampPage() {
             <p className="lead">
               A focused 8-week cohort for serious students. Two live sessions a week, taught
               by Ivy League graduates, capped at 15. Every session is recorded.
-              Lock-in closes <strong>June 22, 2026.</strong>
+              Starts <strong>June 26, 2026.</strong>
             </p>
             <ul className="trust-row">
               <li>15-student cohort cap</li>
@@ -129,7 +129,7 @@ export default function SatBootcampPage() {
               recorded and the recordings stay with the group.
             </p>
             <p>
-              Lock-in closes on <strong>June 22, 2026</strong>. After that, we hold the
+              Starts <strong>June 26, 2026</strong>. After that, we hold the
               waitlist for the autumn cohort &mdash; but the seats for this summer are gone.
             </p>
           </div>
@@ -152,7 +152,7 @@ export default function SatBootcampPage() {
               <li>Recordings of every session</li>
             </ul>
             <p className="pricing-note muted-sm">
-              Cohort cap: 15 students &middot; Lock-in by June 22, 2026
+              Cohort cap: 15 students &middot; Starts June 26, 2026
               <br />
               Seats are non-refundable, before or after the cohort begins.{" "}
               <Link href="/terms-and-conditions">See terms</Link>.
@@ -227,7 +227,7 @@ export default function SatBootcampPage() {
 
         <section className="cta-strip">
           <div className="cta-strip-inner">
-            <p className="eyebrow">Seats close June 22</p>
+            <p className="eyebrow">Starts June 26</p>
             <h2 className="display-2">
               Pick the seat <em>before someone else does.</em>
             </h2>
