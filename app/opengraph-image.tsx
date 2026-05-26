@@ -1,11 +1,15 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 
-export const runtime = "edge";
 export const alt = "Himmah Prep — College Admissions Consulting";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OpengraphImage() {
+export default async function OpengraphImage() {
+  const logoData = await readFile(join(process.cwd(), "public/logo.png"));
+  const logoSrc = `data:image/png;base64,${logoData.toString("base64")}`;
+
   return new ImageResponse(
     (
       <div
@@ -18,27 +22,13 @@ export default function OpengraphImage() {
           justifyContent: "center",
           background:
             "radial-gradient(ellipse 70% 50% at 80% 20%, rgba(200,165,90,0.22), transparent 60%), radial-gradient(ellipse 60% 50% at 20% 80%, rgba(139,31,45,0.12), transparent 60%), #fbf7ec",
-          color: "#1a1414",
           fontFamily: "Georgia, serif",
           gap: 32,
         }}
       >
-        {/* Logo */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "baseline",
-            fontSize: 52,
-            letterSpacing: "-0.01em",
-          }}
-        >
-          <span style={{ color: "#8b1f2d", fontWeight: 400 }}>himmah</span>
-          <span style={{ color: "#1a1414", fontWeight: 800, marginLeft: 4 }}>
-            PREP
-          </span>
-        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={logoSrc} alt="" height={80} />
 
-        {/* Divider */}
         <div
           style={{
             display: "flex",
@@ -48,7 +38,6 @@ export default function OpengraphImage() {
           }}
         />
 
-        {/* Tagline */}
         <div
           style={{
             display: "flex",
@@ -61,7 +50,6 @@ export default function OpengraphImage() {
           College Admissions Consulting
         </div>
 
-        {/* URL */}
         <div
           style={{
             display: "flex",
