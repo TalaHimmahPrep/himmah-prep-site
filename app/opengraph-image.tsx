@@ -1,14 +1,13 @@
 import { ImageResponse } from "next/og";
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
 
 export const alt = "Himmah Prep — College Admissions Consulting";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function OpengraphImage() {
-  const logoData = await readFile(join(process.cwd(), "public/logo.png"));
-  const logoSrc = `data:image/png;base64,${logoData.toString("base64")}`;
+  const logoUrl = new URL("/logo.png", "https://himmahprep.com");
+  const logoData = await fetch(logoUrl).then((res) => res.arrayBuffer());
+  const logoBase64 = `data:image/png;base64,${Buffer.from(logoData).toString("base64")}`;
 
   return new ImageResponse(
     (
@@ -23,11 +22,13 @@ export default async function OpengraphImage() {
           background:
             "radial-gradient(ellipse 70% 50% at 80% 20%, rgba(200,165,90,0.22), transparent 60%), radial-gradient(ellipse 60% 50% at 20% 80%, rgba(139,31,45,0.12), transparent 60%), #fbf7ec",
           fontFamily: "Georgia, serif",
-          gap: 32,
+          gap: 28,
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={logoSrc} alt="" height={80} />
+        <img
+          src={logoBase64}
+          style={{ height: 72, width: "auto" }}
+        />
 
         <div
           style={{
