@@ -1953,3 +1953,228 @@ section { scroll-margin-top: 80px; }
   .cursor-dot, .cursor-ring { display: none; }
   body, .btn { cursor: auto; }
 }
+
+/* === Enrollment page (private family links) === */
+.enroll-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at top right, rgba(200,165,90,0.15), transparent 55%),
+    radial-gradient(ellipse at bottom left, rgba(139,31,45,0.08), transparent 55%),
+    var(--color-bg);
+}
+.enroll-header {
+  padding: 48px 24px 28px;
+  text-align: center;
+}
+.enroll-logo {
+  height: 40px;
+  width: auto;
+  margin: 0 auto 32px;
+}
+.enroll-title {
+  font-size: clamp(36px, 6vw, 52px);
+  line-height: 1.15;
+  color: var(--color-ink);
+  margin: 0 0 12px;
+  font-weight: 400;
+}
+.enroll-title em {
+  color: var(--color-primary);
+}
+.enroll-subtitle {
+  color: var(--color-muted);
+  font-size: 14px;
+  max-width: 440px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.enroll-discount-banner {
+  max-width: 520px;
+  margin: 0 auto 40px;
+  padding: 0 24px;
+}
+.enroll-discount-banner > * {
+  margin: 0;
+}
+.enroll-discount-banner {
+  text-align: center;
+}
+.enroll-discount-banner > .enroll-discount-title {
+  background: rgba(139,31,45,0.06);
+  border: 1px solid rgba(139,31,45,0.15);
+  border-radius: var(--radius-card);
+  padding: 16px 24px 14px;
+}
+.enroll-discount-title {
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+.enroll-discount-sub {
+  color: var(--color-muted);
+  font-size: 12px;
+  padding-top: 8px;
+}
+
+.enroll-plans {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px 64px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .enroll-plans { grid-template-columns: 1fr; max-width: 420px; }
+}
+
+.enroll-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+.enroll-card--accent {
+  border-color: rgba(139,31,45,0.25);
+  box-shadow: var(--shadow-card-lg);
+}
+
+.enroll-badge {
+  background: var(--color-primary);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.enroll-card-body {
+  padding: 32px 28px 28px;
+}
+
+.enroll-plan-name {
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--color-ink);
+  margin: 0 0 4px;
+  line-height: 1.2;
+}
+.enroll-plan-name em {
+  color: var(--color-primary);
+}
+.enroll-plan-type {
+  margin: 0 0 24px;
+}
+
+.enroll-pricing {
+  margin-bottom: 28px;
+}
+.enroll-price-old {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 4px;
+  text-decoration: line-through;
+  color: var(--color-muted);
+  font-size: 14px;
+}
+.enroll-price-old .enroll-price-sar {
+  font-size: 11px;
+  opacity: 0.7;
+}
+.enroll-price-current {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.enroll-price-amount {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+.enroll-price-sar {
+  font-size: 14px;
+  color: var(--color-muted);
+}
+.enroll-price-note {
+  color: var(--color-muted-2);
+  font-size: 11px;
+  margin: 4px 0 0;
+}
+
+.enroll-divider {
+  border: none;
+  border-top: 1px solid var(--color-line);
+  margin: 0 0 24px;
+}
+
+.enroll-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--color-ink);
+}
+.enroll-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.enroll-check {
+  color: var(--color-green);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.enroll-feature-shared span:last-child {
+  color: var(--color-muted);
+}
+
+.enroll-cta {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 14px 0;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s;
+  background: var(--color-ink);
+  color: #fff;
+  cursor: pointer;
+}
+.enroll-cta:hover {
+  background: #2d2323;
+}
+.enroll-cta--primary {
+  background: var(--color-primary);
+}
+.enroll-cta--primary:hover {
+  background: var(--color-primary-2);
+}
+
+.enroll-footer {
+  border-top: 1px solid var(--color-line);
+  padding: 32px 24px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--color-muted-2);
+}
+.enroll-footer a {
+  color: var(--color-primary);
+}
+.enroll-footer a:hover {
+  text-decoration: underline;
+}
+.enroll-copyright {
+  font-size: 11px;
+  margin-top: 8px;
+}
