@@ -109,7 +109,7 @@ export default function AlsubaieWelcomePage() {
                   type="text"
                   name="studentName"
                   required
-                  placeholder="e.g. Nora Alsubaie"
+                  placeholder="e.g. Ahab Chopra"
                   autoComplete="name"
                 />
               </label>
@@ -239,7 +239,7 @@ export default function AlsubaieWelcomePage() {
                   type="text"
                   name="parentName"
                   required
-                  placeholder="e.g. Ahmed Alsubaie"
+                  placeholder="e.g. Raj Chopra"
                   autoComplete="name"
                 />
               </label>
