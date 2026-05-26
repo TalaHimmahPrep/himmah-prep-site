@@ -24,7 +24,6 @@ export default function AlsubaieWelcomePage() {
       school: fd.get("school"),
       gpa: fd.get("gpa"),
       satScore: fd.get("satScore"),
-      actScore: fd.get("actScore"),
       dreamSchools: [
         fd.get("dreamSchool1"),
         fd.get("dreamSchool2"),
@@ -184,15 +183,6 @@ export default function AlsubaieWelcomePage() {
                     type="text"
                     name="satScore"
                     placeholder="e.g. 1420"
-                  />
-                </label>
-
-                <label className="intake-label">
-                  <span>ACT score (if taken)</span>
-                  <input
-                    type="text"
-                    name="actScore"
-                    placeholder="e.g. 32"
                   />
                 </label>
               </div>
