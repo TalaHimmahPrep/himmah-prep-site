@@ -2178,3 +2178,127 @@ section { scroll-margin-top: 80px; }
   font-size: 11px;
   margin-top: 8px;
 }
+
+/* === Intake form (post-payment welcome) === */
+.intake-form-wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 24px 64px;
+}
+.intake-form {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 36px 32px 32px;
+}
+@media (max-width: 600px) {
+  .intake-form { padding: 28px 20px 24px; }
+}
+
+.intake-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 32px;
+}
+.intake-fieldset:last-of-type {
+  margin-bottom: 24px;
+}
+.intake-legend {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--color-ink);
+  margin: 0 0 6px;
+  padding: 0;
+}
+.intake-hint {
+  color: var(--color-muted);
+  font-size: 13px;
+  margin: 0 0 16px;
+}
+
+.intake-label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+.intake-label span {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-ink);
+}
+.intake-req {
+  color: var(--color-primary);
+}
+.intake-label input,
+.intake-label select,
+.intake-label textarea {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  padding: 10px 14px;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  transition: border-color 0.15s;
+  cursor: text;
+}
+.intake-label input:focus,
+.intake-label select:focus,
+.intake-label textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+.intake-label select {
+  cursor: pointer;
+  appearance: auto;
+}
+.intake-label textarea {
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.intake-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0 16px;
+}
+
+.intake-submit {
+  display: block;
+  width: 100%;
+  padding: 14px 0;
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  background: var(--color-primary);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.intake-submit:hover {
+  background: var(--color-primary-2);
+}
+.intake-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.intake-error {
+  color: var(--color-primary);
+  font-size: 13px;
+  text-align: center;
+  margin: 12px 0 0;
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
