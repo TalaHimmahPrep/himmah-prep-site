@@ -44,6 +44,8 @@ export async function POST(req: Request) {
     );
   }
 
+  const studentEmail = str(body.studentEmail);
+  const studentPhone = str(body.studentPhone);
   const grade = str(body.grade);
   const school = str(body.school);
   const gpa = str(body.gpa);
@@ -62,6 +64,8 @@ export async function POST(req: Request) {
     _replyto: parentEmail,
     familyId,
     studentName,
+    ...(studentEmail && { studentEmail }),
+    ...(studentPhone && { studentPhone }),
     grade,
     school,
     gpa,

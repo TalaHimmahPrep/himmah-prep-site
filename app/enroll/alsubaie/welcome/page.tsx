@@ -18,6 +18,8 @@ export default function AlsubaieWelcomePage() {
     const payload = {
       familyId: "alsubaie",
       studentName: fd.get("studentName"),
+      studentEmail: fd.get("studentEmail"),
+      studentPhone: fd.get("studentPhone"),
       grade: fd.get("grade"),
       school: fd.get("school"),
       gpa: fd.get("gpa"),
@@ -109,10 +111,30 @@ export default function AlsubaieWelcomePage() {
                   type="text"
                   name="studentName"
                   required
-                  placeholder="e.g. Ahab Chopra"
                   autoComplete="name"
                 />
               </label>
+
+              <div className="intake-row">
+                <label className="intake-label">
+                  <span>Student&apos;s email address</span>
+                  <input
+                    type="email"
+                    name="studentEmail"
+                    autoComplete="email"
+                  />
+                </label>
+
+                <label className="intake-label">
+                  <span>Student&apos;s phone number</span>
+                  <input
+                    type="tel"
+                    name="studentPhone"
+                    placeholder="+966 5X XXX XXXX"
+                    autoComplete="tel"
+                  />
+                </label>
+              </div>
 
               <div className="intake-row">
                 <label className="intake-label">
@@ -139,7 +161,6 @@ export default function AlsubaieWelcomePage() {
                     type="text"
                     name="school"
                     required
-                    placeholder="e.g. Riyadh International School"
                   />
                 </label>
               </div>
@@ -239,7 +260,6 @@ export default function AlsubaieWelcomePage() {
                   type="text"
                   name="parentName"
                   required
-                  placeholder="e.g. Raj Chopra"
                   autoComplete="name"
                 />
               </label>
