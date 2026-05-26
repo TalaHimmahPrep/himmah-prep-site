@@ -19,7 +19,7 @@ const plans = [
     discountPriceUSD: "$3,750",
     discountPriceSAR: "14,063 SAR",
     badge: null,
-    checkoutUrl: "#",
+    checkoutUrl: "https://www.himmahprep.com/pay-link/5d22a990-aa1b-4ee5-82cd-32d05ca1ee4c",
   },
   {
     name: "Signature",
@@ -32,7 +32,7 @@ const plans = [
     discountPriceUSD: "$7,500",
     discountPriceSAR: "28,125 SAR",
     badge: null,
-    checkoutUrl: "#",
+    checkoutUrl: "https://www.himmahprep.com/pay-link/33e71787-cbcc-4c5f-9ca7-e979b3dbbdbb",
   },
   {
     name: "Elite",
@@ -45,7 +45,7 @@ const plans = [
     discountPriceUSD: "$15,000",
     discountPriceSAR: "56,250 SAR",
     badge: "Best Results",
-    checkoutUrl: "#",
+    checkoutUrl: "https://www.himmahprep.com/pay-link/afdcb5bc-7d59-48b9-bede-2cc3296e4a11",
   },
 ];
 
