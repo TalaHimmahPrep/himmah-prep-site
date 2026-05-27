@@ -14,8 +14,10 @@ const plans = [
     sessionDetail: "private 1:1 counseling session per month",
     essaySubmissions: "Monthly Writing Team essay submissions",
     ceoReview: null,
-    priceUSD: "$10,000",
-    priceSAR: "37,500 SAR",
+    fullPriceUSD: "$15,000",
+    fullPriceSAR: "56,250 SAR",
+    discountPriceUSD: "$10,000",
+    discountPriceSAR: "37,500 SAR",
     badge: null,
     checkoutUrl: "#",
   },
@@ -24,9 +26,11 @@ const plans = [
     sessions: "Two",
     sessionDetail: "private 1:1 counseling sessions per month",
     essaySubmissions: "Bi-weekly Writing Team essay submissions",
-    ceoReview: "1x CEO and COO review of all submission materials",
-    priceUSD: "$17,500",
-    priceSAR: "65,625 SAR",
+    ceoReview: "2x CEO and COO reviews per submission cycle",
+    fullPriceUSD: "$26,250",
+    fullPriceSAR: "98,438 SAR",
+    discountPriceUSD: "$17,500",
+    discountPriceSAR: "65,625 SAR",
     badge: "Best Results",
     checkoutUrl: "#",
   },
@@ -56,6 +60,13 @@ export default function AnsariEnrollPage() {
         </p>
       </header>
 
+      <div className="enroll-discount-banner">
+        <p className="enroll-discount-title">7-Day Discount — Limited Time</p>
+        <p className="enroll-discount-sub">
+          Enroll within 7 days to lock in the discounted rate shown below.
+        </p>
+      </div>
+
       <section className="enroll-plans enroll-plans--two">
         {plans.map((plan) => (
           <article
@@ -71,9 +82,13 @@ export default function AnsariEnrollPage() {
               <p className="enroll-plan-type eyebrow">Strategic Counseling</p>
 
               <div className="enroll-pricing">
+                <div className="enroll-price-old">
+                  <span>{plan.fullPriceUSD}</span>
+                  <span className="enroll-price-sar">{plan.fullPriceSAR}</span>
+                </div>
                 <div className="enroll-price-current">
-                  <span className="enroll-price-amount">{plan.priceUSD}</span>
-                  <span className="enroll-price-sar">{plan.priceSAR}</span>
+                  <span className="enroll-price-amount">{plan.discountPriceUSD}</span>
+                  <span className="enroll-price-sar">{plan.discountPriceSAR}</span>
                 </div>
                 <p className="enroll-price-note">
                   One-time payment via credit card
