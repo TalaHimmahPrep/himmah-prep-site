@@ -106,5 +106,38 @@ export async function POST(req: Request) {
     );
   }
 
+  const zapierUrl = process.env.ZAPIER_INTAKE_WEBHOOK;
+  if (zapierUrl) {
+    try {
+      const zapRes = await fetch(zapierUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          familyId,
+          studentName,
+          ...(studentEmail && { studentEmail }),
+          ...(studentPhone && { studentPhone }),
+          grade,
+          school,
+          gpa,
+          ...(satScore && { satScore }),
+          dreamSchools,
+          intendedMajor,
+          extracurriculars,
+          parentName,
+          parentEmail,
+          ...(parentPhone && { parentPhone }),
+          ...(anythingElse && { anythingElse }),
+          submittedAt: new Date().toISOString(),
+        }),
+      });
+      if (!zapRes.ok) {
+        console.error("[intake] zapier webhook responded with", zapRes.status);
+      }
+    } catch (err) {
+      console.error("[intake] zapier webhook fetch failed", err);
+    }
+  }
+
   return NextResponse.json({ ok: true });
 }
