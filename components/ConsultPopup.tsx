@@ -8,7 +8,7 @@ const TRIGGER_PERCENT = 50;
 
 // Pages where the popup is suppressed (apply has the form already; legal pages
 // are not lead-funnel pages).
-const EXCLUDED_PATHS = new Set(["/apply", "/terms-and-conditions", "/enroll/alsubaie", "/enroll/alsubaie/welcome", "/enroll/ansari", "/enroll/ansari/welcome"]);
+const EXCLUDED_PATHS = new Set(["/apply", "/terms-and-conditions", "/enroll/alsubaie", "/enroll/alsubaie/welcome", "/enroll/ansari", "/enroll/ansari/welcome", "/enroll/welcome"]);
 
 type Status = "idle" | "submitting" | "ok" | "error";
 
