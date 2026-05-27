@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const HIDDEN_PATHS = new Set(["/enroll/alsubaie", "/enroll/alsubaie/welcome"]);
+const HIDDEN_PATHS = new Set(["/enroll/alsubaie", "/enroll/alsubaie/welcome", "/enroll/ansari", "/enroll/ansari/welcome"]);
 
 export function SatBanner() {
   const pathname = usePathname();
