@@ -14,6 +14,7 @@ const plans = [
     sessionDetail: "private 1:1 counseling session per month",
     essaySubmissions: "Monthly Writing Team essay submissions",
     ceoReview: null,
+    seniorAdvisor: false,
     fullPriceUSD: "$15,000",
     fullPriceSAR: "56,250 SAR",
     discountPriceUSD: "$10,000",
@@ -27,6 +28,7 @@ const plans = [
     sessionDetail: "private 1:1 counseling sessions per month",
     essaySubmissions: "Bi-weekly Writing Team essay submissions",
     ceoReview: "2x CEO and COO reviews per submission cycle",
+    seniorAdvisor: true,
     fullPriceUSD: "$26,250",
     fullPriceSAR: "98,438 SAR",
     discountPriceUSD: "$17,500",
@@ -39,7 +41,6 @@ const plans = [
 const sharedFeatures = [
   "May 2026 through March 2028",
   "20 hours of SAT preparation included",
-  "Hand-paired with our most senior counselor",
   "Direct messaging access between sessions",
   "Full Himmah Prep Portal access",
 ];
@@ -112,6 +113,12 @@ export default function AnsariEnrollPage() {
                   <li>
                     <span className="enroll-check">&#10003;</span>
                     <span>{plan.ceoReview}</span>
+                  </li>
+                )}
+                {plan.seniorAdvisor && (
+                  <li>
+                    <span className="enroll-check">&#10003;</span>
+                    <span>Hand-paired with our most senior counselor</span>
                   </li>
                 )}
                 {sharedFeatures.map((feature) => (
