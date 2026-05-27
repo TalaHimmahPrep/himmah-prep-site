@@ -20,10 +20,10 @@ const plans = [
     discountPriceUSD: "$10,000",
     discountPriceSAR: "37,500 SAR",
     badge: null,
-    checkoutUrl: "#",
+    checkoutUrl: "https://www.himmahprep.com/pay-link/e9026790-0ad4-4761-a500-3f49ed293c01",
   },
   {
-    name: "Extensive",
+    name: "Elite",
     sessions: "Two",
     sessionDetail: "private 1:1 counseling sessions per month",
     essaySubmissions: "Bi-weekly Writing Team essay submissions",
@@ -34,7 +34,7 @@ const plans = [
     discountPriceUSD: "$17,500",
     discountPriceSAR: "65,625 SAR",
     badge: "Best Results",
-    checkoutUrl: "#",
+    checkoutUrl: "https://www.himmahprep.com/pay-link/2368f46b-dec7-406b-8899-d35806080f92",
   },
 ];
 
