@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 const plans = [
   {
-    name: "Regular",
+    name: "Foundation",
     sessions: "One",
     sessionDetail: "private 1:1 counseling session per month",
     essaySubmissions: "Monthly Writing Team essay submissions",
@@ -77,7 +77,7 @@ export default function AnsariEnrollPage() {
 
             <div className="enroll-card-body">
               <h2 className="enroll-plan-name serif">
-                {plan.name} <em>Package</em>
+                {plan.name} <em>Plan</em>
               </h2>
               <p className="enroll-plan-type eyebrow">Strategic Counseling</p>
 
@@ -126,7 +126,7 @@ export default function AnsariEnrollPage() {
                 href={plan.checkoutUrl}
                 className={`enroll-cta${plan.badge ? " enroll-cta--primary" : ""}`}
               >
-                Select {plan.name} Package
+                Select {plan.name} Plan
               </a>
             </div>
           </article>
