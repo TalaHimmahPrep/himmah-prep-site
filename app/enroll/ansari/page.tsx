@@ -40,7 +40,7 @@ const plans = [
 
 const sharedFeatures = [
   "May 2026 through March 2028",
-  "Application support for up to 3 schools",
+  "Unlimited application support across 3 countries",
   "20 hours of SAT preparation included",
   "Direct messaging access between sessions",
   "Full Himmah Prep Portal access",
