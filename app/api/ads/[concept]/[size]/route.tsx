@@ -1080,8 +1080,18 @@ function ConsultFrame({
         fontFamily: "Instrument Sans",
       }}
     >
-      <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", height: 72 }}>
-        <LogoMark logoUrl={logoUrl} scale={0.72} invert={dark} />
+      <div style={{ display: "flex", justifyContent: "center", marginBottom: 40 }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={logoUrl}
+          alt="himmah PREP"
+          width={220}
+          height={94}
+          style={{
+            objectFit: "contain",
+            ...(dark ? { filter: "invert(1) brightness(2.1)" } : {}),
+          }}
+        />
       </div>
 
       <div
@@ -1104,6 +1114,7 @@ function ConsultFrame({
           gap: 22,
           paddingTop: 26,
           borderTop: `1px solid ${lineColor}`,
+          marginTop: 40,
         }}
       >
         <div
