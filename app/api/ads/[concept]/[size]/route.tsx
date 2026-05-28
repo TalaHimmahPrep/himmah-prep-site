@@ -367,359 +367,6 @@ function Parents({ w, h }: { w: number; h: number }) {
   );
 }
 
-/* ------------------ CONCEPT 4: CONSULT-ROADMAP (value-add) ------------------ */
-function ConsultRoadmap({ w, h }: { w: number; h: number }) {
-  const isStory = h > 1500;
-  const isPortrait = h > w && !isStory;
-  const headSize = isStory ? 110 : isPortrait ? 96 : 82;
-
-  return (
-    <div
-      style={{
-        height: "100%",
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        padding: isStory ? "120px 90px" : "80px 80px",
-        background:
-          "radial-gradient(ellipse 70% 50% at 100% 0%, rgba(200,165,90,0.26), transparent 60%), radial-gradient(ellipse 60% 50% at 0% 100%, rgba(139,31,45,0.14), transparent 60%), #fbf7ec",
-        color: COLORS.ink,
-        fontFamily: "Georgia, serif",
-      }}
-    >
-      <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-        <Wordmark scale={isStory ? 1.6 : 1.3} />
-        <Eyebrow size={isStory ? 1.4 : 1.1}>Free 30-min consultation</Eyebrow>
-      </div>
-
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          fontSize: headSize,
-          lineHeight: 1.04,
-          letterSpacing: "-0.02em",
-          color: COLORS.ink,
-        }}
-      >
-        <span>Get your child&apos;s&nbsp;</span>
-        <span style={{ color: COLORS.primary, fontStyle: "italic" }}>personalized&nbsp;</span>
-        <span>admissions roadmap.</span>
-      </div>
-
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 16,
-          borderTop: `1px solid ${COLORS.line}`,
-          paddingTop: 32,
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            fontSize: isStory ? 36 : 28,
-            color: COLORS.muted,
-            lineHeight: 1.4,
-          }}
-        >
-          <span>A senior advisor reads the story, finds the gaps, maps the next 12 months.</span>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            marginTop: 14,
-            padding: isStory ? "22px 36px" : "18px 28px",
-            background: COLORS.primary,
-            color: "#fff",
-            borderRadius: 999,
-            alignSelf: "flex-start",
-            fontSize: isStory ? 36 : 28,
-            fontWeight: 700,
-          }}
-        >
-          Book free consultation →
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* ------------------ CONCEPT 5: CONSULT-WHERE (question hook) ------------------ */
-function ConsultWhere({ w, h }: { w: number; h: number }) {
-  const isStory = h > 1500;
-  const isPortrait = h > w && !isStory;
-  const headSize = isStory ? 120 : isPortrait ? 104 : 90;
-
-  return (
-    <div
-      style={{
-        height: "100%",
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        padding: isStory ? "120px 90px" : "80px 80px",
-        background: COLORS.bg,
-        color: COLORS.ink,
-        fontFamily: "Georgia, serif",
-      }}
-    >
-      <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-        <Wordmark scale={isStory ? 1.6 : 1.3} />
-        <Eyebrow size={isStory ? 1.4 : 1.1}>A free consultation</Eyebrow>
-      </div>
-
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: isStory ? 24 : 16,
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            fontSize: headSize,
-            lineHeight: 1.0,
-            letterSpacing: "-0.025em",
-            color: COLORS.ink,
-          }}
-        >
-          Where will your child
-        </div>
-        <div
-          style={{
-            display: "flex",
-            fontSize: headSize,
-            lineHeight: 1.0,
-            letterSpacing: "-0.025em",
-            color: COLORS.primary,
-            fontStyle: "italic",
-          }}
-        >
-          apply?
-        </div>
-      </div>
-
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 14,
-          borderTop: `1px solid ${COLORS.line}`,
-          paddingTop: 32,
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            fontSize: isStory ? 36 : 28,
-            color: COLORS.muted,
-            lineHeight: 1.4,
-          }}
-        >
-          <span>30 minutes with a senior advisor. No obligation.</span>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            marginTop: 14,
-            padding: isStory ? "22px 36px" : "18px 28px",
-            background: COLORS.primary,
-            color: "#fff",
-            borderRadius: 999,
-            alignSelf: "flex-start",
-            fontSize: isStory ? 36 : 28,
-            fontWeight: 700,
-          }}
-        >
-          Let&apos;s talk →
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* ------------------ CONCEPT 6: CONSULT-HONEST (trust-building) ------------------ */
-function ConsultHonest({ w, h }: { w: number; h: number }) {
-  const isStory = h > 1500;
-  const isPortrait = h > w && !isStory;
-  const headSize = isStory ? 102 : isPortrait ? 90 : 76;
-
-  return (
-    <div
-      style={{
-        height: "100%",
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        padding: isStory ? "120px 90px" : "80px 80px",
-        background:
-          "radial-gradient(ellipse 80% 60% at 0% 0%, rgba(200,165,90,0.20), transparent 55%), radial-gradient(ellipse 80% 60% at 100% 100%, rgba(255,255,255,0.04), transparent 55%), linear-gradient(155deg, #8b1f2d 0%, #6e1722 100%)",
-        color: COLORS.cream,
-        fontFamily: "Georgia, serif",
-      }}
-    >
-      <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-        <Wordmark scale={isStory ? 1.6 : 1.3} light />
-        <Eyebrow size={isStory ? 1.4 : 1.1} light>An honest read</Eyebrow>
-      </div>
-
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          fontSize: headSize,
-          lineHeight: 1.06,
-          letterSpacing: "-0.02em",
-          color: COLORS.cream,
-        }}
-      >
-        <span>We&apos;ll tell you&nbsp;</span>
-        <span style={{ color: COLORS.accent, fontStyle: "italic" }}>exactly&nbsp;</span>
-        <span>where your child stands — and what it takes from here.</span>
-      </div>
-
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 16,
-          borderTop: "1px solid rgba(247,241,225,0.18)",
-          paddingTop: 32,
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            fontSize: isStory ? 36 : 28,
-            color: "rgba(247,241,225,0.85)",
-            lineHeight: 1.4,
-          }}
-        >
-          <span>30 minutes. Real strategy. No sales pitch.</span>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            marginTop: 14,
-            padding: isStory ? "22px 36px" : "18px 28px",
-            background: COLORS.accent,
-            color: COLORS.primaryDeep,
-            borderRadius: 999,
-            alignSelf: "flex-start",
-            fontSize: isStory ? 36 : 28,
-            fontWeight: 700,
-          }}
-        >
-          Book free consultation →
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* ------------------ CONCEPT 7: CONSULT-NOW (timing/urgency) ------------------ */
-function ConsultNow({ w, h }: { w: number; h: number }) {
-  const isStory = h > 1500;
-  const isPortrait = h > w && !isStory;
-  const headSize = isStory ? 130 : isPortrait ? 112 : 96;
-
-  return (
-    <div
-      style={{
-        height: "100%",
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        padding: isStory ? "120px 90px" : "80px 80px",
-        background:
-          "radial-gradient(ellipse 60% 50% at 100% 0%, rgba(200,165,90,0.28), transparent 60%), radial-gradient(ellipse 60% 50% at 0% 100%, rgba(139,31,45,0.16), transparent 60%), #fbf7ec",
-        color: COLORS.ink,
-        fontFamily: "Georgia, serif",
-      }}
-    >
-      <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-        <Wordmark scale={isStory ? 1.6 : 1.3} />
-        <Eyebrow size={isStory ? 1.4 : 1.1}>Don&apos;t wait until senior year</Eyebrow>
-      </div>
-
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: isStory ? 18 : 12,
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            fontSize: headSize,
-            lineHeight: 1.0,
-            letterSpacing: "-0.025em",
-            color: COLORS.ink,
-          }}
-        >
-          <span>Start</span>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            fontSize: headSize,
-            lineHeight: 1.0,
-            letterSpacing: "-0.025em",
-            color: COLORS.primary,
-            fontStyle: "italic",
-          }}
-        >
-          now.
-        </div>
-      </div>
-
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 16,
-          borderTop: `1px solid ${COLORS.line}`,
-          paddingTop: 32,
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            fontSize: isStory ? 36 : 28,
-            color: COLORS.muted,
-            lineHeight: 1.4,
-          }}
-        >
-          <span>Most Gulf families wait two years too long. Get a head start in 30 minutes.</span>
-        </div>
-        <div
-          style={{
-            display: "flex",
-            marginTop: 14,
-            padding: isStory ? "22px 36px" : "18px 28px",
-            background: COLORS.primary,
-            color: "#fff",
-            borderRadius: 999,
-            alignSelf: "flex-start",
-            fontSize: isStory ? 36 : 28,
-            fontWeight: 700,
-          }}
-        >
-          Book free consultation →
-        </div>
-      </div>
-    </div>
-  );
-}
-
 /* ====================== SAT BOOTCAMP ADS ====================== */
 /* Shared bits used across SAT concepts                            */
 
@@ -1401,14 +1048,317 @@ const SAT_HERO_VARIANTS: Record<
   },
 };
 
+/* ====================== INITIAL CONSULTATION ADS ====================== */
+/* Premium frame for the consultation lead ads — same logo + font system  */
+/* as SAT ads, but lighter footer line and a softer CTA palette.          */
+
+const CONSULT_FOOTER_LIGHT = "FREE 30-MIN CONSULTATION · SENIOR ADVISOR · NO OBLIGATION";
+
+function ConsultFrame({
+  logoUrl,
+  dark = false,
+  children,
+  ctaText = "Book free consultation",
+}: {
+  logoUrl: string;
+  dark?: boolean;
+  children: React.ReactNode;
+  ctaText?: string;
+}) {
+  const lineColor = dark ? "rgba(247,241,225,0.22)" : COLORS.line;
+  const footerColor = dark ? "rgba(247,241,225,0.78)" : COLORS.muted;
+  return (
+    <div
+      style={{
+        height: "100%",
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        padding: "56px 80px 64px",
+        background: dark ? SAT_BG_CRIMSON : SAT_BG_LIGHT,
+        color: dark ? COLORS.cream : COLORS.ink,
+        fontFamily: "Instrument Sans",
+      }}
+    >
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "flex-start", height: 72 }}>
+        <LogoMark logoUrl={logoUrl} scale={0.72} invert={dark} />
+      </div>
+
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {children}
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 22,
+          paddingTop: 26,
+          borderTop: `1px solid ${lineColor}`,
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            fontSize: 22,
+            color: footerColor,
+            letterSpacing: "0.04em",
+            fontFamily: "Instrument Sans",
+          }}
+        >
+          <span>{CONSULT_FOOTER_LIGHT}</span>
+        </div>
+        <Pill dark={dark}>{ctaText} →</Pill>
+      </div>
+    </div>
+  );
+}
+
+/* ---------- CONCEPT: ROADMAP (value-add) ---------- */
+function ConsultRoadmap({ logoUrl }: { logoUrl: string }) {
+  return (
+    <ConsultFrame logoUrl={logoUrl}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: 22 }}>
+        <EyebrowTag>A personalized roadmap</EyebrowTag>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            fontFamily: "Instrument Serif",
+            fontWeight: 400,
+            fontSize: 120,
+            lineHeight: 0.98,
+            letterSpacing: "-0.025em",
+            color: COLORS.ink,
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "center" }}>Know exactly</div>
+          <div style={{ display: "flex", justifyContent: "center", fontStyle: "italic", color: COLORS.primary }}>
+            what comes next.
+          </div>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            fontSize: 30,
+            color: COLORS.muted,
+            lineHeight: 1.45,
+            maxWidth: 800,
+            marginTop: 8,
+            fontFamily: "Instrument Sans",
+            textAlign: "center",
+          }}
+        >
+          <span>
+            A senior advisor reads your child&apos;s story, finds the gaps, and maps the next 12 months.
+          </span>
+        </div>
+      </div>
+    </ConsultFrame>
+  );
+}
+
+/* ---------- CONCEPT: WHERE (question hook) ---------- */
+function ConsultWhere({ logoUrl }: { logoUrl: string }) {
+  return (
+    <ConsultFrame logoUrl={logoUrl} ctaText="Let's talk">
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: 22 }}>
+        <EyebrowTag>For Gulf families · Grades 9–12</EyebrowTag>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            fontFamily: "Instrument Serif",
+            fontWeight: 400,
+            fontSize: 132,
+            lineHeight: 0.96,
+            letterSpacing: "-0.03em",
+            color: COLORS.ink,
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "center" }}>Where will</div>
+          <div style={{ display: "flex", justifyContent: "center" }}>your child</div>
+          <div style={{ display: "flex", justifyContent: "center", fontStyle: "italic", color: COLORS.primary, marginTop: 8 }}>
+            apply?
+          </div>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            fontSize: 28,
+            color: COLORS.muted,
+            lineHeight: 1.45,
+            maxWidth: 760,
+            marginTop: 6,
+            fontFamily: "Instrument Serif",
+            fontStyle: "italic",
+            textAlign: "center",
+          }}
+        >
+          <span>30 minutes with one of our senior advisors. Just an honest read.</span>
+        </div>
+      </div>
+    </ConsultFrame>
+  );
+}
+
+/* ---------- CONCEPT: HONEST (trust-led crimson) ---------- */
+function ConsultHonest({ logoUrl }: { logoUrl: string }) {
+  return (
+    <ConsultFrame logoUrl={logoUrl} dark>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: 22 }}>
+        <EyebrowTag light>An honest read</EyebrowTag>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            fontFamily: "Instrument Serif",
+            fontWeight: 400,
+            fontSize: 116,
+            lineHeight: 0.98,
+            letterSpacing: "-0.025em",
+            color: COLORS.cream,
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "center" }}>Where your child</div>
+          <div style={{ display: "flex", justifyContent: "center", fontStyle: "italic", color: COLORS.accent, marginTop: 8 }}>
+            actually stands.
+          </div>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            fontSize: 30,
+            color: "rgba(247,241,225,0.85)",
+            lineHeight: 1.45,
+            maxWidth: 820,
+            marginTop: 8,
+            fontFamily: "Instrument Sans",
+            textAlign: "center",
+          }}
+        >
+          <span>
+            We&apos;ll tell you what the strongest applicants are doing — and what it takes to compete.
+          </span>
+        </div>
+      </div>
+    </ConsultFrame>
+  );
+}
+
+/* ---------- CONCEPT: NOW (timing urgency) ---------- */
+function ConsultNow({ logoUrl }: { logoUrl: string }) {
+  return (
+    <ConsultFrame logoUrl={logoUrl}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: 22 }}>
+        <EyebrowTag>Don&apos;t wait until senior year</EyebrowTag>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            fontFamily: "Instrument Serif",
+            fontWeight: 400,
+            fontSize: 132,
+            lineHeight: 0.96,
+            letterSpacing: "-0.03em",
+            color: COLORS.ink,
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "center" }}>The earlier we</div>
+          <div style={{ display: "flex", justifyContent: "center", fontStyle: "italic", color: COLORS.primary, marginTop: 6 }}>
+            start, the more
+          </div>
+          <div style={{ display: "flex", justifyContent: "center", marginTop: 6 }}>we can do.</div>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            fontSize: 30,
+            color: COLORS.muted,
+            lineHeight: 1.45,
+            maxWidth: 800,
+            marginTop: 6,
+            fontFamily: "Instrument Sans",
+            textAlign: "center",
+          }}
+        >
+          <span>Most Gulf families wait two years too long. A 30-min call changes that.</span>
+        </div>
+      </div>
+    </ConsultFrame>
+  );
+}
+
+/* ---------- CONCEPT: RESULTS (proof-led, premium) ---------- */
+function ConsultResults({ logoUrl }: { logoUrl: string }) {
+  return (
+    <ConsultFrame logoUrl={logoUrl}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: 28 }}>
+        <EyebrowTag>Class of 2025 · 100% acceptance rate</EyebrowTag>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            fontFamily: "Instrument Serif",
+            fontWeight: 400,
+            fontSize: 118,
+            lineHeight: 0.98,
+            letterSpacing: "-0.025em",
+            color: COLORS.ink,
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "center" }}>Stanford. MIT.</div>
+          <div style={{ display: "flex", justifyContent: "center", fontStyle: "italic", color: COLORS.primary, marginTop: 8 }}>
+            Your child next.
+          </div>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            fontSize: 30,
+            color: COLORS.muted,
+            lineHeight: 1.45,
+            maxWidth: 800,
+            marginTop: 4,
+            fontFamily: "Instrument Sans",
+            textAlign: "center",
+          }}
+        >
+          <span>
+            The same advisors who got 20+ students into Top-20 universities will read your case for free.
+          </span>
+        </div>
+      </div>
+    </ConsultFrame>
+  );
+}
+
 const RENDERERS = {
   outcomes: Outcomes,
   insider: Insider,
   parents: Parents,
+} as const;
+
+const CONSULT_RENDERERS = {
   "consult-roadmap": ConsultRoadmap,
   "consult-where": ConsultWhere,
   "consult-honest": ConsultHonest,
   "consult-now": ConsultNow,
+  "consult-results": ConsultResults,
 } as const;
 
 type ConceptKey = keyof typeof RENDERERS;
@@ -1478,10 +1428,24 @@ export async function GET(
     });
   }
 
+  const ConsultRender = CONSULT_RENDERERS[concept as keyof typeof CONSULT_RENDERERS];
+  if (ConsultRender) {
+    const origin = new URL(req.url).origin;
+    const [fonts, logoUrl] = await Promise.all([
+      loadHimmahFonts(),
+      loadAssetDataUrl(`${origin}/logo.png`, "image/png"),
+    ]);
+    return new ImageResponse(<ConsultRender logoUrl={logoUrl} />, {
+      width: dim.w,
+      height: dim.h,
+      fonts: [...fonts],
+    });
+  }
+
   const Render = RENDERERS[concept as ConceptKey];
   if (!Render) {
     return new Response(
-      `bad concept. concept ∈ {${[...Object.keys(RENDERERS), ...SAT_CONCEPT_KEYS].join(", ")}}, size ∈ {${Object.keys(SIZES).join(", ")}}`,
+      `bad concept. concept ∈ {${[...Object.keys(RENDERERS), ...Object.keys(CONSULT_RENDERERS), ...SAT_CONCEPT_KEYS].join(", ")}}, size ∈ {${Object.keys(SIZES).join(", ")}}`,
       { status: 400 },
     );
   }
