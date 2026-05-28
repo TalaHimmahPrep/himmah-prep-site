@@ -401,11 +401,10 @@ function ConsultRoadmap({ w, h }: { w: number; h: number }) {
           lineHeight: 1.04,
           letterSpacing: "-0.02em",
           color: COLORS.ink,
-          gap: "0 16px",
         }}
       >
-        <span>Get your child&apos;s</span>
-        <span style={{ color: COLORS.primary, fontStyle: "italic" }}>personalized</span>
+        <span>Get your child&apos;s&nbsp;</span>
+        <span style={{ color: COLORS.primary, fontStyle: "italic" }}>personalized&nbsp;</span>
         <span>admissions roadmap.</span>
       </div>
 
@@ -483,16 +482,13 @@ function ConsultWhere({ w, h }: { w: number; h: number }) {
         <div
           style={{
             display: "flex",
-            flexWrap: "wrap",
             fontSize: headSize,
             lineHeight: 1.0,
             letterSpacing: "-0.025em",
             color: COLORS.ink,
-            gap: "0 18px",
           }}
         >
-          <span>Where will</span>
-          <span>your child</span>
+          Where will your child
         </div>
         <div
           style={{
@@ -581,11 +577,10 @@ function ConsultHonest({ w, h }: { w: number; h: number }) {
           lineHeight: 1.06,
           letterSpacing: "-0.02em",
           color: COLORS.cream,
-          gap: "0 16px",
         }}
       >
-        <span>We&apos;ll tell you</span>
-        <span style={{ color: COLORS.accent, fontStyle: "italic" }}>exactly</span>
+        <span>We&apos;ll tell you&nbsp;</span>
+        <span style={{ color: COLORS.accent, fontStyle: "italic" }}>exactly&nbsp;</span>
         <span>where your child stands — and what it takes from here.</span>
       </div>
 
