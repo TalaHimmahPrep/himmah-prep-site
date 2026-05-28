@@ -5,3 +5,6 @@ node_modules
 *.tsbuildinfo
 .DS_Store
 .claude/
+
+# Internal-only ad preview gallery (renders publicly otherwise)
+app/ads-preview/
