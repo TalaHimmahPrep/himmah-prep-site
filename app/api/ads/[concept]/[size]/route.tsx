@@ -1929,6 +1929,236 @@ function ConsultToday({ logoUrl }: { logoUrl: string }) {
   );
 }
 
+/* ====================== CAMPUS-BACKGROUND CONSULT ADS ====================== */
+/* Photo backgrounds from Wikimedia Commons + dark overlay for legibility    */
+
+const CAMPUS_IMAGES = {
+  stanford:
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Hoover_Tower_Stanford_January_2013.jpg/1280px-Hoover_Tower_Stanford_January_2013.jpg",
+  mit:
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/MIT_Killian_Court.jpg/1280px-MIT_Killian_Court.jpg",
+  harvard:
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Harvard_Yard_in_autumn%2C_Boston%2C_Massachusetts%2C_2015.jpg/1280px-Harvard_Yard_in_autumn%2C_Boston%2C_Massachusetts%2C_2015.jpg",
+  yale:
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Harkness_Tower_in_full.jpg/1280px-Harkness_Tower_in_full.jpg",
+  princeton:
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Cannon_Green_and_Nassau_Hall%2C_Princeton_University.jpg/1280px-Cannon_Green_and_Nassau_Hall%2C_Princeton_University.jpg",
+} as const;
+
+function CampusFrame({
+  logoUrl,
+  bgUrl,
+  eyebrow,
+  head1,
+  head2,
+  lead,
+  ctaText = "Book free consultation",
+  headSize = 110,
+}: {
+  logoUrl: string;
+  bgUrl: string;
+  eyebrow: string;
+  head1: string;
+  head2: string;
+  lead?: string;
+  ctaText?: string;
+  headSize?: number;
+}) {
+  return (
+    <div
+      style={{
+        height: "100%",
+        width: "100%",
+        display: "flex",
+        position: "relative",
+        fontFamily: "Instrument Sans",
+      }}
+    >
+      {/* Background photo */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={bgUrl}
+        alt=""
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+        }}
+      />
+      {/* Dark gradient overlay for legibility */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          background:
+            "linear-gradient(180deg, rgba(26,20,20,0.65) 0%, rgba(26,20,20,0.4) 40%, rgba(26,20,20,0.85) 100%)",
+        }}
+      />
+
+      {/* Content over overlay */}
+      <div
+        style={{
+          position: "relative",
+          display: "flex",
+          flexDirection: "column",
+          width: "100%",
+          height: "100%",
+          padding: "56px 80px 64px",
+          color: COLORS.cream,
+        }}
+      >
+        {/* Logo (inverted to look right on dark bg) */}
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: 40 }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={logoUrl}
+            alt=""
+            width={220}
+            height={94}
+            style={{
+              objectFit: "contain",
+              filter: "invert(1) brightness(2.1)",
+            }}
+          />
+        </div>
+
+        <div
+          style={{
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 22,
+          }}
+        >
+          <EyebrowTag light>{eyebrow}</EyebrowTag>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              fontFamily: "Instrument Serif",
+              fontWeight: 400,
+              fontSize: headSize,
+              lineHeight: 0.98,
+              letterSpacing: "-0.025em",
+              color: COLORS.cream,
+              textAlign: "center",
+            }}
+          >
+            <div style={{ display: "flex", justifyContent: "center" }}>{head1}</div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                fontStyle: "italic",
+                color: COLORS.accent,
+                marginTop: 6,
+              }}
+            >
+              {head2}
+            </div>
+          </div>
+          {lead && (
+            <div
+              style={{
+                display: "flex",
+                fontSize: 30,
+                color: "rgba(247,241,225,0.92)",
+                lineHeight: 1.45,
+                maxWidth: 820,
+                marginTop: 8,
+                fontFamily: "Instrument Sans",
+                textAlign: "center",
+              }}
+            >
+              <span>{lead}</span>
+            </div>
+          )}
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 22,
+            paddingTop: 26,
+            borderTop: "1px solid rgba(247,241,225,0.22)",
+            marginTop: 40,
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              fontSize: 22,
+              color: "rgba(247,241,225,0.78)",
+              letterSpacing: "0.04em",
+              fontFamily: "Instrument Sans",
+            }}
+          >
+            <span>{CONSULT_FOOTER_LIGHT}</span>
+          </div>
+          <Pill dark>{ctaText} →</Pill>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const CAMPUS_VARIANTS: Record<
+  string,
+  { campus: keyof typeof CAMPUS_IMAGES; eyebrow: string; head1: string; head2: string; lead?: string; headSize?: number }
+> = {
+  "campus-stanford": {
+    campus: "stanford",
+    eyebrow: "Stanford · Class of 2030",
+    head1: "Could this be",
+    head2: "your child's campus?",
+    lead: "We've sent students here. We can read your case for free.",
+    headSize: 96,
+  },
+  "campus-harvard": {
+    campus: "harvard",
+    eyebrow: "Harvard · The path starts now",
+    head1: "Walking these paths.",
+    head2: "Two years from now.",
+    lead: "Most Gulf families start too late. A 30-minute call changes that.",
+    headSize: 92,
+  },
+  "campus-mit": {
+    campus: "mit",
+    eyebrow: "MIT · Stanford · The Ivy League",
+    head1: "We know exactly",
+    head2: "what it takes.",
+    lead: "Free strategy call with a senior advisor who has placed students at the world's top universities.",
+    headSize: 100,
+  },
+  "campus-yale": {
+    campus: "yale",
+    eyebrow: "Yale · Class of 2030",
+    head1: "Your child belongs",
+    head2: "in places like this.",
+    lead: "Find out how to get them there — in 30 minutes, with no obligation.",
+    headSize: 92,
+  },
+  "campus-princeton": {
+    campus: "princeton",
+    eyebrow: "Princeton · A strategic conversation",
+    head1: "From Riyadh.",
+    head2: "To here.",
+    lead: "We've helped Gulf students reach the world's top universities. Let's talk about yours.",
+    headSize: 112,
+  },
+};
+
 const RENDERERS = {
   outcomes: Outcomes,
   insider: Insider,
@@ -2029,6 +2259,28 @@ export async function GET(
       height: dim.h,
       fonts: [...fonts],
     });
+  }
+
+  if (CAMPUS_VARIANTS[concept]) {
+    const v = CAMPUS_VARIANTS[concept];
+    const origin = new URL(req.url).origin;
+    const [fonts, logoUrl, bgUrl] = await Promise.all([
+      loadHimmahFonts(),
+      loadAssetDataUrl(`${origin}/logo.png`, "image/png"),
+      loadAssetDataUrl(CAMPUS_IMAGES[v.campus], "image/jpeg"),
+    ]);
+    return new ImageResponse(
+      <CampusFrame
+        logoUrl={logoUrl}
+        bgUrl={bgUrl}
+        eyebrow={v.eyebrow}
+        head1={v.head1}
+        head2={v.head2}
+        lead={v.lead}
+        headSize={v.headSize}
+      />,
+      { width: dim.w, height: dim.h, fonts: [...fonts] },
+    );
   }
 
   if (concept === CONSULT_ALUMNI_KEY) {
