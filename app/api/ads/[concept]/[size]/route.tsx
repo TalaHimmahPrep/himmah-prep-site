@@ -1358,6 +1358,331 @@ function ConsultResults({ logoUrl }: { logoUrl: string }) {
   );
 }
 
+/* ---------- CONCEPT: ALUMNI (university logo wall) ---------- */
+const CONSULT_ALUMNI_LOGOS: Array<{ slug: string; aspect: number; scale: number }> = [
+  { slug: "harvard", aspect: 1432 / 360, scale: 1.0 },
+  { slug: "stanford", aspect: 234 / 360, scale: 1.55 },
+  { slug: "mit", aspect: 620 / 360, scale: 1.05 },
+  { slug: "yale", aspect: 833 / 360, scale: 1.0 },
+  { slug: "princeton", aspect: 1256 / 360, scale: 1.0 },
+];
+
+function ConsultAlumni({ logoUrl, universityLogos }: { logoUrl: string; universityLogos: string[] }) {
+  const baseH = 64;
+  const maxH = Math.max(...CONSULT_ALUMNI_LOGOS.map((l) => baseH * l.scale));
+  return (
+    <ConsultFrame logoUrl={logoUrl}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 32 }}>
+        <EyebrowTag>Where our students are headed</EyebrowTag>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 36,
+            height: maxH,
+          }}
+        >
+          {universityLogos.map((src, i) => {
+            const h = Math.round(baseH * CONSULT_ALUMNI_LOGOS[i].scale);
+            const w = Math.round(h * CONSULT_ALUMNI_LOGOS[i].aspect);
+            return (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={CONSULT_ALUMNI_LOGOS[i].slug}
+                src={src}
+                alt=""
+                width={w}
+                height={h}
+                style={{ display: "flex", objectFit: "contain" }}
+              />
+            );
+          })}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            fontFamily: "Instrument Serif",
+            fontWeight: 400,
+            fontSize: 100,
+            lineHeight: 0.98,
+            letterSpacing: "-0.025em",
+            color: COLORS.ink,
+            marginTop: 14,
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "center" }}>Could your child be</div>
+          <div style={{ display: "flex", justifyContent: "center", fontStyle: "italic", color: COLORS.primary }}>
+            next?
+          </div>
+        </div>
+      </div>
+    </ConsultFrame>
+  );
+}
+
+/* ---------- CONCEPT: LETTER (acceptance letter mockup) ---------- */
+function ConsultLetter({ logoUrl }: { logoUrl: string }) {
+  return (
+    <ConsultFrame logoUrl={logoUrl}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 36 }}>
+        {/* The Letter */}
+        <div
+          style={{
+            display: "flex",
+            position: "relative",
+            background: "#ffffff",
+            border: `1px solid ${COLORS.line}`,
+            borderRadius: 6,
+            padding: "44px 48px 56px",
+            width: 600,
+            boxShadow: "0 24px 48px rgba(110,23,34,0.10)",
+            flexDirection: "column",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              fontSize: 14,
+              letterSpacing: "3px",
+              color: COLORS.muted,
+              fontFamily: "Instrument Sans",
+              fontWeight: 600,
+              textTransform: "uppercase",
+              marginBottom: 18,
+            }}
+          >
+            <span>Office of Undergraduate Admissions</span>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              fontFamily: "Instrument Serif",
+              fontSize: 48,
+              lineHeight: 1,
+              letterSpacing: "-0.02em",
+              color: COLORS.primary,
+              fontStyle: "italic",
+              marginBottom: 18,
+            }}
+          >
+            <span>Congratulations.</span>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 11 }}>
+            <div style={{ display: "flex", height: 9, width: "100%", background: COLORS.line, borderRadius: 4 }} />
+            <div style={{ display: "flex", height: 9, width: "92%", background: COLORS.line, borderRadius: 4 }} />
+            <div style={{ display: "flex", height: 9, width: "96%", background: COLORS.line, borderRadius: 4 }} />
+            <div style={{ display: "flex", height: 9, width: "78%", background: COLORS.line, borderRadius: 4 }} />
+          </div>
+          {/* Red stamp */}
+          <div
+            style={{
+              position: "absolute",
+              top: -28,
+              right: -28,
+              width: 140,
+              height: 140,
+              borderRadius: 9999,
+              background: COLORS.primary,
+              color: COLORS.cream,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontFamily: "Instrument Sans",
+              fontWeight: 700,
+              fontSize: 18,
+              letterSpacing: "2px",
+              textTransform: "uppercase",
+              textAlign: "center",
+              boxShadow: "0 12px 28px rgba(139,31,45,0.35)",
+              transform: "rotate(8deg)",
+            }}
+          >
+            <span style={{ display: "flex" }}>Admitted</span>
+          </div>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            fontFamily: "Instrument Serif",
+            fontWeight: 400,
+            fontSize: 88,
+            lineHeight: 0.98,
+            letterSpacing: "-0.025em",
+            color: COLORS.ink,
+            marginTop: 4,
+            textAlign: "center",
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "center" }}>This letter, for</div>
+          <div style={{ display: "flex", justifyContent: "center", fontStyle: "italic", color: COLORS.primary }}>
+            your child.
+          </div>
+        </div>
+      </div>
+    </ConsultFrame>
+  );
+}
+
+/* ---------- CONCEPT: TIMELINE (year-by-year roadmap) ---------- */
+function ConsultTimeline({ logoUrl }: { logoUrl: string }) {
+  const years = ["9th", "10th", "11th", "12th"];
+  return (
+    <ConsultFrame logoUrl={logoUrl}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 36 }}>
+        <EyebrowTag>The earlier, the stronger</EyebrowTag>
+
+        {/* Timeline graphic */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            position: "relative",
+            width: 820,
+            height: 90,
+          }}
+        >
+          {/* Connector line */}
+          <div
+            style={{
+              position: "absolute",
+              top: 38,
+              left: 36,
+              right: 36,
+              height: 3,
+              background: COLORS.line,
+            }}
+          />
+          {/* Year dots */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              width: "100%",
+              alignItems: "flex-start",
+            }}
+          >
+            {years.map((y) => (
+              <div
+                key={y}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: 10,
+                  width: 110,
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    width: 22,
+                    height: 22,
+                    borderRadius: 9999,
+                    background: COLORS.bg,
+                    border: `3px solid ${COLORS.muted}`,
+                    marginTop: 27,
+                  }}
+                />
+                <div
+                  style={{
+                    display: "flex",
+                    fontFamily: "Instrument Sans",
+                    fontSize: 22,
+                    color: COLORS.muted,
+                    fontWeight: 500,
+                  }}
+                >
+                  {y}
+                </div>
+              </div>
+            ))}
+            {/* Final star: Top 20 */}
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: 10,
+                width: 130,
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: 42,
+                  height: 42,
+                  borderRadius: 9999,
+                  background: COLORS.primary,
+                  color: "#fff",
+                  fontFamily: "Instrument Sans",
+                  fontSize: 22,
+                  fontWeight: 700,
+                  marginTop: 17,
+                  boxShadow: "0 8px 20px rgba(139,31,45,0.35)",
+                }}
+              >
+                <span>★</span>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  fontFamily: "Instrument Sans",
+                  fontSize: 22,
+                  color: COLORS.primary,
+                  fontWeight: 700,
+                }}
+              >
+                Top 20
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            fontFamily: "Instrument Serif",
+            fontWeight: 400,
+            fontSize: 96,
+            lineHeight: 0.98,
+            letterSpacing: "-0.025em",
+            color: COLORS.ink,
+            marginTop: 18,
+            textAlign: "center",
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "center" }}>Every year</div>
+          <div style={{ display: "flex", justifyContent: "center", fontStyle: "italic", color: COLORS.primary }}>
+            matters.
+          </div>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            fontSize: 28,
+            color: COLORS.muted,
+            lineHeight: 1.45,
+            maxWidth: 760,
+            fontFamily: "Instrument Sans",
+            textAlign: "center",
+          }}
+        >
+          <span>Build the academic and extracurricular profile that gets into a Top 20.</span>
+        </div>
+      </div>
+    </ConsultFrame>
+  );
+}
+
 const RENDERERS = {
   outcomes: Outcomes,
   insider: Insider,
@@ -1370,7 +1695,11 @@ const CONSULT_RENDERERS = {
   "consult-honest": ConsultHonest,
   "consult-now": ConsultNow,
   "consult-results": ConsultResults,
+  "consult-letter": ConsultLetter,
+  "consult-timeline": ConsultTimeline,
 } as const;
+
+const CONSULT_ALUMNI_KEY = "consult-alumni";
 
 type ConceptKey = keyof typeof RENDERERS;
 
@@ -1451,6 +1780,23 @@ export async function GET(
       height: dim.h,
       fonts: [...fonts],
     });
+  }
+
+  if (concept === CONSULT_ALUMNI_KEY) {
+    const origin = new URL(req.url).origin;
+    const [fonts, logoUrl, universityLogos] = await Promise.all([
+      loadHimmahFonts(),
+      loadAssetDataUrl(`${origin}/logo.png`, "image/png"),
+      Promise.all(
+        CONSULT_ALUMNI_LOGOS.map(({ slug }) =>
+          loadAssetDataUrl(`${origin}/logos/universities-png/${slug}.png`, "image/png"),
+        ),
+      ),
+    ]);
+    return new ImageResponse(
+      <ConsultAlumni logoUrl={logoUrl} universityLogos={universityLogos} />,
+      { width: dim.w, height: dim.h, fonts: [...fonts] },
+    );
   }
 
   const Render = RENDERERS[concept as ConceptKey];
