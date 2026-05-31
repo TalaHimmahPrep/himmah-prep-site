@@ -1953,7 +1953,7 @@ function CampusFrame({
   head2,
   lead,
   ctaText = "Book free consultation",
-  headSize = 110,
+  headSize = 96,
 }: {
   logoUrl: string;
   bgUrl: string;
@@ -1970,75 +1970,105 @@ function CampusFrame({
         height: "100%",
         width: "100%",
         display: "flex",
+        flexDirection: "column",
         position: "relative",
+        background: COLORS.bg,
         fontFamily: "Instrument Sans",
       }}
     >
-      {/* Background photo */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={bgUrl}
-        alt=""
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-        }}
-      />
-      {/* Dark gradient overlay for legibility */}
+      {/* Top half: campus image */}
       <div
         style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          background:
-            "linear-gradient(180deg, rgba(26,20,20,0.65) 0%, rgba(26,20,20,0.4) 40%, rgba(26,20,20,0.85) 100%)",
-        }}
-      />
-
-      {/* Content over overlay */}
-      <div
-        style={{
-          position: "relative",
           display: "flex",
-          flexDirection: "column",
+          position: "relative",
           width: "100%",
-          height: "100%",
-          padding: "56px 80px 64px",
-          color: COLORS.cream,
+          flexShrink: 0,
+          height: "58%",
+          overflow: "hidden",
         }}
       >
-        {/* Logo (inverted to look right on dark bg) */}
-        <div style={{ display: "flex", justifyContent: "center", marginBottom: 40 }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={bgUrl}
+          alt=""
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+          }}
+        />
+        {/* Subtle bottom fade so the image blends into the cream panel */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            width: "100%",
+            height: 120,
+            background:
+              "linear-gradient(180deg, transparent 0%, rgba(247,247,236,0.4) 60%, " + COLORS.bg + " 100%)",
+          }}
+        />
+        {/* Top eyebrow strip on the photo */}
+        <div
+          style={{
+            position: "absolute",
+            top: 40,
+            left: 0,
+            right: 0,
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              padding: "10px 22px",
+              background: "rgba(26,20,20,0.55)",
+              borderRadius: 999,
+              fontSize: 18,
+              letterSpacing: "2.4px",
+              textTransform: "uppercase",
+              color: COLORS.cream,
+              fontFamily: "Instrument Sans",
+              fontWeight: 600,
+            }}
+          >
+            <span>{eyebrow}</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom half: cream panel with text + CTA */}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          flex: 1,
+          padding: "44px 64px 56px",
+          background: COLORS.bg,
+          color: COLORS.ink,
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        {/* Logo */}
+        <div style={{ display: "flex", justifyContent: "center" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={logoUrl}
             alt=""
-            width={220}
-            height={94}
-            style={{
-              objectFit: "contain",
-              filter: "invert(1) brightness(2.1)",
-            }}
+            width={170}
+            height={72}
+            style={{ objectFit: "contain" }}
           />
         </div>
 
-        <div
-          style={{
-            flex: 1,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 22,
-          }}
-        >
-          <EyebrowTag light>{eyebrow}</EyebrowTag>
+        {/* Headline + subhead */}
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14, textAlign: "center" }}>
           <div
             style={{
               display: "flex",
@@ -2049,8 +2079,7 @@ function CampusFrame({
               fontSize: headSize,
               lineHeight: 0.98,
               letterSpacing: "-0.025em",
-              color: COLORS.cream,
-              textAlign: "center",
+              color: COLORS.ink,
             }}
           >
             <div style={{ display: "flex", justifyContent: "center" }}>{head1}</div>
@@ -2059,8 +2088,8 @@ function CampusFrame({
                 display: "flex",
                 justifyContent: "center",
                 fontStyle: "italic",
-                color: COLORS.accent,
-                marginTop: 6,
+                color: COLORS.primary,
+                marginTop: 4,
               }}
             >
               {head2}
@@ -2070,11 +2099,11 @@ function CampusFrame({
             <div
               style={{
                 display: "flex",
-                fontSize: 30,
-                color: "rgba(247,241,225,0.92)",
+                fontSize: 24,
+                color: COLORS.muted,
                 lineHeight: 1.45,
-                maxWidth: 820,
-                marginTop: 8,
+                maxWidth: 760,
+                marginTop: 6,
                 fontFamily: "Instrument Sans",
                 textAlign: "center",
               }}
@@ -2084,29 +2113,27 @@ function CampusFrame({
           )}
         </div>
 
+        {/* CTA */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: 22,
-            paddingTop: 26,
-            borderTop: "1px solid rgba(247,241,225,0.22)",
-            marginTop: 40,
+            gap: 14,
           }}
         >
           <div
             style={{
               display: "flex",
-              fontSize: 22,
-              color: "rgba(247,241,225,0.78)",
-              letterSpacing: "0.04em",
+              fontSize: 16,
+              color: COLORS.muted,
+              letterSpacing: "0.05em",
               fontFamily: "Instrument Sans",
             }}
           >
             <span>{CONSULT_FOOTER_LIGHT}</span>
           </div>
-          <Pill dark>{ctaText} →</Pill>
+          <Pill>{ctaText} →</Pill>
         </div>
       </div>
     </div>
