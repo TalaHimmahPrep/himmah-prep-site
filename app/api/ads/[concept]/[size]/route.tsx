@@ -1601,7 +1601,7 @@ function ConsultTimeline({ logoUrl }: { logoUrl: string }) {
                 </div>
               </div>
             ))}
-            {/* Final star: Top 20 */}
+            {/* Final dot: Top 20 */}
             <div
               style={{
                 display: "flex",
@@ -1614,22 +1614,14 @@ function ConsultTimeline({ logoUrl }: { logoUrl: string }) {
               <div
                 style={{
                   display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
                   width: 42,
                   height: 42,
                   borderRadius: 9999,
                   background: COLORS.primary,
-                  color: "#fff",
-                  fontFamily: "Instrument Sans",
-                  fontSize: 22,
-                  fontWeight: 700,
                   marginTop: 17,
                   boxShadow: "0 8px 20px rgba(139,31,45,0.35)",
                 }}
-              >
-                <span>★</span>
-              </div>
+              />
               <div
                 style={{
                   display: "flex",
