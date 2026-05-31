@@ -1953,7 +1953,7 @@ function CampusFrame({
   head2,
   lead,
   ctaText = "Book free consultation",
-  headSize = 96,
+  headSize = 108,
 }: {
   logoUrl: string;
   bgUrl: string;
@@ -1976,14 +1976,14 @@ function CampusFrame({
         fontFamily: "Instrument Sans",
       }}
     >
-      {/* Top half: campus image */}
+      {/* Top: campus image with logo + eyebrow overlays */}
       <div
         style={{
           display: "flex",
           position: "relative",
           width: "100%",
           flexShrink: 0,
-          height: "58%",
+          height: "48%",
           overflow: "hidden",
         }}
       >
@@ -2000,36 +2000,66 @@ function CampusFrame({
             objectFit: "cover",
           }}
         />
-        {/* Subtle bottom fade so the image blends into the cream panel */}
+        {/* Top gradient for the logo + eyebrow legibility */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "55%",
+            background:
+              "linear-gradient(180deg, rgba(26,20,20,0.55) 0%, rgba(26,20,20,0.15) 60%, transparent 100%)",
+          }}
+        />
+        {/* Soft fade into cream panel below */}
         <div
           style={{
             position: "absolute",
             bottom: 0,
             left: 0,
             width: "100%",
-            height: 120,
+            height: 60,
             background:
-              "linear-gradient(180deg, transparent 0%, rgba(247,247,236,0.4) 60%, " + COLORS.bg + " 100%)",
+              "linear-gradient(180deg, transparent 0%, " + COLORS.bg + " 100%)",
           }}
         />
-        {/* Top eyebrow strip on the photo */}
+        {/* Logo top-left */}
         <div
           style={{
             position: "absolute",
             top: 40,
-            left: 0,
-            right: 0,
+            left: 50,
             display: "flex",
-            justifyContent: "center",
+          }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={logoUrl}
+            alt=""
+            width={180}
+            height={78}
+            style={{ objectFit: "contain", filter: "invert(1) brightness(2.1)" }}
+          />
+        </div>
+        {/* Eyebrow top-right */}
+        <div
+          style={{
+            position: "absolute",
+            top: 56,
+            right: 50,
+            display: "flex",
           }}
         >
           <div
             style={{
               display: "flex",
               padding: "10px 22px",
-              background: "rgba(26,20,20,0.55)",
+              background: "rgba(247,241,225,0.18)",
+              border: "1px solid rgba(247,241,225,0.35)",
+              backdropFilter: "blur(8px)",
               borderRadius: 999,
-              fontSize: 18,
+              fontSize: 16,
               letterSpacing: "2.4px",
               textTransform: "uppercase",
               color: COLORS.cream,
@@ -2042,33 +2072,29 @@ function CampusFrame({
         </div>
       </div>
 
-      {/* Bottom half: cream panel with text + CTA */}
+      {/* Bottom: cream panel with all text */}
       <div
         style={{
           display: "flex",
           flexDirection: "column",
           flex: 1,
-          padding: "44px 64px 56px",
+          padding: "72px 80px 72px",
           background: COLORS.bg,
           color: COLORS.ink,
           alignItems: "center",
           justifyContent: "space-between",
         }}
       >
-        {/* Logo */}
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={logoUrl}
-            alt=""
-            width={170}
-            height={72}
-            style={{ objectFit: "contain" }}
-          />
-        </div>
-
-        {/* Headline + subhead */}
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14, textAlign: "center" }}>
+        {/* Headline + lead */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 28,
+            textAlign: "center",
+          }}
+        >
           <div
             style={{
               display: "flex",
@@ -2077,7 +2103,7 @@ function CampusFrame({
               fontFamily: "Instrument Serif",
               fontWeight: 400,
               fontSize: headSize,
-              lineHeight: 0.98,
+              lineHeight: 0.96,
               letterSpacing: "-0.025em",
               color: COLORS.ink,
             }}
@@ -2089,7 +2115,7 @@ function CampusFrame({
                 justifyContent: "center",
                 fontStyle: "italic",
                 color: COLORS.primary,
-                marginTop: 4,
+                marginTop: 8,
               }}
             >
               {head2}
@@ -2099,11 +2125,10 @@ function CampusFrame({
             <div
               style={{
                 display: "flex",
-                fontSize: 24,
+                fontSize: 28,
                 color: COLORS.muted,
-                lineHeight: 1.45,
+                lineHeight: 1.5,
                 maxWidth: 760,
-                marginTop: 6,
                 fontFamily: "Instrument Sans",
                 textAlign: "center",
               }}
@@ -2114,27 +2139,7 @@ function CampusFrame({
         </div>
 
         {/* CTA */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: 14,
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              fontSize: 16,
-              color: COLORS.muted,
-              letterSpacing: "0.05em",
-              fontFamily: "Instrument Sans",
-            }}
-          >
-            <span>{CONSULT_FOOTER_LIGHT}</span>
-          </div>
-          <Pill>{ctaText} →</Pill>
-        </div>
+        <Pill>{ctaText} →</Pill>
       </div>
     </div>
   );
