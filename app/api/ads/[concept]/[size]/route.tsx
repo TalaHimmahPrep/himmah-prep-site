@@ -1675,6 +1675,260 @@ function ConsultTimeline({ logoUrl }: { logoUrl: string }) {
   );
 }
 
+/* ---------- CONCEPT: BOOK (calendar card with highlighted slot) ---------- */
+function ConsultBook({ logoUrl }: { logoUrl: string }) {
+  return (
+    <ConsultFrame logoUrl={logoUrl} ctaText="Book a call now">
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 36 }}>
+        {/* Calendar card */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            background: "#ffffff",
+            border: `1px solid ${COLORS.line}`,
+            borderRadius: 18,
+            padding: "32px 40px 36px",
+            width: 460,
+            boxShadow: "0 24px 48px rgba(110,23,34,0.10)",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginBottom: 20,
+            }}
+          >
+            <span
+              style={{
+                display: "flex",
+                fontSize: 13,
+                letterSpacing: "2.6px",
+                color: COLORS.muted,
+                fontFamily: "Instrument Sans",
+                fontWeight: 600,
+                textTransform: "uppercase",
+              }}
+            >
+              This week
+            </span>
+            <span
+              style={{
+                display: "flex",
+                fontSize: 13,
+                letterSpacing: "2.6px",
+                color: COLORS.accent,
+                fontFamily: "Instrument Sans",
+                fontWeight: 700,
+                textTransform: "uppercase",
+              }}
+            >
+              30 min · free
+            </span>
+          </div>
+
+          {/* Time slots */}
+          {[
+            { time: "10:00", taken: true },
+            { time: "11:30", taken: false, highlight: true },
+            { time: "14:00", taken: true },
+            { time: "16:00", taken: false },
+          ].map((s) => (
+            <div
+              key={s.time}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                padding: "14px 20px",
+                marginBottom: 8,
+                borderRadius: 10,
+                background: s.highlight ? COLORS.primary : s.taken ? "#f3ece0" : "#fbf7ec",
+                border: s.highlight
+                  ? `1px solid ${COLORS.primary}`
+                  : `1px solid ${COLORS.line}`,
+              }}
+            >
+              <span
+                style={{
+                  display: "flex",
+                  fontSize: 22,
+                  fontFamily: "Instrument Sans",
+                  fontWeight: 600,
+                  color: s.highlight ? "#fff" : s.taken ? "#9c8c82" : COLORS.ink,
+                  textDecoration: s.taken ? "line-through" : "none",
+                }}
+              >
+                {s.time}
+              </span>
+              <span
+                style={{
+                  display: "flex",
+                  fontSize: 13,
+                  fontFamily: "Instrument Sans",
+                  fontWeight: 700,
+                  letterSpacing: "1.4px",
+                  textTransform: "uppercase",
+                  color: s.highlight ? "#fff" : s.taken ? "#9c8c82" : COLORS.primary,
+                }}
+              >
+                {s.taken ? "Booked" : s.highlight ? "Yours" : "Open"}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            fontFamily: "Instrument Serif",
+            fontWeight: 400,
+            fontSize: 84,
+            lineHeight: 0.98,
+            letterSpacing: "-0.025em",
+            color: COLORS.ink,
+            marginTop: 4,
+            textAlign: "center",
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "center" }}>Find a time</div>
+          <div style={{ display: "flex", justifyContent: "center", fontStyle: "italic", color: COLORS.primary }}>
+            this week.
+          </div>
+        </div>
+      </div>
+    </ConsultFrame>
+  );
+}
+
+/* ---------- CONCEPT: SLOTS (scarcity: only X spots left) ---------- */
+function ConsultSlots({ logoUrl }: { logoUrl: string }) {
+  return (
+    <ConsultFrame logoUrl={logoUrl} ctaText="Book your spot">
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 32 }}>
+        <EyebrowTag>This week&apos;s consultations</EyebrowTag>
+        {/* Big number */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "baseline",
+            gap: 24,
+            fontFamily: "Instrument Serif",
+            color: COLORS.primary,
+          }}
+        >
+          <span style={{ display: "flex", fontSize: 280, lineHeight: 0.85, letterSpacing: "-0.04em" }}>3</span>
+          <span
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              fontSize: 48,
+              fontStyle: "italic",
+              color: COLORS.ink,
+              lineHeight: 1,
+            }}
+          >
+            <span>spots</span>
+            <span>left.</span>
+          </span>
+        </div>
+
+        {/* Slot pills */}
+        <div style={{ display: "flex", gap: 14, flexWrap: "wrap", justifyContent: "center", maxWidth: 760 }}>
+          {[
+            { label: "Mon · 10:00", taken: true },
+            { label: "Mon · 14:00", taken: false },
+            { label: "Tue · 11:00", taken: true },
+            { label: "Wed · 16:00", taken: false },
+            { label: "Thu · 09:30", taken: true },
+            { label: "Fri · 15:00", taken: false },
+          ].map((s) => (
+            <div
+              key={s.label}
+              style={{
+                display: "flex",
+                padding: "14px 22px",
+                borderRadius: 999,
+                background: s.taken ? "transparent" : COLORS.primary,
+                border: `1.5px solid ${s.taken ? COLORS.muted : COLORS.primary}`,
+                color: s.taken ? COLORS.muted : "#fff",
+                fontFamily: "Instrument Sans",
+                fontSize: 22,
+                fontWeight: 600,
+                textDecoration: s.taken ? "line-through" : "none",
+                opacity: s.taken ? 0.55 : 1,
+              }}
+            >
+              <span>{s.label}</span>
+            </div>
+          ))}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            fontSize: 28,
+            color: COLORS.muted,
+            lineHeight: 1.45,
+            maxWidth: 720,
+            marginTop: 6,
+            fontFamily: "Instrument Sans",
+            textAlign: "center",
+          }}
+        >
+          <span>Free 30-min strategy call with a senior advisor. Once they&apos;re gone, they&apos;re gone.</span>
+        </div>
+      </div>
+    </ConsultFrame>
+  );
+}
+
+/* ---------- CONCEPT: TODAY (urgent direct CTA) ---------- */
+function ConsultToday({ logoUrl }: { logoUrl: string }) {
+  return (
+    <ConsultFrame logoUrl={logoUrl} dark ctaText="Book a call now">
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: 26 }}>
+        <EyebrowTag light>30 minutes · senior advisor · free</EyebrowTag>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            fontFamily: "Instrument Serif",
+            fontWeight: 400,
+            fontSize: 156,
+            lineHeight: 0.94,
+            letterSpacing: "-0.03em",
+            color: COLORS.cream,
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "center" }}>Book a call</div>
+          <div style={{ display: "flex", justifyContent: "center", fontStyle: "italic", color: COLORS.accent, marginTop: 8 }}>
+            today.
+          </div>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            fontSize: 30,
+            color: "rgba(247,241,225,0.85)",
+            lineHeight: 1.45,
+            maxWidth: 760,
+            marginTop: 6,
+            fontFamily: "Instrument Sans",
+            textAlign: "center",
+          }}
+        >
+          <span>The conversation that changes the next four years. It starts with one call.</span>
+        </div>
+      </div>
+    </ConsultFrame>
+  );
+}
+
 const RENDERERS = {
   outcomes: Outcomes,
   insider: Insider,
@@ -1689,6 +1943,9 @@ const CONSULT_RENDERERS = {
   "consult-results": ConsultResults,
   "consult-letter": ConsultLetter,
   "consult-timeline": ConsultTimeline,
+  "consult-book": ConsultBook,
+  "consult-slots": ConsultSlots,
+  "consult-today": ConsultToday,
 } as const;
 
 const CONSULT_ALUMNI_KEY = "consult-alumni";
