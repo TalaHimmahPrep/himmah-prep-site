@@ -1934,15 +1934,15 @@ function ConsultToday({ logoUrl }: { logoUrl: string }) {
 
 const CAMPUS_IMAGES = {
   stanford:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Hoover_Tower_Stanford_January_2013.jpg/1024px-Hoover_Tower_Stanford_January_2013.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Hoover_Tower_Stanford_January_2013.jpg/1280px-Hoover_Tower_Stanford_January_2013.jpg",
   mit:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/MIT_Killian_Court.jpg/1024px-MIT_Killian_Court.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/MIT_Killian_Court.jpg/1280px-MIT_Killian_Court.jpg",
   harvard:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Harvard_Yard_in_autumn%2C_Boston%2C_Massachusetts%2C_2015.jpg/1024px-Harvard_Yard_in_autumn%2C_Boston%2C_Massachusetts%2C_2015.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Harvard_Yard_in_autumn%2C_Boston%2C_Massachusetts%2C_2015.jpg/1280px-Harvard_Yard_in_autumn%2C_Boston%2C_Massachusetts%2C_2015.jpg",
   yale:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Harkness_Tower_in_full.jpg/1024px-Harkness_Tower_in_full.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Harkness_Tower_in_full.jpg/1280px-Harkness_Tower_in_full.jpg",
   princeton:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Cannon_Green_and_Nassau_Hall%2C_Princeton_University.jpg/1024px-Cannon_Green_and_Nassau_Hall%2C_Princeton_University.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Cannon_Green_and_Nassau_Hall%2C_Princeton_University.jpg/1280px-Cannon_Green_and_Nassau_Hall%2C_Princeton_University.jpg",
 } as const;
 
 function CampusFrame({
