@@ -1940,9 +1940,9 @@ const CAMPUS_IMAGES = {
   harvard:
     "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Harvard_Yard_in_autumn%2C_Boston%2C_Massachusetts%2C_2015.jpg/1280px-Harvard_Yard_in_autumn%2C_Boston%2C_Massachusetts%2C_2015.jpg",
   yale:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Harkness_Tower_in_full.jpg/1280px-Harkness_Tower_in_full.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Yale_University_Library_-_Sterling_Memorial_Library_%2854105136782%29.jpg/1280px-Yale_University_Library_-_Sterling_Memorial_Library_%2854105136782%29.jpg",
   princeton:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Cannon_Green_and_Nassau_Hall%2C_Princeton_University.jpg/1280px-Cannon_Green_and_Nassau_Hall%2C_Princeton_University.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Princeton_University_Chapel_%2855143708212%29.jpg/1280px-Princeton_University_Chapel_%2855143708212%29.jpg",
 } as const;
 
 function CampusFrame({
