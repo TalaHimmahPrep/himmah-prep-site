@@ -2186,8 +2186,8 @@ const CAMPUS_VARIANTS: Record<
     eyebrow: "100% acceptance · Top-20 universities",
     head1: "The Gulf",
     head2: "to Princeton.",
-    lead: "We've done it 20 times. We'll do it for your child too. Free 30-min strategy call.",
-    headSize: 108,
+    lead: "We've done it 20 times. Your child could be next.",
+    headSize: 96,
   },
 };
 
