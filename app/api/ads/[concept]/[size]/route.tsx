@@ -1934,15 +1934,15 @@ function ConsultToday({ logoUrl }: { logoUrl: string }) {
 
 const CAMPUS_IMAGES = {
   stanford:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Hoover_Tower_Stanford_January_2013.jpg/1280px-Hoover_Tower_Stanford_January_2013.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Hoover_Tower_Stanford_January_2013.jpg/1920px-Hoover_Tower_Stanford_January_2013.jpg",
   mit:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/MIT_Killian_Court.jpg/1280px-MIT_Killian_Court.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/MIT_Killian_Court.jpg/1920px-MIT_Killian_Court.jpg",
   harvard:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Harvard_Yard_in_autumn%2C_Boston%2C_Massachusetts%2C_2015.jpg/1280px-Harvard_Yard_in_autumn%2C_Boston%2C_Massachusetts%2C_2015.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Harvard_Yard_in_autumn%2C_Boston%2C_Massachusetts%2C_2015.jpg/1920px-Harvard_Yard_in_autumn%2C_Boston%2C_Massachusetts%2C_2015.jpg",
   yale:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Yale_University_Library_-_Sterling_Memorial_Library_%2854105136782%29.jpg/1280px-Yale_University_Library_-_Sterling_Memorial_Library_%2854105136782%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Yale_University_Library_-_Sterling_Memorial_Library_%2854105136782%29.jpg/1920px-Yale_University_Library_-_Sterling_Memorial_Library_%2854105136782%29.jpg",
   princeton:
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Princeton_University_Chapel_%2855143708212%29.jpg/1280px-Princeton_University_Chapel_%2855143708212%29.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Princeton_University_Chapel_%2855143708212%29.jpg/1920px-Princeton_University_Chapel_%2855143708212%29.jpg",
 } as const;
 
 function CampusFrame({
@@ -2151,43 +2151,43 @@ const CAMPUS_VARIANTS: Record<
 > = {
   "campus-stanford": {
     campus: "stanford",
-    eyebrow: "Stanford admissions consulting",
-    head1: "We'll get your child",
-    head2: "to Stanford.",
-    lead: "Strategic admissions consulting for Gulf families. Free 30-min call.",
-    headSize: 96,
+    eyebrow: "100% Top-20 acceptance · Class of 2030",
+    head1: "Your child at Stanford.",
+    head2: "Not maybe. When.",
+    lead: "We've placed Gulf students at every Top-20 university. Yours is next.",
+    headSize: 80,
   },
   "campus-harvard": {
     campus: "harvard",
-    eyebrow: "Harvard admissions consulting",
-    head1: "Your child at Harvard.",
-    head2: "We make it happen.",
-    lead: "Strategic admissions consulting for ambitious Gulf families.",
+    eyebrow: "20/20 Top-20 offers last year",
+    head1: "Harvard doesn't pick.",
+    head2: "We get picked.",
+    lead: "Senior advisors. Strategic prep. End-to-end admissions consulting for ambitious Gulf families.",
     headSize: 84,
   },
   "campus-mit": {
     campus: "mit",
-    eyebrow: "Top-20 admissions consulting",
-    head1: "MIT. Stanford. Yale.",
-    head2: "We get students in.",
-    lead: "End-to-end admissions consulting from senior advisors.",
-    headSize: 84,
+    eyebrow: "From 1410 SAT to MIT",
+    head1: "Our students",
+    head2: "don't apply.",
+    lead: "They get in. 100% acceptance to Top-20 last year. Free 30-min call to see if your child is next.",
+    headSize: 108,
   },
   "campus-yale": {
     campus: "yale",
-    eyebrow: "Yale admissions consulting",
-    head1: "Your child",
-    head2: "at Yale.",
-    lead: "Strategic admissions consulting for Gulf families. Free strategy call.",
-    headSize: 100,
+    eyebrow: "Real Gulf students · Real Top-20 offers",
+    head1: "Your child at Yale.",
+    head2: "We make it real.",
+    lead: "Last year: 20/20 Top-20 offers. 500+ students placed. Your child could be next.",
+    headSize: 88,
   },
   "campus-princeton": {
     campus: "princeton",
-    eyebrow: "Princeton admissions consulting",
+    eyebrow: "100% acceptance · Top-20 universities",
     head1: "The Gulf",
     head2: "to Princeton.",
-    lead: "Strategic admissions consulting for ambitious Gulf students.",
-    headSize: 112,
+    lead: "We've done it 20 times. We'll do it for your child too. Free 30-min strategy call.",
+    headSize: 108,
   },
 };
 
