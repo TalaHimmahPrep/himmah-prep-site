@@ -2071,17 +2071,18 @@ function CampusFrame({
         </div>
       </div>
 
-      {/* Bottom: cream panel with all text */}
+      {/* Bottom: cream panel with all text — centered with explicit gaps */}
       <div
         style={{
           display: "flex",
           flexDirection: "column",
           flex: 1,
-          padding: "72px 80px 72px",
+          padding: "60px 80px 80px",
           background: COLORS.bg,
           color: COLORS.ink,
           alignItems: "center",
-          justifyContent: "space-between",
+          justifyContent: "center",
+          gap: 56,
         }}
       >
         {/* Headline + lead */}
@@ -2090,7 +2091,7 @@ function CampusFrame({
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: 28,
+            gap: 32,
             textAlign: "center",
           }}
         >
@@ -2114,7 +2115,7 @@ function CampusFrame({
                 justifyContent: "center",
                 fontStyle: "italic",
                 color: COLORS.primary,
-                marginTop: 8,
+                marginTop: 10,
               }}
             >
               {head2}
@@ -2124,10 +2125,10 @@ function CampusFrame({
             <div
               style={{
                 display: "flex",
-                fontSize: 28,
+                fontSize: 26,
                 color: COLORS.muted,
                 lineHeight: 1.5,
-                maxWidth: 760,
+                maxWidth: 720,
                 fontFamily: "Instrument Sans",
                 textAlign: "center",
               }}
@@ -2153,7 +2154,7 @@ const CAMPUS_VARIANTS: Record<
     eyebrow: "Stanford admissions consulting",
     head1: "We'll get your child",
     head2: "to Stanford.",
-    lead: "Himmah Prep is the GCC's premier college admissions consultancy. Free 30-min strategy call with a senior advisor.",
+    lead: "Strategic admissions consulting for Gulf families. Free 30-min call.",
     headSize: 96,
   },
   "campus-harvard": {
@@ -2161,32 +2162,32 @@ const CAMPUS_VARIANTS: Record<
     eyebrow: "Harvard admissions consulting",
     head1: "Your child at Harvard.",
     head2: "We make it happen.",
-    lead: "Strategic college admissions consulting for ambitious Gulf families. Proven Top-20 results.",
-    headSize: 88,
+    lead: "Strategic admissions consulting for ambitious Gulf families.",
+    headSize: 84,
   },
   "campus-mit": {
     campus: "mit",
-    eyebrow: "Top-20 admissions strategy",
+    eyebrow: "Top-20 admissions consulting",
     head1: "MIT. Stanford. Yale.",
     head2: "We get students in.",
-    lead: "Senior advisors. End-to-end admissions consulting for Gulf families aiming at the world's top universities.",
-    headSize: 88,
+    lead: "End-to-end admissions consulting from senior advisors.",
+    headSize: 84,
   },
   "campus-yale": {
     campus: "yale",
     eyebrow: "Yale admissions consulting",
     head1: "Your child",
     head2: "at Yale.",
-    lead: "Himmah Prep gets Gulf students into the world's top universities. Free strategy call with a senior advisor.",
-    headSize: 112,
+    lead: "Strategic admissions consulting for Gulf families. Free strategy call.",
+    headSize: 116,
   },
   "campus-princeton": {
     campus: "princeton",
     eyebrow: "Princeton admissions consulting",
-    head1: "From Riyadh",
+    head1: "The Gulf",
     head2: "to Princeton.",
-    lead: "Strategic college admissions consulting from the team that's placed students at every Top 20 university.",
-    headSize: 104,
+    lead: "Strategic admissions consulting for ambitious Gulf students.",
+    headSize: 112,
   },
 };
 
