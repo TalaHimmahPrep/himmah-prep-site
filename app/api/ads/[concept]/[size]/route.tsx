@@ -2179,7 +2179,7 @@ const CAMPUS_VARIANTS: Record<
     head1: "Your child",
     head2: "at Yale.",
     lead: "Strategic admissions consulting for Gulf families. Free strategy call.",
-    headSize: 116,
+    headSize: 100,
   },
   "campus-princeton": {
     campus: "princeton",
