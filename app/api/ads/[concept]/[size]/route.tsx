@@ -2170,8 +2170,8 @@ const CAMPUS_VARIANTS: Record<
     eyebrow: "From 1410 SAT to MIT",
     head1: "Our students",
     head2: "don't apply.",
-    lead: "They get in. 100% acceptance to Top-20 last year. Free 30-min call to see if your child is next.",
-    headSize: 108,
+    lead: "They get in. 100% acceptance to Top-20 last year.",
+    headSize: 96,
   },
   "campus-yale": {
     campus: "yale",
