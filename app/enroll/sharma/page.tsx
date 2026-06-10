@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 const PROGRAM_DATES = "June 20, 2026 – February 20, 2029";
 
 export const metadata: Metadata = {
-  title: "Sharma Family — SAT Prep Program | Himmah Prep",
+  title: "Sharma Family — College Counseling Program | Himmah Prep",
   description:
-    "Select your SAT prep plan for the Sharma family.",
+    "Select your college counseling plan for the Sharma family.",
   robots: { index: false, follow: false },
 };
 
@@ -62,7 +62,7 @@ export default function SharmaEnrollPage() {
       <header className="enroll-header">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/logo.webp" alt="Himmah Prep" className="enroll-logo" />
-        <p className="eyebrow">SAT Prep Program</p>
+        <p className="eyebrow">College Counseling Program</p>
         <h1 className="enroll-title serif">
           Sharma <em>Family</em>
         </h1>
@@ -95,7 +95,7 @@ export default function SharmaEnrollPage() {
               <h2 className="enroll-plan-name serif">
                 {plan.name} <em>Plan</em>
               </h2>
-              <p className="enroll-plan-type eyebrow">SAT Prep & Counseling</p>
+              <p className="enroll-plan-type eyebrow">Strategic Counseling</p>
 
               {/* Pricing */}
               <div className="enroll-pricing">
