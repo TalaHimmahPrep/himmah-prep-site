@@ -20,8 +20,7 @@ const plans = [
     fullPriceUSD: "$20,500",
     discountPriceUSD: "$13,875",
     badge: null,
-    // TODO: Add Sharma Foundation Squarespace pay link
-    checkoutUrl: "#FOUNDATION_PAY_LINK",
+    checkoutUrl: "https://www.himmahprep.com/pay-link/71da1e03-a042-4729-9a35-45175443d81d",
   },
   {
     name: "Signature",
@@ -33,8 +32,7 @@ const plans = [
     fullPriceUSD: "$22,500",
     discountPriceUSD: "$15,125",
     badge: null,
-    // TODO: Add Sharma Signature Squarespace pay link
-    checkoutUrl: "#SIGNATURE_PAY_LINK",
+    checkoutUrl: "https://www.himmahprep.com/pay-link/b239766a-2785-4416-99f7-0fa59421e032",
   },
   {
     name: "Elite",
@@ -46,8 +44,7 @@ const plans = [
     fullPriceUSD: "$40,500",
     discountPriceUSD: "$27,125",
     badge: "Best Results",
-    // TODO: Add Sharma Elite Squarespace pay link
-    checkoutUrl: "#ELITE_PAY_LINK",
+    checkoutUrl: "https://www.himmahprep.com/pay-link/c9913ef9-b2cc-46f0-82c9-6ceed00cb66e",
   },
 ];
 
