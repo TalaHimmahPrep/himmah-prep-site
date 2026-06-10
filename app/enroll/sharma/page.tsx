@@ -161,8 +161,8 @@ export default function SharmaEnrollPage() {
       <footer className="enroll-footer">
         <p>
           Questions? Reach out to us at{" "}
-          <a href="mailto:admissions@himmahprep.com">
-            admissions@himmahprep.com
+          <a href="mailto:connect@himmahprep.com">
+            connect@himmahprep.com
           </a>
         </p>
         <p className="enroll-copyright">
