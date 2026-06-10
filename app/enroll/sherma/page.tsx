@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 const PROGRAM_DATES = "June 20, 2026 – February 20, 2029";
 
 export const metadata: Metadata = {
-  title: "Sharma Family — College Counseling Program | Himmah Prep",
+  title: "Sherma Family — College Counseling Program | Himmah Prep",
   description:
-    "Select your college counseling plan for the Sharma family.",
+    "Select your college counseling plan for the Sherma family.",
   robots: { index: false, follow: false },
 };
 
@@ -55,7 +55,7 @@ const sharedFeatures = [
   "Full Himmah Prep Portal access",
 ];
 
-export default function SharmaEnrollPage() {
+export default function ShermaEnrollPage() {
   return (
     <main className="enroll-page">
       {/* Header */}
@@ -64,7 +64,7 @@ export default function SharmaEnrollPage() {
         <img src="/logo.webp" alt="Himmah Prep" className="enroll-logo" />
         <p className="eyebrow">College Counseling Program</p>
         <h1 className="enroll-title serif">
-          Sharma <em>Family</em>
+          Sherma <em>Family</em>
         </h1>
         <p className="enroll-subtitle">
           Choose the plan that best fits your family. All plans include senior
