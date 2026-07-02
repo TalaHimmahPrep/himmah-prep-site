@@ -6,7 +6,7 @@ import { BootcampOnboardingForm } from "@/components/BootcampOnboardingForm";
 export const metadata: Metadata = {
   title: "You're in — SAT Bootcamp — Himmah Prep",
   description:
-    "Payment confirmed. A few details so we can enroll the student in the cohort.",
+    "Payment confirmed. A few details so we can set the student up with the curriculum.",
   robots: { index: false, follow: false },
 };
 
@@ -19,11 +19,11 @@ export default function SatBootcampThankYouPage() {
           <div className="page-hero-inner">
             <p className="eyebrow">Payment received</p>
             <h1 className="display">
-              You&apos;re in. <em>Welcome to the cohort.</em>
+              You&apos;re in. <em>Welcome to the bootcamp.</em>
             </h1>
             <p className="lead">
-              A receipt is on its way to the email you used at checkout. To finish enrolling
-              the student, fill in the details below — it takes under a minute.
+              A receipt is on its way to the email you used at checkout. To set the student up
+              with the curriculum, fill in the details below — it takes under a minute.
             </p>
           </div>
         </section>
@@ -38,30 +38,30 @@ export default function SatBootcampThankYouPage() {
               <li>
                 <span className="step-num serif">01</span>
                 <div>
-                  <h4>Welcome pack within 1 business day</h4>
+                  <h4>Your curriculum, delivered</h4>
                   <p className="muted">
-                    Cohort schedule, joining link for live sessions, and the diagnostic test
-                    you&apos;ll take in Week 1.
+                    You&apos;ll get the full 8-week PDF curriculum and your Week 1 diagnostic at
+                    the email you used at checkout.
                   </p>
                 </div>
               </li>
               <li>
                 <span className="step-num serif">02</span>
                 <div>
-                  <h4>WhatsApp cohort group</h4>
+                  <h4>Start with the diagnostic</h4>
                   <p className="muted">
-                    You&apos;ll be added to the cohort&apos;s WhatsApp group for reminders,
-                    homework, and recordings.
+                    Take the full-length diagnostic first — it sets your target score and shows
+                    which lessons to prioritise.
                   </p>
                 </div>
               </li>
               <li>
                 <span className="step-num serif">03</span>
                 <div>
-                  <h4>First live session</h4>
+                  <h4>Work at your own pace</h4>
                   <p className="muted">
-                    Friday, June 26 at 6pm KSA. The diagnostic happens in this session — be
-                    on a laptop with a stable connection.
+                    Follow the 8-week plan on your own schedule, and revisit any lesson as often
+                    as you like right up to test day.
                   </p>
                 </div>
               </li>

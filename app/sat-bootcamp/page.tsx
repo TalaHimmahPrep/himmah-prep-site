@@ -3,49 +3,223 @@ import Link from "next/link";
 import Script from "next/script";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { JsonLd } from "@/components/JsonLd";
 
 const CHECKOUT_URL =
   "https://pay.himmahprep.com/checkout/buy/0be4eca8-bfb5-46ed-8d9b-9623ca856957";
 
 export const metadata: Metadata = {
-  title: "SAT Bootcamp — 8-Week Summer 2026 Cohort — Himmah Prep",
+  title:
+    "Digital SAT Prep Bootcamp for Gulf Students | 8-Week PDF Curriculum — Himmah Prep",
   description:
-    "An 8-week SAT bootcamp for Gulf students. Live group sessions Fri & Sat at 6pm KSA, capped at 15. Diagnostic, mocks, test-day prep, and recordings. Starts June 26, 2026.",
+    "Himmah Prep's 8-week Digital SAT bootcamp for students across the Gulf — Saudi Arabia, the UAE, Qatar, Kuwait, Bahrain & Oman. A complete, self-paced PDF curriculum: diagnostic, weekly lessons and practice, full-length mocks, and test-day strategy. Aim for 1500+. Instant access, start anytime.",
+  keywords: [
+    "SAT prep",
+    "SAT bootcamp",
+    "SAT prep PDF",
+    "self-paced SAT course",
+    "SAT study guide",
+    "digital SAT prep",
+    "SAT prep Gulf",
+    "SAT prep Saudi Arabia",
+    "SAT prep Riyadh",
+    "SAT prep UAE",
+    "SAT prep Dubai",
+    "SAT prep Qatar",
+    "SAT prep Doha",
+    "SAT prep Kuwait",
+    "SAT prep Bahrain",
+    "SAT prep Oman",
+    "SAT 1500 prep",
+  ],
+  alternates: { canonical: "https://himmahprep.com/sat-bootcamp" },
   openGraph: {
-    title: "SAT Bootcamp — 8-Week Summer 2026 Cohort — Himmah Prep",
+    title: "Digital SAT Prep Bootcamp for Gulf Students — Himmah Prep",
     description:
-      "An 8-week SAT bootcamp for Gulf students. Diagnostic, full curriculum, mocks, and test-day prep. Cohort capped at 15.",
+      "8-week self-paced Digital SAT curriculum for Gulf students, delivered as PDF lessons. Diagnostic, practice, mocks, test-day strategy. Aim for 1500+. Instant access.",
     url: "https://himmahprep.com/sat-bootcamp",
+    siteName: "Himmah Prep",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "/og-sat-bootcamp.png",
+        width: 1080,
+        height: 1080,
+        alt: "Himmah Prep 8-week SAT bootcamp — average admitted SAT 1500–1580 at top US universities.",
+      },
+    ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Digital SAT Prep Bootcamp for Gulf Students — Himmah Prep",
+    description:
+      "8-week self-paced Digital SAT PDF curriculum for Gulf students. Aim for 1500+. Instant access, start anytime.",
+    images: ["/og-sat-bootcamp.png"],
+  },
+};
+
+const FAQS = [
+  {
+    q: "Who is the SAT bootcamp for?",
+    a: "Serious students across the Gulf — Saudi Arabia, the UAE, Qatar, Kuwait, Bahrain, and Oman — in grades 9–12 who want to reach a 1500+ and apply to competitive US universities. It works for IB and American-curriculum students alike.",
+  },
+  {
+    q: "How is the bootcamp delivered? Can I use it from anywhere in the GCC?",
+    a: "The entire bootcamp is a self-paced PDF curriculum you download and keep. There are no live classes to attend — students in Riyadh, Jeddah, Dubai, Abu Dhabi, Doha, Kuwait City, Manama, or Muscat get exactly the same materials and work through them anywhere, on any device, at any time.",
+  },
+  {
+    q: "Does it prepare me for the Digital SAT?",
+    a: "Completely. The curriculum is built for the current Digital SAT — the adaptive Reading & Writing and Math format the College Board administers worldwide — including the on-screen tools, timing, and question styles.",
+  },
+  {
+    q: "What SAT score does the bootcamp aim for?",
+    a: "We build toward 1500+, the range top US universities typically admit (the average admitted SAT at schools like MIT, Harvard, Yale, Stanford, and Princeton is roughly 1500–1580). Your day-one diagnostic sets a realistic target and the plan to reach it.",
+  },
+  {
+    q: "How much does the SAT bootcamp cost?",
+    a: "$800 USD, all-in, for the complete 8-week curriculum — the diagnostic, eight weeks of lessons and practice sets, full-length mocks with answer keys, and a test-day strategy guide. It's yours to keep.",
+  },
+  {
+    q: "How is this different from a private SAT tutor?",
+    a: "You get a complete, structured 8-week curriculum you can work through at your own pace and revisit as often as you like — at a fraction of what one-on-one SAT tutoring in the Gulf usually costs.",
+  },
+  {
+    q: "Do I have to keep up with a fixed schedule?",
+    a: "No. The curriculum is fully self-paced. The 8-week plan is a recommended structure, not a deadline — move faster if you're ready, slow down on the topics that need it, and revisit any lesson as many times as you like right up to test day.",
+  },
+  {
+    q: "When can I start?",
+    a: "As soon as you enrol. Access is instant and there's no cohort or fixed start date — begin your diagnostic the same day and work at your own pace toward test day.",
+  },
+];
+
+const COURSE_LD = {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  name: "SAT Prep Bootcamp — 8-Week Digital SAT Curriculum",
+  description:
+    "A self-paced, 8-week Digital SAT bootcamp for students across the Gulf, delivered as PDF lessons. Diagnostic, full curriculum, weekly practice, full-length mocks, and test-day strategy.",
+  url: "https://himmahprep.com/sat-bootcamp",
+  provider: {
+    "@type": "EducationalOrganization",
+    name: "Himmah Prep",
+    url: "https://himmahprep.com",
+  },
+  educationalLevel: "High school",
+  inLanguage: "en",
+  teaches: [
+    "Digital SAT Reading and Writing",
+    "Digital SAT Math",
+    "Test-taking strategy and pacing",
+  ],
+  audience: { "@type": "EducationalAudience", educationalRole: "student" },
+  offers: {
+    "@type": "Offer",
+    price: "800",
+    priceCurrency: "USD",
+    category: "Paid",
+    url: CHECKOUT_URL,
+    availability: "https://schema.org/InStock",
+  },
+  hasCourseInstance: {
+    "@type": "CourseInstance",
+    courseMode: "online",
+    courseWorkload: "PT24H",
+    location: {
+      "@type": "VirtualLocation",
+      url: "https://himmahprep.com/sat-bootcamp",
+    },
+    offers: {
+      "@type": "Offer",
+      price: "800",
+      priceCurrency: "USD",
+      url: CHECKOUT_URL,
+      availability: "https://schema.org/InStock",
+    },
+  },
+};
+
+const FAQ_LD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const BREADCRUMB_LD = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Himmah Prep",
+      item: "https://himmahprep.com",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "SAT Bootcamp",
+      item: "https://himmahprep.com/sat-bootcamp",
+    },
+  ],
 };
 
 export default function SatBootcampPage() {
   return (
     <>
+      <JsonLd data={COURSE_LD} />
+      <JsonLd data={FAQ_LD} />
+      <JsonLd data={BREADCRUMB_LD} />
       <Header />
       <main className="sat-bootcamp">
 
         <section className="page-hero">
           <div className="page-hero-inner">
-            <p className="eyebrow">Summer 2026 cohort &middot; 15 seats</p>
+            <p className="eyebrow">8-week Digital SAT curriculum</p>
             <h1 className="display">
-              Ace the SAT <em>this summer.</em>
+              Ace the SAT, <em>on your schedule.</em>
             </h1>
             <p className="lead">
-              A focused 8-week cohort for serious students. Two live sessions a week, taught
-              by Ivy League graduates, capped at 15. Every session is recorded.
-              Starts <strong>June 26, 2026.</strong>
+              A complete 8-week Digital SAT curriculum for serious students, delivered as
+              clear, self-paced PDF lessons and built by Ivy League graduates. Diagnostic,
+              weekly practice, and full-length mocks. <strong>Start the moment you enrol.</strong>
             </p>
             <ul className="trust-row">
-              <li>15-student cohort cap</li>
-              <li>Fri &amp; Sat &middot; 90 min &middot; 6pm KSA</li>
-              <li>All sessions recorded</li>
+              <li>Full 8-week curriculum</li>
+              <li>Self-paced PDF lessons</li>
+              <li>Instant access</li>
             </ul>
             <div className="hero-ctas">
               <a href={CHECKOUT_URL} className="btn btn-primary lemonsqueezy-button">
-                Reserve a seat
+                Get instant access
               </a>
             </div>
+          </div>
+        </section>
+
+        <section className="prose-section">
+          <div className="prose">
+            <h2 className="display-2">
+              Digital SAT prep, built for <em>the Gulf.</em>
+            </h2>
+            <p>
+              Himmah Prep&apos;s SAT bootcamp is a complete, self-paced curriculum for students
+              across the GCC — Saudi Arabia, the UAE, Qatar, Kuwait, Bahrain, and Oman. Whether
+              you&apos;re in Riyadh, Jeddah, Dubai, Abu Dhabi, Doha, Kuwait City, Manama, or Muscat,
+              you download the same PDF lessons and work through them on your own time, built by
+              Ivy League graduates.
+            </p>
+            <p>
+              It&apos;s built entirely for the <strong>Digital SAT</strong>, and designed around
+              the two areas Gulf students most often need to close: grammar mechanics on the
+              Reading &amp; Writing section, and the algebra fluency the Math section rewards. The
+              goal is simple — a <strong>1500+</strong>, the range top US universities admit.
+            </p>
           </div>
         </section>
 
@@ -61,13 +235,13 @@ export default function SatBootcampPage() {
               <span className="card-num">01</span>
               <h3>Weeks 1&ndash;2 &middot; Foundations</h3>
               <p>
-                Full-length diagnostic on day one. The class then focuses on the gaps it
+                A full-length diagnostic on day one. The curriculum then targets the gaps it
                 reveals.
               </p>
               <ul className="bullets">
                 <li>Math: algebra core</li>
                 <li>English: passage strategy</li>
-                <li>Homework: diagnostic follow-up</li>
+                <li>Practice: diagnostic follow-up</li>
               </ul>
             </article>
             <article className="card">
@@ -80,7 +254,7 @@ export default function SatBootcampPage() {
               <ul className="bullets">
                 <li>Math: problem solving &amp; advanced</li>
                 <li>English: evidence and inference</li>
-                <li>Homework: timed practice sets</li>
+                <li>Practice: timed practice sets</li>
               </ul>
             </article>
             <article className="card">
@@ -93,20 +267,20 @@ export default function SatBootcampPage() {
               <ul className="bullets">
                 <li>Math: geometry &amp; trig</li>
                 <li>English: expression of ideas, grammar mechanics</li>
-                <li>Homework: targeted drill sets</li>
+                <li>Practice: targeted drill sets</li>
               </ul>
             </article>
             <article className="card">
               <span className="card-num">04</span>
               <h3>Weeks 7&ndash;8 &middot; Test-day</h3>
               <p>
-                Pacing strategy, mock debriefs, and the test-day routine students will run
+                Pacing strategy, mock walkthroughs, and the test-day routine students will run
                 on the morning.
               </p>
               <ul className="bullets">
                 <li>Pacing &amp; strategy</li>
-                <li>Mock debriefs in session</li>
-                <li>Homework: full-length mocks</li>
+                <li>Mock walkthroughs &amp; answer keys</li>
+                <li>Practice: full-length mocks</li>
               </ul>
             </article>
           </div>
@@ -115,22 +289,21 @@ export default function SatBootcampPage() {
         <section className="prose-section">
           <div className="prose">
             <h2 className="display-2">
-              One cohort. <em>Fifteen seats.</em>
+              Study on <em>your own schedule.</em>
             </h2>
             <p>
-              We cap every bootcamp at <strong>15 students</strong>. Small enough that
-              every question gets answered in the room and the session feels personal;
-              big enough to feel like a class, not a tutor on a screen.
+              The entire bootcamp is delivered as clear, well-designed <strong>PDF lessons</strong>{" "}
+              you download and keep. No fixed class times, no scramble to catch a live session —
+              work through the material whenever it suits you, from anywhere in the Gulf.
             </p>
             <p>
-              Cohort begins <strong>Friday, June 26, 2026 at 6pm KSA</strong>. Sessions run
-              live every <strong>Friday and Saturday at 6pm KSA</strong> from there, and the
-              final week shifts to <strong>Thursday and Friday</strong>. Every session is
-              recorded and the recordings stay with the group.
+              The 8-week structure is a proven plan, not a deadline. Move faster if you&apos;re
+              ready, slow down on the topics that need it, and revisit any lesson as many times
+              as you like right up to test day.
             </p>
             <p>
-              Starts <strong>June 26, 2026</strong>. After that, we hold the
-              waitlist for the autumn cohort &mdash; but the seats for this summer are gone.
+              Access is <strong>instant</strong>. Enrol today and start your diagnostic the
+              same day.
             </p>
           </div>
         </section>
@@ -139,104 +312,59 @@ export default function SatBootcampPage() {
           <div className="section-head">
             <p className="eyebrow">Pricing</p>
             <h2 className="display-2">
-              Summer cohort, <em>all-in.</em>
+              Full curriculum, <em>all-in.</em>
             </h2>
           </div>
           <div className="pricing-card">
-            <p className="muted-sm">Full 8-week SAT bootcamp</p>
+            <p className="muted-sm">Complete 8-week SAT bootcamp</p>
             <p className="pricing-amount serif">$800<span className="pricing-cur">USD</span></p>
             <ul className="pricing-list">
-              <li>Diagnostic + full 8-week curriculum</li>
-              <li>Two 90-minute live sessions a week, Fri &amp; Sat 6pm KSA</li>
-              <li>Weekly homework, reviewed in session</li>
-              <li>Recordings of every session</li>
+              <li>Diagnostic + full 8-week PDF curriculum</li>
+              <li>Weekly lessons and practice sets, with answer keys</li>
+              <li>Full-length Digital SAT mock tests</li>
+              <li>Test-day strategy guide &mdash; yours to keep</li>
             </ul>
             <p className="pricing-note muted-sm">
-              Cohort cap: 15 students &middot; Starts June 26, 2026
+              Instant access on purchase &middot; Self-paced &middot; Yours to keep
               <br />
-              Seats are non-refundable, before or after the cohort begins.{" "}
+              Purchases are non-refundable.{" "}
               <Link href="/terms-and-conditions">See terms</Link>.
             </p>
             <a href={CHECKOUT_URL} className="btn btn-primary lemonsqueezy-button">
-              Reserve a seat
+              Get instant access
             </a>
           </div>
         </section>
 
-        <section className="services schedule-section">
+        <section className="page-section page-section-tinted">
           <div className="section-head">
-            <p className="eyebrow">Schedule</p>
+            <p className="eyebrow">FAQ</p>
             <h2 className="display-2">
-              Every <em>session.</em>
+              Questions, <em>answered.</em>
             </h2>
-            <p className="schedule-sub">
-              All sessions live, <strong>6:00&ndash;7:30 pm KSA</strong>. Every one recorded.
-            </p>
           </div>
-          <div className="schedule-grid">
-            <div className="schedule-card">
-              <p className="schedule-card-num">01</p>
-              <p className="schedule-card-week">Week 1</p>
-              <p className="schedule-card-date">Fri &middot; Jun 26</p>
-              <p className="schedule-card-date">Sat &middot; Jun 27</p>
-            </div>
-            <div className="schedule-card">
-              <p className="schedule-card-num">02</p>
-              <p className="schedule-card-week">Week 2</p>
-              <p className="schedule-card-date">Fri &middot; Jul 3</p>
-              <p className="schedule-card-date">Sat &middot; Jul 4</p>
-            </div>
-            <div className="schedule-card">
-              <p className="schedule-card-num">03</p>
-              <p className="schedule-card-week">Week 3</p>
-              <p className="schedule-card-date">Fri &middot; Jul 10</p>
-              <p className="schedule-card-date">Sat &middot; Jul 11</p>
-            </div>
-            <div className="schedule-card">
-              <p className="schedule-card-num">04</p>
-              <p className="schedule-card-week">Week 4</p>
-              <p className="schedule-card-date">Fri &middot; Jul 17</p>
-              <p className="schedule-card-date">Sat &middot; Jul 18</p>
-            </div>
-            <div className="schedule-card">
-              <p className="schedule-card-num">05</p>
-              <p className="schedule-card-week">Week 5</p>
-              <p className="schedule-card-date">Fri &middot; Jul 24</p>
-              <p className="schedule-card-date">Sat &middot; Jul 25</p>
-            </div>
-            <div className="schedule-card">
-              <p className="schedule-card-num">06</p>
-              <p className="schedule-card-week">Week 6</p>
-              <p className="schedule-card-date">Fri &middot; Jul 31</p>
-              <p className="schedule-card-date">Sat &middot; Aug 1</p>
-            </div>
-            <div className="schedule-card">
-              <p className="schedule-card-num">07</p>
-              <p className="schedule-card-week">Week 7</p>
-              <p className="schedule-card-date">Fri &middot; Aug 7</p>
-              <p className="schedule-card-date">Sat &middot; Aug 8</p>
-            </div>
-            <div className="schedule-card schedule-card-final">
-              <p className="schedule-card-num">08</p>
-              <p className="schedule-card-week">Week 8</p>
-              <p className="schedule-card-date">Thu &middot; Aug 13</p>
-              <p className="schedule-card-date">Fri &middot; Aug 14</p>
-            </div>
+          <div className="faq-grid">
+            {FAQS.map((f) => (
+              <details key={f.q} className="faq-item">
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))}
           </div>
         </section>
 
         <section className="cta-strip">
           <div className="cta-strip-inner">
-            <p className="eyebrow">Starts June 26</p>
+            <p className="eyebrow">Instant access</p>
             <h2 className="display-2">
-              Pick the seat <em>before someone else does.</em>
+              Start prepping <em>today.</em>
             </h2>
             <p className="lead-2">
-              Reserve your place in the summer cohort. We&apos;ll confirm the spot within one
-              business day and send next steps.
+              Enrol now and get instant access to the complete 8-week curriculum. Download your
+              lessons and start the diagnostic right away.
             </p>
             <a href={CHECKOUT_URL} className="btn btn-primary lemonsqueezy-button">
-              Reserve a seat
+              Get instant access
             </a>
           </div>
         </section>

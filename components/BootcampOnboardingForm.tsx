@@ -63,9 +63,8 @@ export function BootcampOnboardingForm() {
         <p className="eyebrow">Got it</p>
         <h3 className="serif">We have everything <em>we need.</em></h3>
         <p className="muted">
-          A senior advisor will be in touch within one business day with the cohort
-          welcome pack: schedule, joining link, diagnostic instructions, and the WhatsApp
-          group invite.
+          A senior advisor will be in touch within one business day with the welcome pack:
+          the full 8-week PDF curriculum, your diagnostic, and a suggested study plan.
         </p>
       </div>
     );
