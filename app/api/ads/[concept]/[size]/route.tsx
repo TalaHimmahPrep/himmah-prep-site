@@ -2700,9 +2700,21 @@ export async function GET(
       loadHimmahFonts(),
       loadAssetDataUrl(`${origin}/logo.png`, "image/png"),
     ]);
-    return new ImageResponse(<ReviewRender logoUrl={logoUrl} d={dim} />, {
-      width: dim.w,
-      height: dim.h,
+    const scale = Math.min(3, Math.max(1, Number(new URL(req.url).searchParams.get("scale") ?? "1") || 1));
+    const element = <ReviewRender logoUrl={logoUrl} d={dim} />;
+    const wrapped =
+      scale === 1 ? (
+        element
+      ) : (
+        <div style={{ display: "flex", width: dim.w * scale, height: dim.h * scale }}>
+          <div style={{ display: "flex", width: dim.w, height: dim.h, transform: `scale(${scale})`, transformOrigin: "top left" }}>
+            {element}
+          </div>
+        </div>
+      );
+    return new ImageResponse(wrapped, {
+      width: Math.round(dim.w * scale),
+      height: Math.round(dim.h * scale),
       fonts: [...fonts],
     });
   }
