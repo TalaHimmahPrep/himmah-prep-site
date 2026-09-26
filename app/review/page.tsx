@@ -125,8 +125,8 @@ export default function ReviewPage() {
         </h2>
         <ul className="review-notes-list">
           <li>
-            <strong>Your consultant comments, they do not write.</strong> Every
-            note explains what to change and why. The student makes the change, so
+            <strong>Your consultant comments, they do not write.</strong>{" "}
+            Every note explains what to change and why. The student makes the change, so
             the work stays the student&apos;s own.
           </li>
           <li>

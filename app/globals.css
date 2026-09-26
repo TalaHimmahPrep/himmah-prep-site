@@ -2309,17 +2309,14 @@ section { scroll-margin-top: 80px; }
 
 /* ───────────── Application review (/review, /review/intake) ───────────── */
 .review-steps {
-  max-width: 980px;
+  max-width: 900px;
   margin: 0 auto 40px;
   padding: 0 24px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
 }
-@media (max-width: 860px) {
-  .review-steps { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 480px) {
+@media (max-width: 720px) {
   .review-steps { grid-template-columns: 1fr; }
 }
 .review-step {
