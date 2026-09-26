@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { COMMON_APP_PROMPTS, PACKAGES, type PackageId } from "../packages";
+import { COMMON_APP_PROMPTS, FULL_REVIEW_SCHOOLS, PACKAGES, type PackageId } from "../packages";
 
 /* ────────────────────────────── types ────────────────────────────── */
 
@@ -44,7 +44,8 @@ export type Intake = {
   agree: boolean;
 };
 
-const STORAGE_KEY = "himmah_review_intake_v1";
+const STORAGE_KEY = "himmah_review_intake_v2";
+const VALID_PACKAGES: ReadonlySet<string> = new Set(PACKAGES.map((p) => p.id));
 
 const blankSchool = (): School => ({ name: "", round: "", deadline: "", why: "" });
 const blankSupplement = (): Supplement => ({ school: "", prompt: "", limit: "", essay: "" });
@@ -86,11 +87,11 @@ const EMPTY: Intake = {
 
 const LIMITS = {
   schools: 10,
-  supplements: { personal: 0, supplements: 5, full: 3, "": 5 } as Record<PackageId | "", number>,
+  supplementEssays: FULL_REVIEW_SCHOOLS * 4,
+  supplementSchools: FULL_REVIEW_SCHOOLS,
   activities: 10,
   honors: 5,
   personalWords: 650,
-  supplementWords: 1500,
   activityChars: 150,
 };
 
@@ -162,9 +163,13 @@ const SECTION_META: { key: SectionKey; label: string }[] = [
 function visibleSections(pkg: PackageId | ""): Set<SectionKey> {
   const base: SectionKey[] = ["package", "student", "schools", "context", "questions"];
   if (pkg === "personal") return new Set([...base, "personal"]);
-  if (pkg === "supplements") return new Set([...base, "supplements"]);
+  if (pkg === "activities") return new Set([...base, "activities", "honors"]);
   if (pkg === "full") return new Set([...base, "personal", "supplements", "activities", "honors"]);
   return new Set([...base, "personal", "supplements", "activities", "honors"]);
+}
+
+function distinctSchools(list: Supplement[]): number {
+  return new Set(list.map((s) => s.school.trim().toLowerCase()).filter(Boolean)).size;
 }
 
 /* ────────────────────────────── component ────────────────────────── */
@@ -186,7 +191,8 @@ export function IntakeForm() {
       const raw = window.localStorage.getItem(STORAGE_KEY);
       if (raw) {
         const parsed = JSON.parse(raw) as Partial<Intake>;
-        setData({ ...EMPTY, ...parsed, student: { ...EMPTY.student, ...(parsed.student ?? {}) } });
+        const packageId = VALID_PACKAGES.has(parsed.packageId ?? "") ? parsed.packageId! : "";
+        setData({ ...EMPTY, ...parsed, packageId, student: { ...EMPTY.student, ...(parsed.student ?? {}) } });
         setSavedAt(new Date());
       }
     } catch {
@@ -224,9 +230,8 @@ export function IntakeForm() {
   );
 
   const visible = useMemo(() => visibleSections(data.packageId), [data.packageId]);
-  const suppLimit = LIMITS.supplements[data.packageId];
   const personalWords = words(data.personal.essay);
-  const suppWordsTotal = data.supplements.reduce((n, s) => n + words(s.essay), 0);
+  const suppSchools = distinctSchools(data.supplements);
 
   function clearAll() {
     try {
@@ -251,15 +256,11 @@ export function IntakeForm() {
       p.push("Paste the personal statement.");
     if (visible.has("personal") && personalWords > LIMITS.personalWords)
       p.push(`The personal statement is over ${LIMITS.personalWords} words.`);
-    if (
-      visible.has("supplements") &&
-      data.packageId === "supplements" &&
-      !data.supplements.some((s) => s.essay.trim())
-    )
-      p.push("Paste at least one supplemental essay.");
-    if (visible.has("supplements") && data.packageId === "supplements" && suppWordsTotal > LIMITS.supplementWords)
-      p.push(`Supplements total more than ${LIMITS.supplementWords} words.`);
-    if (!data.agree) p.push("Please confirm the note on how Tala works.");
+    if (visible.has("activities") && data.packageId && !data.activities.some((a) => a.position.trim() || a.description.trim()))
+      p.push("Enter at least one activity.");
+    if (visible.has("supplements") && suppSchools > LIMITS.supplementSchools)
+      p.push(`Supplements cover ${suppSchools} schools. The Full Review includes ${LIMITS.supplementSchools}.`);
+    if (!data.agree) p.push("Please confirm the note on how the review works.");
     return p;
   }
 
@@ -279,7 +280,7 @@ export function IntakeForm() {
     const payload = {
       ...data,
       // trim the arrays to what the package covers
-      supplements: suppLimit ? data.supplements.slice(0, suppLimit) : [],
+      supplements: visible.has("supplements") ? data.supplements.slice(0, LIMITS.supplementEssays) : [],
       activities: visible.has("activities") ? data.activities : [],
       honors: visible.has("honors") ? data.honors : [],
       personal: visible.has("personal") ? data.personal : EMPTY.personal,
@@ -325,8 +326,9 @@ export function IntakeForm() {
             Your intake is <em>in.</em>
           </h1>
           <p className="enroll-subtitle">
-            Thank you, {data.student.name.split(" ")[0] || "there"}. Tala will read
-            everything and reply to {data.student.email} and {data.student.parentEmail}
+            Thank you, {data.student.name.split(" ")[0] || "there"}. A Himmah Prep
+            consultant will read everything and reply to {data.student.email} and{" "}
+            {data.student.parentEmail}
             {selectedPackage ? ` within ${selectedPackage.turnaround}` : ""}. Comments arrive in
             a shared document, with a one-page summary at the top.
           </p>
@@ -337,9 +339,9 @@ export function IntakeForm() {
           </h2>
           <ol className="review-success-list">
             <li>You receive a confirmation email shortly. If it is not there in ten minutes, check spam.</li>
-            <li>Tala reviews in order of deadline. If yours is urgent, reply to the confirmation and say so.</li>
+            <li>Reviews are completed in order of deadline. If yours is urgent, reply to the confirmation and say so.</li>
             <li>When the review is ready, you get a link to the document. Read the summary first, then the comments.</li>
-            <li>Revise, then reply within seven days for your included second read.</li>
+            <li>Revisions are not included. If you want a second read after revising, purchase the same package again.</li>
           </ol>
         </section>
         <footer className="enroll-footer">
@@ -363,7 +365,7 @@ export function IntakeForm() {
         <img src="/logo.webp" alt="Himmah Prep" className="enroll-logo" />
         <p className="eyebrow">Application Review · Intake</p>
         <h1 className="enroll-title serif">
-          Everything Tala will <em>read.</em>
+          Everything your consultant will <em>read.</em>
         </h1>
         <p className="enroll-subtitle">
           Fill in the sections for your package. The form saves in this browser as
@@ -569,7 +571,7 @@ export function IntakeForm() {
             <legend className="intake-legend">School list</legend>
             <p className="intake-hint">
               List every school you are applying to, even the ones not covered by this
-              review. It helps Tala judge fit and tone.
+              review. It helps your consultant judge fit and tone.
             </p>
             {data.schools.map((s, i) => (
               <div className="review-repeat" key={i}>
@@ -729,19 +731,16 @@ export function IntakeForm() {
             <fieldset className="intake-fieldset" id="sec-supplements">
               <legend className="intake-legend">Supplemental essays</legend>
               <p className="intake-hint">
-                {data.packageId === "full"
-                  ? "Up to three supplements are included in the Full Review."
-                  : `Up to five essays, ${LIMITS.supplementWords} words total.`}{" "}
-                Paste each prompt exactly as it appears in the application.
+                Every supplemental essay for up to {LIMITS.supplementSchools} schools. Add one
+                block per essay and paste each prompt exactly as it appears in the
+                application.
               </p>
-              {data.packageId === "supplements" && (
-                <p
-                  className={`review-count review-count--block${suppWordsTotal > LIMITS.supplementWords ? " review-count--over" : ""}`}
-                >
-                  {suppWordsTotal} / {LIMITS.supplementWords} words across all supplements
-                </p>
-              )}
-              {data.supplements.slice(0, suppLimit || 5).map((s, i) => (
+              <p
+                className={`review-count review-count--block${suppSchools > LIMITS.supplementSchools ? " review-count--over" : ""}`}
+              >
+                {suppSchools} / {LIMITS.supplementSchools} schools · {data.supplements.length} essays
+              </p>
+              {data.supplements.map((s, i) => (
                 <div className="review-repeat" key={i}>
                   <div className="review-repeat-head">
                     <span className="review-repeat-num serif">Supplement {i + 1}</span>
@@ -821,7 +820,7 @@ export function IntakeForm() {
                   </label>
                 </div>
               ))}
-              {data.supplements.length < (suppLimit || 5) && (
+              {data.supplements.length < LIMITS.supplementEssays && (
                 <button
                   type="button"
                   className="review-add"
@@ -1040,12 +1039,12 @@ export function IntakeForm() {
 
           {/* ── Context ── */}
           <fieldset className="intake-fieldset" id="sec-context">
-            <legend className="intake-legend">Context Tala should know</legend>
+            <legend className="intake-legend">Context your consultant should know</legend>
             <p className="intake-hint">
               Anything that shapes how the application should read: a gap year, a school
               change, a family circumstance, a grade dip, a story you are unsure whether
-              to tell. This is not judged. It helps Tala read the essays the way an
-              admissions officer would.
+              to tell. This is not judged. It helps your consultant read the application
+              the way an admissions officer would.
             </p>
             <label className="intake-label">
               <span>Context</span>
@@ -1089,9 +1088,9 @@ export function IntakeForm() {
                 onChange={(e) => update("agree", e.target.checked)}
               />
               <span>
-                I understand that Tala comments and does not write or rewrite, that the
-                turnaround clock starts once this intake is complete, and that one
-                revision pass is included within seven days of delivery.
+                I understand that my consultant comments and does not write or rewrite,
+                that the turnaround clock starts once this intake is complete, and that
+                revisions are not included.
               </span>
             </label>
           </fieldset>

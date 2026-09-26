@@ -5,7 +5,7 @@ import { PACKAGES } from "./packages";
 export const metadata: Metadata = {
   title: "Application Review — Himmah Prep",
   description:
-    "Asynchronous college application review by Tala Banaja. Personal statement, supplements, and full application packages with a 48-hour to 5-day turnaround.",
+    "Asynchronous college application review by a Himmah Prep consultant. Personal statement review, activities list audit, and a full review with supplementals.",
   alternates: { canonical: "https://www.himmahprep.com/review" },
 };
 
@@ -20,11 +20,7 @@ const STEPS = [
   },
   {
     title: "Receive your review",
-    body: "Comments land in a shared document within the turnaround window, plus a one-page summary.",
-  },
-  {
-    title: "Revise once, free",
-    body: "Make your changes and reply within seven days. Tala reads it once more.",
+    body: "Comments land in a shared document within the turnaround window, plus a one-page summary you can act on.",
   },
 ];
 
@@ -39,9 +35,10 @@ export default function ReviewPage() {
           Your essays, read the way an <em>admissions officer</em> reads them.
         </h1>
         <p className="enroll-subtitle">
-          Written feedback from Tala Banaja, whose students have earned admission
-          to Harvard, Stanford, and MIT. Fully asynchronous. Pick a package,
-          fill in the intake, and get comments back on a fixed timeline.
+          Written feedback from a Himmah Prep consultant. Our students have earned
+          admission to Harvard, Stanford, MIT, and every Ivy. Fully asynchronous:
+          pick a package, fill in the intake, and get comments back on a fixed
+          timeline.
         </p>
       </header>
 
@@ -63,7 +60,7 @@ export default function ReviewPage() {
             key={p.id}
             className={`enroll-card${p.featured ? " enroll-card--accent" : ""}`}
           >
-            {p.featured && <div className="enroll-badge">Most complete</div>}
+            {p.badge && <div className="enroll-badge">{p.badge}</div>}
             <div className="enroll-card-body">
               <h2 className="enroll-plan-name serif">
                 {p.name} <em>{p.nameAccent}</em>
@@ -124,13 +121,13 @@ export default function ReviewPage() {
 
       <section className="review-notes">
         <h2 className="review-notes-title serif">
-          How Tala <em>works.</em>
+          How the review <em>works.</em>
         </h2>
         <ul className="review-notes-list">
           <li>
-            <strong>She comments, she does not write.</strong> Every note explains
-            what to change and why. The student makes the change, so the work stays
-            the student&apos;s own.
+            <strong>Your consultant comments, they do not write.</strong> Every
+            note explains what to change and why. The student makes the change, so
+            the work stays the student&apos;s own.
           </li>
           <li>
             <strong>Turnaround starts when the intake is complete.</strong> Not at
@@ -140,6 +137,10 @@ export default function ReviewPage() {
             <strong>Word caps are firm.</strong> Over the cap moves you to the next
             package. Rush delivery, at half the turnaround, is available for 50
             percent more. Email to arrange it.
+          </li>
+          <li>
+            <strong>One review per purchase.</strong> Revisions are not included. If
+            you want a second read after you revise, purchase the same package again.
           </li>
           <li>
             <strong>Refunds.</strong> Full refund any time before the review begins.

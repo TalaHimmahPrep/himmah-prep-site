@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { COMMON_APP_PROMPTS, PACKAGE_BY_ID, type PackageId } from "@/app/review/packages";
+import { COMMON_APP_PROMPTS, FULL_REVIEW_SCHOOLS, PACKAGE_BY_ID, type PackageId } from "@/app/review/packages";
 
 export const runtime = "nodejs";
 
@@ -68,20 +68,26 @@ export async function POST(req: Request) {
   ).filter((x) => x.name);
 
   const p = (body.personal ?? {}) as Record<string, unknown>;
-  const personal = {
-    prompt: typeof p.prompt === "number" && p.prompt >= 1 && p.prompt <= 7 ? p.prompt : 0,
-    draft: str(p.draft),
-    intent: str(p.intent),
-    essay: text(p.essay),
-  };
+  const personal =
+    packageId === "activities"
+      ? { prompt: 0, draft: "", intent: "", essay: "" }
+      : {
+          prompt: typeof p.prompt === "number" && p.prompt >= 1 && p.prompt <= 7 ? p.prompt : 0,
+          draft: str(p.draft),
+          intent: str(p.intent),
+          essay: text(p.essay),
+        };
 
-  const supplements = arr(
-    body.supplements,
-    (x) => ({ school: str(x.school), prompt: text(x.prompt), limit: str(x.limit, 10), essay: text(x.essay) }),
-    5,
-  ).filter((x) => x.essay || x.prompt || x.school);
+  const supplements =
+    packageId === "full"
+      ? arr(
+          body.supplements,
+          (x) => ({ school: str(x.school), prompt: text(x.prompt), limit: str(x.limit, 10), essay: text(x.essay) }),
+          FULL_REVIEW_SCHOOLS * 4,
+        ).filter((x) => x.essay || x.prompt || x.school)
+      : [];
 
-  const activities = arr(
+  const activities = packageId === "personal" ? [] : arr(
     body.activities,
     (x) => ({
       type: str(x.type),
@@ -94,7 +100,7 @@ export async function POST(req: Request) {
     10,
   ).filter((x) => x.position || x.description);
 
-  const honors = arr(
+  const honors = packageId === "personal" ? [] : arr(
     body.honors,
     (x) => ({ title: str(x.title), level: str(x.level), grade: str(x.grade, 10) }),
     5,

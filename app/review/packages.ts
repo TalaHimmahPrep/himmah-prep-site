@@ -1,4 +1,4 @@
-export type PackageId = "personal" | "supplements" | "full";
+export type PackageId = "personal" | "activities" | "full";
 
 export type ReviewPackage = {
   id: PackageId;
@@ -12,66 +12,69 @@ export type ReviewPackage = {
   sections: string;
   /** Squarespace pay link. Leave empty until the link exists — the button shows "Coming soon". */
   checkoutUrl: string;
+  badge?: string;
   featured?: boolean;
 };
 
 export const PACKAGES: ReviewPackage[] = [
   {
     id: "personal",
-    name: "Personal",
-    nameAccent: "Statement",
-    priceSAR: "750 SAR",
-    priceUSD: "$200",
+    name: "Personal Statement",
+    nameAccent: "Review",
+    priceSAR: "450 SAR",
+    priceUSD: "$120",
     turnaround: "48 hours",
-    scope: "One Common App essay, up to 650 words.",
+    scope: "One Common App personal statement, up to 650 words.",
     includes: [
       "Paragraph-by-paragraph comments in a shared document",
       "One-page summary: what works, the three things to fix",
-      "One revision pass within seven days",
+      "A read on whether the essay answers the prompt you chose",
     ],
     sections: "Sections 1, 2, 3, 7, 8",
     checkoutUrl: "",
+    badge: "Most popular",
+    featured: true,
   },
   {
-    id: "supplements",
-    name: "Supplement",
-    nameAccent: "Bundle",
-    priceSAR: "1,200 SAR",
-    priceUSD: "$320",
-    turnaround: "72 hours",
-    scope: "Up to five school supplements, 1,500 words total.",
+    id: "activities",
+    name: "Activities List",
+    nameAccent: "Audit",
+    priceSAR: "350 SAR",
+    priceUSD: "$95",
+    turnaround: "48 hours",
+    scope: "Your ten Common App activities and five honors, line by line.",
     includes: [
-      "Comments on every supplement, with fit notes per school",
-      "One-page summary across the set",
-      "One revision pass within seven days",
+      "Rewritten-order recommendation: what leads, what drops",
+      "Each 150-character description marked for verbs, numbers, and outcomes",
+      "Honors checked for level, wording, and duplicates",
     ],
-    sections: "Sections 1, 2, 4, 7, 8",
+    sections: "Sections 1, 2, 5, 6, 7, 8",
     checkoutUrl: "",
   },
   {
     id: "full",
-    name: "Full",
-    nameAccent: "Review",
-    priceSAR: "2,500 SAR",
-    priceUSD: "$665",
-    turnaround: "5 days",
+    name: "Full Review",
+    nameAccent: "+ Supplementals",
+    priceSAR: "1,875 SAR",
+    priceUSD: "$500",
+    turnaround: "7 days",
     scope:
-      "Personal statement, activities list, honors, up to three supplements, and a school list check.",
+      "Personal statement, activities, honors, school list, and every supplemental essay for three schools.",
     includes: [
-      "Everything in both packages above",
-      "Activities and honors reviewed line by line",
+      "Everything in the two reviews above",
+      "All supplemental essays for up to three schools, with fit notes per school",
       "School list check: rounds, reach, and gaps",
-      "One revision pass within seven days",
     ],
     sections: "All sections",
     checkoutUrl: "",
-    featured: true,
   },
 ];
 
 export const PACKAGE_BY_ID = Object.fromEntries(
   PACKAGES.map((p) => [p.id, p]),
 ) as Record<PackageId, ReviewPackage>;
+
+export const FULL_REVIEW_SCHOOLS = 3;
 
 export const COMMON_APP_PROMPTS: string[] = [
   "Some students have a background, identity, interest, or talent that is so meaningful they believe their application would be incomplete without it. If this sounds like you, then please share your story.",
