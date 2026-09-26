@@ -31,7 +31,7 @@ export const PACKAGES: ReviewPackage[] = [
       "A read on whether the essay answers the prompt you chose",
     ],
     sections: "Sections 1, 2, 3, 7, 8",
-    checkoutUrl: "",
+    checkoutUrl: "https://www.himmahprep.com/pay-link/91b3f225-a67a-49da-8475-b9d49310882d",
     badge: "Most popular",
     featured: true,
   },
