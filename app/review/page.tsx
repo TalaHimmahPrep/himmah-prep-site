@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { PACKAGES } from "./packages";
 
 export const metadata: Metadata = {
@@ -15,8 +14,8 @@ const STEPS = [
     body: "Pay once through the secure link. No calls, no scheduling.",
   },
   {
-    title: "Fill in the intake",
-    body: "Paste your essays and details into the online form. It saves as you go, so you can come back.",
+    title: "Check your email",
+    body: "Within a few minutes of paying you receive a personal link to the intake form. Paste your essays there. It saves as you go.",
   },
   {
     title: "Receive your review",
@@ -106,17 +105,15 @@ export default function ReviewPage() {
       </section>
 
       <section className="review-after">
-        <p className="eyebrow">Already paid?</p>
+        <p className="eyebrow">After you pay</p>
         <h2 className="review-after-title serif">
-          Start your <em>intake.</em>
+          Your intake link arrives by <em>email.</em>
         </h2>
         <p className="enroll-subtitle">
-          The form takes about 20 minutes with your essays ready to paste. It
-          saves in your browser as you type.
+          Look for a message from Himmah Prep within a few minutes of checkout.
+          It carries your order number and a personal link to the intake form,
+          which takes about 20 minutes with your essays ready to paste.
         </p>
-        <Link href="/review/intake" className="enroll-cta enroll-cta--primary review-after-cta">
-          Open the intake form
-        </Link>
       </section>
 
       <section className="review-notes">
@@ -143,8 +140,8 @@ export default function ReviewPage() {
             you want a second read after you revise, purchase the same package again.
           </li>
           <li>
-            <strong>Refunds.</strong> Full refund any time before the review begins.
-            None after delivery.
+            <strong>No refunds.</strong> All purchases are final. Please check the
+            package scope before you pay.
           </li>
         </ul>
       </section>

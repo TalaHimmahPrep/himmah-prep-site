@@ -35,6 +35,11 @@ export async function POST(req: Request) {
   // Honeypot
   if (body.website) return NextResponse.json({ ok: true });
 
+  const orderNumber = str(body.orderNumber, 40).replace(/[^A-Za-z0-9-]/g, "");
+  if (orderNumber.length < 3) {
+    return NextResponse.json({ ok: false, error: "Order number required" }, { status: 400 });
+  }
+
   const packageId = str(body.packageId) as PackageId | "";
   const pkg = packageId ? PACKAGE_BY_ID[packageId] : undefined;
   if (!pkg) {
@@ -120,8 +125,8 @@ export async function POST(req: Request) {
   // A single readable dossier so the email is usable without opening the dashboard.
   const lines: string[] = [];
   const h = (t: string) => lines.push("", `── ${t.toUpperCase()} ──`);
-  h("Package");
-  lines.push(`${pkg.name} ${pkg.nameAccent} · ${pkg.priceSAR} · ${pkg.turnaround}`);
+  h("Order");
+  lines.push(`Squarespace order #${orderNumber} · ${pkg.name} ${pkg.nameAccent} · ${pkg.priceSAR} · ${pkg.turnaround}`);
   h("Student");
   lines.push(
     `${student.name} · ${student.email}${student.whatsapp ? ` · ${student.whatsapp}` : ""}`,
@@ -172,9 +177,10 @@ export async function POST(req: Request) {
   const dossier = lines.join("\n").trim();
 
   const payload = {
-    _subject: `Application review — ${student.name} · ${pkg.name} ${pkg.nameAccent}${student.earliestDeadline ? ` · due ${student.earliestDeadline}` : ""}`,
+    _subject: `Application review #${orderNumber} — ${student.name} · ${pkg.name} ${pkg.nameAccent}${student.earliestDeadline ? ` · due ${student.earliestDeadline}` : ""}`,
     _replyto: student.parentEmail,
     source: "application-review-intake",
+    orderNumber,
     package: `${pkg.name} ${pkg.nameAccent}`,
     studentName: student.name,
     studentEmail: student.email,

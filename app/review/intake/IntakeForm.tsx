@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { COMMON_APP_PROMPTS, FULL_REVIEW_SCHOOLS, PACKAGES, type PackageId } from "../packages";
 
 /* ────────────────────────────── types ────────────────────────────── */
@@ -176,7 +177,15 @@ function distinctSchools(list: Supplement[]): number {
 
 type Status = "idle" | "submitting" | "ok" | "error";
 
+function cleanOrder(v: string | null): string {
+  return (v ?? "").replace(/[^A-Za-z0-9-]/g, "").slice(0, 40);
+}
+
 export function IntakeForm() {
+  const params = useSearchParams();
+  const [orderNumber, setOrderNumber] = useState<string>(() => cleanOrder(params.get("order")));
+  const [orderDraft, setOrderDraft] = useState("");
+  const pkgParam = params.get("pkg");
   const [data, setData] = useState<Intake>(EMPTY);
   const [hydrated, setHydrated] = useState(false);
   const [savedAt, setSavedAt] = useState<Date | null>(null);
@@ -198,8 +207,27 @@ export function IntakeForm() {
     } catch {
       /* ignore */
     }
+    // A package passed in the email link wins over whatever was saved.
+    if (pkgParam && VALID_PACKAGES.has(pkgParam)) {
+      setData((d) => ({ ...d, packageId: pkgParam as PackageId }));
+    }
     setHydrated(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  function unlock(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const o = cleanOrder(orderDraft);
+    if (o.length < 3) return;
+    setOrderNumber(o);
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.set("order", o);
+      window.history.replaceState(null, "", url.toString());
+    } catch {
+      /* ignore */
+    }
+  }
 
   // Autosave, debounced
   useEffect(() => {
@@ -279,6 +307,7 @@ export function IntakeForm() {
     const fd = new FormData(e.currentTarget);
     const payload = {
       ...data,
+      orderNumber,
       // trim the arrays to what the package covers
       supplements: visible.has("supplements") ? data.supplements.slice(0, LIMITS.supplementEssays) : [],
       activities: visible.has("activities") ? data.activities : [],
@@ -313,6 +342,58 @@ export function IntakeForm() {
 
   const selectedPackage = PACKAGES.find((p) => p.id === data.packageId);
 
+  /* ─────────────────────────────── gate ────────────────────────────── */
+
+  if (!orderNumber) {
+    return (
+      <main className="enroll-page">
+        <header className="enroll-header">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo.webp" alt="Himmah Prep" className="enroll-logo" />
+          <p className="eyebrow">Application Review · Intake</p>
+          <h1 className="enroll-title serif">
+            This form opens from your <em>email.</em>
+          </h1>
+          <p className="enroll-subtitle">
+            After you purchase a review, Himmah Prep emails you a personal link that
+            opens this form with your order number filled in. Use that link, or enter
+            the order number from your receipt below.
+          </p>
+        </header>
+        <section className="review-gate">
+          <form className="intake-form review-gate-form" onSubmit={unlock}>
+            <label className="intake-label">
+              <span>Order number</span>
+              <input
+                type="text"
+                inputMode="numeric"
+                value={orderDraft}
+                onChange={(e) => setOrderDraft(e.target.value)}
+                placeholder="From your Squarespace receipt, e.g. 00042"
+                autoFocus
+              />
+            </label>
+            <button type="submit" className="intake-submit" disabled={cleanOrder(orderDraft).length < 3}>
+              Open the intake form
+            </button>
+            <p className="intake-hint review-gate-hint">
+              Haven&apos;t purchased yet?{" "}
+              <Link href="/review#packages" className="review-link">
+                See the packages.
+              </Link>
+            </p>
+          </form>
+        </section>
+        <footer className="enroll-footer">
+          <p>
+            Can&apos;t find the email? <a href="mailto:admissions@himmahprep.com">admissions@himmahprep.com</a>
+          </p>
+          <p className="enroll-copyright">&copy; {new Date().getFullYear()} Himmah Prep. All rights reserved.</p>
+        </footer>
+      </main>
+    );
+  }
+
   /* ───────────────────────────── success ───────────────────────────── */
 
   if (status === "ok") {
@@ -321,7 +402,7 @@ export function IntakeForm() {
         <header className="enroll-header">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo.webp" alt="Himmah Prep" className="enroll-logo" />
-          <p className="eyebrow">Received</p>
+          <p className="eyebrow">Received · Order #{orderNumber}</p>
           <h1 className="enroll-title serif">
             Your intake is <em>in.</em>
           </h1>
@@ -397,7 +478,10 @@ export function IntakeForm() {
           {/* ── Package ── */}
           <fieldset className="intake-fieldset" id="sec-package">
             <legend className="intake-legend">Which package did you purchase?</legend>
-            <p className="intake-hint">This decides which sections appear below.</p>
+            <p className="intake-hint">
+              Order <strong>#{orderNumber}</strong>. Choose the package on your receipt.
+              This decides which sections appear below.
+            </p>
             <div className="review-pkgs" role="radiogroup">
               {PACKAGES.map((p) => (
                 <label
