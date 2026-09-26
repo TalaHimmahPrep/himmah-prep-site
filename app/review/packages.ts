@@ -49,7 +49,7 @@ export const PACKAGES: ReviewPackage[] = [
       "Honors checked for level, wording, and duplicates",
     ],
     sections: "Sections 1, 2, 5, 6, 7, 8",
-    checkoutUrl: "",
+    checkoutUrl: "https://www.himmahprep.com/pay-link/a390f4de-7c71-4d0f-b82d-4bf7640495b4",
   },
   {
     id: "full",
@@ -66,7 +66,7 @@ export const PACKAGES: ReviewPackage[] = [
       "School list check: rounds, reach, and gaps",
     ],
     sections: "All sections",
-    checkoutUrl: "",
+    checkoutUrl: "https://www.himmahprep.com/pay-link/f4d1661a-182d-475f-96e2-0b983e593359",
   },
 ];
 
