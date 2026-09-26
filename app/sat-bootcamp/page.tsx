@@ -32,12 +32,12 @@ export const metadata: Metadata = {
     "SAT prep Oman",
     "SAT 1500 prep",
   ],
-  alternates: { canonical: "https://himmahprep.com/sat-bootcamp" },
+  alternates: { canonical: "https://www.himmahprep.com/sat-bootcamp" },
   openGraph: {
     title: "Digital SAT Prep Bootcamp for Gulf Students — Himmah Prep",
     description:
       "8-week self-paced Digital SAT curriculum for Gulf students, delivered as PDF lessons. Diagnostic, practice, mocks, test-day strategy. Aim for 1500+. Instant access.",
-    url: "https://himmahprep.com/sat-bootcamp",
+    url: "https://www.himmahprep.com/sat-bootcamp",
     siteName: "Himmah Prep",
     locale: "en_US",
     type: "website",
@@ -100,11 +100,11 @@ const COURSE_LD = {
   name: "SAT Prep Bootcamp — 8-Week Digital SAT Curriculum",
   description:
     "A self-paced, 8-week Digital SAT bootcamp for students across the Gulf, delivered as PDF lessons. Diagnostic, full curriculum, weekly practice, full-length mocks, and test-day strategy.",
-  url: "https://himmahprep.com/sat-bootcamp",
+  url: "https://www.himmahprep.com/sat-bootcamp",
   provider: {
     "@type": "EducationalOrganization",
     name: "Himmah Prep",
-    url: "https://himmahprep.com",
+    url: "https://www.himmahprep.com",
   },
   educationalLevel: "High school",
   inLanguage: "en",
@@ -128,7 +128,7 @@ const COURSE_LD = {
     courseWorkload: "PT24H",
     location: {
       "@type": "VirtualLocation",
-      url: "https://himmahprep.com/sat-bootcamp",
+      url: "https://www.himmahprep.com/sat-bootcamp",
     },
     offers: {
       "@type": "Offer",
@@ -158,13 +158,13 @@ const BREADCRUMB_LD = {
       "@type": "ListItem",
       position: 1,
       name: "Himmah Prep",
-      item: "https://himmahprep.com",
+      item: "https://www.himmahprep.com",
     },
     {
       "@type": "ListItem",
       position: 2,
       name: "SAT Bootcamp",
-      item: "https://himmahprep.com/sat-bootcamp",
+      item: "https://www.himmahprep.com/sat-bootcamp",
     },
   ],
 };

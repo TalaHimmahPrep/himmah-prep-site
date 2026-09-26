@@ -6,6 +6,7 @@ import { TestimonialCarousel, type Testimonial } from "@/components/Carousel";
 import { UniversityLogo, UNIVERSITIES } from "@/components/UniversityLogo";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://www.himmahprep.com/results" },
   title: "Student Results & University Acceptances — Himmah Prep",
   description:
     "Himmah Prep students have been admitted to every Ivy League institution and the top 20 universities in the United States. Real outcomes, real students.",
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
     title: "Student Results & University Acceptances — Himmah Prep",
     description:
       "Acceptances to every Ivy, MIT, Stanford, and the UC system. 100% college acceptance track record.",
-    url: "https://himmahprep.com/results",
+    url: "https://www.himmahprep.com/results",
   },
 };
 

@@ -9,6 +9,7 @@ import { JsonLd } from "@/components/JsonLd";
 
 type CountryConfig = {
   slug: string;
+  satCities?: { slug: string; name: string }[];
   country: string;
   demonym: string;
   adjective: string;
@@ -20,6 +21,7 @@ type CountryConfig = {
 const COUNTRIES: Record<string, CountryConfig> = {
   "saudi-arabia": {
     slug: "saudi-arabia",
+    satCities: [{ slug: "jeddah", name: "Jeddah" }, { slug: "riyadh", name: "Riyadh" }, { slug: "dammam", name: "Dammam & Khobar" }],
     country: "Saudi Arabia",
     demonym: "Saudi Arabian",
     adjective: "Saudi",
@@ -31,6 +33,7 @@ const COUNTRIES: Record<string, CountryConfig> = {
   },
   uae: {
     slug: "uae",
+    satCities: [{ slug: "dubai", name: "Dubai" }, { slug: "abu-dhabi", name: "Abu Dhabi" }],
     country: "the UAE",
     demonym: "UAE",
     adjective: "UAE",
@@ -42,6 +45,7 @@ const COUNTRIES: Record<string, CountryConfig> = {
   },
   qatar: {
     slug: "qatar",
+    satCities: [{ slug: "doha", name: "Doha" }],
     country: "Qatar",
     demonym: "Qatari",
     adjective: "Qatari",
@@ -53,6 +57,7 @@ const COUNTRIES: Record<string, CountryConfig> = {
   },
   kuwait: {
     slug: "kuwait",
+    satCities: [{ slug: "kuwait-city", name: "Kuwait City" }],
     country: "Kuwait",
     demonym: "Kuwaiti",
     adjective: "Kuwaiti",
@@ -64,6 +69,7 @@ const COUNTRIES: Record<string, CountryConfig> = {
   },
   bahrain: {
     slug: "bahrain",
+    satCities: [{ slug: "manama", name: "Manama" }],
     country: "Bahrain",
     demonym: "Bahraini",
     adjective: "Bahraini",
@@ -75,6 +81,7 @@ const COUNTRIES: Record<string, CountryConfig> = {
   },
   oman: {
     slug: "oman",
+    satCities: [{ slug: "muscat", name: "Muscat" }],
     country: "Oman",
     demonym: "Omani",
     adjective: "Omani",
@@ -174,7 +181,7 @@ export async function generateMetadata({
   const { country } = await params;
   const cfg = COUNTRIES[country];
   if (!cfg) return {};
-  const url = `https://himmahprep.com/${cfg.slug}`;
+  const url = `https://www.himmahprep.com/${cfg.slug}`;
   const keywords = [
     `${cfg.country} college counseling`,
     `${cfg.country} college admissions`,
@@ -216,7 +223,7 @@ export default async function CountryPage({
   const cfg = COUNTRIES[country];
   if (!cfg) notFound();
 
-  const url = `https://himmahprep.com/${cfg.slug}`;
+  const url = `https://www.himmahprep.com/${cfg.slug}`;
   const cities = citiesPhrase(cfg.cities);
 
   const orgLd = {
@@ -255,7 +262,7 @@ export default async function CountryPage({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Himmah Prep", item: "https://himmahprep.com" },
+      { "@type": "ListItem", position: 1, name: "Himmah Prep", item: "https://www.himmahprep.com" },
       { "@type": "ListItem", position: 2, name: cfg.country, item: url },
     ],
   };
@@ -570,6 +577,18 @@ export default async function CountryPage({
               our students land at <strong>1500+</strong>. For students at IB or American
               schools, TOEFL/IELTS is often waived; we&apos;ll tell you when it isn&apos;t.
             </p>
+            {cfg.satCities && (
+              <p>
+                See how our 1-on-1 SAT prep works for students in{" "}
+                {cfg.satCities.map((c, i) => (
+                  <span key={c.slug}>
+                    <Link href={`/sat-prep/${c.slug}`}>{c.name}</Link>
+                    {i < cfg.satCities!.length - 2 ? ", " : i === cfg.satCities!.length - 2 ? " and " : ""}
+                  </span>
+                ))}
+                .
+              </p>
+            )}
           </div>
         </section>
 

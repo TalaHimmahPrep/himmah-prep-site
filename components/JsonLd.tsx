@@ -14,11 +14,11 @@ export function JsonLd({ data }: JsonLdProps) {
 export const ORG_LD = {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
-  "@id": "https://himmahprep.com/#organization",
+  "@id": "https://www.himmahprep.com/#organization",
   name: "Himmah Prep",
-  alternateName: "himmahPREP",
-  url: "https://himmahprep.com",
-  logo: "https://himmahprep.com/logo.webp",
+  alternateName: ["himmahPREP", "Himmah"],
+  url: "https://www.himmahprep.com",
+  logo: "https://www.himmahprep.com/logo.webp",
   description:
     "Premium college admissions consulting, standardized test prep, leadership coaching, and summer planning for Gulf students. Founded in 2020 by Harvard and UPenn graduates.",
   foundingDate: "2020",
@@ -37,5 +37,19 @@ export const ORG_LD = {
   sameAs: [
     "https://www.instagram.com/himmahprep",
     "https://www.linkedin.com/company/himmah-prep",
+    "https://www.facebook.com/profile.php?id=61574378304650",
   ],
+  knowsAbout: [
+    "US college admissions",
+    "Ivy League admissions",
+    "Digital SAT preparation",
+    "ACT preparation",
+    "Common App essays",
+  ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "admissions",
+    url: "https://www.himmahprep.com/apply",
+    availableLanguage: ["English", "Arabic"],
+  },
 };

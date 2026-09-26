@@ -6,6 +6,7 @@ import { Cursor } from "@/components/Cursor";
 import { ConsultPopup } from "@/components/ConsultPopup";
 import { JsonLd, ORG_LD } from "@/components/JsonLd";
 import { MetaPixel } from "@/components/MetaPixel";
+import { LookSwitcher } from "@/components/LookSwitcher";
 import "./globals.css";
 
 const instrumentSans = Instrument_Sans({
@@ -25,40 +26,41 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: {
-    default: "Himmah Prep — Ivy League College Counseling & Admissions Prep",
+    default: "Himmah Prep | College Counseling & SAT Prep for Gulf Students",
     template: "%s",
   },
   description:
-    "All-inclusive college prep with 100% Ivy League advisors. Expert SAT/ACT prep, application strategy, and leadership coaching for Gulf students. 100% college acceptance track record. Free consultation available.",
-  metadataBase: new URL("https://himmahprep.com"),
+    "Ivy League college counseling and 1-on-1 SAT prep for students in Saudi Arabia, the UAE, Qatar, Kuwait, Bahrain and Oman. Riyadh, Jeddah, Dubai, Doha and online. 100% acceptance track record. Free consultation.",
+  metadataBase: new URL("https://www.himmahprep.com"),
+  alternates: { canonical: "./" },
   applicationName: "Himmah Prep",
   authors: [{ name: "Himmah Prep" }],
   keywords: [
-    "Ivy League college counseling",
-    "college admissions consulting",
-    "college admissions prep",
-    "Gulf college admissions",
-    "Saudi Arabia college counseling",
-    "UAE college counseling",
-    "SAT prep Gulf",
-    "ACT prep Gulf",
-    "Harvard admissions",
-    "international student college applications",
+    "Himmah Prep",
+    "college counseling Saudi Arabia",
+    "college admissions consultant Riyadh",
+    "college admissions consultant Jeddah",
+    "SAT prep Saudi Arabia",
+    "SAT prep Jeddah",
+    "SAT prep Riyadh",
+    "SAT tutor Dubai",
+    "Ivy League college counseling Gulf",
+    "US university admissions GCC students",
   ],
   openGraph: {
-    title: "Himmah Prep — Ivy League College Counseling & Admissions Prep",
+    title: "Himmah Prep | College Counseling & SAT Prep for Gulf Students",
     description:
-      "All-inclusive college prep with 100% Ivy League advisors. SAT/ACT prep, application strategy, and leadership coaching for Gulf students. Free consultation available.",
-    url: "https://himmahprep.com",
+      "Ivy League college counseling and 1-on-1 SAT prep for students in Saudi Arabia and across the Gulf. 100% acceptance track record. Free consultation.",
+    url: "https://www.himmahprep.com",
     siteName: "Himmah Prep",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Himmah Prep — Ivy League College Counseling & Admissions Prep",
+    title: "Himmah Prep | College Counseling & SAT Prep for Gulf Students",
     description:
-      "All-inclusive college prep with 100% Ivy League advisors. SAT/ACT prep, application strategy, and leadership coaching for Gulf students.",
+      "Ivy League college counseling and 1-on-1 SAT prep for students in Saudi Arabia and across the Gulf. 100% acceptance track record.",
   },
   robots: {
     index: true,
@@ -91,6 +93,7 @@ export default function RootLayout({
         <Analytics />
         <SpeedInsights />
         <MetaPixel />
+        {process.env.NODE_ENV === "development" && <LookSwitcher />}
       </body>
     </html>
   );

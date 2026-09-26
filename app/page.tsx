@@ -5,6 +5,69 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { GuideCover } from "@/components/GuideCover";
 import { UniversityLogo } from "@/components/UniversityLogo";
+import { JsonLd } from "@/components/JsonLd";
+
+const HOME_FAQS = [
+  {
+    q: "Where does Himmah Prep work with students?",
+    a: "Across the Gulf — Riyadh, Jeddah, Dammam and Khobar in Saudi Arabia; Dubai and Abu Dhabi in the UAE; Doha, Kuwait City, Manama, and Muscat. Everything runs online, so the experience is identical wherever the student lives.",
+  },
+  {
+    q: "What does the program include?",
+    a: "College advising and application strategy, 1-on-1 SAT/ACT (and IELTS/TOEFL) prep, essay coaching on every draft, leadership workshops, and summer program planning — in one package, with one senior advisor responsible for the student.",
+  },
+  {
+    q: "Who are the advisors?",
+    a: "Every Himmah Prep advisor holds a degree from an Ivy League university. The company was founded in 2020 by Harvard and University of Pennsylvania graduates.",
+  },
+  {
+    q: "Which universities have your students been admitted to?",
+    a: "Every Ivy League institution and every top-20 US university — including Harvard, Stanford, MIT, Yale, Princeton, Cornell, Duke, UC Berkeley, and UCLA — plus Oxford, Cambridge, and other top UK schools.",
+  },
+  {
+    q: "When should a student start?",
+    a: "10th grade is ideal: enough academic history for a real diagnostic, and two full years to raise test scores, build extracurriculars, and plan summers. 9th and 11th grade both work, with different timelines.",
+  },
+  {
+    q: "How do we start?",
+    a: "Book a free 30-minute consultation. You will leave with a candid read on the student's profile, a realistic school list, and a clear next step — whether or not you work with us.",
+  },
+];
+
+const WEBSITE_LD = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://www.himmahprep.com/#website",
+  url: "https://www.himmahprep.com",
+  name: "Himmah Prep",
+  alternateName: ["himmahPREP", "Himmah"],
+  publisher: { "@id": "https://www.himmahprep.com/#organization" },
+  inLanguage: "en-US",
+};
+
+const HOME_FAQ_LD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: HOME_FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const SERVICE_LD = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "College counseling and SAT prep for Gulf students",
+  serviceType: ["College admissions counseling", "SAT preparation", "ACT preparation"],
+  provider: { "@id": "https://www.himmahprep.com/#organization" },
+  areaServed: ["Saudi Arabia", "United Arab Emirates", "Qatar", "Kuwait", "Bahrain", "Oman"],
+  availableChannel: {
+    "@type": "ServiceChannel",
+    serviceUrl: "https://www.himmahprep.com/apply",
+    availableLanguage: ["English", "Arabic"],
+  },
+};
 
 const testimonials: Testimonial[] = [
   {
@@ -82,22 +145,26 @@ const testimonials: Testimonial[] = [
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={WEBSITE_LD} />
+      <JsonLd data={SERVICE_LD} />
+      <JsonLd data={HOME_FAQ_LD} />
       <Header />
 
       <main>
         <section className="hero">
           <div className="hero-inner">
-            <p className="eyebrow">College Admissions, Reimagined</p>
+            <p className="eyebrow">Guaranteed to help students stand out</p>
             <h1 className="display">
-              Guaranteed to help
+              Ivy League college counseling
               <br />
-              students <em>stand&nbsp;out.</em>
+              for <em>Gulf students.</em>
             </h1>
             <p className="lead">
-              We don&apos;t just prepare students for college admission — we build them for
-              leadership, for impact, and for a life that matters. Ivy League–credentialed
-              advisors, a 100% acceptance track record, and a portal that turns the chaos of
-              applications into one clear plan.
+              College admissions strategy, 1-on-1 SAT and ACT prep, essay coaching, and
+              leadership training for students in Saudi Arabia, the UAE, Qatar, Kuwait,
+              Bahrain, and Oman — from advisors who went to the Ivy League themselves. A 100%
+              acceptance track record, and a portal that turns the chaos of applications into
+              one clear plan.
             </p>
             <div className="hero-ctas">
               <a href="#consult" className="btn btn-primary">
@@ -359,6 +426,52 @@ export default function HomePage() {
             <aside className="guide-cover" aria-hidden="true">
               <GuideCover />
             </aside>
+          </div>
+        </section>
+
+        <section className="prose-section">
+          <div className="prose">
+            <h2 className="display-2">
+              College counseling and SAT prep <em>across the Gulf.</em>
+            </h2>
+            <p>
+              Himmah Prep works with families in{" "}
+              <Link href="/saudi-arabia">Saudi Arabia</Link>, <Link href="/uae">the UAE</Link>,{" "}
+              <Link href="/qatar">Qatar</Link>, <Link href="/kuwait">Kuwait</Link>,{" "}
+              <Link href="/bahrain">Bahrain</Link>, and <Link href="/oman">Oman</Link>. Most of
+              our students attend IB or American-curriculum schools and are applying to the
+              most selective universities in the United States and the United Kingdom.
+            </p>
+            <p>
+              Test prep is live and 1-on-1, wherever the student is. See how SAT prep works
+              in <Link href="/sat-prep/jeddah">Jeddah</Link>,{" "}
+              <Link href="/sat-prep/riyadh">Riyadh</Link>,{" "}
+              <Link href="/sat-prep/dammam">Dammam &amp; Khobar</Link>,{" "}
+              <Link href="/sat-prep/dubai">Dubai</Link>,{" "}
+              <Link href="/sat-prep/abu-dhabi">Abu Dhabi</Link>,{" "}
+              <Link href="/sat-prep/doha">Doha</Link>,{" "}
+              <Link href="/sat-prep/kuwait-city">Kuwait City</Link>,{" "}
+              <Link href="/sat-prep/manama">Manama</Link>, and{" "}
+              <Link href="/sat-prep/muscat">Muscat</Link> — or start with the self-paced{" "}
+              <Link href="/sat-bootcamp">8-week Digital SAT bootcamp</Link>.
+            </p>
+          </div>
+        </section>
+
+        <section className="page-section page-section-tinted">
+          <div className="section-head">
+            <p className="eyebrow">FAQ</p>
+            <h2 className="display-2">
+              What families <em>ask us first.</em>
+            </h2>
+          </div>
+          <div className="faq-grid">
+            {HOME_FAQS.map((f) => (
+              <details key={f.q} className="faq-item">
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))}
           </div>
         </section>
 

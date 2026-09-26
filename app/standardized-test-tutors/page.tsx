@@ -4,14 +4,15 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Standardized Test Prep — SAT, ACT, IELTS, TOEFL — Himmah Prep",
+  title: "SAT, ACT, IELTS & TOEFL Prep in Saudi Arabia & the Gulf — Himmah Prep",
   description:
-    "1-on-1 SAT, ACT, IELTS, and TOEFL preparation for Gulf students. Diagnostic + 12-week study plan, 15+ full-length practice tests, and a 90th-percentile score target.",
+    "1-on-1 SAT, ACT, IELTS, and TOEFL preparation for students in Saudi Arabia, the UAE, Qatar and across the Gulf. Diagnostic + 12-week study plan, 15+ full-length practice tests, 1500+ target.",
+  alternates: { canonical: "https://www.himmahprep.com/standardized-test-tutors" },
   openGraph: {
     title: "Standardized Test Prep — Himmah Prep",
     description:
       "1-on-1 SAT, ACT, IELTS, and TOEFL preparation. Diagnostic, study plan, 15+ full-length practice tests, 90th-percentile target.",
-    url: "https://himmahprep.com/standardized-test-tutors",
+    url: "https://www.himmahprep.com/standardized-test-tutors",
   },
 };
 
@@ -22,14 +23,15 @@ export default function TestPrepPage() {
       <main>
         <section className="page-hero">
           <div className="page-hero-inner">
-            <p className="eyebrow">Standardized test preparation</p>
+            <p className="eyebrow">SAT, ACT, IELTS &amp; TOEFL prep for Gulf students</p>
             <h1 className="display">
               From <em>1200s</em> to <em>1500+</em>.
             </h1>
             <p className="lead">
               Most of our students arrive scoring in the 1200s. They leave with a 1500+. Our
-              SAT, ACT, IELTS, and TOEFL programs are built around one principle: diagnose
-              first, then build the plan around <em>this</em> student.
+              1-on-1 SAT, ACT, IELTS, and TOEFL programs for students in Saudi Arabia, the UAE,
+              Qatar, Kuwait, Bahrain, and Oman are built around one principle: diagnose first,
+              then build the plan around <em>this</em> student.
             </p>
             <div className="hero-ctas">
               <Link href="/apply" className="btn btn-primary">
@@ -116,6 +118,25 @@ export default function TestPrepPage() {
               often waived — but not always. We help you figure out which schools require them,
               and prep cleanly for whichever the family chooses. TOEFL prep tends to be 4–6
               weeks; IELTS slightly less.
+            </p>
+          </div>
+        </section>
+
+        <section className="prose-section">
+          <div className="prose">
+            <h2 className="display-2">
+              SAT prep <em>where you are.</em>
+            </h2>
+            <p>
+              Every session is live and 1-on-1, so students anywhere in the Gulf get the same
+              tutor and the same plan. See how it works in your city:{" "}
+              <Link href="/sat-prep/jeddah">Jeddah</Link>, <Link href="/sat-prep/riyadh">Riyadh</Link>,{" "}
+              <Link href="/sat-prep/dammam">Dammam &amp; Khobar</Link>, <Link href="/sat-prep/dubai">Dubai</Link>,{" "}
+              <Link href="/sat-prep/abu-dhabi">Abu Dhabi</Link>, <Link href="/sat-prep/doha">Doha</Link>,{" "}
+              <Link href="/sat-prep/kuwait-city">Kuwait City</Link>, <Link href="/sat-prep/manama">Manama</Link>, and{" "}
+              <Link href="/sat-prep/muscat">Muscat</Link>. Prefer to study on your own? The{" "}
+              <Link href="/sat-bootcamp">8-week Digital SAT bootcamp</Link> is the self-paced version
+              of the same curriculum.
             </p>
           </div>
         </section>

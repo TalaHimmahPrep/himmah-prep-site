@@ -18,7 +18,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = POSTS_BY_SLUG[slug];
   if (!post) return {};
-  const url = `https://himmahprep.com/blog/${post.slug}`;
+  const url = `https://www.himmahprep.com/blog/${post.slug}`;
   const title = post.seoTitle ?? post.title;
   const description = post.seoDescription ?? post.excerpt;
   return {
@@ -52,7 +52,7 @@ export default async function BlogPostPage({
   const post = POSTS_BY_SLUG[slug];
   if (!post) notFound();
 
-  const url = `https://himmahprep.com/blog/${post.slug}`;
+  const url = `https://www.himmahprep.com/blog/${post.slug}`;
   const articleLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -64,13 +64,13 @@ export default async function BlogPostPage({
     articleSection: post.category,
     wordCount: post.readMinutes * 250,
     keywords: post.keywords,
-    author: { "@type": "Organization", name: "Himmah Prep", url: "https://himmahprep.com" },
+    author: { "@type": "Organization", name: "Himmah Prep", url: "https://www.himmahprep.com" },
     publisher: {
       "@type": "Organization",
       name: "Himmah Prep",
       logo: {
         "@type": "ImageObject",
-        url: "https://himmahprep.com/logo.webp",
+        url: "https://www.himmahprep.com/logo.webp",
       },
     },
     mainEntityOfPage: url,
@@ -80,8 +80,8 @@ export default async function BlogPostPage({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Himmah Prep", item: "https://himmahprep.com" },
-      { "@type": "ListItem", position: 2, name: "Resources", item: "https://himmahprep.com/blog" },
+      { "@type": "ListItem", position: 1, name: "Himmah Prep", item: "https://www.himmahprep.com" },
+      { "@type": "ListItem", position: 2, name: "Resources", item: "https://www.himmahprep.com/blog" },
       { "@type": "ListItem", position: 3, name: post.title, item: url },
     ],
   };

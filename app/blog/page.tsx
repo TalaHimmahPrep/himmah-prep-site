@@ -12,9 +12,9 @@ export const metadata: Metadata = {
     title: "Blog — Himmah Prep",
     description:
       "College admissions frameworks and playbooks from Himmah Prep's Ivy League advisors.",
-    url: "https://himmahprep.com/blog",
+    url: "https://www.himmahprep.com/blog",
   },
-  alternates: { canonical: "https://himmahprep.com/blog" },
+  alternates: { canonical: "https://www.himmahprep.com/blog" },
 };
 
 const sortedPosts = [...POSTS].sort((a, b) => (a.date < b.date ? 1 : -1));

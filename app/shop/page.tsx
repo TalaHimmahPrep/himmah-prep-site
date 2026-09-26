@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { GuideCover } from "@/components/GuideCover";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://www.himmahprep.com/shop" },
   title: "U.S. College Application Guide — Step-by-Step Admissions Roadmap — Himmah Prep",
   description:
     "Your complete roadmap to the U.S. college admissions process — learn what top schools want, how to write standout essays, and how to build a winning application strategy. 58 pages, four full accepted essays from Stanford, Harvard, Emory, and UIUC. $19 (regularly $49).",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     title: "U.S. College Application Guide — Step-by-Step Admissions Roadmap — Himmah Prep",
     description:
       "Complete roadmap to the U.S. college admissions process. 58 pages, four full accepted essays. Written by Harvard and UPenn graduates. $19.",
-    url: "https://himmahprep.com/shop",
+    url: "https://www.himmahprep.com/shop",
   },
 };
 

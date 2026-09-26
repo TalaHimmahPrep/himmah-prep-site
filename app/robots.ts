@@ -6,10 +6,10 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/guides/", "/pay-link/"],
+        disallow: ["/api/", "/guides/", "/pay-link/", "/checkout", "/enroll/", "/review/", "/ads-preview"],
       },
     ],
-    sitemap: "https://himmahprep.com/sitemap.xml",
-    host: "https://himmahprep.com",
+    sitemap: "https://www.himmahprep.com/sitemap.xml",
+    host: "https://www.himmahprep.com",
   };
 }

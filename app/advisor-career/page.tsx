@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "Careers | Join Our Team — Grow Your Career — Himmah Prep",
     description:
       "Career opportunities at Himmah Prep — join an Ivy-credentialed team. Open roles for college advisors, test tutors, and leadership coaches.",
-    url: "https://himmahprep.com/advisor-career",
+    url: "https://www.himmahprep.com/advisor-career",
   },
 };
 

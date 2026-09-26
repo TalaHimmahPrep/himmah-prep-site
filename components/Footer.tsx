@@ -16,7 +16,7 @@ export function Footer() {
             />
           </span>
           <p className="muted-sm">
-            Premium college admissions consulting for Gulf students. Riyadh · Dubai · Online.
+            Ivy League college counseling and SAT prep for Gulf students. Riyadh · Jeddah · Dubai · Doha · Online.
           </p>
         </div>
         <div className="footer-cols">
@@ -36,6 +36,16 @@ export function Footer() {
             <Link href="/kuwait">Kuwait</Link>
             <Link href="/bahrain">Bahrain</Link>
             <Link href="/oman">Oman</Link>
+          </div>
+          <div>
+            <p className="footer-h">SAT prep in</p>
+            <Link href="/sat-prep/jeddah">Jeddah</Link>
+            <Link href="/sat-prep/riyadh">Riyadh</Link>
+            <Link href="/sat-prep/dammam">Dammam &amp; Khobar</Link>
+            <Link href="/sat-prep/dubai">Dubai</Link>
+            <Link href="/sat-prep/abu-dhabi">Abu Dhabi</Link>
+            <Link href="/sat-prep/doha">Doha</Link>
+            <Link href="/sat-prep">All cities</Link>
           </div>
           <div>
             <p className="footer-h">Account</p>

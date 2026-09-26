@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { LeadForm } from "@/components/LeadForm";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://www.himmahprep.com/apply" },
   title: "Apply for a Free Consultation for College Counseling — Himmah Prep",
   description:
     "Book a free consultation with Ivy League college advisors. Limited spots available. Students admitted to Harvard, Stanford, MIT, and every top 20 US university. Founded by Harvard and UPenn graduates.",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
     title: "Apply for a Free Consultation for College Counseling — Himmah Prep",
     description:
       "Book a free consultation with Ivy League college advisors. Students admitted to Harvard, Stanford, MIT, and every top 20 US university.",
-    url: "https://himmahprep.com/apply",
+    url: "https://www.himmahprep.com/apply",
   },
 };
 

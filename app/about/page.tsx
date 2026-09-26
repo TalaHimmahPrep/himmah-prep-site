@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { UniversityLogo, UNIVERSITIES } from "@/components/UniversityLogo";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://www.himmahprep.com/about" },
   title: "About Himmah Prep — Ivy League Founders, Top 20 University Results",
   description:
     "Founded by Harvard and UPenn graduates. Our students have been admitted to every top 20 US university — including Harvard, Stanford, MIT, Yale, and all Ivy League schools. Built around himmah, the Arabic concept of ambition and resolve.",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
     title: "About Himmah Prep — Ivy League Founders, Top 20 University Results",
     description:
       "Founded by Harvard and UPenn graduates. Students admitted to every top 20 US university including Harvard, Stanford, MIT, Yale, and all Ivy League schools.",
-    url: "https://himmahprep.com/about",
+    url: "https://www.himmahprep.com/about",
   },
 };
 

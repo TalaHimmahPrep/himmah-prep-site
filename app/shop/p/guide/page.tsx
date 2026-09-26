@@ -16,13 +16,13 @@ const PRODUCT_LD = {
     name: "Himmah Prep",
   },
   category: "Educational Materials",
-  url: "https://himmahprep.com/shop/p/guide",
+  url: "https://www.himmahprep.com/shop/p/guide",
   offers: {
     "@type": "Offer",
     price: "19.00",
     priceCurrency: "USD",
     availability: "https://schema.org/InStock",
-    url: "https://himmahprep.com/shop/p/guide",
+    url: "https://www.himmahprep.com/shop/p/guide",
   },
 };
 
@@ -34,10 +34,10 @@ export const metadata: Metadata = {
     title: "The U.S. Application Guide — Himmah Prep",
     description:
       "A 58-page step-by-step roadmap to top US college admissions, with four full accepted essays. Written by Harvard and UPenn graduates.",
-    url: "https://himmahprep.com/shop/p/guide",
+    url: "https://www.himmahprep.com/shop/p/guide",
     type: "website",
   },
-  alternates: { canonical: "https://himmahprep.com/shop/p/guide" },
+  alternates: { canonical: "https://www.himmahprep.com/shop/p/guide" },
 };
 
 // Buy buttons hit a Squarespace Pay Link, proxied through next.config.js
