@@ -2662,3 +2662,6 @@ section { scroll-margin-top: 80px; }
 }
 .review-gate-form { padding: 28px 28px 22px; }
 .review-gate-hint { margin: 14px 0 0; text-align: center; }
+
+/* review pages sit under the site nav */
+.review-page .enroll-header { padding-top: 40px; }

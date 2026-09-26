@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { PACKAGES } from "./packages";
 
 export const metadata: Metadata = {
@@ -25,10 +27,10 @@ const STEPS = [
 
 export default function ReviewPage() {
   return (
-    <main className="enroll-page">
+    <>
+      <Header />
+      <main className="enroll-page review-page">
       <header className="enroll-header">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/logo.webp" alt="Himmah Prep" className="enroll-logo" />
         <p className="eyebrow">Application Review</p>
         <h1 className="enroll-title serif">
           Your essays, read the way an <em>admissions officer</em> reads them.
@@ -146,15 +148,8 @@ export default function ReviewPage() {
         </ul>
       </section>
 
-      <footer className="enroll-footer">
-        <p>
-          Questions? Reach out to us at{" "}
-          <a href="mailto:admissions@himmahprep.com">admissions@himmahprep.com</a>
-        </p>
-        <p className="enroll-copyright">
-          &copy; {new Date().getFullYear()} Himmah Prep. All rights reserved.
-        </p>
-      </footer>
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }

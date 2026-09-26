@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { COMMON_APP_PROMPTS, FULL_REVIEW_SCHOOLS, PACKAGES, type PackageId } from "../packages";
 
 /* ────────────────────────────── types ────────────────────────────── */
@@ -346,10 +348,10 @@ export function IntakeForm() {
 
   if (!orderNumber) {
     return (
-      <main className="enroll-page">
+      <>
+      <Header />
+      <main className="enroll-page review-page">
         <header className="enroll-header">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.webp" alt="Himmah Prep" className="enroll-logo" />
           <p className="eyebrow">Application Review · Intake</p>
           <h1 className="enroll-title serif">
             This form opens from your <em>email.</em>
@@ -384,13 +386,9 @@ export function IntakeForm() {
             </p>
           </form>
         </section>
-        <footer className="enroll-footer">
-          <p>
-            Can&apos;t find the email? <a href="mailto:admissions@himmahprep.com">admissions@himmahprep.com</a>
-          </p>
-          <p className="enroll-copyright">&copy; {new Date().getFullYear()} Himmah Prep. All rights reserved.</p>
-        </footer>
       </main>
+      <Footer />
+      </>
     );
   }
 
@@ -398,10 +396,10 @@ export function IntakeForm() {
 
   if (status === "ok") {
     return (
-      <main className="enroll-page">
+      <>
+      <Header />
+      <main className="enroll-page review-page">
         <header className="enroll-header">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.webp" alt="Himmah Prep" className="enroll-logo" />
           <p className="eyebrow">Received · Order #{orderNumber}</p>
           <h1 className="enroll-title serif">
             Your intake is <em>in.</em>
@@ -425,13 +423,9 @@ export function IntakeForm() {
             <li>Revisions are not included. If you want a second read after revising, purchase the same package again.</li>
           </ol>
         </section>
-        <footer className="enroll-footer">
-          <p>
-            Questions? <a href="mailto:admissions@himmahprep.com">admissions@himmahprep.com</a>
-          </p>
-          <p className="enroll-copyright">&copy; {new Date().getFullYear()} Himmah Prep. All rights reserved.</p>
-        </footer>
       </main>
+      <Footer />
+      </>
     );
   }
 
@@ -440,10 +434,10 @@ export function IntakeForm() {
   const nav = SECTION_META.filter((s) => visible.has(s.key));
 
   return (
-    <main className="enroll-page">
+    <>
+      <Header />
+      <main className="enroll-page review-page">
       <header className="enroll-header">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/logo.webp" alt="Himmah Prep" className="enroll-logo" />
         <p className="eyebrow">Application Review · Intake</p>
         <h1 className="enroll-title serif">
           Everything your consultant will <em>read.</em>
@@ -1208,15 +1202,8 @@ export function IntakeForm() {
         </form>
       </div>
 
-      <footer className="enroll-footer">
-        <p>
-          Questions? Reach out to us at{" "}
-          <a href="mailto:admissions@himmahprep.com">admissions@himmahprep.com</a>
-        </p>
-        <p className="enroll-copyright">
-          &copy; {new Date().getFullYear()} Himmah Prep. All rights reserved.
-        </p>
-      </footer>
     </main>
+    <Footer />
+    </>
   );
 }
