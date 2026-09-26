@@ -2665,3 +2665,32 @@ section { scroll-margin-top: 80px; }
 
 /* review pages sit under the site nav */
 .review-page .enroll-header { padding-top: 40px; }
+
+/* review form: stop grid children from overflowing, equalise control heights */
+.review-form .intake-label { min-width: 0; }
+.review-form .intake-label input,
+.review-form .intake-label select,
+.review-form .intake-label textarea {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.review-form .intake-label input,
+.review-form .intake-label select {
+  height: 44px;
+  line-height: 22px;
+}
+.review-form .intake-label select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 38px;
+  background-color: var(--color-surface);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%236f5e54' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  text-overflow: ellipsis;
+}
+.review-form .review-repeat,
+.review-form .review-pkgs,
+.review-form .review-prompts { min-width: 0; max-width: 100%; }
+.review-form .intake-row > * { min-width: 0; }
