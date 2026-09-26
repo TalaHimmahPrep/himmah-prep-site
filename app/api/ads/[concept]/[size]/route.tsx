@@ -2225,6 +2225,269 @@ const SAT_CONCEPT_KEYS = [
   "sat-price",
 ] as const;
 
+
+/* ====================== APPLICATION REVIEW ADS (/review) ====================== */
+const REVIEW_FOOTER = "HIMMAHPREP.COM/REVIEW · FULLY ASYNCHRONOUS · FROM 350 SAR";
+
+function ReviewFrame({
+  logoUrl,
+  dark = false,
+  children,
+  ctaText = "Get your review",
+}: {
+  logoUrl: string;
+  dark?: boolean;
+  children: React.ReactNode;
+  ctaText?: string;
+}) {
+  const lineColor = dark ? "rgba(247,241,225,0.22)" : COLORS.line;
+  const footerColor = dark ? "rgba(247,241,225,0.78)" : COLORS.muted;
+  return (
+    <div
+      style={{
+        height: "100%",
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        padding: "56px 80px 64px",
+        background: dark ? SAT_BG_CRIMSON : SAT_BG_LIGHT,
+        color: dark ? COLORS.cream : COLORS.ink,
+        fontFamily: "Instrument Sans",
+      }}
+    >
+      <div style={{ display: "flex", justifyContent: "center", marginBottom: 40 }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={logoUrl}
+          alt="himmah PREP"
+          width={220}
+          height={94}
+          style={{ objectFit: "contain", ...(dark ? { filter: "invert(1) brightness(2.1)" } : {}) }}
+        />
+      </div>
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+        {children}
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 22,
+          paddingTop: 26,
+          borderTop: `1px solid ${lineColor}`,
+          marginTop: 40,
+        }}
+      >
+        <div style={{ display: "flex", fontSize: 21, color: footerColor, letterSpacing: "0.04em", fontFamily: "Instrument Sans" }}>
+          <span>{REVIEW_FOOTER}</span>
+        </div>
+        <Pill dark={dark}>{ctaText} →</Pill>
+      </div>
+    </div>
+  );
+}
+
+function ReviewHead({
+  lines,
+  accentIndex,
+  size = 112,
+  dark = false,
+}: {
+  lines: string[];
+  accentIndex: number;
+  size?: number;
+  dark?: boolean;
+}) {
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        fontFamily: "Instrument Serif",
+        fontWeight: 400,
+        fontSize: size,
+        lineHeight: 0.98,
+        letterSpacing: "-0.025em",
+        color: dark ? COLORS.cream : COLORS.ink,
+        textAlign: "center",
+      }}
+    >
+      {lines.map((l, i) => (
+        <div
+          key={i}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: i === 0 ? 0 : 8,
+            ...(i === accentIndex ? { fontStyle: "italic", color: dark ? COLORS.accent : COLORS.primary } : {}),
+          }}
+        >
+          {l}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ReviewLead({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
+  return (
+    <div
+      style={{
+        display: "flex",
+        fontSize: 30,
+        color: dark ? "rgba(247,241,225,0.85)" : COLORS.muted,
+        lineHeight: 1.45,
+        maxWidth: 820,
+        marginTop: 10,
+        fontFamily: "Instrument Sans",
+        textAlign: "center",
+      }}
+    >
+      <span>{children}</span>
+    </div>
+  );
+}
+
+/* ---------- REVIEW: OFFICER (positioning, crimson) ---------- */
+function ReviewOfficer({ logoUrl }: { logoUrl: string }) {
+  return (
+    <ReviewFrame logoUrl={logoUrl} dark>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 22 }}>
+        <EyebrowTag light>Application review</EyebrowTag>
+        <ReviewHead dark lines={["Read the way an", "admissions officer", "reads it."]} accentIndex={1} />
+        <ReviewLead dark>
+          Paragraph-by-paragraph comments from a Himmah Prep consultant. No calls, no scheduling. Back in 48 hours.
+        </ReviewLead>
+      </div>
+    </ReviewFrame>
+  );
+}
+
+/* ---------- REVIEW: PRICE (offer-led, light) ---------- */
+function ReviewPrice({ logoUrl }: { logoUrl: string }) {
+  return (
+    <ReviewFrame logoUrl={logoUrl} ctaText="Personal Statement Review">
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 18 }}>
+        <EyebrowTag>One essay · up to 650 words</EyebrowTag>
+        <div style={{ display: "flex", alignItems: "baseline", gap: 18, fontFamily: "Instrument Serif", letterSpacing: "-0.03em" }}>
+          <span style={{ fontSize: 230, lineHeight: 0.9, color: COLORS.primary }}>450</span>
+          <span style={{ fontSize: 64, color: COLORS.muted, fontStyle: "italic" }}>SAR</span>
+        </div>
+        <ReviewHead lines={["Your personal statement,", "professionally reviewed."]} accentIndex={1} size={78} />
+        <ReviewLead>Written comments in a shared document within 48 hours, plus a one-page summary of the three things to fix.</ReviewLead>
+      </div>
+    </ReviewFrame>
+  );
+}
+
+/* ---------- REVIEW: 150 (activities audit, light) ---------- */
+function ReviewActivities({ logoUrl }: { logoUrl: string }) {
+  return (
+    <ReviewFrame logoUrl={logoUrl} ctaText="Activities List Audit · 350 SAR">
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 18 }}>
+        <EyebrowTag>Activities list audit</EyebrowTag>
+        <div style={{ display: "flex", fontFamily: "Instrument Serif", fontSize: 260, lineHeight: 0.88, letterSpacing: "-0.04em", color: COLORS.primary }}>
+          150
+        </div>
+        <ReviewHead lines={["characters decide how", "each activity reads."]} accentIndex={1} size={80} />
+        <ReviewLead>Ten activities and five honors, marked line by line for verbs, numbers, and outcomes. Plus the order that leads.</ReviewLead>
+      </div>
+    </ReviewFrame>
+  );
+}
+
+/* ---------- REVIEW: GUESS (pain, light) ---------- */
+function ReviewGuess({ logoUrl }: { logoUrl: string }) {
+  return (
+    <ReviewFrame logoUrl={logoUrl}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 22 }}>
+        <EyebrowTag>Before you hit submit</EyebrowTag>
+        <ReviewHead lines={["Stop guessing", "whether the", "essay works."]} accentIndex={2} size={124} />
+        <ReviewLead>A consultant who has read thousands tells you what lands, what does not, and what to fix first. In writing.</ReviewLead>
+      </div>
+    </ReviewFrame>
+  );
+}
+
+/* ---------- REVIEW: 48H (speed, crimson) ---------- */
+function ReviewFast({ logoUrl }: { logoUrl: string }) {
+  return (
+    <ReviewFrame logoUrl={logoUrl} dark ctaText="Submit tonight">
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 18 }}>
+        <EyebrowTag light>Fully asynchronous</EyebrowTag>
+        <div style={{ display: "flex", alignItems: "baseline", gap: 14, fontFamily: "Instrument Serif", letterSpacing: "-0.03em", color: COLORS.accent }}>
+          <span style={{ fontSize: 240, lineHeight: 0.9 }}>48</span>
+          <span style={{ fontSize: 80, fontStyle: "italic" }}>hours</span>
+        </div>
+        <ReviewHead dark lines={["Paste it tonight.", "Read by Thursday."]} accentIndex={1} size={84} />
+        <ReviewLead dark>No meetings to book. Pay, paste your essay into the intake form, and get comments back on a fixed clock.</ReviewLead>
+      </div>
+    </ReviewFrame>
+  );
+}
+
+/* ---------- REVIEW: DEADLINE (urgency, crimson) ---------- */
+function ReviewDeadline({ logoUrl }: { logoUrl: string }) {
+  return (
+    <ReviewFrame logoUrl={logoUrl} dark>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 22 }}>
+        <EyebrowTag light>Early Decision · November 1</EyebrowTag>
+        <ReviewHead dark lines={["Your essay has", "weeks left,", "not months."]} accentIndex={1} size={118} />
+        <ReviewLead dark>Get an expert read now, while there is still time to act on it. Personal statement reviews return in 48 hours.</ReviewLead>
+      </div>
+    </ReviewFrame>
+  );
+}
+
+/* ---------- REVIEW: PACKAGES (price table, light) ---------- */
+function ReviewPackages({ logoUrl }: { logoUrl: string }) {
+  const rows = [
+    { name: "Personal Statement Review", price: "450 SAR", time: "48 hours" },
+    { name: "Activities List Audit", price: "350 SAR", time: "48 hours" },
+    { name: "Full Review + Supplementals", price: "1,875 SAR", time: "7 days" },
+  ];
+  return (
+    <ReviewFrame logoUrl={logoUrl} ctaText="Choose a package">
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 18, width: "100%" }}>
+        <EyebrowTag>Three ways in</EyebrowTag>
+        <ReviewHead lines={["Pick the piece", "you need read."]} accentIndex={1} size={84} />
+        <div style={{ display: "flex", flexDirection: "column", width: "100%", maxWidth: 860, marginTop: 10, borderTop: `1px solid ${COLORS.line}` }}>
+          {rows.map((r) => (
+            <div
+              key={r.name}
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "baseline",
+                padding: "18px 6px",
+                borderBottom: `1px solid ${COLORS.line}`,
+              }}
+            >
+              <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                <span style={{ fontSize: 30, fontWeight: 500, color: COLORS.ink }}>{r.name}</span>
+                <span style={{ fontSize: 19, color: COLORS.muted, letterSpacing: "0.06em", textTransform: "uppercase" }}>{r.time}</span>
+              </div>
+              <span style={{ fontFamily: "Instrument Serif", fontStyle: "italic", fontSize: 48, color: COLORS.primary }}>{r.price}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </ReviewFrame>
+  );
+}
+
+const REVIEW_RENDERERS = {
+  "review-officer": ReviewOfficer,
+  "review-price": ReviewPrice,
+  "review-activities": ReviewActivities,
+  "review-guess": ReviewGuess,
+  "review-fast": ReviewFast,
+  "review-deadline": ReviewDeadline,
+  "review-packages": ReviewPackages,
+} as const;
+
 export async function GET(
   req: Request,
   { params }: { params: Promise<{ concept: string; size: string }> },
@@ -2273,6 +2536,20 @@ export async function GET(
     }
 
     return new ImageResponse(element, {
+      width: dim.w,
+      height: dim.h,
+      fonts: [...fonts],
+    });
+  }
+
+  const ReviewRender = REVIEW_RENDERERS[concept as keyof typeof REVIEW_RENDERERS];
+  if (ReviewRender) {
+    const origin = new URL(req.url).origin;
+    const [fonts, logoUrl] = await Promise.all([
+      loadHimmahFonts(),
+      loadAssetDataUrl(`${origin}/logo.png`, "image/png"),
+    ]);
+    return new ImageResponse(<ReviewRender logoUrl={logoUrl} />, {
       width: dim.w,
       height: dim.h,
       fonts: [...fonts],
