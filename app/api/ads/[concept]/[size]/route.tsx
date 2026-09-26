@@ -2227,91 +2227,142 @@ const SAT_CONCEPT_KEYS = [
 
 
 /* ====================== APPLICATION REVIEW ADS (/review) ====================== */
-const REVIEW_FOOTER = "HIMMAHPREP.COM/REVIEW · FULLY ASYNCHRONOUS · FROM 350 SAR";
+/* Editorial system: white rounded card floating on cream, logo small top-left,
+   left-aligned serif headline with one italic maroon word, hairlines, gold pills. */
 
-function ReviewFrame({
+type RSize = { w: number; h: number };
+const rs = (d: RSize) => ({ story: d.h > 1500, portrait: d.h > d.w && d.h <= 1500 });
+
+function RCard({
   logoUrl,
-  dark = false,
+  d,
+  kicker,
   children,
-  ctaText = "Get your review",
+  footLeft,
+  footRight = "himmahprep.com/review",
+  dark = false,
 }: {
   logoUrl: string;
-  dark?: boolean;
+  d: RSize;
+  kicker: string;
   children: React.ReactNode;
-  ctaText?: string;
+  footLeft: string;
+  footRight?: string;
+  dark?: boolean;
 }) {
-  const lineColor = dark ? "rgba(247,241,225,0.22)" : COLORS.line;
-  const footerColor = dark ? "rgba(247,241,225,0.78)" : COLORS.muted;
+  const { story } = rs(d);
+  const pad = story ? 96 : 56;
+  const ink = dark ? COLORS.cream : COLORS.ink;
+  const mute = dark ? "rgba(247,241,225,0.72)" : COLORS.muted;
+  const line = dark ? "rgba(247,241,225,0.22)" : COLORS.line;
   return (
     <div
       style={{
         height: "100%",
         width: "100%",
         display: "flex",
-        flexDirection: "column",
-        padding: "56px 80px 64px",
-        background: dark ? SAT_BG_CRIMSON : SAT_BG_LIGHT,
-        color: dark ? COLORS.cream : COLORS.ink,
+        padding: pad,
+        background: SAT_BG_LIGHT,
         fontFamily: "Instrument Sans",
       }}
     >
-      <div style={{ display: "flex", justifyContent: "center", marginBottom: 40 }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={logoUrl}
-          alt="himmah PREP"
-          width={220}
-          height={94}
-          style={{ objectFit: "contain", ...(dark ? { filter: "invert(1) brightness(2.1)" } : {}) }}
-        />
-      </div>
-      <div style={{ flex: 1, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-        {children}
-      </div>
       <div
         style={{
+          flex: 1,
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
-          gap: 22,
-          paddingTop: 26,
-          borderTop: `1px solid ${lineColor}`,
-          marginTop: 40,
+          background: dark ? SAT_BG_CRIMSON : "#ffffff",
+          borderRadius: 40,
+          boxShadow: "0 2px 4px rgba(110,23,34,0.05), 0 30px 70px rgba(110,23,34,0.12)",
+          padding: story ? "64px 72px" : "52px 60px",
+          color: ink,
+          position: "relative",
         }}
       >
-        <div style={{ display: "flex", fontSize: 21, color: footerColor, letterSpacing: "0.04em", fontFamily: "Instrument Sans" }}>
-          <span>{REVIEW_FOOTER}</span>
+        {/* header */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            paddingBottom: 26,
+            borderBottom: `1px solid ${line}`,
+          }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={logoUrl}
+            alt="himmah PREP"
+            width={168}
+            height={72}
+            style={{ objectFit: "contain", objectPosition: "left", ...(dark ? { filter: "invert(1) brightness(2.1)" } : {}) }}
+          />
+          <div style={{ display: "flex", textTransform: "uppercase", letterSpacing: "4px", fontSize: 18, color: mute, fontWeight: 500 }}>
+            {kicker}
+          </div>
         </div>
-        <Pill dark={dark}>{ctaText} →</Pill>
+
+        {/* body */}
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: story ? "space-around" : "center" }}>
+          {children}
+        </div>
+
+        {/* footer */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            paddingTop: 26,
+            borderTop: `1px solid ${line}`,
+          }}
+        >
+          <div style={{ display: "flex", fontSize: story ? 18 : 22, color: mute, maxWidth: story ? 380 : 560 }}>{footLeft}</div>
+          <div
+            style={{
+              display: "flex",
+              flexShrink: 0,
+              padding: story ? "12px 20px" : "14px 26px",
+              borderRadius: 999,
+              border: `2px solid ${COLORS.accent}`,
+              color: dark ? COLORS.accent : COLORS.primary,
+              fontSize: story ? 18 : 22,
+              fontWeight: 600,
+              letterSpacing: "0.01em",
+            }}
+          >
+            {footRight} →
+          </div>
+        </div>
       </div>
     </div>
   );
 }
 
-function ReviewHead({
+function RHead({
   lines,
-  accentIndex,
-  size = 112,
+  accent,
+  size,
   dark = false,
+  align = "left",
 }: {
   lines: string[];
-  accentIndex: number;
-  size?: number;
+  accent: number;
+  size: number;
   dark?: boolean;
+  align?: "left" | "center";
 }) {
   return (
     <div
       style={{
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
+        alignItems: align === "center" ? "center" : "flex-start",
         fontFamily: "Instrument Serif",
-        fontWeight: 400,
         fontSize: size,
         lineHeight: 0.98,
         letterSpacing: "-0.025em",
         color: dark ? COLORS.cream : COLORS.ink,
-        textAlign: "center",
       }}
     >
       {lines.map((l, i) => (
@@ -2319,9 +2370,8 @@ function ReviewHead({
           key={i}
           style={{
             display: "flex",
-            justifyContent: "center",
-            marginTop: i === 0 ? 0 : 8,
-            ...(i === accentIndex ? { fontStyle: "italic", color: dark ? COLORS.accent : COLORS.primary } : {}),
+            marginTop: i === 0 ? 0 : 6,
+            ...(i === accent ? { fontStyle: "italic", color: dark ? COLORS.accent : COLORS.primary } : {}),
           }}
         >
           {l}
@@ -2331,161 +2381,262 @@ function ReviewHead({
   );
 }
 
-function ReviewLead({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
+function RLead({ children, dark = false, size = 27, max = 760 }: { children: React.ReactNode; dark?: boolean; size?: number; max?: number }) {
   return (
-    <div
-      style={{
-        display: "flex",
-        fontSize: 30,
-        color: dark ? "rgba(247,241,225,0.85)" : COLORS.muted,
-        lineHeight: 1.45,
-        maxWidth: 820,
-        marginTop: 10,
-        fontFamily: "Instrument Sans",
-        textAlign: "center",
-      }}
-    >
+    <div style={{ display: "flex", fontSize: size, lineHeight: 1.45, color: dark ? "rgba(247,241,225,0.82)" : COLORS.muted, maxWidth: max }}>
       <span>{children}</span>
     </div>
   );
 }
 
-/* ---------- REVIEW: OFFICER (positioning, crimson) ---------- */
-function ReviewOfficer({ logoUrl }: { logoUrl: string }) {
+/* a margin comment, the visual signature of the product */
+function RComment({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
   return (
-    <ReviewFrame logoUrl={logoUrl} dark>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 22 }}>
-        <EyebrowTag light>Application review</EyebrowTag>
-        <ReviewHead dark lines={["Read the way an", "admissions officer", "reads it."]} accentIndex={1} />
-        <ReviewLead dark>
-          Paragraph-by-paragraph comments from a Himmah Prep consultant. No calls, no scheduling. Back in 48 hours.
-        </ReviewLead>
-      </div>
-    </ReviewFrame>
-  );
-}
-
-/* ---------- REVIEW: PRICE (offer-led, light) ---------- */
-function ReviewPrice({ logoUrl }: { logoUrl: string }) {
-  return (
-    <ReviewFrame logoUrl={logoUrl} ctaText="Personal Statement Review">
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 18 }}>
-        <EyebrowTag>One essay · up to 650 words</EyebrowTag>
-        <div style={{ display: "flex", alignItems: "baseline", gap: 18, fontFamily: "Instrument Serif", letterSpacing: "-0.03em" }}>
-          <span style={{ fontSize: 230, lineHeight: 0.9, color: COLORS.primary }}>450</span>
-          <span style={{ fontSize: 64, color: COLORS.muted, fontStyle: "italic" }}>SAR</span>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: 6,
+        padding: "16px 20px",
+        background: "#fff",
+        border: `1px solid ${COLORS.line}`,
+        borderLeft: `5px solid ${COLORS.primary}`,
+        borderRadius: 14,
+        boxShadow: "0 10px 30px rgba(110,23,34,0.12)",
+        width: 360,
+        ...style,
+      }}
+    >
+      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+        <div style={{ display: "flex", width: 26, height: 26, borderRadius: 999, background: COLORS.primary, color: "#fff", fontSize: 14, fontWeight: 700, alignItems: "center", justifyContent: "center" }}>
+          H
         </div>
-        <ReviewHead lines={["Your personal statement,", "professionally reviewed."]} accentIndex={1} size={78} />
-        <ReviewLead>Written comments in a shared document within 48 hours, plus a one-page summary of the three things to fix.</ReviewLead>
+        <span style={{ fontSize: 15, color: COLORS.muted, letterSpacing: "0.08em", textTransform: "uppercase" }}>Himmah Prep</span>
       </div>
-    </ReviewFrame>
+      <div style={{ display: "flex", fontSize: 21, lineHeight: 1.35, color: COLORS.ink }}>
+        <span>{children}</span>
+      </div>
+    </div>
   );
 }
 
-/* ---------- REVIEW: 150 (activities audit, light) ---------- */
-function ReviewActivities({ logoUrl }: { logoUrl: string }) {
-  return (
-    <ReviewFrame logoUrl={logoUrl} ctaText="Activities List Audit · 350 SAR">
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 18 }}>
-        <EyebrowTag>Activities list audit</EyebrowTag>
-        <div style={{ display: "flex", fontFamily: "Instrument Serif", fontSize: 260, lineHeight: 0.88, letterSpacing: "-0.04em", color: COLORS.primary }}>
-          150
-        </div>
-        <ReviewHead lines={["characters decide how", "each activity reads."]} accentIndex={1} size={80} />
-        <ReviewLead>Ten activities and five honors, marked line by line for verbs, numbers, and outcomes. Plus the order that leads.</ReviewLead>
-      </div>
-    </ReviewFrame>
-  );
-}
-
-/* ---------- REVIEW: GUESS (pain, light) ---------- */
-function ReviewGuess({ logoUrl }: { logoUrl: string }) {
-  return (
-    <ReviewFrame logoUrl={logoUrl}>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 22 }}>
-        <EyebrowTag>Before you hit submit</EyebrowTag>
-        <ReviewHead lines={["Stop guessing", "whether the", "essay works."]} accentIndex={2} size={124} />
-        <ReviewLead>A consultant who has read thousands tells you what lands, what does not, and what to fix first. In writing.</ReviewLead>
-      </div>
-    </ReviewFrame>
-  );
-}
-
-/* ---------- REVIEW: 48H (speed, crimson) ---------- */
-function ReviewFast({ logoUrl }: { logoUrl: string }) {
-  return (
-    <ReviewFrame logoUrl={logoUrl} dark ctaText="Submit tonight">
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 18 }}>
-        <EyebrowTag light>Fully asynchronous</EyebrowTag>
-        <div style={{ display: "flex", alignItems: "baseline", gap: 14, fontFamily: "Instrument Serif", letterSpacing: "-0.03em", color: COLORS.accent }}>
-          <span style={{ fontSize: 240, lineHeight: 0.9 }}>48</span>
-          <span style={{ fontSize: 80, fontStyle: "italic" }}>hours</span>
-        </div>
-        <ReviewHead dark lines={["Paste it tonight.", "Read by Thursday."]} accentIndex={1} size={84} />
-        <ReviewLead dark>No meetings to book. Pay, paste your essay into the intake form, and get comments back on a fixed clock.</ReviewLead>
-      </div>
-    </ReviewFrame>
-  );
-}
-
-/* ---------- REVIEW: DEADLINE (urgency, crimson) ---------- */
-function ReviewDeadline({ logoUrl }: { logoUrl: string }) {
-  return (
-    <ReviewFrame logoUrl={logoUrl} dark>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 22 }}>
-        <EyebrowTag light>Early Decision · November 1</EyebrowTag>
-        <ReviewHead dark lines={["Your essay has", "weeks left,", "not months."]} accentIndex={1} size={118} />
-        <ReviewLead dark>Get an expert read now, while there is still time to act on it. Personal statement reviews return in 48 hours.</ReviewLead>
-      </div>
-    </ReviewFrame>
-  );
-}
-
-/* ---------- REVIEW: PACKAGES (price table, light) ---------- */
-function ReviewPackages({ logoUrl }: { logoUrl: string }) {
-  const rows = [
-    { name: "Personal Statement Review", price: "450 SAR", time: "48 hours" },
-    { name: "Activities List Audit", price: "350 SAR", time: "48 hours" },
-    { name: "Full Review + Supplementals", price: "1,875 SAR", time: "7 days" },
+/* ---------- A. DOC — marked-up essay ---------- */
+function ReviewDoc({ logoUrl, d }: { logoUrl: string; d: RSize }) {
+  const { story } = rs(d);
+  const lines: { t: string; hl?: boolean }[] = [
+    { t: "I have always been passionate about helping", hl: true },
+    { t: "others, ever since I was young. Growing up," },
+    { t: "I learned many lessons that shaped me." },
+    { t: "The summer my grandfather's pharmacy flooded," },
+    { t: "I spent nine weeks rebuilding the inventory." },
+    { t: "By August we were filling 140 a day, more", hl: true },
+    { t: "than before the flood." },
   ];
   return (
-    <ReviewFrame logoUrl={logoUrl} ctaText="Choose a package">
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 18, width: "100%" }}>
-        <EyebrowTag>Three ways in</EyebrowTag>
-        <ReviewHead lines={["Pick the piece", "you need read."]} accentIndex={1} size={84} />
-        <div style={{ display: "flex", flexDirection: "column", width: "100%", maxWidth: 860, marginTop: 10, borderTop: `1px solid ${COLORS.line}` }}>
-          {rows.map((r) => (
-            <div
-              key={r.name}
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "baseline",
-                padding: "18px 6px",
-                borderBottom: `1px solid ${COLORS.line}`,
-              }}
-            >
-              <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                <span style={{ fontSize: 30, fontWeight: 500, color: COLORS.ink }}>{r.name}</span>
-                <span style={{ fontSize: 19, color: COLORS.muted, letterSpacing: "0.06em", textTransform: "uppercase" }}>{r.time}</span>
-              </div>
-              <span style={{ fontFamily: "Instrument Serif", fontStyle: "italic", fontSize: 48, color: COLORS.primary }}>{r.price}</span>
+    <RCard logoUrl={logoUrl} d={d} kicker="Application review" footLeft="Personal Statement Review · 450 SAR · 48 hours">
+      <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
+        <RHead lines={["Your essay, with the", "notes in the margin."]} accent={1} size={story ? 104 : 76} />
+        <RLead size={story ? 30 : 25}>Paragraph-by-paragraph comments from a Himmah Prep consultant. What to change and why. You keep the pen.</RLead>
+      </div>
+
+      <div style={{ display: "flex", position: "relative", marginTop: story ? 0 : 36, height: story ? 380 : 340 }}>
+        {/* document */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 9,
+            width: story ? 420 : 520,
+            padding: story ? "22px 24px 24px" : "26px 30px 28px",
+            background: COLORS.bg,
+            border: `1px solid ${COLORS.line}`,
+            borderRadius: 18,
+            transform: "rotate(-1.2deg)",
+          }}
+        >
+          <div style={{ display: "flex", fontSize: 14, letterSpacing: "3px", textTransform: "uppercase", color: COLORS.muted, marginBottom: 6 }}>
+            Common App · Prompt 5 · 648 words
+          </div>
+          {lines.map((l, i) => (
+            <div key={i} style={{ display: "flex", fontFamily: "Instrument Serif", fontSize: story ? 18 : 22, lineHeight: 1.2, color: l.hl ? COLORS.ink : "rgba(26,20,20,0.55)" }}>
+              <span style={l.hl ? { borderBottom: `3px solid ${COLORS.accent}`, paddingBottom: 2 } : {}}>{l.t}</span>
             </div>
           ))}
         </div>
+        {/* comments */}
+        <RComment style={{ position: "absolute", right: 0, top: 6, width: story ? 330 : 360 }}>
+          Lines 1–3 are throat-clearing. The essay starts at the flood. Open there.
+        </RComment>
+        <RComment style={{ position: "absolute", right: 0, top: story ? 180 : 190, width: story ? 330 : 360 }}>
+          “140 a day” is the whole point. Give it a sentence of its own.
+        </RComment>
       </div>
-    </ReviewFrame>
+    </RCard>
+  );
+}
+
+/* ---------- B. ACTIVITY — Common App entry with counter ---------- */
+function ReviewActivity({ logoUrl, d }: { logoUrl: string; d: RSize }) {
+  const { story } = rs(d);
+  return (
+    <RCard logoUrl={logoUrl} d={d} kicker="Activities list audit" footLeft="Activities List Audit · 350 SAR · 48 hours">
+      <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
+        <RHead lines={["Ten activities.", "150 characters each.", "Every one read."]} accent={1} size={story ? 92 : 76} />
+        <RLead>Each description marked for verbs, numbers, and outcomes. Honors checked. And the order that should lead.</RLead>
+      </div>
+
+      <div style={{ display: "flex", position: "relative", marginTop: story ? 0 : 36, height: story ? 340 : 310 }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 14,
+            width: story ? 744 : 760,
+            height: 232,
+            padding: "26px 30px",
+            background: COLORS.bg,
+            border: `1px solid ${COLORS.line}`,
+            borderRadius: 18,
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+            <span style={{ fontSize: 14, letterSpacing: "3px", textTransform: "uppercase", color: COLORS.muted }}>Activity 1 · Research</span>
+            <span style={{ fontSize: 15, color: COLORS.muted }}>Gr 10, 11 · 6 hr/wk</span>
+          </div>
+          <div style={{ display: "flex", fontSize: 26, fontWeight: 600, color: COLORS.ink }}>Founder · Robotics Club</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8, padding: "16px 18px", background: "#fff", border: `1px solid ${COLORS.line}`, borderRadius: 12 }}>
+            <div style={{ display: "flex", fontSize: 21, lineHeight: 1.35, color: COLORS.ink }}>
+              <span>Started the club and organized weekly meetings for members interested in robotics and engineering.</span>
+            </div>
+            <div style={{ display: "flex", justifyContent: "flex-start", fontSize: 15, color: COLORS.primary, fontWeight: 600 }}>112 / 150 characters</div>
+          </div>
+        </div>
+        <RComment style={{ position: "absolute", right: 0, top: story ? 186 : 158, width: story ? 380 : 400 }}>
+          38 characters unused and no outcome. How many members? What did they build? Lead with that.
+        </RComment>
+      </div>
+    </RCard>
+  );
+}
+
+/* ---------- C. MENU — three packages ---------- */
+function ReviewMenu({ logoUrl, d }: { logoUrl: string; d: RSize }) {
+  const { story } = rs(d);
+  const rows = [
+    { name: "Personal Statement Review", what: "One Common App essay, up to 650 words", price: "450", time: "48 hours" },
+    { name: "Activities List Audit", what: "Ten activities and five honors, line by line", price: "350", time: "48 hours" },
+    { name: "Full Review + Supplementals", what: "Everything above, plus supplements for three schools", price: "1,875", time: "7 days" },
+  ];
+  return (
+    <RCard logoUrl={logoUrl} d={d} kicker="Three packages" footLeft="Pay, paste, receive. No calls.">
+      <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+        <RHead lines={["Pick the piece", "you need read."]} accent={1} size={story ? 100 : 82} />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", marginTop: story ? 0 : 36, borderTop: `1px solid ${COLORS.line}` }}>
+        {rows.map((r) => (
+          <div key={r.name} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: story ? "30px 4px" : "22px 4px", borderBottom: `1px solid ${COLORS.line}` }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 6, maxWidth: 600 }}>
+              <span style={{ fontSize: 30, fontWeight: 600, color: COLORS.ink }}>{r.name}</span>
+              <span style={{ fontSize: 20, color: COLORS.muted }}>{r.what}</span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 8 }}>
+              <div style={{ display: "flex", alignItems: "baseline", gap: 8, fontFamily: "Instrument Serif" }}>
+                <span style={{ fontSize: 56, fontStyle: "italic", color: COLORS.primary, lineHeight: 1 }}>{r.price}</span>
+                <span style={{ fontSize: 22, color: COLORS.muted }}>SAR</span>
+              </div>
+              <span style={{ display: "flex", padding: "6px 14px", borderRadius: 999, border: `1.5px solid ${COLORS.accent}`, fontSize: 15, color: COLORS.primary, letterSpacing: "0.06em", textTransform: "uppercase" }}>{r.time}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </RCard>
+  );
+}
+
+/* ---------- D. NOV 1 — calendar tile, crimson card ---------- */
+function ReviewNov({ logoUrl, d }: { logoUrl: string; d: RSize }) {
+  const { story } = rs(d);
+  return (
+    <RCard logoUrl={logoUrl} d={d} dark kicker="Early Decision" footLeft="Personal statement reviews return in 48 hours" footRight="Get it read now">
+      <div style={{ display: "flex", alignItems: "center", gap: 44 }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            width: story ? 340 : 300,
+            background: COLORS.bg,
+            borderRadius: 26,
+            overflow: "hidden",
+            boxShadow: "0 24px 60px rgba(0,0,0,0.25)",
+          }}
+        >
+          <div style={{ display: "flex", justifyContent: "center", width: "100%", padding: "14px 0", background: COLORS.primaryDeep, color: COLORS.cream, fontSize: 20, letterSpacing: "5px", textTransform: "uppercase" }}>
+            November
+          </div>
+          <div style={{ display: "flex", fontFamily: "Instrument Serif", fontSize: story ? 250 : 220, lineHeight: 0.95, color: COLORS.primary, letterSpacing: "-0.05em", padding: "10px 0 0" }}>1</div>
+          <div style={{ display: "flex", fontSize: 18, color: COLORS.muted, letterSpacing: "3px", textTransform: "uppercase", paddingBottom: 22 }}>ED deadline</div>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 22, flex: 1 }}>
+          <RHead dark lines={["Weeks left,", "not months."]} accent={0} size={story ? 104 : 84} />
+          <RLead dark size={26}>An expert read now, while there is still time to act on it. Comments in a shared document, three fixes in priority order.</RLead>
+        </div>
+      </div>
+    </RCard>
+  );
+}
+
+/* ---------- E. OFFICER — positioning with a stat strip ---------- */
+function ReviewReader({ logoUrl, d }: { logoUrl: string; d: RSize }) {
+  const { story } = rs(d);
+  const stats = [
+    { v: "650", l: "words, every line" },
+    { v: "3", l: "fixes, in priority order" },
+    { v: "48h", l: "from complete intake" },
+  ];
+  return (
+    <RCard logoUrl={logoUrl} d={d} kicker="Application review" footLeft="From 350 SAR · fully asynchronous">
+      <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+        <RHead lines={["Read the way an", "admissions officer", "reads it."]} accent={1} size={story ? 110 : 92} />
+        <RLead>Twelve minutes per file, no second chances. Our consultants read your essay the same way, then write down everything they noticed.</RLead>
+      </div>
+      <div style={{ display: "flex", marginTop: story ? 0 : 48, borderTop: `1px solid ${COLORS.line}`, borderBottom: `1px solid ${COLORS.line}` }}>
+        {stats.map((s, i) => (
+          <div key={s.l} style={{ display: "flex", flexDirection: "column", flex: 1, padding: "26px 8px", gap: 8, borderLeft: i ? `1px solid ${COLORS.line}` : "none", paddingLeft: i ? 30 : 8 }}>
+            <span style={{ fontFamily: "Instrument Serif", fontStyle: "italic", fontSize: 72, lineHeight: 1, color: COLORS.primary }}>{s.v}</span>
+            <span style={{ fontSize: 17, letterSpacing: "2px", textTransform: "uppercase", color: COLORS.muted }}>{s.l}</span>
+          </div>
+        ))}
+      </div>
+    </RCard>
+  );
+}
+
+/* ---------- F. GUESS — pain point, quiet ---------- */
+function ReviewGuess({ logoUrl, d }: { logoUrl: string; d: RSize }) {
+  const { story } = rs(d);
+  return (
+    <RCard logoUrl={logoUrl} d={d} kicker="Before you submit" footLeft="Personal Statement Review · 450 SAR">
+      <div style={{ display: "flex", flexDirection: "column", gap: 26 }}>
+        <RHead lines={["Stop guessing", "whether the", "essay works."]} accent={2} size={story ? 128 : 104} />
+        <RLead size={28}>Your English teacher likes it. Your cousin at university likes it. Neither has read 3,000 of them this year.</RLead>
+      </div>
+      <div style={{ display: "flex", marginTop: story ? 0 : 40 }}>
+        <RComment style={{ width: story ? 690 : 640, transform: "rotate(0.6deg)" }}>
+          Strong middle, weak frame. The last paragraph explains what the story already showed. Cut it and end on the image.
+        </RComment>
+      </div>
+    </RCard>
   );
 }
 
 const REVIEW_RENDERERS = {
-  "review-officer": ReviewOfficer,
-  "review-price": ReviewPrice,
-  "review-activities": ReviewActivities,
+  "review-doc": ReviewDoc,
+  "review-activity": ReviewActivity,
+  "review-menu": ReviewMenu,
+  "review-nov": ReviewNov,
+  "review-reader": ReviewReader,
   "review-guess": ReviewGuess,
-  "review-fast": ReviewFast,
-  "review-deadline": ReviewDeadline,
-  "review-packages": ReviewPackages,
 } as const;
 
 export async function GET(
@@ -2549,7 +2700,7 @@ export async function GET(
       loadHimmahFonts(),
       loadAssetDataUrl(`${origin}/logo.png`, "image/png"),
     ]);
-    return new ImageResponse(<ReviewRender logoUrl={logoUrl} />, {
+    return new ImageResponse(<ReviewRender logoUrl={logoUrl} d={dim} />, {
       width: dim.w,
       height: dim.h,
       fonts: [...fonts],
