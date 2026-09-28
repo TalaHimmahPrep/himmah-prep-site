@@ -18,7 +18,7 @@ export default function TermsPage() {
             <p className="eyebrow">Legal</p>
             <h1 className="display">Terms and Conditions</h1>
             <p className="lead muted-sm" style={{ textTransform: "none", letterSpacing: 0 }}>
-              Last updated: May 7, 2026.
+              Last updated: September 28, 2026.
             </p>
           </div>
         </section>
@@ -56,8 +56,39 @@ export default function TermsPage() {
               </li>
             </ul>
 
-            <h2 className="prose-h2-next">2. College Preparation Program</h2>
-            <h3>2.1 Scope of Services</h3>
+            <h2 className="prose-h2-next">2. Refund Policy</h2>
+            <p>
+              <strong>Himmah Prep does not offer refunds.</strong> All payments to Himmah Prep are
+              final, non-refundable, and non-transferable. This applies to every Program and
+              product, including:
+            </p>
+            <ul>
+              <li>The College Preparation Program, in any plan or package.</li>
+              <li>Standalone SAT Preparation, including tutoring, bootcamps, and group classes.</li>
+              <li>Essay, personal statement, activities list, and application reviews.</li>
+              <li>Digital products, including guides, templates, and downloadable resources.</li>
+              <li>Workshops, webinars, consultations, and any other paid session.</li>
+            </ul>
+            <p>
+              No full, partial, or prorated refunds or credits will be issued for any reason,
+              including unused sessions, early withdrawal, a change of plans, dissatisfaction with
+              the Services, or admissions, test score, or scholarship outcomes. If you pay in
+              installments, the remaining installments stay due once enrollment is confirmed.
+            </p>
+            <p>
+              If you have a concern about a charge, you agree to contact Himmah Prep first so we
+              can review it. Filing a chargeback or payment dispute for Services that have been
+              purchased under these Terms is a breach of these Terms, and Himmah Prep may suspend
+              the Services and provide these Terms and your enrollment records to the payment
+              provider in response.
+            </p>
+            <p>
+              The only exceptions are those set out in a written agreement signed by an authorized
+              representative of Himmah Prep, or where a refund is required by applicable law.
+            </p>
+
+            <h2 className="prose-h2-next">3. College Preparation Program</h2>
+            <h3>3.1 Scope of Services</h3>
             <p>
               Himmah Prep&apos;s College Preparation Program provides educational and advisory
               services, which may include academic planning, extracurricular and leadership
@@ -74,7 +105,7 @@ export default function TermsPage() {
               of any such institution.
             </p>
 
-            <h3>2.2 No Guarantees</h3>
+            <h3>3.2 No Guarantees</h3>
             <p>
               Results will vary by individual, and outcomes depend on factors outside Himmah
               Prep&apos;s control, including but not limited to academic history, test performance,
@@ -97,7 +128,7 @@ export default function TermsPage() {
               prediction of future performance or similar outcomes.
             </p>
 
-            <h3>2.3 Fees, Payment, and No-Refund Policy</h3>
+            <h3>3.3 Fees, Payment, and No-Refund Policy</h3>
             <p>
               Unless expressly stated otherwise in a written agreement signed by Himmah Prep, all
               fees for the College Preparation Program are:
@@ -123,7 +154,7 @@ export default function TermsPage() {
               obligated to pay all outstanding amounts in full even if you stop using the Services.
             </p>
 
-            <h3>2.4 Scheduling and Attendance</h3>
+            <h3>3.4 Scheduling and Attendance</h3>
             <p>
               You are responsible for scheduling sessions within the time frame communicated by
               Himmah Prep. Missed, canceled, or rescheduled sessions are subject to the
@@ -132,7 +163,7 @@ export default function TermsPage() {
               and be forfeited at Himmah Prep&apos;s sole discretion without refund or credit.
             </p>
 
-            <h3>2.5 Program Modifications</h3>
+            <h3>3.5 Program Modifications</h3>
             <p>
               Himmah Prep reserves the right, at any time and without liability, to modify,
               substitute, or discontinue any aspect of the College Preparation Program, including
@@ -150,8 +181,8 @@ export default function TermsPage() {
               consistent with the description at the time of purchase.
             </p>
 
-            <h2 className="prose-h2-next">3. Standalone SAT Preparation</h2>
-            <h3>3.1 Scope of Services</h3>
+            <h2 className="prose-h2-next">4. Standalone SAT Preparation</h2>
+            <h3>4.1 Scope of Services</h3>
             <p>
               Standalone SAT Preparation Services may include one-on-one or group tutoring,
               workshops, strategy sessions, practice tests, digital content, and other
@@ -161,7 +192,7 @@ export default function TermsPage() {
               College Board or any testing agency.
             </p>
 
-            <h3>3.2 No Score or Outcome Guarantees</h3>
+            <h3>4.2 No Score or Outcome Guarantees</h3>
             <p>Himmah Prep does not guarantee:</p>
             <ul>
               <li>Any specific SAT score or subscore.</li>
@@ -174,7 +205,7 @@ export default function TermsPage() {
               effort, all of which are beyond Himmah Prep&apos;s control.
             </p>
 
-            <h3>3.3 Fees, No Refunds, and Forfeiture</h3>
+            <h3>4.3 Fees, No Refunds, and Forfeiture</h3>
             <p>
               All Standalone SAT Preparation purchases are <strong>final, non-refundable, and
               non-transferable</strong>. Without limiting the foregoing, no refunds or credits will
@@ -196,7 +227,7 @@ export default function TermsPage() {
               authorized representative.
             </p>
 
-            <h3>3.4 Expiration of Services</h3>
+            <h3>4.4 Expiration of Services</h3>
             <p>
               SAT Preparation Services must be utilized within the time period stated at the time
               of purchase, in your enrollment document, or on your account dashboard. Sessions or
@@ -204,8 +235,8 @@ export default function TermsPage() {
               expire and may not be rescheduled, extended, transferred, or refunded.
             </p>
 
-            <h2 className="prose-h2-next">4. User Conduct, Academic Integrity, and Content</h2>
-            <h3>4.1 Academic Integrity and Plagiarism</h3>
+            <h2 className="prose-h2-next">5. User Conduct, Academic Integrity, and Content</h2>
+            <h3>5.1 Academic Integrity and Plagiarism</h3>
             <p>
               Himmah Prep&apos;s role is to guide and advise; Students are responsible for
               producing their own original work. You agree that:
@@ -231,7 +262,7 @@ export default function TermsPage() {
               honesty rules, application policies, or applicable law.
             </p>
 
-            <h3>4.2 Website and Account Use</h3>
+            <h3>5.2 Website and Account Use</h3>
             <p>
               You agree to use the website and Services only for lawful purposes and in accordance
               with these Terms. You agree not to:
@@ -249,7 +280,7 @@ export default function TermsPage() {
               without refund, for any misuse, abuse, or violation of these Terms or applicable law.
             </p>
 
-            <h2 className="prose-h2-next">5. Intellectual Property</h2>
+            <h2 className="prose-h2-next">6. Intellectual Property</h2>
             <p>
               All content, curricula, templates, tools, checklists, strategies, videos, audio,
               graphics, logos, trademarks, trade names, branding, and documentation made available
@@ -271,9 +302,9 @@ export default function TermsPage() {
             </p>
 
             <h2 className="prose-h2-next">
-              6. Disclaimers, Limitation of Liability, and Indemnification
+              7. Disclaimers, Limitation of Liability, and Indemnification
             </h2>
-            <h3>6.1 General Disclaimers</h3>
+            <h3>7.1 General Disclaimers</h3>
             <p>
               To the maximum extent permitted by applicable law, the website and Services are
               provided on an &ldquo;<strong>as is</strong>&rdquo; and &ldquo;<strong>as
@@ -293,7 +324,7 @@ export default function TermsPage() {
               paths.
             </p>
 
-            <h3>6.2 Limitation of Liability</h3>
+            <h3>7.2 Limitation of Liability</h3>
             <p>
               To the fullest extent permitted by applicable law, in no event shall Himmah Prep, its
               owners, officers, employees, contractors, or agents be liable for any:
@@ -316,7 +347,7 @@ export default function TermsPage() {
               liability that cannot be excluded or limited under applicable law.
             </p>
 
-            <h3>6.3 Assumption of Risk</h3>
+            <h3>7.3 Assumption of Risk</h3>
             <p>
               You understand and agree that educational, admissions, and testing outcomes are
               inherently uncertain and influenced by numerous factors beyond Himmah Prep&apos;s
@@ -325,7 +356,7 @@ export default function TermsPage() {
               based on the information and advice provided.
             </p>
 
-            <h3>6.4 Indemnification</h3>
+            <h3>7.4 Indemnification</h3>
             <p>
               You agree to indemnify, defend, and hold harmless Himmah Prep and its owners,
               officers, employees, contractors, and agents from and against any and all claims,
@@ -343,7 +374,7 @@ export default function TermsPage() {
               </li>
             </ul>
 
-            <h2 className="prose-h2-next">7. Force Majeure</h2>
+            <h2 className="prose-h2-next">8. Force Majeure</h2>
             <p>
               Himmah Prep shall not be liable for any delay, interruption, or failure to perform
               any obligation under these Terms due to events beyond its reasonable control,
@@ -358,7 +389,7 @@ export default function TermsPage() {
               reasonably comparable Services continue to be offered.
             </p>
 
-            <h2 className="prose-h2-next">8. Privacy and Data</h2>
+            <h2 className="prose-h2-next">9. Privacy and Data</h2>
             <p>
               Himmah Prep may collect and process personal information about Students and
               Parents/Guardians as described in its separate Privacy Policy, which is incorporated
@@ -373,9 +404,9 @@ export default function TermsPage() {
             </p>
 
             <h2 className="prose-h2-next">
-              9. Governing Law, Dispute Resolution, and Miscellaneous
+              10. Governing Law, Dispute Resolution, and Miscellaneous
             </h2>
-            <h3>9.1 Governing Law</h3>
+            <h3>10.1 Governing Law</h3>
             <p>
               These Terms, and any dispute arising out of or relating to them, the website, or the
               Services, shall be governed by and construed in accordance with the laws of the{" "}
@@ -383,7 +414,7 @@ export default function TermsPage() {
               principles.
             </p>
 
-            <h3>9.2 Dispute Resolution; Venue</h3>
+            <h3>10.2 Dispute Resolution; Venue</h3>
             <p>
               You agree that any dispute, claim, or controversy arising out of or relating to these
               Terms or the Services that cannot be resolved informally shall be brought exclusively
@@ -393,7 +424,7 @@ export default function TermsPage() {
               conveniens.
             </p>
 
-            <h3>9.3 No Professional, Legal, or Financial Advice</h3>
+            <h3>10.3 No Professional, Legal, or Financial Advice</h3>
             <p>
               The Services do not constitute legal, tax, financial, medical, or mental health
               advice. You should consult qualified professionals regarding such matters. Himmah
@@ -401,14 +432,14 @@ export default function TermsPage() {
               advising.
             </p>
 
-            <h3>9.4 Changes to These Terms</h3>
+            <h3>10.4 Changes to These Terms</h3>
             <p>
               Himmah Prep may update or modify these Terms at any time by posting a revised version
               on this website with an updated Effective Date. Your continued use of the website or
               Services after any such changes constitutes your acceptance of the revised Terms.
             </p>
 
-            <h3>9.5 Entire Agreement; Severability; Assignment</h3>
+            <h3>10.5 Entire Agreement; Severability; Assignment</h3>
             <p>
               These Terms, together with any enrollment agreement, order form, and the Privacy
               Policy, constitute the entire agreement between you and Himmah Prep concerning the
