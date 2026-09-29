@@ -1,11 +1,20 @@
+import Image from "next/image";
 import Link from "next/link";
-import { TestimonialCarousel, type Testimonial } from "@/components/Carousel";
+import { Newsreader } from "next/font/google";
 import { LeadForm } from "@/components/LeadForm";
-import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { GuideCover } from "@/components/GuideCover";
-import { UniversityLogo } from "@/components/UniversityLogo";
 import { JsonLd } from "@/components/JsonLd";
+import { ServiceTabs, type Service } from "@/components/home/ServiceTabs";
+import "./home.css";
+
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-newsreader",
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
+});
 
 const HOME_FAQS = [
   {
@@ -69,428 +78,463 @@ const SERVICE_LD = {
   },
 };
 
-const testimonials: Testimonial[] = [
+const SERVICES: Service[] = [
   {
-    university: "berkeley",
-    universityLabel: "UC Berkeley",
-    quote:
-      "“Himmah didn't just get me into Berkeley — they reframed how I thought about myself as a student. The leadership coaching changed me before college did.”",
-    attribution: "Mariam A.",
-    classYear: "'28",
+    title: "College advising and strategy",
+    body: "One-on-one guidance from advisors who went to the Ivy League themselves and know what these schools look for. School lists, essays, applications, and interviews, handled by one advisor.",
+    points: ["Personalized school list", "Essay coaching on every draft", "Interview preparation"],
   },
   {
-    university: "cornell",
-    universityLabel: "Cornell",
-    feature: true,
-    quote:
-      "“My son went from a 1280 SAT to a 1530 in four months, then wrote the best essay of his life. He's at Cornell. We're still in disbelief.”",
-    attribution: "Parent of Yousef H.",
-    classYear: "'28",
+    title: "Standardized test prep",
+    body: "Customized SAT, ACT, IELTS, and TOEFL coaching aimed at the 90th percentile and above, on the first or second sitting.",
+    points: ["Diagnostic and study plan", "15+ full-length practice tests", "9,000+ practice questions"],
   },
   {
-    university: "stanford",
-    universityLabel: "Stanford",
-    quote:
-      "“Every other consultant in Riyadh sells templates. Himmah actually got to know me, then built a strategy nobody else would have thought of.”",
-    attribution: "Lina R.",
-    classYear: "'28",
+    title: "Leadership coaching",
+    body: "Workshops on self-discovery, communication, team building, and public speaking. The skills admissions officers look for in an application, and ones students keep.",
+    points: ["Group cohort format", "Public speaking labs", "Project incubator"],
   },
   {
-    university: "duke",
-    universityLabel: "Duke",
-    quote:
-      "“They were honest with me about what I wasn't ready for, and then made sure I got there. By senior year, Duke felt like a logical step — not a leap.”",
-    attribution: "Faisal M.",
-    classYear: "'27",
-  },
-  {
-    university: "harvard",
-    universityLabel: "Harvard",
-    quote: (
-      <>
-        &ldquo;My daughter&apos;s Common App essay was rewritten seven times. Each draft made it
-        more <em>her</em>. The day Harvard&apos;s letter came, we cried — then we read the essay
-        again.&rdquo;
-      </>
-    ),
-    attribution: "Parent of Noor A.",
-    classYear: "'27",
-  },
-  {
-    university: "ucla",
-    universityLabel: "UCLA",
-    quote:
-      "“I came in expecting a tutor. I left with a strategy, a portfolio, two summer programs, and friends from the leadership cohort I still talk to weekly.”",
-    attribution: "Omar S.",
-    classYear: "'28",
-  },
-  {
-    university: "yale",
-    universityLabel: "Yale",
-    quote:
-      "“Other consultants told me my profile was 'fine.' Himmah told me which two extracurriculars to drop and which one to double down on. That's the call that changed everything.”",
-    attribution: "Hala K.",
-    classYear: "'27",
-  },
-  {
-    university: "princeton",
-    universityLabel: "Princeton",
-    quote:
-      "“From Riyadh to Princeton in 18 months — and not by accident. Every deadline, every essay, every interview was rehearsed. We did the work. They built the runway.”",
-    attribution: "Parent of Tariq B.",
-    classYear: "'28",
+    title: "Summer activity planning",
+    body: "Identifying the most competitive summer programs, research placements, and internships, and building strong applications to them.",
+    points: ["RSI, YYGS, SSP and more", "Research placement help", "Internship strategy"],
   },
 ];
 
+type Quote = { quote: string; name: string; school: string };
+
+const STUDENT_QUOTES: Quote[] = [
+  {
+    quote:
+      "Himmah didn't just get me into Berkeley — they reframed how I thought about myself as a student. The leadership coaching changed me before college did.",
+    name: "Mariam A.",
+    school: "UC Berkeley · Class of '28",
+  },
+  {
+    quote:
+      "Every other consultant in Riyadh sells templates. Himmah actually got to know me, then built a strategy nobody else would have thought of.",
+    name: "Lina R.",
+    school: "Stanford · Class of '28",
+  },
+  {
+    quote:
+      "Other consultants told me my profile was 'fine.' Himmah told me which two extracurriculars to drop and which one to double down on. That's the call that changed everything.",
+    name: "Hala K.",
+    school: "Yale · Class of '27",
+  },
+];
+
+const PARENT_QUOTES: Quote[] = [
+  {
+    quote:
+      "My son went from a 1280 SAT to a 1530 in four months, then wrote the best essay of his life. He's at Cornell. We're still in disbelief.",
+    name: "Parent of Yousef H.",
+    school: "Cornell · Class of '28",
+  },
+  {
+    quote:
+      "My daughter's Common App essay was rewritten seven times. Each draft made it more her. The day Harvard's letter came, we cried — then we read the essay again.",
+    name: "Parent of Noor A.",
+    school: "Harvard · Class of '27",
+  },
+  {
+    quote:
+      "From Riyadh to Princeton in 18 months — and not by accident. Every deadline, every essay, every interview was rehearsed.",
+    name: "Parent of Tariq B.",
+    school: "Princeton · Class of '28",
+  },
+];
+
+const UNIVERSITIES = [
+  "Harvard",
+  "Stanford",
+  "Yale",
+  "Princeton",
+  "MIT",
+  "Cornell",
+  "Duke",
+  "UC Berkeley",
+  "UCLA",
+  "Oxford",
+  "Cambridge",
+];
+
+function SectionLabel({ num, children }: { num: string; children: React.ReactNode }) {
+  return (
+    <p className="hp2-label">
+      <span className="hp2-label-num">{num}</span>
+      <span className="hp2-dot" aria-hidden="true" />
+      {children}
+    </p>
+  );
+}
+
 export default function HomePage() {
   return (
-    <>
+    <div className={`hp2 ${newsreader.variable}`}>
       <JsonLd data={WEBSITE_LD} />
       <JsonLd data={SERVICE_LD} />
       <JsonLd data={HOME_FAQ_LD} />
-      <Header />
+
+      <header className="hp2-nav">
+        <div className="hp2-wrap hp2-nav-inner">
+          <Link href="/" aria-label="Himmah Prep home" className="hp2-brand">
+            <Image src="/logo-wordmark.png" alt="Himmah Prep" width={1393} height={203} priority />
+          </Link>
+          <nav className="hp2-nav-links" aria-label="Primary">
+            <Link href="/about">About</Link>
+            <Link href="/results">Results</Link>
+            <Link href="/standardized-test-tutors">Test Prep</Link>
+            <Link href="/blog">Blog</Link>
+            <Link href="/shop">Store</Link>
+          </nav>
+          <div className="hp2-nav-actions">
+            <a href="https://portal.himmahprep.com" className="hp2-btn hp2-btn-outline">
+              Student portal
+            </a>
+            <a href="#consult" className="hp2-btn hp2-btn-dark">
+              Free consultation
+            </a>
+          </div>
+        </div>
+      </header>
 
       <main>
-        <section className="hero">
-          <div className="hero-inner">
-            <p className="eyebrow">Guaranteed to help students stand out</p>
-            <h1 className="display">
-              Ivy League college counseling
-              <br />
-              for <em>Gulf students.</em>
-            </h1>
-            <p className="lead">
-              College admissions strategy, 1-on-1 SAT and ACT prep, essay coaching, and
-              leadership training for students in Saudi Arabia, the UAE, Qatar, Kuwait,
-              Bahrain, and Oman — from advisors who went to the Ivy League themselves. A 100%
-              acceptance track record, and a portal that turns the chaos of applications into
-              one clear plan.
-            </p>
-            <div className="hero-ctas">
-              <a href="#consult" className="btn btn-primary">
-                Apply for a free consultation
-              </a>
-              <a href="#approach" className="btn btn-ghost">
-                See how it works <span aria-hidden="true">&rarr;</span>
-              </a>
-            </div>
-            <div className="hero-trust">
-              <div className="trust-stat">
-                <div className="trust-num">
-                  100<span>%</span>
-                </div>
-                <div className="trust-label">
-                  College acceptance
-                  <br />
-                  track record
-                </div>
-              </div>
-              <div className="trust-divider" aria-hidden="true" />
-              <div className="trust-stat">
-                <div className="trust-num">
-                  100<span>%</span>
-                </div>
-                <div className="trust-label">
-                  Ivy League
-                  <br />
-                  credentialed advisors
-                </div>
-              </div>
-              <div className="trust-divider" aria-hidden="true" />
-              <div className="trust-stat">
-                <div className="trust-num">
-                  90<span>th+</span>
-                </div>
-                <div className="trust-label">
-                  Median SAT/ACT
-                  <br />
-                  percentile attained
-                </div>
+        {/* Hero */}
+        <section className="hp2-hero">
+          <div className="hp2-wrap hp2-hero-grid">
+            <div className="hp2-hero-copy">
+              <p className="hp2-kicker">
+                <span className="hp2-dot" aria-hidden="true" />
+                College counseling · Saudi Arabia &amp; the Gulf
+              </p>
+              <p className="hp2-hero-pre">
+                College admissions strategy and 1-on-1 test prep, from advisors who went to the
+                Ivy League themselves.
+              </p>
+              <h1 className="hp2-h1">Ivy League college counseling for Gulf students.</h1>
+              <p className="hp2-hero-lead">
+                Himmah Prep works with students in Saudi Arabia, the UAE, Qatar, Kuwait, Bahrain,
+                and Oman on admissions strategy, SAT and ACT prep, essays, and leadership. One
+                senior advisor is responsible for each student, and every family gets a private
+                portal that keeps the whole plan in one place.
+              </p>
+              <div className="hp2-hero-ctas">
+                <a href="#consult" className="hp2-btn hp2-btn-primary hp2-btn-lg">
+                  Book a free consultation
+                  <span className="hp2-btn-arrow" aria-hidden="true">
+                    &rarr;
+                  </span>
+                </a>
+                <a href="#services" className="hp2-textlink">
+                  See what we do <span aria-hidden="true">&rarr;</span>
+                </a>
               </div>
             </div>
-          </div>
 
-          <div className="hero-card" aria-hidden="true">
-            <div className="hero-card-head">
-              <span className="dot dot-red" />
-              <span className="dot dot-amber" />
-              <span className="dot dot-green" />
-              <span className="hero-card-label">portal.himmahprep.com</span>
-            </div>
-            <div className="hero-card-body">
-              <p className="muted-sm">Your roadmap</p>
-              <h3 className="serif">
-                Welcome <em>back</em>, Layla
-              </h3>
-              <ul className="kanban">
-                <li>
-                  <span className="chip chip-amber">Essay</span> Common App — Why Stanford
-                </li>
-                <li>
-                  <span className="chip chip-red">Test Prep</span> SAT mock, Saturday 9am
-                </li>
-                <li>
-                  <span className="chip chip-green">Leadership</span> Public speaking workshop
-                </li>
-                <li>
-                  <span className="chip chip-line">Summer</span> RSI application — review draft
-                </li>
-              </ul>
-              <div className="kanban-foot">
-                <div className="progress">
-                  <span style={{ width: "72%" }} />
-                </div>
-                <span className="muted-sm">72% to submission</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="logo-bar" aria-label="Universities our students attend">
-          <p className="logo-bar-label">Where our students go</p>
-          <ul className="logo-list logo-list-images">
-            {[
-              { slug: "harvard", label: "Harvard" },
-              { slug: "stanford", label: "Stanford" },
-              { slug: "yale", label: "Yale" },
-              { slug: "princeton", label: "Princeton" },
-              { slug: "berkeley", label: "UC Berkeley" },
-              { slug: "cornell", label: "Cornell" },
-              { slug: "duke", label: "Duke" },
-            ].map((u) => (
-              <li key={u.slug} title={u.label}>
-                <UniversityLogo
-                  slug={u.slug as never}
-                  label={u.label}
-                  className="uni-mark logo-bar-mark"
+            <div className="hp2-hero-media">
+              <div className="hp2-arch">
+                <Image
+                  src="/campus/yale_portal.jpg"
+                  alt="Sterling Memorial Library, Yale University"
+                  fill
+                  priority
+                  sizes="(max-width: 900px) 90vw, 420px"
                 />
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section id="services" className="services">
-          <div className="section-head">
-            <p className="eyebrow">What we do</p>
-            <h2 className="display-2">
-              Four pillars. <em>One outcome.</em>
-            </h2>
-            <p className="lead-2">
-              Every Himmah Prep student gets a complete admissions strategy — not a patchwork of
-              tutors. We work end-to-end so nothing falls through the cracks.
-            </p>
+              </div>
+              <div className="hp2-float">
+                <span className="hp2-dot" aria-hidden="true" />
+                One senior advisor, from the first meeting to the final decision.
+              </div>
+            </div>
           </div>
-          <div className="grid-4">
-            <article className="card">
-              <span className="card-num">01</span>
-              <h3>College Advising &amp; Strategy</h3>
-              <p>
-                One-on-one guidance from advisors who actually went to the Ivy League — they
-                know what these schools want because they got in themselves. School lists, essays,
-                applications, interviews — all of it.
-              </p>
-              <ul className="bullets">
-                <li>Personalized school list</li>
-                <li>Essay coaching, every draft</li>
-                <li>Interview preparation</li>
-              </ul>
-            </article>
-            <article className="card">
-              <span className="card-num">02</span>
-              <h3>Standardized Test Prep</h3>
-              <p>
-                Customized SAT, ACT, IELTS, and TOEFL coaching designed to land scores in the 90th
-                percentile and above — on the first or second sitting.
-              </p>
-              <ul className="bullets">
-                <li>Diagnostic + study plan</li>
-                <li>15+ full-length practice tests</li>
-                <li>9,000+ practice questions</li>
-              </ul>
-            </article>
-            <article className="card">
-              <span className="card-num">03</span>
-              <h3>Leadership Coaching</h3>
-              <p>
-                Workshops on self-discovery, communication, team building, and public speaking. The
-                skills admissions officers see in your application — and you carry for life.
-              </p>
-              <ul className="bullets">
-                <li>Group cohort format</li>
-                <li>Public speaking labs</li>
-                <li>Project incubator</li>
-              </ul>
-            </article>
-            <article className="card">
-              <span className="card-num">04</span>
-              <h3>Summer Activity Planning</h3>
-              <p>
-                We help you identify the most competitive summer programs in the world, the kind
-                that turn an application from strong to undeniable.
-              </p>
-              <ul className="bullets">
-                <li>RSI, YYGS, SSP &amp; more</li>
-                <li>Research placement help</li>
-                <li>Internship strategy</li>
-              </ul>
-            </article>
+
+          <div className="hp2-wrap">
+            <dl className="hp2-stats">
+              <div>
+                <dt>100%</dt>
+                <dd>College acceptance track record</dd>
+              </div>
+              <div>
+                <dt>100%</dt>
+                <dd>Ivy League–credentialed advisors</dd>
+              </div>
+              <div>
+                <dt>90th+</dt>
+                <dd>Median SAT/ACT percentile attained</dd>
+              </div>
+            </dl>
           </div>
         </section>
 
-        <section id="approach" className="approach">
-          <div className="approach-card">
-            <p className="eyebrow">The portal advantage</p>
-            <h2 className="display-2">
-              A workspace built for the <em>GCC-to-Ivy</em> journey.
-            </h2>
-            <p className="lead-2">
-              Every Himmah student gets access to{" "}
-              <span className="hl">portal.himmahprep.com</span> — a private workspace with a board
-              for every school, essay drafts with advisor comments, a curated college search, and
-              the deadlines that matter, in one place.
-            </p>
-            <div className="approach-grid">
-              <div>
-                <p className="approach-num serif">
-                  <em>01</em>
-                </p>
-                <h4>Diagnose</h4>
-                <p className="muted">
-                  A one-hour conversation during your free consultation — academic profile,
-                  ambitions, constraints, and the school list nobody is talking about yet.
-                </p>
-              </div>
-              <div>
-                <p className="approach-num serif">
-                  <em>02</em>
-                </p>
-                <h4>Build</h4>
-                <p className="muted">
-                  A 12–24 month roadmap inside the portal. Tests, summer programs, leadership work,
-                  essays — sequenced so nothing collides.
-                </p>
-              </div>
-              <div>
-                <p className="approach-num serif">
-                  <em>03</em>
-                </p>
-                <h4>Submit</h4>
-                <p className="muted">
-                  Every essay, every form, every supplement reviewed before it ships. We don&apos;t
-                  ghost in November.
+        {/* University band */}
+        <section className="hp2-band" aria-label="Universities our students attend">
+          <p className="hp2-band-label">Where our students have been admitted</p>
+          <div className="hp2-marquee">
+            <div className="hp2-marquee-track">
+              {[...UNIVERSITIES, ...UNIVERSITIES].map((u, i) => (
+                <span key={`${u}-${i}`} aria-hidden={i >= UNIVERSITIES.length}>
+                  {u}
+                  <span className="hp2-marquee-dot" aria-hidden="true" />
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 01 Approach */}
+        <section className="hp2-section">
+          <div className="hp2-wrap">
+            <SectionLabel num="01">Our approach</SectionLabel>
+            <h2 className="hp2-outline">One strategy, not a patchwork of tutors.</h2>
+            <div className="hp2-split">
+              <p className="hp2-body-lg">
+                Most families put together test prep from one place, essay help from another,
+                and advice from whoever they know. Nobody owns the whole plan. At Himmah Prep,
+                one advisor is responsible for the student&apos;s school list, testing,
+                activities, summers, and applications, so every decision supports the same
+                goal.
+              </p>
+              <div className="hp2-timeline-card">
+                <p className="hp2-card-h">When to start</p>
+                <ol className="hp2-grades">
+                  <li>
+                    <span className="hp2-node" />
+                    Grade 9
+                  </li>
+                  <li className="is-key">
+                    <span className="hp2-node" />
+                    Grade 10
+                  </li>
+                  <li>
+                    <span className="hp2-node" />
+                    Grade 11
+                  </li>
+                  <li>
+                    <span className="hp2-node" />
+                    Grade 12
+                  </li>
+                </ol>
+                <p className="hp2-card-note">
+                  10th grade is ideal: enough academic history for a real diagnostic, and two
+                  full years to raise scores, build activities, and plan summers.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="results" className="results">
-          <div className="section-head">
-            <p className="eyebrow">In their words</p>
-            <h2 className="display-2">
-              Students. Parents. <em>Real outcomes.</em>
-            </h2>
+        {/* 02 Services */}
+        <section id="services" className="hp2-section hp2-sand">
+          <div className="hp2-wrap">
+            <SectionLabel num="02">What we do</SectionLabel>
+            <h2 className="hp2-h2">Four services, one advisor.</h2>
+            <ServiceTabs services={SERVICES} />
           </div>
-          <TestimonialCarousel items={testimonials} />
         </section>
 
-        <section id="guide" className="guide">
-          <div className="guide-grid">
-            <div>
-              <p className="eyebrow">A 58-page head start</p>
-              <h2 className="display-2">
-                The U.S. Application <em>Guide.</em>
-              </h2>
-              <p className="lead-2">
-                Everything our advisors wish every Gulf student knew before junior year: SAT/ACT
-                strategy, school research, essay frameworks, the activities list — and four full
-                essays from students who got into Stanford, Harvard, Emory, and UIUC.
+        {/* 03 Testimonials */}
+        <section id="results" className="hp2-section hp2-dark">
+          <div className="hp2-wrap">
+            <SectionLabel num="03">Results</SectionLabel>
+            <h2 className="hp2-h2">What students and parents say.</h2>
+            <div className="hp2-quotes">
+              {[
+                { label: "From students", items: STUDENT_QUOTES },
+                { label: "From parents", items: PARENT_QUOTES },
+              ].map((col) => (
+                <div key={col.label} className="hp2-quote-col">
+                  <p className="hp2-col-label">{col.label}</p>
+                  {col.items.map((q) => (
+                    <figure key={q.name} className="hp2-quote">
+                      <span className="hp2-quote-mark" aria-hidden="true">
+                        &ldquo;
+                      </span>
+                      <blockquote>{q.quote}</blockquote>
+                      <figcaption>
+                        <strong>{q.name}</strong>
+                        <span>{q.school}</span>
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
+              ))}
+            </div>
+            <p className="hp2-quote-foot">
+              <Link href="/results">See more results &rarr;</Link>
+            </p>
+          </div>
+        </section>
+
+        {/* 04 How it works */}
+        <section id="approach" className="hp2-section">
+          <div className="hp2-wrap hp2-how">
+            <div className="hp2-how-head">
+              <SectionLabel num="04">How it works</SectionLabel>
+              <h2 className="hp2-h2">Three stages, one plan.</h2>
+              <p className="hp2-body">
+                Every student gets access to{" "}
+                <a href="https://portal.himmahprep.com">portal.himmahprep.com</a>, a private
+                workspace with a board for every school, essay drafts with advisor comments, a
+                college search, and every deadline in one place.
               </p>
-              <div className="guide-ctas">
-                <Link href="/shop/p/guide" className="btn btn-primary">
-                  Get the guide — <s>$49</s>&nbsp; $19
-                </Link>
-                <Link href="/shop/p/guide" className="btn btn-ghost">
-                  See the table of contents <span aria-hidden="true">&rarr;</span>
-                </Link>
+              <div className="hp2-how-photo">
+                <Image
+                  src="/campus/stanford_arches.jpg"
+                  alt="The Main Quad arcade at Stanford University"
+                  fill
+                  sizes="(max-width: 900px) 90vw, 420px"
+                />
               </div>
-              <ul className="bullets two-col">
-                <li>SAT/ACT strategy &amp; scoring</li>
-                <li>School research &amp; list-building</li>
+            </div>
+            <ol className="hp2-phases">
+              {[
+                {
+                  tag: "Stage one · Free consultation",
+                  title: "Diagnose",
+                  body: "A one-hour conversation about the student's academic profile, goals, and constraints, and a realistic first school list.",
+                },
+                {
+                  tag: "Stage two · 12–24 months",
+                  title: "Build",
+                  body: "A roadmap inside the portal covering tests, summer programs, leadership work, and essays, sequenced so nothing collides.",
+                },
+                {
+                  tag: "Stage three · Application year",
+                  title: "Submit",
+                  body: "Every essay, form, and supplement is reviewed before it is submitted, through to the final decision.",
+                },
+              ].map((p, i) => (
+                <li key={p.title} className="hp2-phase">
+                  <span className="hp2-phase-ghost" aria-hidden="true">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="hp2-pill">{p.tag}</span>
+                  <h3>{p.title}</h3>
+                  <p>{p.body}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* 05 Guide */}
+        <section id="guide" className="hp2-section hp2-sand">
+          <div className="hp2-wrap hp2-guide">
+            <div>
+              <SectionLabel num="05">The application guide</SectionLabel>
+              <h2 className="hp2-h2">The U.S. Application Guide.</h2>
+              <p className="hp2-body">
+                A 58-page guide to what our advisors wish every Gulf student knew before junior
+                year: SAT/ACT strategy, school research, essay frameworks, the activities list,
+                and four full essays from students admitted to Stanford, Harvard, Emory, and
+                UIUC.
+              </p>
+              <ul className="hp2-list">
+                <li>SAT/ACT strategy and scoring</li>
+                <li>School research and list-building</li>
                 <li>Common App walkthrough</li>
                 <li>Activities list with real examples</li>
                 <li>Essay frameworks: Common App, supplementals, UC</li>
-                <li>4 accepted essays — Stanford, Harvard, Emory, UIUC</li>
+                <li>Four accepted essays</li>
               </ul>
+              <div className="hp2-hero-ctas">
+                <Link href="/shop/p/guide" className="hp2-btn hp2-btn-dark hp2-btn-lg">
+                  Get the guide · <s>$49</s> $19
+                </Link>
+                <Link href="/shop/p/guide" className="hp2-textlink">
+                  Table of contents <span aria-hidden="true">&rarr;</span>
+                </Link>
+              </div>
             </div>
-            <aside className="guide-cover" aria-hidden="true">
+            <div className="hp2-guide-cover" aria-hidden="true">
               <GuideCover />
-            </aside>
+            </div>
           </div>
         </section>
 
-        <section className="prose-section">
-          <div className="prose">
-            <h2 className="display-2">
-              College counseling and SAT prep <em>across the Gulf.</em>
-            </h2>
-            <p>
-              Himmah Prep works with families in{" "}
-              <Link href="/saudi-arabia">Saudi Arabia</Link>, <Link href="/uae">the UAE</Link>,{" "}
-              <Link href="/qatar">Qatar</Link>, <Link href="/kuwait">Kuwait</Link>,{" "}
-              <Link href="/bahrain">Bahrain</Link>, and <Link href="/oman">Oman</Link>. Most of
-              our students attend IB or American-curriculum schools and are applying to the
-              most selective universities in the United States and the United Kingdom.
-            </p>
-            <p>
-              Test prep is live and 1-on-1, wherever the student is. See how SAT prep works
-              in <Link href="/sat-prep/jeddah">Jeddah</Link>,{" "}
-              <Link href="/sat-prep/riyadh">Riyadh</Link>,{" "}
-              <Link href="/sat-prep/dammam">Dammam &amp; Khobar</Link>,{" "}
-              <Link href="/sat-prep/dubai">Dubai</Link>,{" "}
-              <Link href="/sat-prep/abu-dhabi">Abu Dhabi</Link>,{" "}
-              <Link href="/sat-prep/doha">Doha</Link>,{" "}
-              <Link href="/sat-prep/kuwait-city">Kuwait City</Link>,{" "}
-              <Link href="/sat-prep/manama">Manama</Link>, and{" "}
-              <Link href="/sat-prep/muscat">Muscat</Link> — or start with the self-paced{" "}
-              <Link href="/sat-bootcamp">8-week Digital SAT bootcamp</Link>.
-            </p>
+        {/* 06 Where we work */}
+        <section className="hp2-section">
+          <div className="hp2-wrap">
+            <SectionLabel num="06">Where we work</SectionLabel>
+            <h2 className="hp2-h2">College counseling and SAT prep across the Gulf.</h2>
+            <div className="hp2-where">
+              <p className="hp2-body">
+                Most of our students attend IB or American-curriculum schools and are applying
+                to the most selective universities in the United States and the United Kingdom.
+                Test prep is live and 1-on-1 wherever the student is, or self-paced through the{" "}
+                <Link href="/sat-bootcamp">8-week Digital SAT bootcamp</Link>.
+              </p>
+              <div className="hp2-where-cols">
+                <div>
+                  <p className="hp2-col-label">Countries</p>
+                  <Link href="/saudi-arabia">Saudi Arabia</Link>
+                  <Link href="/uae">UAE</Link>
+                  <Link href="/qatar">Qatar</Link>
+                  <Link href="/kuwait">Kuwait</Link>
+                  <Link href="/bahrain">Bahrain</Link>
+                  <Link href="/oman">Oman</Link>
+                </div>
+                <div>
+                  <p className="hp2-col-label">SAT prep by city</p>
+                  <Link href="/sat-prep/riyadh">Riyadh</Link>
+                  <Link href="/sat-prep/jeddah">Jeddah</Link>
+                  <Link href="/sat-prep/dammam">Dammam &amp; Khobar</Link>
+                  <Link href="/sat-prep/dubai">Dubai</Link>
+                  <Link href="/sat-prep/abu-dhabi">Abu Dhabi</Link>
+                  <Link href="/sat-prep/doha">Doha</Link>
+                  <Link href="/sat-prep/kuwait-city">Kuwait City</Link>
+                  <Link href="/sat-prep/manama">Manama</Link>
+                  <Link href="/sat-prep/muscat">Muscat</Link>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
-        <section className="page-section page-section-tinted">
-          <div className="section-head">
-            <p className="eyebrow">FAQ</p>
-            <h2 className="display-2">
-              What families <em>ask us first.</em>
-            </h2>
-          </div>
-          <div className="faq-grid">
-            {HOME_FAQS.map((f) => (
-              <details key={f.q} className="faq-item">
-                <summary>{f.q}</summary>
-                <p>{f.a}</p>
-              </details>
-            ))}
+        {/* 07 FAQ */}
+        <section className="hp2-section hp2-sand">
+          <div className="hp2-wrap hp2-faq">
+            <div>
+              <SectionLabel num="07">Questions</SectionLabel>
+              <h2 className="hp2-h2">Common questions from families.</h2>
+            </div>
+            <div className="hp2-faq-list">
+              {HOME_FAQS.map((f) => (
+                <details key={f.q}>
+                  <summary>{f.q}</summary>
+                  <p>{f.a}</p>
+                </details>
+              ))}
+            </div>
           </div>
         </section>
 
-        <section id="consult" className="cta">
-          <div className="cta-inner">
-            <p className="eyebrow">Book a free consultation</p>
-            <h2 className="display-2">
-              Tell us about <em>the student.</em>
-            </h2>
-            <p className="lead-2">
-              A 30-minute call with one of our senior advisors. You&apos;ll leave with a candid
-              read on the path forward — and the honest version of how we&apos;d help.
-            </p>
-            <LeadForm />
+        {/* 08 Consultation */}
+        <section id="consult" className="hp2-section hp2-cta">
+          <div className="hp2-wrap hp2-cta-grid">
+            <div>
+              <SectionLabel num="08">Free consultation</SectionLabel>
+              <h2 className="hp2-h2">Tell us where the student is today.</h2>
+              <p className="hp2-body">
+                A 30-minute call with a senior advisor. You&apos;ll get a candid read on the
+                student&apos;s profile, a realistic school list, and a clear next step, whether
+                or not you work with us.
+              </p>
+            </div>
+            <div className="hp2-form-card">
+              <LeadForm />
+            </div>
           </div>
         </section>
+
+        <p className="hp2-credits">
+          Campus photographs from Wikimedia Commons: Sterling Memorial Library by Christian
+          David (CC BY-SA 4.0); Stanford Main Quad by Jawed (CC BY-SA 4.0).
+        </p>
       </main>
 
       <Footer />
-    </>
+    </div>
   );
 }
