@@ -3,6 +3,7 @@ import Link from "next/link";
 import { LeadForm } from "@/components/LeadForm";
 import { Footer } from "@/components/Footer";
 import { GuideCover } from "@/components/GuideCover";
+import { UniversityLogo, type UniversitySlug } from "@/components/UniversityLogo";
 import { JsonLd } from "@/components/JsonLd";
 import { ServiceTabs } from "@/components/home/ServiceTabs";
 import { StickyNav } from "@/components/home/StickyNav";
@@ -12,7 +13,7 @@ import { StatCounter } from "@/components/home/StatCounter";
 import { QuoteCarousel } from "@/components/home/QuoteCarousel";
 import { TiltCard } from "@/components/home/TiltCard";
 import { CampusRow, type Campus } from "@/components/home/CampusRow";
-import { CITIES, COUNTRIES, FAQS, PHOTO_CREDITS, QUOTES, SERVICES, STAGES, UK_US, UNIVERSITIES } from "@/lib/home-content";
+import { CITIES, COUNTRIES, FAQS, PHOTO_CREDITS, QUOTES, SERVICES, STAGES, UK_US } from "@/lib/home-content";
 import "./home.css";
 
 const WEBSITE_LD = {
@@ -57,6 +58,22 @@ const CAMPUSES: Campus[] = [
   { name: "Yale", place: "Connecticut", src: "/campus/yale_portal.jpg", note: "Sterling Memorial Library." },
   { name: "Oxford", place: "England", src: "/campus/oxford.jpg", note: "The Radcliffe Camera, Radcliffe Square." },
   { name: "Cambridge", place: "England", src: "/campus/cambridge.jpg", note: "King's College Chapel." },
+];
+
+const BAND_LOGOS: { slug: UniversitySlug | null; label: string }[] = [
+  { slug: "harvard", label: "Harvard" },
+  { slug: "stanford", label: "Stanford" },
+  { slug: "yale", label: "Yale" },
+  { slug: "princeton", label: "Princeton" },
+  { slug: "mit", label: "MIT" },
+  { slug: "columbia", label: "Columbia" },
+  { slug: "penn", label: "Penn" },
+  { slug: "cornell", label: "Cornell" },
+  { slug: "duke", label: "Duke" },
+  { slug: "berkeley", label: "UC Berkeley" },
+  { slug: "ucla", label: "UCLA" },
+  { slug: null, label: "Oxford" },
+  { slug: null, label: "Cambridge" },
 ];
 
 function Label({ num, children }: { num: string; children: React.ReactNode }) {
@@ -151,9 +168,13 @@ export default function HomePage() {
           <p className="hp4-band-label">Our students have been admitted to</p>
           <div className="hp4-marquee">
             <div className="hp4-marquee-track">
-              {[...UNIVERSITIES, ...UNIVERSITIES].map((u, i) => (
-                <span key={`${u}-${i}`} aria-hidden={i >= UNIVERSITIES.length}>
-                  {u}
+              {[...BAND_LOGOS, ...BAND_LOGOS].map((u, i) => (
+                <span key={`${u.slug}-${i}`} aria-hidden={i >= BAND_LOGOS.length}>
+                  {u.slug ? (
+                    <UniversityLogo slug={u.slug} label={u.label} className="hp4-band-logo" />
+                  ) : (
+                    <span className="hp4-band-word">{u.label}</span>
+                  )}
                 </span>
               ))}
             </div>

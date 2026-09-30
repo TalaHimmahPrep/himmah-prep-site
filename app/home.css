@@ -127,8 +127,10 @@
 .hp4-marquee { mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent); }
 .hp4-marquee-track { display: flex; width: max-content; animation: hp4-marquee 42s linear infinite; }
 .hp4-marquee:hover .hp4-marquee-track { animation-play-state: paused; }
-.hp4-marquee-track span { display: inline-flex; align-items: center; padding-right: 56px; font-family: var(--serif); font-size: 40px; line-height: 1.1; color: var(--maroon-ink); white-space: nowrap; }
-.hp4-marquee-track span::after { content: ""; display: inline-block; width: 6px; height: 6px; margin-left: 56px; border-radius: 50%; background: var(--gold); }
+.hp4-marquee-track > span { display: inline-flex; align-items: center; padding-right: 48px; white-space: nowrap; }
+.hp4-band-logo { height: 44px; width: auto; max-width: 190px; object-fit: contain; }
+.hp4-band-word { font-family: var(--serif); font-size: 34px; line-height: 1; color: var(--maroon-ink); }
+.hp4-marquee-track > span::after { content: ""; display: inline-block; width: 6px; height: 6px; margin-left: 56px; border-radius: 50%; background: var(--gold); margin-left: 48px; }
 @keyframes hp4-marquee { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .hp4-marquee-track { animation: none; } }
 
@@ -292,8 +294,10 @@
   .hp4-hero-tag { left: 12px; right: 12px; bottom: 12px; padding: 12px 14px; font-size: 13px; }
   .hp4-stats dt { font-size: 38px; }
   .hp4-band { padding: 28px 0 30px; }
-  .hp4-marquee-track span { font-size: 30px; padding-right: 40px; }
-  .hp4-marquee-track span::after { margin-left: 40px; }
+  .hp4-band-logo { height: 32px; max-width: 140px; }
+  .hp4-band-word { font-size: 26px; }
+  .hp4-marquee-track > span { padding-right: 32px; }
+  .hp4-marquee-track > span::after { margin-left: 32px; }
   .hp4-planner-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; overflow: visible; }
   .hp4-planner-tabs button { padding: 10px 0 14px; font-size: 16px; text-align: center; white-space: nowrap; }
   .hp4-grade-long { display: none; }
