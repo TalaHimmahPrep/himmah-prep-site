@@ -37,12 +37,12 @@ const HOME_FAQ_LD = {
 };
 
 const CAMPUSES: Campus[] = [
-  { name: "Harvard", place: "Cambridge, Massachusetts", src: "/campus/widener.jpg", note: "Widener Library, Harvard Yard." },
-  { name: "Princeton", place: "Princeton, New Jersey", src: "/campus/nassau.jpg", note: "Nassau Hall, the oldest building on campus." },
-  { name: "Stanford", place: "Stanford, California", src: "/campus/stanford_arches.jpg", note: "The arcades of the Main Quad." },
-  { name: "Yale", place: "New Haven, Connecticut", src: "/campus/yale_portal.jpg", note: "Sterling Memorial Library." },
-  { name: "Oxford", place: "Oxford, England", src: "/campus/oxford.jpg", note: "The Radcliffe Camera, Radcliffe Square." },
-  { name: "Cambridge", place: "Cambridge, England", src: "/campus/cambridge.jpg", note: "King's College Chapel." },
+  { name: "Harvard", place: "Massachusetts", src: "/campus/widener.jpg", note: "Widener Library, Harvard Yard." },
+  { name: "Princeton", place: "New Jersey", src: "/campus/nassau.jpg", note: "Nassau Hall, the oldest building on campus." },
+  { name: "Stanford", place: "California", src: "/campus/stanford_arches.jpg", note: "The arcades of the Main Quad." },
+  { name: "Yale", place: "Connecticut", src: "/campus/yale_portal.jpg", note: "Sterling Memorial Library." },
+  { name: "Oxford", place: "England", src: "/campus/oxford.jpg", note: "The Radcliffe Camera, Radcliffe Square." },
+  { name: "Cambridge", place: "England", src: "/campus/cambridge.jpg", note: "King's College Chapel." },
 ];
 
 function Label({ num, children }: { num: string; children: React.ReactNode }) {

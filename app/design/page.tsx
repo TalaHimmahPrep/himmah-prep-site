@@ -4,6 +4,16 @@ export const metadata = { title: "Homepage designs — Himmah Prep", robots: { i
 
 const DESIGNS = [
   {
+    href: "/",
+    name: "Homepage (current direction)",
+    note: "Light palette, brand maroon, interactive planner, UK and US content.",
+  },
+  {
+    href: "/design/portal",
+    name: "Portal mock-up",
+    note: "The student dashboard in the new design: sidebar, stats, applications, sessions, notes.",
+  },
+  {
     href: "/design/current",
     name: "Current live site",
     note: "What himmahprep.com looks like today, for comparison.",
