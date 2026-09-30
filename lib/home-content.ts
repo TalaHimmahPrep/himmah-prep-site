@@ -8,7 +8,7 @@ export const FAQS = [
   },
   {
     q: "What does the program include?",
-    a: "College advising and application strategy, 1-on-1 SAT/ACT (and IELTS/TOEFL) prep, essay coaching on every draft, leadership workshops, and summer program planning — in one package, with one senior advisor responsible for the student.",
+    a: "College advising and application strategy, 1-on-1 SAT/ACT (and IELTS/TOEFL) prep, essay coaching on every draft, leadership workshops, and summer program planning — in one package, with a Himmah Prep team of counselors and tutors working from a single plan.",
   },
   {
     q: "Who are the advisors?",
@@ -33,7 +33,7 @@ export type Service = { title: string; body: string; points: string[] };
 export const SERVICES: Service[] = [
   {
     title: "US and UK admissions strategy",
-    body: "One-on-one guidance from advisors who went to the Ivy League themselves and know what selective universities look for. A school list across both systems, Common App and UCAS applications, essays and the UCAS personal statement, admissions tests, and interviews, handled by one advisor.",
+    body: "One-on-one guidance from advisors who went to the Ivy League themselves and know what selective universities look for. A school list across both systems, Common App and UCAS applications, essays and the UCAS personal statement, admissions tests, and interviews, all coordinated by your Himmah Prep counselor.",
     points: ["School list across the US and UK", "Common App and UCAS", "Oxbridge tests and interviews", "Essay coaching on every draft"],
   },
   {
@@ -141,7 +141,7 @@ export const STAGES = [
 export const HERO = {
   kicker: "College counseling · Saudi Arabia & the Gulf",
   headline: "Ivy League college counseling for Gulf students.",
-  lead: "Himmah Prep works with students in Saudi Arabia, the UAE, Qatar, Kuwait, Bahrain, and Oman on admissions to selective universities in the United States and the United Kingdom: strategy, SAT and ACT prep, essays, and leadership. One senior advisor is responsible for each student, and every family gets a private portal that keeps the whole plan in one place.",
+  lead: "Himmah Prep works with students in Saudi Arabia, the UAE, Qatar, Kuwait, Bahrain, and Oman on admissions to selective universities in the United States and the United Kingdom: strategy, SAT and ACT prep, essays, and leadership. Every piece is handled in-house by Himmah Prep counselors and tutors working from one plan, and every family gets a private portal that keeps it all in one place.",
 };
 
 export const COUNTRIES = [

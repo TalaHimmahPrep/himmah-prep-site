@@ -105,8 +105,8 @@ export default function HomePage() {
                 Admissions strategy for the United States and the United Kingdom, SAT and ACT
                 prep, essays, and leadership for students in Saudi Arabia, the UAE, Qatar,
                 Kuwait, Bahrain, and Oman, from advisors who went to the Ivy League themselves.
-                One senior advisor is responsible for each student, from the first meeting to
-                the final decision.
+                Every piece is handled in-house by our own counselors and tutors, working from
+                one plan, from the first meeting to the final decision.
               </p>
               <div className="hp4-hero-ctas">
                 <a href="#consult" className="hp4-btn hp4-btn-primary">
@@ -129,7 +129,7 @@ export default function HomePage() {
                 />
                 <p className="hp4-hero-tag">
                   <span className="hp4-dot" aria-hidden="true" />
-                  One senior advisor, first meeting to final decision
+                  One team, one plan, first meeting to final decision
                 </p>
               </TiltCard>
             </div>
@@ -190,9 +190,9 @@ export default function HomePage() {
               <p className="hp4-body">
                 Most families put together test prep from one place, essay help from another,
                 and advice from whoever they know. Nobody owns the whole plan. At Himmah Prep,
-                one advisor is responsible for the student&apos;s school list, testing,
-                activities, summers, and applications, so every decision supports the same
-                goal.
+                everything stays in-house: your counselor sets the strategy, and our own
+                specialist tutors handle testing, essays, activities, and summers, so every
+                decision supports the same goal.
               </p>
               <p className="hp4-body">
                 Pick the student&apos;s grade to see what the plan looks like from there.
@@ -209,7 +209,7 @@ export default function HomePage() {
           <div className="hp4-wrap">
             <div data-reveal>
               <Label num="02">What we do</Label>
-              <h2>Four services. One advisor.</h2>
+              <h2>Four services. One team.</h2>
             </div>
             <div data-reveal>
               <ServiceTabs services={SERVICES} />
@@ -236,7 +236,7 @@ export default function HomePage() {
               <h2>The US and the UK ask for different things. We prepare for both.</h2>
               <p className="hp4-body">
                 Most Gulf students apply to both, and the two systems reward different
-                strengths. One advisor plans the timeline so the October UCAS deadline, the
+                strengths. Your counselor plans one timeline so the October UCAS deadline, the
                 November early rounds in the US, admissions tests, and interviews all fit
                 together.
               </p>
