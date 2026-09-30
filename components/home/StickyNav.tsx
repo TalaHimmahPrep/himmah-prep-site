@@ -14,9 +14,9 @@ export function StickyNav() {
   }, []);
 
   return (
-    <header className={`hp3-nav${scrolled ? " is-scrolled" : ""}`}>
-      <div className="hp3-nav-inner">
-        <Link href="/" aria-label="Himmah Prep home" className="hp3-brand">
+    <header className={`hp4-nav${scrolled ? " is-scrolled" : ""}`}>
+      <div className="hp4-nav-inner">
+        <Link href="/" aria-label="Himmah Prep home" className="hp4-brand">
           <Image src="/logo-wordmark.png" alt="Himmah Prep" width={1393} height={203} priority />
         </Link>
         <nav aria-label="Primary">
@@ -26,7 +26,7 @@ export function StickyNav() {
           <Link href="/blog">Blog</Link>
           <a href="https://portal.himmahprep.com">Portal</a>
         </nav>
-        <a href="#consult" className="hp3-btn hp3-btn-sm">
+        <a href="#consult" className="hp4-btn hp4-btn-sm">
           Free consultation
         </a>
       </div>

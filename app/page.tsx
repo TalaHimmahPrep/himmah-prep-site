@@ -8,16 +8,12 @@ import { JsonLd } from "@/components/JsonLd";
 import { ServiceTabs } from "@/components/home/ServiceTabs";
 import { StickyNav } from "@/components/home/StickyNav";
 import { Reveal } from "@/components/home/Reveal";
-import {
-  CITIES,
-  COUNTRIES,
-  FAQS,
-  QUOTES,
-  SERVICES,
-  STAGES,
-  STATS,
-  UNIVERSITIES,
-} from "@/lib/home-content";
+import { GradePlanner } from "@/components/home/GradePlanner";
+import { StatCounter } from "@/components/home/StatCounter";
+import { QuoteCarousel } from "@/components/home/QuoteCarousel";
+import { TiltCard } from "@/components/home/TiltCard";
+import { CampusRow, type Campus } from "@/components/home/CampusRow";
+import { CITIES, COUNTRIES, FAQS, QUOTES, SERVICES, STAGES, UNIVERSITIES } from "@/lib/home-content";
 import "./home.css";
 
 const serif = Source_Serif_4({
@@ -50,16 +46,16 @@ const HOME_FAQ_LD = {
   })),
 };
 
-const CAMPUSES = [
-  { name: "Harvard", place: "Cambridge, Massachusetts", src: "/campus/widener.jpg" },
-  { name: "Princeton", place: "Princeton, New Jersey", src: "/campus/nassau.jpg" },
-  { name: "Stanford", place: "Stanford, California", src: "/campus/stanford_arches.jpg" },
-  { name: "Yale", place: "New Haven, Connecticut", src: "/campus/yale_portal.jpg" },
+const CAMPUSES: Campus[] = [
+  { name: "Harvard", place: "Cambridge, Massachusetts", src: "/campus/widener.jpg", note: "Widener Library, Harvard Yard." },
+  { name: "Princeton", place: "Princeton, New Jersey", src: "/campus/nassau.jpg", note: "Nassau Hall, the oldest building on campus." },
+  { name: "Stanford", place: "Stanford, California", src: "/campus/stanford_arches.jpg", note: "The arcades of the Main Quad." },
+  { name: "Yale", place: "New Haven, Connecticut", src: "/campus/yale_portal.jpg", note: "Sterling Memorial Library." },
 ];
 
 function Label({ num, children }: { num: string; children: React.ReactNode }) {
   return (
-    <p className="hp3-label">
+    <p className="hp4-label">
       <span>{num}</span>
       {children}
     </p>
@@ -67,11 +63,8 @@ function Label({ num, children }: { num: string; children: React.ReactNode }) {
 }
 
 export default function HomePage() {
-  const students = QUOTES.filter((q) => q.kind === "student");
-  const parents = QUOTES.filter((q) => q.kind === "parent");
-
   return (
-    <div className={`hp3 ${serif.variable}`}>
+    <div className={`hp4 ${serif.variable}`}>
       <JsonLd data={WEBSITE_LD} />
       <JsonLd data={HOME_FAQ_LD} />
       <Reveal />
@@ -79,31 +72,29 @@ export default function HomePage() {
 
       <main>
         {/* ---- Hero ---- */}
-        <section className="hp3-hero">
-          <div className="hp3-wrap hp3-hero-grid">
-            <div className="hp3-hero-copy" data-reveal>
-              <p className="hp3-kicker">College counseling · Saudi Arabia &amp; the Gulf</p>
-              <h1>
-                Ivy League college counseling for Gulf students.
-              </h1>
-              <p className="hp3-hero-lead">
+        <section className="hp4-hero">
+          <div className="hp4-wrap hp4-hero-grid">
+            <div className="hp4-hero-copy" data-reveal>
+              <p className="hp4-kicker">College counseling · Saudi Arabia &amp; the Gulf</p>
+              <h1>Ivy League college counseling for Gulf students.</h1>
+              <p className="hp4-hero-lead">
                 Admissions strategy, SAT and ACT prep, essays, and leadership for students in
                 Saudi Arabia, the UAE, Qatar, Kuwait, Bahrain, and Oman, from advisors who went
                 to the Ivy League themselves. One senior advisor is responsible for each
                 student, from the first meeting to the final decision.
               </p>
-              <div className="hp3-hero-ctas">
-                <a href="#consult" className="hp3-btn hp3-btn-gold">
+              <div className="hp4-hero-ctas">
+                <a href="#consult" className="hp4-btn hp4-btn-primary">
                   Book a free consultation
                   <span aria-hidden="true">→</span>
                 </a>
-                <a href="#work" className="hp3-btn hp3-btn-ghost">
-                  What we do
+                <a href="#plan" className="hp4-btn hp4-btn-ghost">
+                  See the plan by grade
                 </a>
               </div>
             </div>
-            <div className="hp3-hero-media" data-reveal>
-              <div className="hp3-hero-photo">
+            <div className="hp4-hero-media" data-reveal>
+              <TiltCard className="hp4-hero-photo">
                 <Image
                   src="/campus/yale_portal.jpg"
                   alt="Sterling Memorial Library, Yale University"
@@ -111,20 +102,35 @@ export default function HomePage() {
                   priority
                   sizes="(max-width: 900px) 100vw, 520px"
                 />
-              </div>
-              <p className="hp3-hero-caption">Sterling Memorial Library, Yale</p>
+                <p className="hp4-hero-tag">
+                  <span className="hp4-dot" aria-hidden="true" />
+                  One senior advisor, first meeting to final decision
+                </p>
+              </TiltCard>
             </div>
           </div>
 
-          <div className="hp3-wrap">
-            <dl className="hp3-stats" data-reveal>
-              {STATS.map((s) => (
-                <div key={s.label}>
-                  <dt>{s.value}</dt>
-                  <dd>{s.label}</dd>
-                </div>
-              ))}
-              <div className="hp3-stats-note">
+          <div className="hp4-wrap">
+            <dl className="hp4-stats" data-reveal>
+              <div>
+                <dt>
+                  <StatCounter value={100} suffix="%" />
+                </dt>
+                <dd>College acceptance track record</dd>
+              </div>
+              <div>
+                <dt>
+                  <StatCounter value={100} suffix="%" />
+                </dt>
+                <dd>Ivy League–credentialed advisors</dd>
+              </div>
+              <div>
+                <dt>
+                  <StatCounter value={90} suffix="th+" />
+                </dt>
+                <dd>Median SAT/ACT percentile attained</dd>
+              </div>
+              <div>
                 <dt>2020</dt>
                 <dd>Founded by Harvard and UPenn graduates</dd>
               </div>
@@ -133,10 +139,10 @@ export default function HomePage() {
         </section>
 
         {/* ---- University band ---- */}
-        <section className="hp3-band" aria-label="Universities our students have been admitted to">
-          <p className="hp3-band-label">Our students have been admitted to</p>
-          <div className="hp3-marquee">
-            <div className="hp3-marquee-track">
+        <section className="hp4-band" aria-label="Universities our students have been admitted to">
+          <p className="hp4-band-label">Our students have been admitted to</p>
+          <div className="hp4-marquee">
+            <div className="hp4-marquee-track">
               {[...UNIVERSITIES, ...UNIVERSITIES].map((u, i) => (
                 <span key={`${u}-${i}`} aria-hidden={i >= UNIVERSITIES.length}>
                   {u}
@@ -146,48 +152,32 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ---- 01 Approach ---- */}
-        <section className="hp3-section">
-          <div className="hp3-wrap hp3-approach">
+        {/* ---- 01 Plan by grade ---- */}
+        <section id="plan" className="hp4-section">
+          <div className="hp4-wrap hp4-approach">
             <div data-reveal>
               <Label num="01">Our approach</Label>
               <h2>One strategy, not a patchwork of tutors.</h2>
-              <p className="hp3-body">
+              <p className="hp4-body">
                 Most families put together test prep from one place, essay help from another,
                 and advice from whoever they know. Nobody owns the whole plan. At Himmah Prep,
                 one advisor is responsible for the student&apos;s school list, testing,
                 activities, summers, and applications, so every decision supports the same
                 goal.
               </p>
-              <p className="hp3-body">
-                All of it lives in <a href="https://portal.himmahprep.com">the Himmah portal</a>,
-                where the student, the family, and the advisor see the same plan, the same
-                drafts, and the same deadlines.
+              <p className="hp4-body">
+                Pick the student&apos;s grade to see what the plan looks like from there.
               </p>
             </div>
-            <div className="hp3-timeline" data-reveal>
-              <p className="hp3-timeline-h">We plan in years, not months.</p>
-              <ol>
-                {["Grade 9", "Grade 10", "Grade 11", "Grade 12"].map((g, i) => (
-                  <li key={g} className={i === 1 ? "is-key" : undefined}>
-                    <span className="hp3-node" />
-                    <span>{g}</span>
-                    {i === 1 && <em>Ideal start</em>}
-                  </li>
-                ))}
-              </ol>
-              <p>
-                Tenth grade gives us enough academic history for a real diagnostic and two
-                full years to raise scores, build activities, and plan summers. Ninth and
-                eleventh both work, with different timelines.
-              </p>
+            <div data-reveal>
+              <GradePlanner />
             </div>
           </div>
         </section>
 
         {/* ---- 02 Services ---- */}
-        <section id="work" className="hp3-section hp3-sand">
-          <div className="hp3-wrap">
+        <section id="work" className="hp4-section hp4-sand">
+          <div className="hp4-wrap">
             <div data-reveal>
               <Label num="02">What we do</Label>
               <h2>Four services. One advisor.</h2>
@@ -198,75 +188,56 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ---- Campuses ---- */}
-        <section className="hp3-section hp3-campuses">
-          <div className="hp3-wrap" data-reveal>
+        {/* ---- 03 Campuses ---- */}
+        <section className="hp4-section">
+          <div className="hp4-wrap" data-reveal>
             <Label num="03">Where our students go</Label>
             <h2>Every Ivy League school, and every top-20 US university.</h2>
           </div>
-          <div className="hp3-campus-row" data-reveal>
-            {CAMPUSES.map((c) => (
-              <figure key={c.name} className="hp3-campus">
-                <Image src={c.src} alt={`${c.name} campus`} fill sizes="(max-width: 900px) 80vw, 30vw" />
-                <figcaption>
-                  <strong>{c.name}</strong>
-                  <span>{c.place}</span>
-                </figcaption>
-              </figure>
-            ))}
+          <div data-reveal>
+            <CampusRow campuses={CAMPUSES} />
           </div>
         </section>
 
         {/* ---- 04 Results ---- */}
-        <section id="results" className="hp3-section hp3-dark">
-          <div className="hp3-wrap">
+        <section id="results" className="hp4-section hp4-maroon">
+          <div className="hp4-wrap hp4-results">
             <div data-reveal>
               <Label num="04">Results</Label>
               <h2>What students and parents say.</h2>
+              <p className="hp4-body">
+                Six of the families we&apos;ve worked with, in their own words.
+              </p>
+              <p className="hp4-more">
+                <Link href="/results" className="hp4-btn hp4-btn-light">
+                  See more results
+                </Link>
+              </p>
             </div>
-            <div className="hp3-quotes">
-              {[
-                { label: "From students", items: students },
-                { label: "From parents", items: parents },
-              ].map((col) => (
-                <div key={col.label} className="hp3-quote-col" data-reveal>
-                  <p className="hp3-col-label">{col.label}</p>
-                  {col.items.map((q) => (
-                    <figure key={q.name} className="hp3-quote">
-                      <blockquote>{q.quote}</blockquote>
-                      <figcaption>
-                        <strong>{q.name}</strong>
-                        <span>{q.school}</span>
-                      </figcaption>
-                    </figure>
-                  ))}
-                </div>
-              ))}
+            <div data-reveal>
+              <QuoteCarousel quotes={QUOTES} />
             </div>
-            <p className="hp3-more" data-reveal>
-              <Link href="/results" className="hp3-btn hp3-btn-ghost hp3-btn-light">
-                See more results
-              </Link>
-            </p>
           </div>
         </section>
 
         {/* ---- 05 How it works ---- */}
-        <section id="how" className="hp3-section">
-          <div className="hp3-wrap hp3-how">
+        <section id="how" className="hp4-section">
+          <div className="hp4-wrap hp4-how">
             <div data-reveal>
               <Label num="05">How it works</Label>
               <h2>Three stages, one plan.</h2>
-              <p className="hp3-body">
+              <p className="hp4-body">
                 It starts with a free consultation, and it doesn&apos;t end until the last
-                decision comes in.
+                decision comes in. Everything lives in{" "}
+                <a href="https://portal.himmahprep.com">the Himmah portal</a>, where the student,
+                the family, and the advisor see the same plan, drafts, and deadlines.
               </p>
             </div>
-            <ol className="hp3-stages">
+            <ol className="hp4-stages">
               {STAGES.map((s, i) => (
-                <li key={s.title} className="hp3-stage" data-reveal style={{ transitionDelay: `${i * 90}ms` }}>
-                  <span className="hp3-stage-num">{String(i + 1).padStart(2, "0")}</span>
-                  <p className="hp3-stage-tag">{s.tag}</p>
+                <li key={s.title} className="hp4-stage" data-reveal style={{ transitionDelay: `${i * 90}ms` }}>
+                  <span className="hp4-stage-num">{String(i + 1).padStart(2, "0")}</span>
+                  <p className="hp4-stage-tag">{s.tag}</p>
                   <h3>{s.title}</h3>
                   <p>{s.body}</p>
                 </li>
@@ -276,25 +247,25 @@ export default function HomePage() {
         </section>
 
         {/* ---- 06 Guide ---- */}
-        <section className="hp3-section hp3-sand">
-          <div className="hp3-wrap hp3-guide">
-            <div className="hp3-guide-cover" data-reveal aria-hidden="true">
+        <section className="hp4-section hp4-sand">
+          <div className="hp4-wrap hp4-guide">
+            <div className="hp4-guide-cover" data-reveal aria-hidden="true">
               <GuideCover />
             </div>
             <div data-reveal>
               <Label num="06">The application guide</Label>
               <h2>The U.S. Application Guide.</h2>
-              <p className="hp3-body">
+              <p className="hp4-body">
                 Fifty-eight pages on what our advisors wish every Gulf student knew before
                 junior year: SAT/ACT strategy, school research, essay frameworks, the
                 activities list, and four full essays from students admitted to Stanford,
                 Harvard, Emory, and UIUC.
               </p>
-              <div className="hp3-hero-ctas">
-                <Link href="/shop/p/guide" className="hp3-btn hp3-btn-dark">
+              <div className="hp4-hero-ctas">
+                <Link href="/shop/p/guide" className="hp4-btn hp4-btn-primary">
                   Get the guide · <s>$49</s> $19
                 </Link>
-                <Link href="/shop/p/guide" className="hp3-textlink">
+                <Link href="/shop/p/guide" className="hp4-textlink">
                   Table of contents
                 </Link>
               </div>
@@ -303,12 +274,12 @@ export default function HomePage() {
         </section>
 
         {/* ---- 07 Where + FAQ ---- */}
-        <section className="hp3-section">
-          <div className="hp3-wrap hp3-two">
+        <section className="hp4-section">
+          <div className="hp4-wrap hp4-two">
             <div data-reveal>
               <Label num="07">Where we work</Label>
               <h2>Across the Gulf, and online.</h2>
-              <p className="hp3-body">
+              <p className="hp4-body">
                 Families in{" "}
                 {COUNTRIES.map(([n, h], i) => (
                   <span key={h}>
@@ -329,7 +300,7 @@ export default function HomePage() {
             </div>
             <div data-reveal>
               <Label num="08">Questions</Label>
-              <div className="hp3-faq">
+              <div className="hp4-faq">
                 {FAQS.map((f) => (
                   <details key={f.q}>
                     <summary>{f.q}</summary>
@@ -342,24 +313,24 @@ export default function HomePage() {
         </section>
 
         {/* ---- Consultation ---- */}
-        <section id="consult" className="hp3-cta">
-          <div className="hp3-wrap hp3-cta-grid">
+        <section id="consult" className="hp4-cta">
+          <div className="hp4-wrap hp4-cta-grid">
             <div data-reveal>
               <Label num="09">Free consultation</Label>
               <h2>Tell us where the student is today.</h2>
-              <p className="hp3-body">
+              <p className="hp4-body">
                 A thirty-minute call with a senior advisor. You&apos;ll get a candid read on the
                 student&apos;s profile, a realistic school list, and a clear next step, whether
                 or not you work with us.
               </p>
             </div>
-            <div className="hp3-form" data-reveal>
+            <div className="hp4-form" data-reveal>
               <LeadForm />
             </div>
           </div>
         </section>
 
-        <p className="hp3-credits">
+        <p className="hp4-credits">
           Campus photographs via Wikimedia Commons: Yale by Christian David (CC BY-SA 4.0),
           Harvard by Kenneth C. Zirkel (CC BY 4.0), Princeton by Smallbones (CC0), Stanford
           by Jawed (CC BY-SA 4.0).

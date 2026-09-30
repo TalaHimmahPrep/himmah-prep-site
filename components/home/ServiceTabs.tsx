@@ -10,8 +10,8 @@ export function ServiceTabs({ services }: { services: Service[] }) {
   const n = (i: number) => String(i + 1).padStart(2, "0");
 
   return (
-    <div className="hp3-tabs">
-      <ol className="hp3-tab-list" role="tablist" aria-label="Services">
+    <div className="hp4-tabs">
+      <ol className="hp4-tab-list" role="tablist" aria-label="Services">
         {services.map((item, i) => (
           <li key={item.title}>
             <button
@@ -22,9 +22,9 @@ export function ServiceTabs({ services }: { services: Service[] }) {
               onClick={() => setActive(i)}
               onMouseEnter={() => setActive(i)}
             >
-              <span className="hp3-tab-num">{n(i)}</span>
-              <span className="hp3-tab-title">{item.title}</span>
-              <span className="hp3-tab-arrow" aria-hidden="true">
+              <span className="hp4-tab-num">{n(i)}</span>
+              <span className="hp4-tab-title">{item.title}</span>
+              <span className="hp4-tab-arrow" aria-hidden="true">
                 →
               </span>
             </button>
@@ -32,14 +32,14 @@ export function ServiceTabs({ services }: { services: Service[] }) {
         ))}
       </ol>
 
-      <div className="hp3-tab-panel" role="tabpanel" key={active}>
+      <div className="hp4-tab-panel" role="tabpanel" key={active}>
         <Image src="/campus/widener.jpg" alt="" fill sizes="(max-width: 900px) 100vw, 640px" />
-        <div className="hp3-tab-content">
-          <p className="hp3-tab-count">
+        <div className="hp4-tab-content">
+          <p className="hp4-tab-count">
             {n(active)} / {n(services.length - 1)}
           </p>
           <h3>{s.title}</h3>
-          <p className="hp3-tab-body">{s.body}</p>
+          <p className="hp4-tab-body">{s.body}</p>
           <ul>
             {s.points.map((p) => (
               <li key={p}>{p}</li>
