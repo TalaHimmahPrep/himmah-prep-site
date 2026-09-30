@@ -72,8 +72,8 @@ const BAND_LOGOS: { slug: UniversitySlug | null; label: string }[] = [
   { slug: "duke", label: "Duke" },
   { slug: "berkeley", label: "UC Berkeley" },
   { slug: "ucla", label: "UCLA" },
-  { slug: null, label: "Oxford" },
-  { slug: null, label: "Cambridge" },
+  { slug: "oxford", label: "Oxford" },
+  { slug: "cambridge", label: "Cambridge" },
 ];
 
 function Label({ num, children }: { num: string; children: React.ReactNode }) {

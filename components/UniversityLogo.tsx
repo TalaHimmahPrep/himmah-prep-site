@@ -22,7 +22,9 @@ export type UniversitySlug =
   | "berkeley"
   | "ucla"
   | "michigan"
-  | "carnegie-mellon";
+  | "carnegie-mellon"
+  | "oxford"
+  | "cambridge";
 
 export type UniversityRef = {
   slug: UniversitySlug;
