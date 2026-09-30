@@ -4,7 +4,10 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 const STORAGE_KEY = "himmah_consult_popup";
-const TRIGGER_PERCENT = 50;
+// Open once the visitor has scrolled past the hero (about one screen), or a
+// third of a short page, whichever comes first.
+const TRIGGER_PIXELS = 900;
+const TRIGGER_PERCENT = 33;
 
 // Pages where the popup is suppressed (apply has the form already; legal pages
 // are not lead-funnel pages).
@@ -30,7 +33,7 @@ export function ConsultPopup() {
       const max = document.documentElement.scrollHeight - window.innerHeight;
       if (max <= 0) return;
       const pct = (window.scrollY / max) * 100;
-      if (pct >= TRIGGER_PERCENT) {
+      if (window.scrollY >= TRIGGER_PIXELS || pct >= TRIGGER_PERCENT) {
         triggered = true;
         setOpen(true);
       }
