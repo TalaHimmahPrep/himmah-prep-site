@@ -9,7 +9,7 @@ const DESIGNS = [
     note: "What himmahprep.com looks like today, for comparison.",
   },
   {
-    href: "/",
+    href: "/design/editorial",
     name: "Editorial",
     note: "In the direction of apexadmissions.org: numbered sections, color bands, arch photo, serif headlines.",
   },
