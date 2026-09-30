@@ -111,12 +111,9 @@ export default function HomePage() {
               <p className="hp4-kicker">College counseling · Saudi Arabia &amp; the Gulf</p>
               <h1>Ivy League and Oxbridge college counseling for Gulf students.</h1>
               <p className="hp4-hero-lead">
-                Admissions strategy for the United States and the United Kingdom, SAT and ACT
-                prep, essays, and leadership for students in Saudi Arabia, the UAE, Qatar,
-                Kuwait, Bahrain, and Oman, from advisors who went to the Ivy League themselves.
-                Every piece is handled in-house by our own counselors and tutors, working from
-                one plan, from the first meeting to the final decision. There is a way in for
-                every family, from a self-guided start to the full multi-year programme.
+                US and UK admissions strategy, SAT and ACT prep, essays, and leadership for
+                students across the Gulf, from counselors who went to the Ivy League themselves.
+                Everything in-house, on one plan, with a way in for every family.
               </p>
               <div className="hp4-hero-ctas">
                 <a href="#consult" className="hp4-btn hp4-btn-primary">
