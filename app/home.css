@@ -73,16 +73,6 @@
 .hp4 .hp4-btn-sm:hover { background: var(--maroon-deep); }
 .hp4 .hp4-textlink { font-size: 15px; font-weight: 600; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 3px; }
 
-/* ---- nav ---- */
-.hp4-nav { position: sticky; top: 0; z-index: 40; padding: 16px 0; transition: background 0.3s, box-shadow 0.3s, padding 0.3s; }
-.hp4-nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; max-width: var(--wrap); margin: 0 auto; padding: 0 32px; }
-.hp4-nav.is-scrolled { background: rgba(248, 244, 236, 0.86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--line); padding: 10px 0; }
-.hp4-brand img { height: 19px; width: auto; display: block; }
-.hp4-nav nav { display: flex; gap: 28px; }
-.hp4-nav nav a { position: relative; font-size: 14.5px; font-weight: 500; color: var(--ink); text-decoration: none; }
-.hp4-nav nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 1px; background: var(--maroon); transform: scaleX(0); transform-origin: left; transition: transform 0.3s var(--ease); }
-.hp4-nav nav a:hover::after { transform: scaleX(1); }
-
 /* ---- hero ---- */
 .hp4-hero {
   position: relative;
@@ -148,6 +138,7 @@
 .hp4-approach { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 72px; align-items: start; }
 
 /* planner */
+.hp4-grade-short { display: none; }
 .hp4-planner { border-radius: 24px; background: var(--white); box-shadow: var(--shadow), 0 0 0 1px var(--line); overflow: hidden; }
 .hp4-planner-head { padding: 26px 32px 0; border-bottom: 1px solid var(--line); }
 .hp4-planner-q { font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
@@ -289,11 +280,43 @@
 .hp4 .footer-bottom em { font-family: inherit; font-style: normal; color: inherit; }
 
 /* ---- responsive ---- */
-@media (max-width: 1020px) { .hp4-nav nav { display: none; } }
 @media (max-width: 900px) {
-  .hp4-wrap, .hp4-nav-inner, .hp4-campus-wrap { padding: 0 20px; }
-  .hp4-section { padding: 80px 0; }
-  .hp4-hero { padding-top: 120px; }
+  .hp4-wrap, .hp4-campus-wrap { padding: 0 20px; }
+  .hp4-section { padding: 64px 0; }
+  .hp4 h2 { margin-bottom: 20px; }
+  .hp4-hero { margin-top: -62px; padding-top: 104px; }
+  .hp4-hero h1 { font-size: clamp(38px, 10.5vw, 46px); }
+  .hp4-hero-lead { margin: 22px 0 28px; font-size: 16px; }
+  .hp4-hero-ctas { gap: 12px; }
+  .hp4-hero-ctas .hp4-btn { width: 100%; justify-content: center; }
+  .hp4-hero-tag { left: 12px; right: 12px; bottom: 12px; padding: 12px 14px; font-size: 13px; }
+  .hp4-stats dt { font-size: 38px; }
+  .hp4-band { padding: 28px 0 30px; }
+  .hp4-marquee-track span { font-size: 30px; padding-right: 40px; }
+  .hp4-marquee-track span::after { margin-left: 40px; }
+  .hp4-planner-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; overflow: visible; }
+  .hp4-planner-tabs button { padding: 10px 0 14px; font-size: 16px; text-align: center; white-space: nowrap; }
+  .hp4-grade-long { display: none; }
+  .hp4-grade-short { display: inline; }
+  .hp4-planner-tabs button::after { left: 6px; right: 6px; }
+  .hp4-planner-body h3 { font-size: 22px; }
+  /* services: list becomes a horizontal chip row above the panel */
+  .hp4-tab-list { display: flex; flex-wrap: wrap; gap: 8px; border: 0; margin-bottom: 8px; }
+  .hp4-tab-list li { border: 0; flex: none; }
+  .hp4-tab-list button { display: inline-flex; gap: 8px; padding: 9px 13px; border: 1px solid var(--line); border-radius: 999px; background: var(--white); white-space: nowrap; }
+  .hp4-tab-list button.is-active { background: var(--maroon); border-color: var(--maroon); }
+  .hp4-tab-list button.is-active .hp4-tab-num, .hp4-tab-list button.is-active .hp4-tab-title { color: #fff; transform: none; }
+  .hp4-tab-title { font-family: var(--sans); font-size: 13.5px; font-weight: 600; }
+  .hp4-tab-list .hp4-tab-num { display: none; }
+  .hp4-tab-num { font-size: 12px; }
+  .hp4-tab-arrow { display: none; }
+  .hp4-tab-content h3 { font-size: 28px; }
+  .hp4-system { padding: 26px 22px; }
+  .hp4-system h3 { font-size: 26px; }
+  .hp4-guide { gap: 28px; }
+  .hp4-guide-cover { order: 2; transform: scale(0.72); transform-origin: top center; margin-bottom: -22%; }
+  .hp4-two { gap: 56px; }
+  .hp4-faq summary { font-size: 18px; }
   .hp4-hero-grid, .hp4-approach, .hp4-tabs, .hp4-results, .hp4-how, .hp4-guide, .hp4-two, .hp4-cta-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
   .hp4-hero-media { justify-self: stretch; max-width: none; }
   .hp4-hero-photo { aspect-ratio: 4 / 3; }

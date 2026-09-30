@@ -74,7 +74,10 @@ export function GradePlanner() {
               className={idx === i ? "is-active" : undefined}
               onClick={() => setI(idx)}
             >
-              {p.grade}
+              <span className="hp4-grade-long">{p.grade}</span>
+              <span className="hp4-grade-short" aria-hidden="true">
+                {p.grade.replace("Grade ", "Gr ")}
+              </span>
             </button>
           ))}
         </div>
