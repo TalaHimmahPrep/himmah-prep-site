@@ -76,6 +76,15 @@ const BAND_LOGOS: { slug: UniversitySlug | null; label: string }[] = [
   { slug: "cambridge", label: "Cambridge" },
 ];
 
+const WAYS = [
+  { price: "Start here", title: "Free consultation", body: "Thirty minutes with a senior counselor: a candid read on the profile, a realistic first school list, and a clear next step.", href: "/apply", cta: "Book a call" },
+  { price: "Self-guided", title: "The Application Guide", body: "Everything our counselors wish every Gulf student knew, with four accepted essays. For families who want to do it themselves, well.", href: "/shop/p/guide", cta: "Get the guide" },
+  { price: "One-off", title: "Essay & activities review", body: "Your drafts, read the way an admissions officer reads them, with line-by-line comments back within days.", href: "/review", cta: "See the packages" },
+  { price: "Self-paced", title: "Digital SAT bootcamp", body: "Eight weeks on your own schedule: the full curriculum, weekly lessons and practice sets, and full-length mocks.", href: "/sat-bootcamp", cta: "Start the bootcamp" },
+  { price: "One-on-one", title: "Live test prep", body: "SAT, ACT, IELTS, or TOEFL sessions with a Himmah tutor, built around the student's diagnostic.", href: "/standardized-test-tutors", cta: "How it works" },
+  { price: "Full programme", title: "Foundation, Signature, Elite", body: "Strategy, testing, essays, activities, summers, and applications for the US and the UK, over one to three years. Three plans, scaled to what the family needs.", href: "/apply", cta: "Talk to us" },
+];
+
 function Label({ num, children }: { num: string; children: React.ReactNode }) {
   return (
     <p className="hp4-label">
@@ -106,7 +115,8 @@ export default function HomePage() {
                 prep, essays, and leadership for students in Saudi Arabia, the UAE, Qatar,
                 Kuwait, Bahrain, and Oman, from advisors who went to the Ivy League themselves.
                 Every piece is handled in-house by our own counselors and tutors, working from
-                one plan, from the first meeting to the final decision.
+                one plan, from the first meeting to the final decision. There is a way in for
+                every family, from a self-guided start to the full multi-year programme.
               </p>
               <div className="hp4-hero-ctas">
                 <a href="#consult" className="hp4-btn hp4-btn-primary">
@@ -304,14 +314,41 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ---- 06 Guide ---- */}
+        {/* ---- Ways in ---- */}
+        <section className="hp4-section">
+          <div className="hp4-wrap">
+            <div data-reveal>
+              <Label num="07">Ways to work with us</Label>
+              <h2>Options for every family, at every stage.</h2>
+              <p className="hp4-body">
+                Not every family needs the full programme, and not every family needs it yet.
+                Whether you want a single review, a self-paced course, or a counselor beside you
+                for three years, there is a way to work with us that fits.
+              </p>
+            </div>
+            <ol className="hp4-ways">
+              {WAYS.map((w, i) => (
+                <li key={w.title} className="hp4-way" data-reveal style={{ transitionDelay: `${i * 70}ms` }}>
+                  <p className="hp4-way-price">{w.price}</p>
+                  <h3>{w.title}</h3>
+                  <p>{w.body}</p>
+                  <Link href={w.href} className="hp4-way-link">
+                    {w.cta} →
+                  </Link>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* ---- 08 Guide ---- */}
         <section className="hp4-section hp4-sand">
           <div className="hp4-wrap hp4-guide">
             <div className="hp4-guide-cover" data-reveal aria-hidden="true">
               <GuideCover />
             </div>
             <div data-reveal>
-              <Label num="07">The application guide</Label>
+              <Label num="08">The application guide</Label>
               <h2>The U.S. Application Guide.</h2>
               <p className="hp4-body">
                 Fifty-eight pages on what our advisors wish every Gulf student knew before
@@ -335,7 +372,7 @@ export default function HomePage() {
         <section className="hp4-section">
           <div className="hp4-wrap hp4-two">
             <div data-reveal>
-              <Label num="08">Where we work</Label>
+              <Label num="09">Where we work</Label>
               <h2>Across the Gulf, and online.</h2>
               <p className="hp4-body">
                 Families in{" "}
@@ -357,7 +394,7 @@ export default function HomePage() {
               </p>
             </div>
             <div data-reveal>
-              <Label num="09">Questions</Label>
+              <Label num="10">Questions</Label>
               <div className="hp4-faq">
                 {FAQS.map((f) => (
                   <details key={f.q}>
@@ -374,7 +411,7 @@ export default function HomePage() {
         <section id="consult" className="hp4-cta">
           <div className="hp4-wrap hp4-cta-grid">
             <div data-reveal>
-              <Label num="10">Free consultation</Label>
+              <Label num="11">Free consultation</Label>
               <h2>Tell us where the student is today.</h2>
               <p className="hp4-body">
                 A thirty-minute call with a senior advisor. You&apos;ll get a candid read on the

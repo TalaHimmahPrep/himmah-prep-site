@@ -23,6 +23,10 @@ export const FAQS = [
     a: "10th grade is ideal: enough academic history for a real diagnostic, and two full years to raise test scores, build extracurriculars, and plan summers. 9th and 11th grade both work, with different timelines.",
   },
   {
+    q: "Is there an option for every budget?",
+    a: "Yes. Families can start with the free consultation, the self-guided Application Guide, a one-off essay or activities review, or the self-paced Digital SAT bootcamp, and move to live one-on-one test prep or the full programme when it makes sense. The full programme comes in three plans (Foundation, Signature, and Elite), scaled to what the family needs, which we go through on the consultation call.",
+  },
+  {
     q: "How do we start?",
     a: "Book a free 30-minute consultation. You will leave with a candid read on the student's profile, a realistic school list, and a clear next step — whether or not you work with us.",
   },
