@@ -16,8 +16,9 @@ export default function PortalMock() {
     <div className="pm">
       <aside className="pm-side">
         <div className="pm-brand">
-          <span className="pm-mark">hp</span>
-          <span>himmah<b>PREP</b></span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo-wordmark.png" alt="Himmah Prep" />
+          <span>Portal</span>
         </div>
 
         <p className="pm-side-h">Workspace</p>

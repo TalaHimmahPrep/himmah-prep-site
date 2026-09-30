@@ -34,21 +34,22 @@
 .pm h1, .pm h2 { margin: 0; font-family: var(--serif); font-weight: 400; color: var(--ink); letter-spacing: -0.01em; }
 .pm h1 em, .pm h2 em { font-style: normal; color: var(--primary); }
 
-/* sidebar (mirrors the real one) */
-.pm-side { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; padding: 22px 14px 16px; background: var(--surface); border-right: 1px solid var(--line); }
-.pm-brand { display: flex; align-items: center; gap: 10px; margin: 0 8px 26px; font-size: 17px; color: var(--primary); letter-spacing: -0.01em; }
-.pm-brand b { font-weight: 800; font-size: 12px; letter-spacing: 0.04em; }
-.pm-mark { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; background: var(--primary); color: #fff; font-family: var(--serif); font-size: 14px; }
-.pm-side-h { margin: 0 10px 6px; font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted-2); }
-.pm-side nav { display: grid; gap: 1px; margin-bottom: 20px; }
-.pm-side nav a { display: flex; align-items: center; gap: 11px; padding: 8px 10px; border-radius: 8px; color: var(--muted); font-size: 13.5px; font-weight: 500; transition: background 0.15s, color 0.15s; }
-.pm-side nav a:hover { background: var(--surface-2); color: var(--ink); }
-.pm-side nav a.is-active { background: var(--surface-2); color: var(--ink); }
-.pm-ico { width: 15px; height: 15px; border-radius: 4px; border: 1.5px solid currentColor; opacity: 0.6; }
-.pm-side nav a.is-active .pm-ico { border-color: var(--accent); opacity: 1; }
-.pm-user { margin-top: auto; display: flex; align-items: center; gap: 10px; padding: 12px 8px 4px; border-top: 1px solid var(--line-2); }
-.pm-user strong { display: block; font-size: 13px; font-weight: 600; }
-.pm-user small { color: var(--muted-2); font-size: 11.5px; }
+/* sidebar (mirrors the real one: maroon gradient, white wordmark) */
+.pm-side { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; padding: 20px 14px; background: linear-gradient(to bottom, var(--primary), var(--primary-deep)); color: #f7e5da; }
+.pm-brand { display: grid; gap: 8px; margin: 0 8px 16px; padding-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+.pm-brand img { height: 20px; width: auto; filter: brightness(0) invert(1); }
+.pm-brand span { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255, 255, 255, 0.6); }
+.pm-side-h { margin: 0 12px 6px; font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255, 255, 255, 0.45); }
+.pm-side nav { display: grid; gap: 2px; margin-bottom: 16px; }
+.pm-side nav a { display: flex; align-items: center; gap: 12px; padding: 8px 12px; border-radius: 8px; color: rgba(255, 255, 255, 0.85); font-size: 13px; transition: background 0.15s; }
+.pm-side nav a:hover { background: rgba(255, 255, 255, 0.1); }
+.pm-side nav a.is-active { background: rgba(255, 255, 255, 0.15); color: #fff; font-weight: 600; }
+.pm-ico { width: 15px; height: 15px; border-radius: 4px; border: 1.5px solid rgba(255, 255, 255, 0.7); }
+.pm-side nav a.is-active .pm-ico { border-color: var(--accent); }
+.pm-user { margin-top: auto; display: flex; align-items: center; gap: 12px; padding: 16px 8px 0; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+.pm-user strong { display: block; font-size: 13.5px; font-weight: 600; color: #fff; }
+.pm-user small { color: rgba(255, 255, 255, 0.6); font-size: 11px; }
+.pm-user .pm-avatar { width: 40px; height: 40px; background: var(--accent); color: var(--primary-deep); font-weight: 700; }
 .pm-avatar { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--primary); color: #fff; font-size: 11px; font-weight: 600; flex: none; }
 .pm-avatar-sm { width: 26px; height: 26px; font-size: 9px; margin-right: 8px; }
 
