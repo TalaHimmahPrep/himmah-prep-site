@@ -1,19 +1,28 @@
 import type { Metadata } from "next";
-import { Instrument_Sans, Instrument_Serif } from "next/font/google";
+import { Instrument_Sans, Instrument_Serif, Source_Serif_4 } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Cursor } from "@/components/Cursor";
 import { ConsultPopup } from "@/components/ConsultPopup";
 import { JsonLd, ORG_LD } from "@/components/JsonLd";
 import { MetaPixel } from "@/components/MetaPixel";
 import { LookSwitcher } from "@/components/LookSwitcher";
 import "./globals.css";
+import "./theme.css";
 
 const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-instrument-sans",
   weight: ["400", "500", "600", "700"],
+});
+
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin"],
+  axes: ["opsz"],
+  weight: "variable",
+  style: ["normal", "italic"],
+  variable: "--font-source-serif",
+  display: "swap",
 });
 
 const instrumentSerif = Instrument_Serif({
@@ -83,11 +92,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${instrumentSans.variable} ${instrumentSerif.variable}`}
+      className={`${instrumentSans.variable} ${instrumentSerif.variable} ${sourceSerif.variable}`}
     >
       <body>
         <JsonLd data={ORG_LD} />
-        <Cursor />
         {children}
         <ConsultPopup />
         <Analytics />

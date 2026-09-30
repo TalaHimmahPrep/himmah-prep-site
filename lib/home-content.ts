@@ -32,9 +32,9 @@ export type Service = { title: string; body: string; points: string[] };
 
 export const SERVICES: Service[] = [
   {
-    title: "College advising and strategy",
-    body: "One-on-one guidance from advisors who went to the Ivy League themselves and know what these schools look for. School lists, essays, applications, and interviews, handled by one advisor.",
-    points: ["Personalized school list", "Essay coaching on every draft", "Interview preparation"],
+    title: "US and UK admissions strategy",
+    body: "One-on-one guidance from advisors who went to the Ivy League themselves and know what selective universities look for. A school list across both systems, Common App and UCAS applications, essays and the UCAS personal statement, admissions tests, and interviews, handled by one advisor.",
+    points: ["School list across the US and UK", "Common App and UCAS", "Oxbridge tests and interviews", "Essay coaching on every draft"],
   },
   {
     title: "Standardized test prep",
@@ -141,7 +141,7 @@ export const STAGES = [
 export const HERO = {
   kicker: "College counseling · Saudi Arabia & the Gulf",
   headline: "Ivy League college counseling for Gulf students.",
-  lead: "Himmah Prep works with students in Saudi Arabia, the UAE, Qatar, Kuwait, Bahrain, and Oman on admissions strategy, SAT and ACT prep, essays, and leadership. One senior advisor is responsible for each student, and every family gets a private portal that keeps the whole plan in one place.",
+  lead: "Himmah Prep works with students in Saudi Arabia, the UAE, Qatar, Kuwait, Bahrain, and Oman on admissions to selective universities in the United States and the United Kingdom: strategy, SAT and ACT prep, essays, and leadership. One senior advisor is responsible for each student, and every family gets a private portal that keeps the whole plan in one place.",
 };
 
 export const COUNTRIES = [
@@ -166,4 +166,29 @@ export const CITIES = [
 ] as const;
 
 export const PHOTO_CREDITS =
-  "Campus photographs from Wikimedia Commons: Sterling Memorial Library by Christian David (CC BY-SA 4.0); Stanford Main Quad by Jawed (CC BY-SA 4.0).";
+  "Campus photographs via Wikimedia Commons: Yale by Christian David (CC BY-SA 4.0), Harvard by Kenneth C. Zirkel (CC BY 4.0), Princeton by Smallbones (CC0), Stanford by Jawed (CC BY-SA 4.0), Oxford by Julian Herzog (CC BY 4.0), Cambridge by Michael Dibb (CC BY-SA 2.0).";
+
+export const UK_US = {
+  us: {
+    title: "United States",
+    system: "Common App",
+    points: [
+      "Up to 20 universities on one application, each with its own supplements",
+      "Personal statement plus school-specific essays",
+      "SAT or ACT, with test-optional policies varying by school",
+      "Early Action and Early Decision by 1 November; Regular Decision in January",
+      "Activities list, recommendations, and interviews for some schools",
+    ],
+  },
+  uk: {
+    title: "United Kingdom",
+    system: "UCAS",
+    points: [
+      "Five course choices on one application, judged mainly on academics",
+      "One personal statement focused on the subject, not the student's life story",
+      "Admissions tests for competitive courses, such as the TSA, LNAT, UCAT, and ESAT",
+      "15 October deadline for Oxford, Cambridge, medicine, and dentistry",
+      "Interviews at Oxford and Cambridge, and predicted grades that matter",
+    ],
+  },
+};

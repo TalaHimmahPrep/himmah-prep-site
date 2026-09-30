@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Source_Serif_4 } from "next/font/google";
 import { LeadForm } from "@/components/LeadForm";
 import { Footer } from "@/components/Footer";
 import { GuideCover } from "@/components/GuideCover";
@@ -13,17 +12,8 @@ import { StatCounter } from "@/components/home/StatCounter";
 import { QuoteCarousel } from "@/components/home/QuoteCarousel";
 import { TiltCard } from "@/components/home/TiltCard";
 import { CampusRow, type Campus } from "@/components/home/CampusRow";
-import { CITIES, COUNTRIES, FAQS, QUOTES, SERVICES, STAGES, UNIVERSITIES } from "@/lib/home-content";
+import { CITIES, COUNTRIES, FAQS, PHOTO_CREDITS, QUOTES, SERVICES, STAGES, UK_US, UNIVERSITIES } from "@/lib/home-content";
 import "./home.css";
-
-const serif = Source_Serif_4({
-  subsets: ["latin"],
-  axes: ["opsz"],
-  weight: "variable",
-  style: ["normal", "italic"],
-  variable: "--font-source-serif",
-  display: "swap",
-});
 
 const WEBSITE_LD = {
   "@context": "https://schema.org",
@@ -51,6 +41,8 @@ const CAMPUSES: Campus[] = [
   { name: "Princeton", place: "Princeton, New Jersey", src: "/campus/nassau.jpg", note: "Nassau Hall, the oldest building on campus." },
   { name: "Stanford", place: "Stanford, California", src: "/campus/stanford_arches.jpg", note: "The arcades of the Main Quad." },
   { name: "Yale", place: "New Haven, Connecticut", src: "/campus/yale_portal.jpg", note: "Sterling Memorial Library." },
+  { name: "Oxford", place: "Oxford, England", src: "/campus/oxford.jpg", note: "The Radcliffe Camera, Radcliffe Square." },
+  { name: "Cambridge", place: "Cambridge, England", src: "/campus/cambridge.jpg", note: "King's College Chapel." },
 ];
 
 function Label({ num, children }: { num: string; children: React.ReactNode }) {
@@ -64,7 +56,7 @@ function Label({ num, children }: { num: string; children: React.ReactNode }) {
 
 export default function HomePage() {
   return (
-    <div className={`hp4 ${serif.variable}`}>
+    <div className="hp4">
       <JsonLd data={WEBSITE_LD} />
       <JsonLd data={HOME_FAQ_LD} />
       <Reveal />
@@ -76,12 +68,13 @@ export default function HomePage() {
           <div className="hp4-wrap hp4-hero-grid">
             <div className="hp4-hero-copy" data-reveal>
               <p className="hp4-kicker">College counseling · Saudi Arabia &amp; the Gulf</p>
-              <h1>Ivy League college counseling for Gulf students.</h1>
+              <h1>Ivy League and Oxbridge counseling for Gulf students.</h1>
               <p className="hp4-hero-lead">
-                Admissions strategy, SAT and ACT prep, essays, and leadership for students in
-                Saudi Arabia, the UAE, Qatar, Kuwait, Bahrain, and Oman, from advisors who went
-                to the Ivy League themselves. One senior advisor is responsible for each
-                student, from the first meeting to the final decision.
+                Admissions strategy for the United States and the United Kingdom, SAT and ACT
+                prep, essays, and leadership for students in Saudi Arabia, the UAE, Qatar,
+                Kuwait, Bahrain, and Oman, from advisors who went to the Ivy League themselves.
+                One senior advisor is responsible for each student, from the first meeting to
+                the final decision.
               </p>
               <div className="hp4-hero-ctas">
                 <a href="#consult" className="hp4-btn hp4-btn-primary">
@@ -192,18 +185,47 @@ export default function HomePage() {
         <section className="hp4-section">
           <div className="hp4-wrap" data-reveal>
             <Label num="03">Where our students go</Label>
-            <h2>Every Ivy League school, and every top-20 US university.</h2>
+            <h2>Every Ivy League school, every top-20 US university, Oxford, and Cambridge.</h2>
           </div>
           <div data-reveal>
             <CampusRow campuses={CAMPUSES} />
           </div>
         </section>
 
-        {/* ---- 04 Results ---- */}
+        {/* ---- US and UK ---- */}
+        <section className="hp4-section hp4-sand">
+          <div className="hp4-wrap">
+            <div data-reveal>
+              <Label num="04">Two systems</Label>
+              <h2>The US and the UK ask for different things. We prepare for both.</h2>
+              <p className="hp4-body">
+                Most Gulf students apply to both, and the two systems reward different
+                strengths. One advisor plans the timeline so the October UCAS deadline, the
+                November early rounds in the US, admissions tests, and interviews all fit
+                together.
+              </p>
+            </div>
+            <div className="hp4-systems">
+              {[UK_US.us, UK_US.uk].map((sys, i) => (
+                <div key={sys.title} className="hp4-system" data-reveal style={{ transitionDelay: `${i * 90}ms` }}>
+                  <p className="hp4-system-tag">{sys.system}</p>
+                  <h3>{sys.title}</h3>
+                  <ul>
+                    {sys.points.map((pt) => (
+                      <li key={pt}>{pt}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ---- 05 Results ---- */}
         <section id="results" className="hp4-section hp4-maroon">
           <div className="hp4-wrap hp4-results">
             <div data-reveal>
-              <Label num="04">Results</Label>
+              <Label num="05">Results</Label>
               <h2>What students and parents say.</h2>
               <p className="hp4-body">
                 Six of the families we&apos;ve worked with, in their own words.
@@ -224,7 +246,7 @@ export default function HomePage() {
         <section id="how" className="hp4-section">
           <div className="hp4-wrap hp4-how">
             <div data-reveal>
-              <Label num="05">How it works</Label>
+              <Label num="06">How it works</Label>
               <h2>Three stages, one plan.</h2>
               <p className="hp4-body">
                 It starts with a free consultation, and it doesn&apos;t end until the last
@@ -253,7 +275,7 @@ export default function HomePage() {
               <GuideCover />
             </div>
             <div data-reveal>
-              <Label num="06">The application guide</Label>
+              <Label num="07">The application guide</Label>
               <h2>The U.S. Application Guide.</h2>
               <p className="hp4-body">
                 Fifty-eight pages on what our advisors wish every Gulf student knew before
@@ -277,7 +299,7 @@ export default function HomePage() {
         <section className="hp4-section">
           <div className="hp4-wrap hp4-two">
             <div data-reveal>
-              <Label num="07">Where we work</Label>
+              <Label num="08">Where we work</Label>
               <h2>Across the Gulf, and online.</h2>
               <p className="hp4-body">
                 Families in{" "}
@@ -299,7 +321,7 @@ export default function HomePage() {
               </p>
             </div>
             <div data-reveal>
-              <Label num="08">Questions</Label>
+              <Label num="09">Questions</Label>
               <div className="hp4-faq">
                 {FAQS.map((f) => (
                   <details key={f.q}>
@@ -316,7 +338,7 @@ export default function HomePage() {
         <section id="consult" className="hp4-cta">
           <div className="hp4-wrap hp4-cta-grid">
             <div data-reveal>
-              <Label num="09">Free consultation</Label>
+              <Label num="10">Free consultation</Label>
               <h2>Tell us where the student is today.</h2>
               <p className="hp4-body">
                 A thirty-minute call with a senior advisor. You&apos;ll get a candid read on the
@@ -330,11 +352,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <p className="hp4-credits">
-          Campus photographs via Wikimedia Commons: Yale by Christian David (CC BY-SA 4.0),
-          Harvard by Kenneth C. Zirkel (CC BY 4.0), Princeton by Smallbones (CC0), Stanford
-          by Jawed (CC BY-SA 4.0).
-        </p>
+        <p className="hp4-credits">{PHOTO_CREDITS}</p>
       </main>
 
       <Footer />
