@@ -193,26 +193,38 @@ export default function AboutPage() {
               <h2>Counselors who got in themselves.</h2>
               <p className="pg-body">
                 Himmah Prep was founded by graduates of Harvard and the University of
-                Pennsylvania. Every counselor holds a degree from an Ivy League university, and
-                every tutor is trained on the same plan, so a student hears one strategy from
-                everyone they work with.
+                Pennsylvania. Counselors are Ivy League graduates who set the strategy; tutors
+                are top scorers who deliver the test prep. Everyone works from the same plan.
               </p>
             </div>
             <div className="pg-founders" data-reveal>
               <div className="pg-founder">
-                <div className="pg-founder-photo">hp</div>
+                <div className="pg-founder-photo">C</div>
                 <div>
-                  <h3>Counselors &amp; tutors</h3>
+                  <h3>Counselors</h3>
                   <p className="pg-founder-role">Ivy League graduates</p>
                   <p>
-                    Senior counselors who lead strategy for each family, and specialist tutors
-                    for the SAT and ACT, essays, activities, and summer placements, all working
-                    from one plan.
+                    Lead strategy for each family: the school list, the timeline, activities,
+                    summers, essays, and interviews for the US and the UK. Every counselor holds a
+                    degree from an Ivy League university.
                   </p>
                   <span className="pg-founder-uni">
                     <UniversityLogo slug="harvard" label="Harvard University" className="" />
                     Harvard, Penn, and more
                   </span>
+                </div>
+              </div>
+              <div className="pg-founder">
+                <div className="pg-founder-photo">T</div>
+                <div>
+                  <h3>Tutors</h3>
+                  <p className="pg-founder-role">Top scorers</p>
+                  <p>
+                    Specialist tutors for the SAT, ACT, IELTS, and TOEFL, chosen for their own
+                    scores in the top percentiles and trained on the counselor&apos;s plan, so the
+                    student hears one strategy from everyone.
+                  </p>
+                  <span className="pg-founder-uni">1500+ SAT · 33+ ACT</span>
                 </div>
               </div>
             </div>
