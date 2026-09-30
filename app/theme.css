@@ -208,3 +208,7 @@ h1 em, h2 em, h3 em, h4 em, .display em, .display-2 em, .product-title em, .popu
   .footer-cols { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
   .btn { padding: 13px 20px; font-size: 14.5px; }
 }
+
+/* Apply page: left-align the trust row and the submit button to match the hero. */
+.page-hero-inner .trust-row { justify-content: flex-start; }
+.apply-form-card .cta-form button { justify-self: start; }
