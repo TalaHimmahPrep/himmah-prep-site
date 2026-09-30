@@ -13,6 +13,7 @@ export function Footer() {
               width={216}
               height={54}
               className="brand-logo brand-logo-light"
+              style={{ height: "auto" }}
             />
           </span>
           <p className="muted-sm">
