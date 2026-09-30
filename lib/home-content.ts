@@ -166,7 +166,7 @@ export const CITIES = [
 ] as const;
 
 export const PHOTO_CREDITS =
-  "Campus photographs via Wikimedia Commons: Yale by Christian David (CC BY-SA 4.0), Harvard by Kenneth C. Zirkel (CC BY 4.0), Princeton by Smallbones (CC0), Stanford by Jawed (CC BY-SA 4.0), Oxford by Julian Herzog (CC BY 4.0), Cambridge by Michael Dibb (CC BY-SA 2.0).";
+  "Campus photographs via Wikimedia Commons: Yale by Christian David (CC BY-SA 4.0), Harvard by Kenneth C. Zirkel (CC BY 4.0), Princeton by Smallbones (CC0), Stanford by Jawed (CC BY-SA 4.0), Hoover Tower by King of Hearts (CC BY-SA 3.0), Oxford by Julian Herzog (CC BY 4.0), Cambridge by Michael Dibb (CC BY-SA 2.0).";
 
 export const UK_US = {
   us: {
