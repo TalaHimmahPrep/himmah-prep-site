@@ -121,8 +121,8 @@ export default function HomePage() {
             <div className="hp4-hero-media" data-reveal>
               <TiltCard className="hp4-hero-photo">
                 <Image
-                  src="/campus/yale_portal.jpg"
-                  alt="Sterling Memorial Library, Yale University"
+                  src="/campus/widener.jpg"
+                  alt="Widener Library, Harvard University"
                   fill
                   priority
                   sizes="(max-width: 900px) 100vw, 520px"
