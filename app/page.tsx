@@ -121,8 +121,8 @@ export default function HomePage() {
             <div className="hp4-hero-media" data-reveal>
               <TiltCard className="hp4-hero-photo">
                 <Image
-                  src="/campus/widener.jpg"
-                  alt="Widener Library, Harvard University"
+                  src="/campus/stanford_arches.jpg"
+                  alt="The Main Quad arcades, Stanford University"
                   fill
                   priority
                   sizes="(max-width: 900px) 100vw, 520px"
