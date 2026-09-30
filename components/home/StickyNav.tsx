@@ -20,11 +20,12 @@ export function StickyNav() {
           <Image src="/logo-wordmark.png" alt="Himmah Prep" width={1393} height={203} priority />
         </Link>
         <nav aria-label="Primary">
-          <a href="#work">What we do</a>
-          <a href="#results">Results</a>
-          <a href="#how">How it works</a>
+          <Link href="/about">About</Link>
+          <Link href="/results">Results</Link>
+          <Link href="/standardized-test-tutors">Test Prep</Link>
           <Link href="/blog">Blog</Link>
-          <a href="https://portal.himmahprep.com">Portal</a>
+          <Link href="/shop">Store</Link>
+          <a href="https://portal.himmahprep.com">Student Portal</a>
         </nav>
         <a href="#consult" className="hp4-btn hp4-btn-sm">
           Free consultation
