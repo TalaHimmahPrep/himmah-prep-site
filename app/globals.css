@@ -991,6 +991,9 @@ section { scroll-margin-top: 80px; }
   font-size: 13.5px;
   color: var(--color-muted);
 }
+/* Apply page: let the hero (and the trust-row divider) span the same width as the form grid below */
+.apply-hero .page-hero-inner { max-width: none; }
+.apply-hero .trust-row { justify-content: flex-start; }
 .trust-row li {
   position: relative;
   padding-left: 16px;

@@ -23,6 +23,11 @@ export function LeadForm() {
       gradeLevel: String(data.get("gradeLevel") ?? ""),
       parentEmail: String(data.get("parentEmail") ?? ""),
       website: String(data.get("website") ?? ""),
+      // Ad attribution: /apply?source=fb-<concept> is forwarded to /api/lead
+      source:
+        typeof window !== "undefined"
+          ? new URLSearchParams(window.location.search).get("source") ?? "main-form"
+          : "main-form",
     };
 
     try {

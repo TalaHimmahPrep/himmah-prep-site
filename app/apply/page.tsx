@@ -21,7 +21,7 @@ export default function ApplyPage() {
     <>
       <Header />
       <main>
-        <section className="page-hero">
+        <section className="page-hero apply-hero">
           <div className="page-hero-inner">
             <p className="eyebrow">Free consultation</p>
             <h1 className="display">
