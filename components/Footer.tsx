@@ -8,11 +8,12 @@ export function Footer() {
         <div className="footer-brand">
           <span className="brand">
             <Image
-              src="/logo.webp"
+              src="/logo-wordmark.png"
               alt="Himmah Prep"
-              width={216}
-              height={54}
+              width={1393}
+              height={203}
               className="brand-logo brand-logo-light"
+              style={{ width: "auto", height: 22 }}
             />
           </span>
           <p className="muted-sm">
