@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { LeadForm } from "@/components/LeadForm";
 import { Footer } from "@/components/Footer";
-import { GuideCover } from "@/components/GuideCover";
 import { UniversityLogo, type UniversitySlug } from "@/components/UniversityLogo";
 import { JsonLd } from "@/components/JsonLd";
 import { ServiceTabs } from "@/components/home/ServiceTabs";
@@ -227,8 +226,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ---- 03 Campuses ---- */}
-        <section className="hp4-section">
+        {/* ---- 03 Where they go: US and UK ---- */}
+        <section className="hp4-section hp4-sand">
           <div className="hp4-wrap" data-reveal>
             <Label num="03">Where our students go</Label>
             <h2>Every Ivy League school, every top-20 US university, Oxford, and Cambridge.</h2>
@@ -236,14 +235,9 @@ export default function HomePage() {
           <div data-reveal>
             <CampusRow campuses={CAMPUSES} />
           </div>
-        </section>
-
-        {/* ---- US and UK ---- */}
-        <section className="hp4-section hp4-sand">
           <div className="hp4-wrap">
-            <div data-reveal>
-              <Label num="04">Two systems</Label>
-              <h2>The US and the UK ask for different things. We prepare for both.</h2>
+            <div className="hp4-systems-intro" data-reveal>
+              <h3>The US and the UK ask for different things. We prepare for both.</h3>
               <p className="hp4-body">
                 Most Gulf students apply to both, and the two systems reward different
                 strengths. Your counselor plans one timeline so the October UCAS deadline, the
@@ -267,11 +261,11 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ---- 05 Results ---- */}
+        {/* ---- 04 Results ---- */}        {/* ---- 05 Results ---- */}
         <section id="results" className="hp4-section hp4-maroon">
           <div className="hp4-wrap hp4-results">
             <div data-reveal>
-              <Label num="05">Results</Label>
+              <Label num="04">Results</Label>
               <h2>What students and parents say.</h2>
               <p className="hp4-body">
                 Six of the families we&apos;ve worked with, in their own words.
@@ -292,7 +286,7 @@ export default function HomePage() {
         <section id="how" className="hp4-section">
           <div className="hp4-wrap hp4-how">
             <div data-reveal>
-              <Label num="06">How it works</Label>
+              <Label num="05">How it works</Label>
               <h2>Three stages, one plan.</h2>
               <p className="hp4-body">
                 It starts with a free consultation, and it doesn&apos;t end until the last
@@ -318,7 +312,7 @@ export default function HomePage() {
         <section className="hp4-section">
           <div className="hp4-wrap">
             <div data-reveal>
-              <Label num="07">Ways to work with us</Label>
+              <Label num="06">Ways to work with us</Label>
               <h2>Options for every family, at every stage.</h2>
               <p className="hp4-body">
                 Not every family needs the full programme, and not every family needs it yet.
@@ -341,39 +335,13 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ---- 08 Guide ---- */}
-        <section className="hp4-section hp4-sand">
-          <div className="hp4-wrap hp4-guide">
-            <div className="hp4-guide-cover" data-reveal aria-hidden="true">
-              <GuideCover />
-            </div>
-            <div data-reveal>
-              <Label num="08">The application guide</Label>
-              <h2>The U.S. Application Guide.</h2>
-              <p className="hp4-body">
-                Fifty-eight pages on what our advisors wish every Gulf student knew before
-                junior year: SAT/ACT strategy, school research, essay frameworks, the
-                activities list, and four full essays from students admitted to Stanford,
-                Harvard, Emory, and UIUC.
-              </p>
-              <div className="hp4-hero-ctas">
-                <Link href="/shop/p/guide" className="hp4-btn hp4-btn-primary">
-                  Get the guide · <s>$49</s> $19
-                </Link>
-                <Link href="/shop/p/guide" className="hp4-textlink">
-                  Table of contents
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* ---- 07 Where + FAQ ---- */}
+        {/* ---- FAQ ---- */}
         <section className="hp4-section">
           <div className="hp4-wrap hp4-two">
             <div data-reveal>
-              <Label num="09">Where we work</Label>
-              <h2>Across the Gulf, and online.</h2>
+              <Label num="07">Questions</Label>
+              <h2>Common questions from families.</h2>
               <p className="hp4-body">
                 Families in{" "}
                 {COUNTRIES.map(([n, h], i) => (
@@ -382,27 +350,25 @@ export default function HomePage() {
                     {i < COUNTRIES.length - 2 ? ", " : i === COUNTRIES.length - 2 ? ", and " : ""}
                   </span>
                 ))}
-                . Test prep is live and one-on-one in{" "}
+                . Live SAT prep in{" "}
                 {CITIES.map(([n, h], i) => (
                   <span key={h}>
                     <Link href={h}>{n}</Link>
                     {i < CITIES.length - 2 ? ", " : i === CITIES.length - 2 ? ", and " : ""}
                   </span>
                 ))}
-                , or self-paced through the{" "}
-                <Link href="/sat-bootcamp">eight-week Digital SAT bootcamp</Link>.
+                , or self-paced through the <Link href="/sat-bootcamp">Digital SAT bootcamp</Link>.
+                The <Link href="/shop/p/guide">U.S. Application Guide</Link> is the place to
+                start on your own.
               </p>
             </div>
-            <div data-reveal>
-              <Label num="10">Questions</Label>
-              <div className="hp4-faq">
-                {FAQS.map((f) => (
-                  <details key={f.q}>
-                    <summary>{f.q}</summary>
-                    <p>{f.a}</p>
-                  </details>
-                ))}
-              </div>
+            <div className="hp4-faq" data-reveal>
+              {FAQS.map((f) => (
+                <details key={f.q}>
+                  <summary>{f.q}</summary>
+                  <p>{f.a}</p>
+                </details>
+              ))}
             </div>
           </div>
         </section>
@@ -411,7 +377,7 @@ export default function HomePage() {
         <section id="consult" className="hp4-cta">
           <div className="hp4-wrap hp4-cta-grid">
             <div data-reveal>
-              <Label num="11">Free consultation</Label>
+              <Label num="08">Free consultation</Label>
               <h2>Tell us where the student is today.</h2>
               <p className="hp4-body">
                 A thirty-minute call with a senior advisor. You&apos;ll get a candid read on the
