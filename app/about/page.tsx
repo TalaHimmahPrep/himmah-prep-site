@@ -187,7 +187,7 @@ export default function AboutPage() {
         </section>
 
         <section className="pg-section">
-          <div className="pg-wrap pg-two">
+          <div className="pg-wrap pg-two pg-two-center">
             <div data-reveal>
               <Label num="03">The people</Label>
               <h2>Counselors who got in themselves.</h2>
@@ -199,7 +199,11 @@ export default function AboutPage() {
             </div>
             <div className="pg-founders" data-reveal>
               <div className="pg-founder">
-                <div className="pg-founder-photo">C</div>
+                <div className="pg-founder-stack" aria-hidden="true">
+                  <span><UniversityLogo slug="columbia" label="" className="" /></span>
+                  <span><UniversityLogo slug="cornell" label="" className="" /></span>
+                  <span><UniversityLogo slug="penn" label="" className="" /></span>
+                </div>
                 <div>
                   <h3>Counselors</h3>
                   <p className="pg-founder-role">Ivy League graduates</p>
@@ -208,14 +212,14 @@ export default function AboutPage() {
                     summers, essays, and interviews for the US and the UK. Every counselor holds a
                     degree from an Ivy League university.
                   </p>
-                  <span className="pg-founder-uni">
-                    <UniversityLogo slug="harvard" label="Harvard University" className="" />
-                    Harvard, Penn, and more
-                  </span>
+                  <span className="pg-founder-uni">Harvard · Penn · Yale · Cornell</span>
                 </div>
               </div>
               <div className="pg-founder">
-                <div className="pg-founder-photo">T</div>
+                <div className="pg-founder-score" aria-hidden="true">
+                  <b>1550</b>
+                  <small>avg. tutor SAT</small>
+                </div>
                 <div>
                   <h3>Tutors</h3>
                   <p className="pg-founder-role">Top scorers</p>
