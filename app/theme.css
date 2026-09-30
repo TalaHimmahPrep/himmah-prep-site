@@ -25,11 +25,9 @@
   --radius-card: 20px;
 }
 
-/* The custom dot cursor is retired site-wide. */
-body, .btn, .card, .card *, .faq-item, .faq-item *, .btn * { cursor: auto; }
-.cursor-dot, .cursor-ring, .look-switch { display: none !important; }
-a, button, summary, select, .btn, .faq-item summary, .carousel-arrow, .carousel-dots button { cursor: pointer; }
-input, textarea { cursor: text; }
+/* Custom dot cursor stays on; new interactive elements opt in below. */
+.hp4-nav nav a, .hp4-btn, .hp4-nav .hp4-brand { cursor: none; }
+.look-switch { display: none !important; }
 
 /* ---- type ---- */
 h1, h2, h3, .display, .display-2 { text-wrap: balance; }
@@ -151,3 +149,7 @@ h1, h2, h3, .display, .display-2 { text-wrap: balance; }
 .prose-section > .prose { max-width: var(--max-w); margin-left: auto; margin-right: auto; }
 .page-section-tinted > .section-head { max-width: var(--max-w); }
 .prose-section > .prose { max-width: 760px; margin-left: auto; margin-right: auto; }
+
+/* Accent words in headings everywhere: maroon, upright (the italic accent was the old look). */
+h1 em, h2 em, h3 em, h4 em, .display em, .display-2 em, .product-title em, .popup-card h3 em, .cta-success h3 em, .bootcamp-onboarding-done h3 em, .hero-card-body h3 em { font-style: normal; color: var(--color-primary); }
+.book-title em { font-style: italic; color: var(--color-accent); }

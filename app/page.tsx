@@ -26,6 +26,20 @@ const WEBSITE_LD = {
   inLanguage: "en-US",
 };
 
+const SERVICE_LD = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "College counseling and SAT prep for Gulf students",
+  serviceType: ["College admissions counseling", "UK university admissions counseling", "SAT preparation", "ACT preparation"],
+  provider: { "@id": "https://www.himmahprep.com/#organization" },
+  areaServed: ["Saudi Arabia", "United Arab Emirates", "Qatar", "Kuwait", "Bahrain", "Oman"],
+  availableChannel: {
+    "@type": "ServiceChannel",
+    serviceUrl: "https://www.himmahprep.com/apply",
+    availableLanguage: ["English", "Arabic"],
+  },
+};
+
 const HOME_FAQ_LD = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -58,6 +72,7 @@ export default function HomePage() {
   return (
     <div className="hp4">
       <JsonLd data={WEBSITE_LD} />
+      <JsonLd data={SERVICE_LD} />
       <JsonLd data={HOME_FAQ_LD} />
       <Reveal />
       <StickyNav />
@@ -68,7 +83,7 @@ export default function HomePage() {
           <div className="hp4-wrap hp4-hero-grid">
             <div className="hp4-hero-copy" data-reveal>
               <p className="hp4-kicker">College counseling · Saudi Arabia &amp; the Gulf</p>
-              <h1>Ivy League and Oxbridge counseling for Gulf students.</h1>
+              <h1>Ivy League and Oxbridge college counseling for Gulf students.</h1>
               <p className="hp4-hero-lead">
                 Admissions strategy for the United States and the United Kingdom, SAT and ACT
                 prep, essays, and leadership for students in Saudi Arabia, the UAE, Qatar,

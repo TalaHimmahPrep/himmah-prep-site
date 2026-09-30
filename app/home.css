@@ -26,11 +26,9 @@
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
-body:has(.hp4) { cursor: auto; }
-body:has(.hp4) .cursor-dot, body:has(.hp4) .cursor-ring, body:has(.hp4) .look-switch { display: none; }
-.hp4 a, .hp4 button, .hp4 summary { cursor: pointer; }
+/* keep the site's custom dot cursor; text fields still show an I-beam */
+.hp4 a, .hp4 button, .hp4 summary, .hp4 select { cursor: none; }
 .hp4 input, .hp4 textarea { cursor: text; }
-.hp4 select { cursor: pointer; }
 .hp4 a { color: var(--maroon); text-underline-offset: 3px; text-decoration-thickness: 1px; }
 .hp4 :where(p:not(.book-eyebrow):not(.book-title):not(.book-foot)) { margin: 0; }
 .hp4 button { font: inherit; }

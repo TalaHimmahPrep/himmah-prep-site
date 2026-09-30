@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Instrument_Sans, Instrument_Serif, Source_Serif_4 } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Cursor } from "@/components/Cursor";
 import { ConsultPopup } from "@/components/ConsultPopup";
 import { JsonLd, ORG_LD } from "@/components/JsonLd";
 import { MetaPixel } from "@/components/MetaPixel";
@@ -96,6 +97,7 @@ export default function RootLayout({
     >
       <body>
         <JsonLd data={ORG_LD} />
+        <Cursor />
         {children}
         <ConsultPopup />
         <Analytics />
