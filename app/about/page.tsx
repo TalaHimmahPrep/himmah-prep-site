@@ -200,24 +200,14 @@ export default function AboutPage() {
             </div>
             <div className="pg-founders" data-reveal>
               <div className="pg-founder">
-                <div className="pg-founder-photo">TB</div>
-                <div>
-                  <h3>Tala Banaja</h3>
-                  <p className="pg-founder-role">Founder &amp; CEO</p>
-                  <p>
-                    Leads strategy for every family and works directly with students on school
-                    lists, essays, and interviews. Based in Jeddah.
-                  </p>
-                </div>
-              </div>
-              <div className="pg-founder">
-                <div className="pg-founder-photo">HP</div>
+                <div className="pg-founder-photo">hp</div>
                 <div>
                   <h3>Counselors &amp; tutors</h3>
                   <p className="pg-founder-role">Ivy League graduates</p>
                   <p>
-                    Specialist tutors for the SAT and ACT, essays, activities, and summer
-                    placements, all working from the counselor&apos;s plan.
+                    Senior counselors who lead strategy for each family, and specialist tutors
+                    for the SAT and ACT, essays, activities, and summer placements, all working
+                    from one plan.
                   </p>
                   <span className="pg-founder-uni">
                     <UniversityLogo slug="harvard" label="Harvard University" className="" />
