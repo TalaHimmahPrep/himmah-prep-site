@@ -14,6 +14,11 @@ const DESIGNS = [
     note: "In the direction of apexadmissions.org: numbered sections, color bands, arch photo, serif headlines.",
   },
   {
+    href: "/design/quiet",
+    name: "Quiet",
+    note: "Single typeface, reading layout, one photo, hairlines only.",
+  },
+  {
     href: "/design/a",
     name: "A · Viewbook",
     note: "Dark and photographic, like an admissions brochure. Full-screen hero photo, roman-numeral chapters, ivory and black.",

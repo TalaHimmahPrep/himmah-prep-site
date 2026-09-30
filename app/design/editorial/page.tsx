@@ -5,7 +5,7 @@ import { LeadForm } from "@/components/LeadForm";
 import { Footer } from "@/components/Footer";
 import { GuideCover } from "@/components/GuideCover";
 import { JsonLd } from "@/components/JsonLd";
-import { ServiceTabs, type Service } from "@/components/home/ServiceTabs";
+import { ServiceTabs, type Service } from "@/components/home/ServiceTabsEditorial";
 import "./home.css";
 
 const newsreader = Newsreader({

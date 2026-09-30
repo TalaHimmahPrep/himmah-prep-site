@@ -1,20 +1,17 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
-
-export type Service = {
-  title: string;
-  body: string;
-  points: string[];
-};
+import type { Service } from "@/lib/home-content";
 
 export function ServiceTabs({ services }: { services: Service[] }) {
   const [active, setActive] = useState(0);
   const s = services[active];
+  const n = (i: number) => String(i + 1).padStart(2, "0");
 
   return (
-    <div className="hp2-tabs">
-      <ol className="hp2-tab-list" role="tablist" aria-label="Services">
+    <div className="hp3-tabs">
+      <ol className="hp3-tab-list" role="tablist" aria-label="Services">
         {services.map((item, i) => (
           <li key={item.title}>
             <button
@@ -25,27 +22,30 @@ export function ServiceTabs({ services }: { services: Service[] }) {
               onClick={() => setActive(i)}
               onMouseEnter={() => setActive(i)}
             >
-              <span className="hp2-tab-num">{String(i + 1).padStart(2, "0")}</span>
-              <span className="hp2-tab-title">{item.title}</span>
+              <span className="hp3-tab-num">{n(i)}</span>
+              <span className="hp3-tab-title">{item.title}</span>
+              <span className="hp3-tab-arrow" aria-hidden="true">
+                →
+              </span>
             </button>
           </li>
         ))}
       </ol>
 
-      <div className="hp2-tab-panel" role="tabpanel">
-        <span className="hp2-tab-ghost" aria-hidden="true">
-          {String(active + 1).padStart(2, "0")}
-        </span>
-        <p className="hp2-tab-count">
-          {String(active + 1).padStart(2, "0")} / {String(services.length).padStart(2, "0")}
-        </p>
-        <h3>{s.title}</h3>
-        <p className="hp2-tab-body">{s.body}</p>
-        <ul>
-          {s.points.map((p) => (
-            <li key={p}>{p}</li>
-          ))}
-        </ul>
+      <div className="hp3-tab-panel" role="tabpanel" key={active}>
+        <Image src="/campus/widener.jpg" alt="" fill sizes="(max-width: 900px) 100vw, 640px" />
+        <div className="hp3-tab-content">
+          <p className="hp3-tab-count">
+            {n(active)} / {n(services.length - 1)}
+          </p>
+          <h3>{s.title}</h3>
+          <p className="hp3-tab-body">{s.body}</p>
+          <ul>
+            {s.points.map((p) => (
+              <li key={p}>{p}</li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
