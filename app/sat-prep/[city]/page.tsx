@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
@@ -81,6 +82,14 @@ export async function generateMetadata({
   };
 }
 
+const HERO_PHOTOS = [
+  { name: "stanford", src: "/campus/hoover.jpg", alt: "Hoover Tower, Stanford University", caption: "Hoover Tower, Stanford" },
+  { name: "harvard", src: "/campus/widener.jpg", alt: "Widener Library, Harvard University", caption: "Widener Library, Harvard" },
+  { name: "princeton", src: "/campus/nassau.jpg", alt: "Nassau Hall, Princeton University", caption: "Nassau Hall, Princeton" },
+  { name: "yale", src: "/campus/yale_portal.jpg", alt: "Sterling Memorial Library, Yale University", caption: "Sterling Memorial Library, Yale" },
+  { name: "oxford", src: "/campus/oxford.jpg", alt: "The Radcliffe Camera, University of Oxford", caption: "Radcliffe Camera, Oxford" },
+];
+
 export default async function CitySatPrepPage({
   params,
 }: {
@@ -89,6 +98,7 @@ export default async function CitySatPrepPage({
   const { city } = await params;
   const c = CITY_BY_SLUG[city];
   if (!c) notFound();
+  const photo = HERO_PHOTOS[Object.keys(CITY_BY_SLUG).indexOf(city) % HERO_PHOTOS.length];
 
   const url = `${BASE}/sat-prep/${c.slug}`;
   const faqs = faqsFor(c);
@@ -141,7 +151,7 @@ export default async function CitySatPrepPage({
       <JsonLd data={breadcrumbLd} />
       <Header />
       <main>
-        <section className="page-hero">
+        <section className="page-hero page-hero-split">
           <div className="page-hero-inner">
             <p className="eyebrow">Digital SAT prep · {c.name}</p>
             <h1 className="display">
@@ -196,6 +206,10 @@ export default async function CitySatPrepPage({
               </div>
             </div>
           </div>
+          <figure className="page-hero-photo" data-photo={photo.name}>
+            <Image src={photo.src} alt={photo.alt} fill sizes="(max-width: 900px) 100vw, 480px" priority />
+            <figcaption>{photo.caption}</figcaption>
+          </figure>
         </section>
 
         <section className="prose-section">

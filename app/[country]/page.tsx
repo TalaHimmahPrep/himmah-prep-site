@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
@@ -333,40 +334,10 @@ export default async function CountryPage({
             </div>
           </div>
 
-          <div className="hero-card" aria-hidden="true">
-            <div className="hero-card-head">
-              <span className="dot dot-red" />
-              <span className="dot dot-amber" />
-              <span className="dot dot-green" />
-              <span className="hero-card-label">portal.himmahprep.com</span>
-            </div>
-            <div className="hero-card-body">
-              <p className="muted-sm">Your roadmap</p>
-              <h3 className="serif">
-                Welcome <em>back</em>, Layla
-              </h3>
-              <ul className="kanban">
-                <li>
-                  <span className="chip chip-amber">Essay</span> Common App — Why Stanford
-                </li>
-                <li>
-                  <span className="chip chip-red">Test Prep</span> SAT mock, Saturday 9am
-                </li>
-                <li>
-                  <span className="chip chip-green">Leadership</span> Public speaking workshop
-                </li>
-                <li>
-                  <span className="chip chip-line">Summer</span> RSI application — review draft
-                </li>
-              </ul>
-              <div className="kanban-foot">
-                <div className="progress">
-                  <span style={{ width: "72%" }} />
-                </div>
-                <span className="muted-sm">72% to submission</span>
-              </div>
-            </div>
-          </div>
+          <figure className="page-hero-photo">
+            <Image src="/campus/oxford.jpg" alt="The Radcliffe Camera, University of Oxford" fill sizes="(max-width: 900px) 100vw, 480px" priority />
+            <figcaption>Radcliffe Camera, Oxford</figcaption>
+          </figure>
         </section>
 
         {/* LOGO BAR — same as home, anchors the trust before the country pivot */}
