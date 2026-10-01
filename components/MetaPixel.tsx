@@ -20,12 +20,16 @@ function RouteChangeTracker() {
   const isFirstRender = useRef(true);
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
+    const fbq = typeof window.fbq === "function" ? window.fbq : null;
+    if (!isFirstRender.current && fbq) {
+      fbq("track", "PageView");
     }
-    if (typeof window.fbq === "function") {
-      window.fbq("track", "PageView");
+    isFirstRender.current = false;
+
+    // Standard Lead event when a consultation request lands on the thank-you page.
+    // This is the conversion event the Meta Leads campaign optimises on.
+    if (fbq && pathname === "/apply/thank-you") {
+      fbq("track", "Lead", { content_name: "consultation-request" });
     }
   }, [pathname, searchParams]);
 
