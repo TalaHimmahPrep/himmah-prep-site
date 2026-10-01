@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
-import { POSTS, POSTS_BY_SLUG } from "../posts";
+import { ALL_POSTS as POSTS, POSTS_BY_SLUG } from "../posts";
 
 export function generateStaticParams() {
   return POSTS.map((p) => ({ slug: p.slug }));
@@ -59,7 +59,7 @@ export default async function BlogPostPage({
     headline: post.seoTitle ?? post.title,
     description: post.seoDescription ?? post.excerpt,
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.updated ?? post.date,
     inLanguage: "en-US",
     articleSection: post.category,
     wordCount: post.readMinutes * 250,

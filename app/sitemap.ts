@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { POSTS } from "./blog/posts";
+import { ALL_POSTS as POSTS } from "./blog/posts";
 
 const BASE = "https://www.himmahprep.com";
 
@@ -54,7 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...POSTS.map((p) => ({
       url: `${BASE}/blog/${p.slug}`,
-      lastModified: new Date(p.date),
+      lastModified: new Date(p.updated ?? p.date),
       changeFrequency: "yearly" as const,
       priority: 0.6,
     })),

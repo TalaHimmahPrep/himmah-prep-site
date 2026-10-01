@@ -1,4 +1,6 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
+import { POSTS_OCT_2026 } from "./posts-oct-2026";
 
 export type PostCategory = "All Students" | "GCC Students";
 
@@ -16,6 +18,8 @@ export type Post = {
   seoTitle?: string;
   seoDescription?: string;
   keywords?: string[];
+  // Set when a post is materially revised; feeds dateModified in the Article schema.
+  updated?: string;
 };
 
 export const POSTS: Post[] = [
@@ -26,6 +30,7 @@ export const POSTS: Post[] = [
       "If your child is aiming for a top US university, the process starts much earlier than most families realize. This year-by-year roadmap covers exactly what to focus on from 9th through 12th grade — so you're never scrambling at the last minute.",
     category: "All Students",
     date: "2026-04-13",
+    updated: "2026-10-01",
     dateLabel: "April 13, 2026",
     readMinutes: 7,
     seoTitle: "College Admissions Roadmap: Year-by-Year Guide (9th–12th)",
@@ -121,6 +126,10 @@ export const POSTS: Post[] = [
           Students who follow this roadmap are able to present a coherent, confident story — not a
           last-minute scramble. The difference is almost always visible in the final application.
         </p>
+        <h2 className="prose-h2-next">A note for Gulf families</h2>
+        <p>
+          For families in Saudi Arabia and the UAE, the most common slip in this roadmap is the Grade 10 subject choice, which matters even more for UK applications. We explain why in <Link href="/blog/when-to-start-college-admissions-planning-gulf">when to start college planning in the Gulf</Link> and, for Oxbridge specifically, in <Link href="/blog/oxford-cambridge-from-saudi-arabia">how to get into Oxford or Cambridge from Saudi Arabia</Link>.
+        </p>
       </>
     ),
   },
@@ -131,6 +140,7 @@ export const POSTS: Post[] = [
       "Most families imagine a single reader carefully weighing every word of every essay. The reality is more structured — and once you understand it, it changes how you approach the entire application.",
     category: "All Students",
     date: "2026-04-13",
+    updated: "2026-10-01",
     dateLabel: "April 13, 2026",
     readMinutes: 6,
     seoTitle: "How Admissions Officers Actually Read College Applications",
@@ -223,6 +233,10 @@ export const POSTS: Post[] = [
           know your child well.
         </p>
         <p>Control what you can. Acknowledge what you cannot. Then let the application speak for itself.</p>
+        <h2 className="prose-h2-next">A note for Gulf families</h2>
+        <p>
+          One thing Gulf applicants should know: most US admissions offices have a regional reader for the Middle East who sees every file from Saudi Arabia, the UAE and Qatar. That reader knows which schools in Riyadh, Jeddah and Dubai inflate grades and which do not, so school context is read more carefully than many families expect. Our <Link href="/saudi-arabia">Saudi Arabia</Link> and <Link href="/uae">UAE</Link> pages cover how we position students from each system.
+        </p>
       </>
     ),
   },
@@ -233,6 +247,7 @@ export const POSTS: Post[] = [
       "A clear, realistic college list is one of the most powerful tools a family can have. Here's exactly what reach, match, and safety schools mean — and how to build a balanced list that gives your child real options.",
     category: "All Students",
     date: "2026-04-13",
+    updated: "2026-10-01",
     dateLabel: "April 13, 2026",
     readMinutes: 5,
     seoTitle: "Reach, Match, Safety: How to Build a Balanced College List",
@@ -306,6 +321,10 @@ export const POSTS: Post[] = [
           creates a high-risk strategy that leaves students with limited options if reach decisions
           are unsuccessful — exactly the outcome a balanced list is designed to prevent.
         </p>
+        <h2 className="prose-h2-next">A note for Gulf families</h2>
+        <p>
+          Gulf families often build the list from rankings alone, which produces fifteen reaches and no matches. If the student is also applying to the UK, the list needs a UCAS side with its own logic, five choices and an October deadline. The <Link href="/apply">free consultation</Link> ends with a first draft of exactly this list.
+        </p>
       </>
     ),
   },
@@ -316,6 +335,7 @@ export const POSTS: Post[] = [
       "Families hear conflicting advice on this constantly. The truth is more nuanced — and more useful than either extreme. Here's what admissions officers actually look at when they see your child's GPA.",
     category: "All Students",
     date: "2026-04-11",
+    updated: "2026-10-01",
     dateLabel: "April 11, 2026",
     readMinutes: 6,
     seoTitle: "How Much Do Grades Matter for Top US College Admissions?",
@@ -426,6 +446,10 @@ export const POSTS: Post[] = [
         <p>
           <em>Grades matter. Context matters more.</em>
         </p>
+        <h2 className="prose-h2-next">A note for Gulf families</h2>
+        <p>
+          For Saudi students the grade question comes with a second one: how the SAT fits alongside Qudurat and Tahsili. We cover the scheduling and what score is competitive in <Link href="/blog/sat-vs-qudurat-saudi-students-abroad">SAT vs Qudurat</Link>, and local test dates on our <Link href="/sat-prep/riyadh">Riyadh</Link> and <Link href="/sat-prep/jeddah">Jeddah</Link> SAT pages.
+        </p>
       </>
     ),
   },
@@ -436,6 +460,7 @@ export const POSTS: Post[] = [
       "Saudi students have everything it takes to get into the world's best universities. But the path from Riyadh or Jeddah to Harvard or MIT requires a different strategy than most families realize. Here's exactly what works.",
     category: "GCC Students",
     date: "2024-09-01",
+    updated: "2026-10-01",
     dateLabel: "September 1, 2024",
     readMinutes: 9,
     seoTitle: "How to Get Into a Top US University from Saudi Arabia",
@@ -628,6 +653,10 @@ export const POSTS: Post[] = [
           applying to UK universities simultaneously. We work with a limited number of Saudi
           students each year to ensure every family receives genuinely personalized attention.
         </p>
+        <h2 className="prose-h2-next">A note for Gulf families</h2>
+        <p>
+          If the UK is also on the list, the calendar changes: Oxford and Cambridge close on 15 October, two months before US regular decision. See <Link href="/blog/oxford-cambridge-from-saudi-arabia">how to get into Oxford or Cambridge from Saudi Arabia</Link>. And if you are weighing whether to hire help at all, <Link href="/blog/college-counselor-cost-saudi-arabia">what a college counselor costs in Saudi Arabia</Link> lays out the market honestly.
+        </p>
       </>
     ),
   },
@@ -638,6 +667,7 @@ export const POSTS: Post[] = [
       "Families often hear that colleges want well-rounded students. But what top schools actually want is a well-rounded class. Here's what a spike is and how your child can build one.",
     category: "All Students",
     date: "2019-05-28",
+    updated: "2026-10-01",
     dateLabel: "May 28, 2019",
     readMinutes: 5,
     seoTitle: "What Is a 'Spike' in College Admissions — And How to Build One",
@@ -710,11 +740,17 @@ export const POSTS: Post[] = [
           officers easily detect as inauthentic résumé-building rather than genuine passion. The
           spikes that work are the ones the student actually wanted to build.
         </p>
+        <h2 className="prose-h2-next">A note for Gulf families</h2>
+        <p>
+          Building a spike takes about eighteen months, which is the practical reason we tell Gulf families that Grade 10 is the ideal start. The summers after Grade 10 and Grade 11 are where most of it happens, and the competitive programmes close in January and February. More in <Link href="/blog/when-to-start-college-admissions-planning-gulf">when to start college planning in the Gulf</Link>.
+        </p>
       </>
     ),
   },
 ];
 
+export const ALL_POSTS: Post[] = [...POSTS_OCT_2026, ...POSTS];
+
 export const POSTS_BY_SLUG: Record<string, Post> = Object.fromEntries(
-  POSTS.map((p) => [p.slug, p])
+  ALL_POSTS.map((p) => [p.slug, p])
 );

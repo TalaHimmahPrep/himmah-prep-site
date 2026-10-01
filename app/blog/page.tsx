@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { POSTS } from "./posts";
+import { ALL_POSTS as POSTS } from "./posts";
 
 export const metadata: Metadata = {
   title: "Blog — College Admissions Resources — Himmah Prep",
