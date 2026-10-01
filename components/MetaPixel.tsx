@@ -4,7 +4,9 @@ import Script from "next/script";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useRef } from "react";
 
-const PIXEL_ID = "930760333049898";
+// Himmah Prep "hp" dataset in the Himmah ad account. The previous ID (930760333049898)
+// was the Admitify pixel, so himmahprep.com traffic went to the wrong business until Oct 2026.
+const PIXEL_ID = "2396785484161659";
 
 declare global {
   interface Window {
