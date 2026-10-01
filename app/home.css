@@ -217,7 +217,9 @@
 .hp4-results { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 72px; align-items: center; }
 .hp4-more { margin-top: 28px; }
 .hp4-carousel { padding: 40px 44px 30px; border-radius: 24px; background: rgba(255, 255, 255, 0.07); border: 1px solid var(--line-light); }
-.hp4-carousel-quote { margin: 0; min-height: 210px; animation: hp4-fade 0.45s var(--ease); }
+.hp4-carousel-stack { display: grid; }
+.hp4-carousel-quote { grid-area: 1 / 1; margin: 0; opacity: 0; visibility: hidden; transform: translateY(8px); transition: opacity 0.45s var(--ease), transform 0.45s var(--ease), visibility 0s 0.45s; }
+.hp4-carousel-quote.is-active { opacity: 1; visibility: visible; transform: none; transition: opacity 0.45s var(--ease), transform 0.45s var(--ease), visibility 0s; }
 .hp4-carousel-quote blockquote { position: relative; margin: 0 0 22px; font-family: var(--serif); font-size: clamp(22px, 2.2vw, 30px); line-height: 1.35; color: #fff; }
 .hp4-carousel-quote blockquote::before { content: "\201C"; position: absolute; left: -24px; top: -8px; font-size: 56px; color: var(--gold); line-height: 1; }
 .hp4-carousel-quote figcaption { display: grid; gap: 2px; font-size: 14px; }

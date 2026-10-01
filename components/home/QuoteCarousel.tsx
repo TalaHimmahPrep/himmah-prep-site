@@ -19,8 +19,6 @@ export function QuoteCarousel({ quotes }: { quotes: Quote[] }) {
     };
   }, [paused, go]);
 
-  const q = quotes[i];
-
   return (
     <div
       className="hp4-carousel"
@@ -29,13 +27,24 @@ export function QuoteCarousel({ quotes }: { quotes: Quote[] }) {
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
     >
-      <figure className="hp4-carousel-quote" key={i}>
-        <blockquote>{q.quote}</blockquote>
-        <figcaption>
-          <strong>{q.name}</strong>
-          <span>{q.school}</span>
-        </figcaption>
-      </figure>
+      {/* Every quote is rendered in the same grid cell so the box is sized
+          by the longest one and never changes height; only the active one
+          is visible. */}
+      <div className="hp4-carousel-stack">
+        {quotes.map((x, idx) => (
+          <figure
+            key={x.name}
+            className={`hp4-carousel-quote${idx === i ? " is-active" : ""}`}
+            aria-hidden={idx !== i}
+          >
+            <blockquote>{x.quote}</blockquote>
+            <figcaption>
+              <strong>{x.name}</strong>
+              <span>{x.school}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
       <div className="hp4-carousel-controls">
         <div className="hp4-carousel-dots" role="tablist" aria-label="Testimonials">
           {quotes.map((x, idx) => (
