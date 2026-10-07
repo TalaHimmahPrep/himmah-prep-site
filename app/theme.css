@@ -214,6 +214,7 @@ h1 em, h2 em, h3 em, h4 em, .display em, .display-2 em, .product-title em, .popu
 .apply-form-card .cta-form button { justify-self: start; }
 
 /* Blog post: header and body share one left edge and one 760px measure. */
-.post-header-inner { max-width: var(--max-w); margin: 0 auto; }
+.post-header { padding-left: 0; padding-right: 0; }
+.post-header-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 28px; }
 .post-header-inner > * { max-width: 760px; }
 .post-header + .prose-section { padding-top: 44px; }
