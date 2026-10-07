@@ -20,6 +20,8 @@ export type Post = {
   keywords?: string[];
   // Set when a post is materially revised; feeds dateModified in the Article schema.
   updated?: string;
+  // Q&A pairs shown at the end of the post; emitted as FAQPage schema.
+  faq?: { q: string; a: string }[];
 };
 
 export const POSTS: Post[] = [

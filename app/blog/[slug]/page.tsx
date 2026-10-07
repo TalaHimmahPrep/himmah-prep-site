@@ -99,6 +99,19 @@ export default async function BlogPostPage({
     <>
       <JsonLd data={articleLd} />
       <JsonLd data={breadcrumbLd} />
+      {post.faq && post.faq.length > 0 && (
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: post.faq.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          }}
+        />
+      )}
       <Header />
       <main>
         <article>

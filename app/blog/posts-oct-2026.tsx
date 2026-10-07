@@ -24,6 +24,24 @@ export const POSTS_OCT_2026: Post[] = [
       "study in UK from Saudi Arabia",
       "Oxbridge consultant Riyadh",
     ],
+    faq: [
+          {
+                "q": "Can a Saudi student apply to Oxford with the Saudi high-school certificate?",
+                "a": "Not for direct entry. Both universities expect A-levels, the IB Diploma, or an American diploma with several AP exams at grade 5. Students from the Saudi national curriculum usually need a recognised foundation year first, which adds a year and does not lead to every course."
+          },
+          {
+                "q": "Do Oxford and Cambridge accept the SAT?",
+                "a": "They accept it as supporting evidence alongside a qualifying curriculum, and American-diploma applicants are often expected to submit it with scores in the 1500s. On its own it does not replace A-levels, IB or APs."
+          },
+          {
+                "q": "Is an Oxbridge application worth it if the student is also applying to the US?",
+                "a": "Often yes, because the academic depth it demands strengthens the US application too. The cost is time in Grade 12 autumn, which is why the Oxbridge work has to be sequenced first."
+          },
+          {
+                "q": "How many Saudi students get into Oxford or Cambridge each year?",
+                "a": "Neither university publishes a Saudi-specific figure, but offers to students from Saudi schools are in the low tens per year across both. The applicants who succeed almost always come from British, IB or AP-heavy American curricula with early planning."
+          }
+    ],
     body: (
       <>
         <p>
@@ -196,6 +214,24 @@ export const POSTS_OCT_2026: Post[] = [
       "Tahsili vs SAT",
       "SAT prep Saudi students",
     ],
+    faq: [
+          {
+                "q": "Do Saudi private universities accept the SAT?",
+                "a": "Several do, including some that accept it alongside or instead of Qudurat for certain programmes. Requirements change, so check each university's admissions page for the current year."
+          },
+          {
+                "q": "Is the SAT harder than Qudurat?",
+                "a": "Different rather than harder. The maths is comparable. The reading and writing section is the gap for most Saudi students because of the volume and register of academic English, and that gap takes months rather than weeks to close."
+          },
+          {
+                "q": "How many times should a student take the SAT?",
+                "a": "Two sittings is typical: one in Grade 11 spring, a second in Grade 12 autumn if the score is below target. Universities see the best score, and most allow Score Choice, so a weaker first attempt does no harm."
+          },
+          {
+                "q": "Can a student prepare for the SAT and Qudurat at the same time?",
+                "a": "Yes, if the SAT is finished before Qudurat season in Grade 12. Trying to peak for both in the same spring is where students burn out."
+          }
+    ],
     body: (
       <>
         <p>
@@ -340,6 +376,24 @@ export const POSTS_OCT_2026: Post[] = [
       "when to hire a college counselor",
       "college admissions Dubai Riyadh when to start",
     ],
+    faq: [
+          {
+                "q": "Is Grade 9 too early to hire a college counselor?",
+                "a": "For a full programme, usually yes. A single diagnostic conversation in Grade 9 is useful; weekly meetings are not. Grade 10 is when planning starts to pay for itself."
+          },
+          {
+                "q": "My child is in Grade 11. Have we missed it?",
+                "a": "No. Testing, essays, the list and the remaining summer are all fully workable. What has closed is the chance to change subjects or build a new activity from scratch, so the work shifts to sharpening what exists."
+          },
+          {
+                "q": "Does starting early mean more pressure on the student?",
+                "a": "It should mean less. A Grade 10 start spreads the same work over three years instead of one, and the student makes choices with time to think rather than under deadline."
+          },
+          {
+                "q": "What is the single most important Grade 10 decision?",
+                "a": "Subject choice, especially for students who may apply to the UK. It is the one decision that cannot be revisited later."
+          }
+    ],
     body: (
       <>
         <p>
@@ -469,6 +523,24 @@ export const POSTS_OCT_2026: Post[] = [
       "Ivy League consultant fees",
       "college counseling Riyadh price",
       "Crimson Education price Saudi Arabia",
+    ],
+    faq: [
+          {
+                "q": "Do college counselors in Saudi Arabia offer payment plans?",
+                "a": "Most multi-year programmes, including ours, split fees across the programme rather than asking for everything upfront. Ask before assuming the headline price is due at once."
+          },
+          {
+                "q": "Is a counselor worth it if the school already has one?",
+                "a": "School counsellors handle hundreds of students on one deadline calendar and do essential work. A private counsellor adds the layer most families do not realise is missing: long-term strategy for one student. The two are complementary, not competing."
+          },
+          {
+                "q": "What is the difference between Himmah Prep and Crimson Education on price?",
+                "a": "Crimson's multi-year packages typically start well above where ours end. Both offer multi-year strategy with Ivy League-educated counsellors. Ours is a smaller team with the same named counsellor throughout and a published track record; theirs is a larger operation with a bigger brand. Which is the better fit depends on the student, and the free consultation is the honest way to find out."
+          },
+          {
+                "q": "Can we start small and upgrade?",
+                "a": "Yes. Many families begin with a review or the application guide, take the free consultation, and move to a plan once they see the gap. Nothing about starting small locks you out of the programme later."
+          }
     ],
     body: (
       <>
