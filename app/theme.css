@@ -212,3 +212,8 @@ h1 em, h2 em, h3 em, h4 em, .display em, .display-2 em, .product-title em, .popu
 /* Apply page: left-align the trust row and the submit button to match the hero. */
 .page-hero-inner .trust-row { justify-content: flex-start; }
 .apply-form-card .cta-form button { justify-self: start; }
+
+/* Blog post: header and body share one left edge and one 760px measure. */
+.post-header-inner { max-width: var(--max-w); margin: 0 auto; }
+.post-header-inner > * { max-width: 760px; }
+.post-header + .prose-section { padding-top: 44px; }
