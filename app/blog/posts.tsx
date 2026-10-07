@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { POSTS_OCT_2026 } from "./posts-oct-2026";
+import { POSTS_AI_2026 } from "./posts-ai-2026";
 
 export type PostCategory = "All Students" | "GCC Students";
 
@@ -751,7 +752,7 @@ export const POSTS: Post[] = [
   },
 ];
 
-export const ALL_POSTS: Post[] = [...POSTS_OCT_2026, ...POSTS];
+export const ALL_POSTS: Post[] = [...POSTS_AI_2026, ...POSTS_OCT_2026, ...POSTS];
 
 export const POSTS_BY_SLUG: Record<string, Post> = Object.fromEntries(
   ALL_POSTS.map((p) => [p.slug, p])
