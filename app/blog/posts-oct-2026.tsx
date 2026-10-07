@@ -522,7 +522,6 @@ export const POSTS_OCT_2026: Post[] = [
       "how much does a college counselor cost",
       "Ivy League consultant fees",
       "college counseling Riyadh price",
-      "Crimson Education price Saudi Arabia",
     ],
     faq: [
           {
