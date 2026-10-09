@@ -37,6 +37,7 @@ export function StickyNav() {
   }, [open]);
 
   return (
+    <>
     <header className={`hp4-nav${scrolled ? " is-scrolled" : ""}${open ? " is-open" : ""}`}>
       <div className="hp4-nav-inner">
         <Link href="/" aria-label="Himmah Prep home" className="hp4-brand" onClick={() => setOpen(false)}>
@@ -67,7 +68,10 @@ export function StickyNav() {
           </button>
         </div>
       </div>
+    </header>
 
+      {/* Rendered outside <header>: its backdrop-filter would otherwise trap this
+          fixed sheet inside the 62px bar and clip it. */}
       <div id="hp4-menu" className="hp4-menu" hidden={!open}>
         <nav aria-label="Mobile">
           {LINKS.map(([href, label]) => (
@@ -84,6 +88,6 @@ export function StickyNav() {
           <a href="mailto:connect@himmahprep.com">connect@himmahprep.com</a>
         </p>
       </div>
-    </header>
+    </>
   );
 }
