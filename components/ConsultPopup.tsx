@@ -73,6 +73,9 @@ export function ConsultPopup() {
     const payload = {
       studentName: String(data.get("studentName") ?? ""),
       parentEmail: String(data.get("parentEmail") ?? ""),
+      parentPhone: `${String(data.get("parentPhoneCode") ?? "")} ${String(
+        data.get("parentPhone") ?? ""
+      )}`.trim(),
       website: String(data.get("website") ?? ""),
       source: "scroll-popup",
     };
@@ -160,6 +163,32 @@ export function ConsultPopup() {
                   placeholder="parent@example.com"
                   autoComplete="email"
                 />
+              </label>
+              <label>
+                <span>Parent WhatsApp number</span>
+                <div className="phone-input">
+                  <select name="parentPhoneCode" defaultValue="+966" className="phone-code" aria-label="Country code">
+                    <option value="+966">🇸🇦 +966</option>
+                    <option value="+971">🇦🇪 +971</option>
+                    <option value="+974">🇶🇦 +974</option>
+                    <option value="+965">🇰🇼 +965</option>
+                    <option value="+973">🇧🇭 +973</option>
+                    <option value="+968">🇴🇲 +968</option>
+                    <option value="+962">🇯🇴 +962</option>
+                    <option value="+961">🇱🇧 +961</option>
+                    <option value="+20">🇪🇬 +20</option>
+                    <option value="+1">🇺🇸 +1</option>
+                    <option value="+44">🇬🇧 +44</option>
+                  </select>
+                  <input
+                    type="tel"
+                    name="parentPhone"
+                    required
+                    inputMode="tel"
+                    placeholder="5X XXX XXXX"
+                    autoComplete="tel-national"
+                  />
+                </div>
               </label>
               <input
                 type="text"
