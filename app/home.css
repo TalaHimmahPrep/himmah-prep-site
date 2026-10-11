@@ -284,6 +284,7 @@
 .hp4 .hp4-form .cta-form span { color: var(--ink); font-weight: 600; font-size: 12.5px; }
 .hp4 .hp4-form .cta-form input, .hp4 .hp4-form .cta-form select { padding: 12px 0; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: transparent; font-size: 15.5px; transition: border-color 0.2s; }
 .hp4 .hp4-form .cta-form input:focus, .hp4 .hp4-form .cta-form select:focus { outline: none; box-shadow: none; border-bottom-color: var(--maroon); }
+.hp4 .hp4-form .cta-form .phone-code { min-width: 92px; padding-right: 22px; background-position: right 4px center; }
 .hp4 .hp4-form .cta-form button[type="submit"] { width: 100%; min-height: 54px; border-radius: 999px; background: var(--maroon); justify-content: center; text-align: center; font-size: 15px; transition: background 0.2s, transform 0.25s var(--ease); }
 .hp4 .hp4-form .cta-form button[type="submit"]:hover { background: var(--maroon-deep); transform: translateY(-1px); }
 

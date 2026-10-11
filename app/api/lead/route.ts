@@ -11,6 +11,7 @@ type LeadPayload = {
   school?: string;
   currentSatScore?: string;
   parentPhone?: string;
+  lookingFor?: string;
   source?: string;
   /** Hidden honeypot field — bots fill it, humans don't. */
   website?: string;
@@ -41,6 +42,7 @@ export async function POST(req: Request) {
   const school = isString(body.school) ? body.school.trim() : "";
   const currentSatScore = isString(body.currentSatScore) ? body.currentSatScore.trim() : "";
   const parentPhone = isString(body.parentPhone) ? body.parentPhone.trim() : "";
+  const lookingFor = isString(body.lookingFor) ? body.lookingFor.trim() : "";
   const source = isString(body.source) ? body.source.trim() : "main-form";
   const isBootcampEnrollment = source.startsWith("sat-bootcamp");
 
@@ -54,6 +56,15 @@ export async function POST(req: Request) {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(parentEmail)) {
     return NextResponse.json(
       { ok: false, error: "Invalid email" },
+      { status: 400 }
+    );
+  }
+
+  // Consultation requests need a reachable WhatsApp number — email-only
+  // leads were not converting to booked calls (Oct 2026).
+  if (!isBootcampEnrollment && parentPhone.replace(/\D/g, "").length < 7) {
+    return NextResponse.json(
+      { ok: false, error: "Please add a WhatsApp number so we can reach you" },
       { status: 400 }
     );
   }
@@ -73,7 +84,7 @@ export async function POST(req: Request) {
 
   const subject = isBootcampEnrollment
     ? `SAT Bootcamp enrollment — ${studentName} (${gradeLabel})`
-    : `Consultation request — ${studentName} (${gradeLabel}) [${source}]`;
+    : `Consultation request — ${studentName} (${gradeLabel})${lookingFor ? ` · ${lookingFor}` : ""} [${source}]`;
 
   const payload = {
     studentName,
@@ -84,6 +95,7 @@ export async function POST(req: Request) {
     ...(school && { school }),
     ...(currentSatScore && { currentSatScore }),
     ...(parentPhone && { parentPhone }),
+    ...(lookingFor && { lookingFor }),
     source,
     _subject: subject,
     _replyto: parentEmail,
@@ -136,6 +148,7 @@ export async function POST(req: Request) {
           ...(school && { school }),
           ...(currentSatScore && { currentSatScore }),
           ...(parentPhone && { parentPhone }),
+          ...(lookingFor && { lookingFor }),
           source,
           submittedAt: new Date().toISOString(),
         }),
